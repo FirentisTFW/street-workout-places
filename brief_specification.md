@@ -6,6 +6,7 @@
 5. Add spot form
 6. Contact/Help
 7. Search and filter spots
+8. Image gallery
 
 ## 1. HOME
 - list of spots near user (press a button to get user location and get spots near)
@@ -32,6 +33,7 @@
 
 ## 5. ADD SPOT FORM
 - input for spot details
+- how location would be handled? by selecting a spot on map? then we need another screen with map
 
 ## 6. CONTACT/HELP
 - basic contact and legal information
@@ -42,5 +44,27 @@
 - categories and equipment (checkboxes)
 - location (based on distance from user location)
 
+## 8. IMAGE GALLERY
+- images of workout spot
+- zoom
+
+# BOTTOM BAR TABS
+- home
+- map
+- add spot form
+- contact/help
+
 # QUESTIONS
 1. Do locations added by user need to be approved? Maybe Google Sign In for verification?
+
+# MODELS
+1. Workout Spot
+
+## 1. WORKOUT SPOT
+- name
+- address
+- coordinates (lat, lng)
+- description
+- images
+- equipment
+- uploader reference (?)
