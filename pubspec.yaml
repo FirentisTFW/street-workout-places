@@ -11,13 +11,19 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_localizations:
+    sdk: flutter
   freezed: ^2.3.2
+  get_it: ^7.2.0
   google_maps_flutter: ^2.1.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter  
   flutter_lints: ^2.0.0
+
+flutter_intl:
+  enabled: true
 
 flutter:  
   uses-material-design: true
