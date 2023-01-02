@@ -1,3 +1,7 @@
 {
-    "appName": "Parki Street Workout"
+  "appName": "Parki Street Workout",
+  "dashboardTabForm": "Zgłoś",
+  "dashboardTabMore": "Więcej",
+  "dashboardTabHome": "Home",
+  "dashboardTabMap": "Mapa"
 }

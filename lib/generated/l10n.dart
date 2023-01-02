@@ -59,6 +59,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Zgłoś`
+  String get dashboardTabForm {
+    return Intl.message(
+      'Zgłoś',
+      name: 'dashboardTabForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Więcej`
+  String get dashboardTabMore {
+    return Intl.message(
+      'Więcej',
+      name: 'dashboardTabMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get dashboardTabHome {
+    return Intl.message(
+      'Home',
+      name: 'dashboardTabHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mapa`
+  String get dashboardTabMap {
+    return Intl.message(
+      'Mapa',
+      name: 'dashboardTabMap',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

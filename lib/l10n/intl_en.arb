@@ -1,3 +1,7 @@
 {
-    "appName": "Street Workout Spots"
+  "appName": "Street Workout Spots",
+  "dashboardTabForm": "Zgłoś",
+  "dashboardTabMore": "Więcej",
+  "dashboardTabHome": "Home",
+  "dashboardTabMap": "Mapa"
 }

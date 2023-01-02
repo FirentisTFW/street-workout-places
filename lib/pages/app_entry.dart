@@ -19,7 +19,7 @@ class _AppEntryState extends State<AppEntry> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Routing.tabBar,
+      initialRoute: Routing.dashboard,
       localizationsDelegates: const [
         ...GlobalMaterialLocalizations.delegates,
         S.delegate,

@@ -1,17 +1,32 @@
 import 'package:app/pages/pages.dart';
+import 'package:app/routing/dashboard_tabs/form_routing.dart';
+import 'package:app/routing/dashboard_tabs/home_routing.dart';
+import 'package:app/routing/dashboard_tabs/map_routing.dart';
+import 'package:app/routing/dashboard_tabs/more_routing.dart';
 import 'package:flutter/material.dart';
 
 class Routing {
-  static const String tabBar = 'tab_bar';
+  static const String dashboard = 'dashboard';
 
   const Routing._();
 
   static bool canHandleRoute(String? routeName, String prefix) => routeName?.startsWith('$prefix/') ?? false;
 
   static Route? getRoute(RouteSettings settings) {
-    final Widget? page = getPage(settings.name);
+    final String? routeName = settings.name;
+    if (FormRouting.canHandleRoute(routeName)) {
+      return FormRouting.getRoute(settings);
+    } else if (HomeRouting.canHandleRoute(routeName)) {
+      return HomeRouting.getRoute(settings);
+    } else if (MapRouting.canHandleRoute(routeName)) {
+      return MapRouting.getRoute(settings);
+    } else if (MoreRouting.canHandleRoute(routeName)) {
+      return MoreRouting.getRoute(settings);
+    }
+
+    final Widget? page = getPage(routeName);
     if (page == null) return null;
-    return _buildRoute(
+    return buildRoute(
       settings: settings,
       child: page,
     );
@@ -19,14 +34,14 @@ class Routing {
 
   static Widget? getPage(String? routeName) {
     switch (routeName) {
-      case tabBar:
-        return Pages.tabBar();
+      case dashboard:
+        return Pages.dashboard();
       default:
         return null;
     }
   }
 
-  static Route _buildRoute({
+  static Route buildRoute({
     required RouteSettings settings,
     bool fullscreenDialog = false,
     required Widget child,

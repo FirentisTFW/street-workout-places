@@ -1,3 +1,4 @@
+import 'package:app/pages/app_entry.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SizedBox.shrink(),
+      home: const AppEntry(),
     );
   }
 }
