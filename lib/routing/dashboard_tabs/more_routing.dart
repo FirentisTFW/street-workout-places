@@ -1,9 +1,10 @@
+import 'package:app/pages/pages.dart';
 import 'package:app/routing/routing.dart';
 import 'package:flutter/material.dart';
 
 class MoreRouting {
   static const String _prefix = 'more';
-  static const String more = _prefix;
+  static const String more = '$_prefix/main';
 
   const MoreRouting._();
 
@@ -19,8 +20,7 @@ class MoreRouting {
   static Widget? getPage(String? routeName) {
     switch (routeName) {
       case more:
-        // TODO Implement
-        return const SizedBox.shrink();
+        return Pages.more();
       default:
         return null;
     }

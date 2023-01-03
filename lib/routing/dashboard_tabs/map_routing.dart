@@ -1,9 +1,10 @@
+import 'package:app/pages/pages.dart';
 import 'package:app/routing/routing.dart';
 import 'package:flutter/material.dart';
 
 class MapRouting {
   static const String _prefix = 'map';
-  static const String map = _prefix;
+  static const String map = '$_prefix/main';
 
   const MapRouting._();
 
@@ -19,8 +20,7 @@ class MapRouting {
   static Widget? getPage(String? routeName) {
     switch (routeName) {
       case map:
-        // TODO Implement
-        return const SizedBox.shrink();
+        return Pages.map();
       default:
         return null;
     }

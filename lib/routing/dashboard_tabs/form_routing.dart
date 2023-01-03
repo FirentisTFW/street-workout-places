@@ -1,9 +1,10 @@
+import 'package:app/pages/pages.dart';
 import 'package:app/routing/routing.dart';
 import 'package:flutter/material.dart';
 
 class FormRouting {
   static const String _prefix = 'form';
-  static const String form = _prefix;
+  static const String form = '$_prefix/main';
 
   const FormRouting._();
 
@@ -19,8 +20,7 @@ class FormRouting {
   static Widget? getPage(String? routeName) {
     switch (routeName) {
       case form:
-        // TODO Implement
-        return const SizedBox.shrink();
+        return Pages.form();
       default:
         return null;
     }

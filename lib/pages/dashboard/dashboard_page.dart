@@ -93,7 +93,7 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
     required DashboardTab tab,
   }) {
     return Offstage(
-      offstage: tab != state.tab,
+      offstage: tab.index != state.tab.index,
       child: WillPopScope(
         onWillPop: () async {
           if (await _tabsNavigatorsKeys[state.tab]?.currentState?.maybePop() ?? false) {

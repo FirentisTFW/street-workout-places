@@ -1,5 +1,13 @@
 import 'package:app/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/pages/dashboard/dashboard_page.dart';
+import 'package:app/pages/form/form_bloc.dart';
+import 'package:app/pages/form/form_page.dart';
+import 'package:app/pages/home/home_bloc.dart';
+import 'package:app/pages/home/home_page.dart';
+import 'package:app/pages/map/map_bloc.dart';
+import 'package:app/pages/map/map_page.dart';
+import 'package:app/pages/more/more_bloc.dart';
+import 'package:app/pages/more/more_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +18,34 @@ abstract class Pages {
     return BlocProvider<DashboardBloc>(
       create: (_) => DashboardBloc(),
       child: const DashboardPage(),
+    );
+  }
+
+  static Widget form() {
+    return BlocProvider<FormBloc>(
+      create: (_) => FormBloc(),
+      child: const FormPage(),
+    );
+  }
+
+  static Widget home() {
+    return BlocProvider<HomeBloc>(
+      create: (_) => HomeBloc(),
+      child: const HomePage(),
+    );
+  }
+
+  static Widget map() {
+    return BlocProvider<MapBloc>(
+      create: (_) => MapBloc(),
+      child: const MapPage(),
+    );
+  }
+
+  static Widget more() {
+    return BlocProvider<MoreBloc>(
+      create: (_) => MoreBloc(),
+      child: const MorePage(),
     );
   }
 }

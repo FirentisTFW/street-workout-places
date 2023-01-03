@@ -6,28 +6,30 @@ import 'package:app/routing/dashboard_tabs/more_routing.dart';
 import 'package:flutter/material.dart';
 
 enum DashboardTab {
-  form,
-  home,
-  map,
-  more;
+  form(
+    icon: Icons.add_circle_outline,
+    initialRoute: FormRouting.form,
+  ),
+  home(
+    icon: Icons.home,
+    initialRoute: HomeRouting.home,
+  ),
+  map(
+    icon: Icons.map_outlined,
+    initialRoute: MapRouting.map,
+  ),
+  more(
+    icon: Icons.more_horiz,
+    initialRoute: MoreRouting.more,
+  );
 
-  IconData get icon {
-    // TODO Return proper icons
-    return Icons.home;
-  }
+  const DashboardTab({
+    required this.icon,
+    required this.initialRoute,
+  });
 
-  String get initialRoute {
-    switch (this) {
-      case DashboardTab.form:
-        return FormRouting.form;
-      case DashboardTab.more:
-        return MoreRouting.more;
-      case DashboardTab.home:
-        return HomeRouting.home;
-      case DashboardTab.map:
-        return MapRouting.map;
-    }
-  }
+  final IconData icon;
+  final String initialRoute;
 
   String getLabel(BuildContext context) {
     switch (this) {

@@ -1,9 +1,10 @@
+import 'package:app/pages/pages.dart';
 import 'package:app/routing/routing.dart';
 import 'package:flutter/material.dart';
 
 class HomeRouting {
   static const String _prefix = 'home';
-  static const String home = _prefix;
+  static const String home = '$_prefix/main';
 
   const HomeRouting._();
 
@@ -19,8 +20,7 @@ class HomeRouting {
   static Widget? getPage(String? routeName) {
     switch (routeName) {
       case home:
-        // TODO Implement
-        return const SizedBox.shrink();
+        return Pages.home();
       default:
         return null;
     }
