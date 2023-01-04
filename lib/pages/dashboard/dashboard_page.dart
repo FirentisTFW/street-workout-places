@@ -119,7 +119,7 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
     return BottomNavigationBar(
       backgroundColor: AppColors.white,
       currentIndex: _tabs.indexOf(activeTab),
-      elevation: 2.0,
+      elevation: 10.0,
       items: _buildBottomNavigationBarItems(),
       onTap: (index) => bloc.add(
         DashboardEvent.changeTabRequested(

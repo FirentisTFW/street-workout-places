@@ -67,4 +67,5 @@
 - description
 - images
 - equipment
+- surface
 - uploader reference (?)
