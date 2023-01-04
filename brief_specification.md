@@ -17,14 +17,18 @@
 - map with location pins
 - pins transform into clusters when there are a lot of spots in one place
 - search bar
+- my location button
+- user taps on a pin -> new page is opened (spot details)
 
 ## 3. LIST OF LOCATIONS
 - name, category/equipment, distance
 - show on map feature
 - search bar
+- filters
 
 ## 4. SPOT DETAILS
 - name, address/coordinates
+- map (here or on another screen?)
 - category
 - equipment
 - images
