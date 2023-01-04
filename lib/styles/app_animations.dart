@@ -4,4 +4,8 @@ class AppAnimations {
   static const Duration animatedSwitcherDuration = Duration(
     milliseconds: 250,
   );
+
+  static const Duration regularDuration = Duration(
+    milliseconds: 250,
+  );
 }

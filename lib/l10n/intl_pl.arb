@@ -3,5 +3,7 @@
   "dashboardTabForm": "Zgłoś",
   "dashboardTabMore": "Więcej",
   "dashboardTabHome": "Home",
-  "dashboardTabMap": "Mapa"
+  "dashboardTabSpots": "Punkty",
+  "spotsMapTabBarButtonTitle": "Mapa",
+  "spotsListTabBarButtonTitle": "Lista"
 }

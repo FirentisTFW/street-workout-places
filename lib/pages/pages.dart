@@ -4,10 +4,9 @@ import 'package:app/pages/form/form_bloc.dart';
 import 'package:app/pages/form/form_page.dart';
 import 'package:app/pages/home/home_bloc.dart';
 import 'package:app/pages/home/home_page.dart';
-import 'package:app/pages/map/map_bloc.dart';
-import 'package:app/pages/map/map_page.dart';
 import 'package:app/pages/more/more_bloc.dart';
 import 'package:app/pages/more/more_page.dart';
+import 'package:app/pages/spots/spots_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,17 +34,14 @@ abstract class Pages {
     );
   }
 
-  static Widget map() {
-    return BlocProvider<MapBloc>(
-      create: (_) => MapBloc(),
-      child: const MapPage(),
-    );
-  }
-
   static Widget more() {
     return BlocProvider<MoreBloc>(
       create: (_) => MoreBloc(),
       child: const MorePage(),
     );
+  }
+
+  static Widget spots() {
+    return const SpotsPage();
   }
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'map_bloc.dart';
+part of 'map_spots_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MapEvent {
+mixin _$MapSpotsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchMapPointsRequested,
@@ -52,15 +52,16 @@ mixin _$MapEvent {
 }
 
 /// @nodoc
-abstract class $MapEventCopyWith<$Res> {
-  factory $MapEventCopyWith(MapEvent value, $Res Function(MapEvent) then) =
-      _$MapEventCopyWithImpl<$Res, MapEvent>;
+abstract class $MapSpotsEventCopyWith<$Res> {
+  factory $MapSpotsEventCopyWith(
+          MapSpotsEvent value, $Res Function(MapSpotsEvent) then) =
+      _$MapSpotsEventCopyWithImpl<$Res, MapSpotsEvent>;
 }
 
 /// @nodoc
-class _$MapEventCopyWithImpl<$Res, $Val extends MapEvent>
-    implements $MapEventCopyWith<$Res> {
-  _$MapEventCopyWithImpl(this._value, this._then);
+class _$MapSpotsEventCopyWithImpl<$Res, $Val extends MapSpotsEvent>
+    implements $MapSpotsEventCopyWith<$Res> {
+  _$MapSpotsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,7 +78,7 @@ abstract class _$$_FetchMapPointsRequestedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_FetchMapPointsRequestedCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res, _$_FetchMapPointsRequested>
+    extends _$MapSpotsEventCopyWithImpl<$Res, _$_FetchMapPointsRequested>
     implements _$$_FetchMapPointsRequestedCopyWith<$Res> {
   __$$_FetchMapPointsRequestedCopyWithImpl(_$_FetchMapPointsRequested _value,
       $Res Function(_$_FetchMapPointsRequested) _then)
@@ -91,7 +92,7 @@ class _$_FetchMapPointsRequested implements _FetchMapPointsRequested {
 
   @override
   String toString() {
-    return 'MapEvent.fetchMapPointsRequested()';
+    return 'MapSpotsEvent.fetchMapPointsRequested()';
   }
 
   @override
@@ -162,12 +163,12 @@ class _$_FetchMapPointsRequested implements _FetchMapPointsRequested {
   }
 }
 
-abstract class _FetchMapPointsRequested implements MapEvent {
+abstract class _FetchMapPointsRequested implements MapSpotsEvent {
   const factory _FetchMapPointsRequested() = _$_FetchMapPointsRequested;
 }
 
 /// @nodoc
-mixin _$MapState {
+mixin _$MapSpotsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -203,15 +204,16 @@ mixin _$MapState {
 }
 
 /// @nodoc
-abstract class $MapStateCopyWith<$Res> {
-  factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) =
-      _$MapStateCopyWithImpl<$Res, MapState>;
+abstract class $MapSpotsStateCopyWith<$Res> {
+  factory $MapSpotsStateCopyWith(
+          MapSpotsState value, $Res Function(MapSpotsState) then) =
+      _$MapSpotsStateCopyWithImpl<$Res, MapSpotsState>;
 }
 
 /// @nodoc
-class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
-    implements $MapStateCopyWith<$Res> {
-  _$MapStateCopyWithImpl(this._value, this._then);
+class _$MapSpotsStateCopyWithImpl<$Res, $Val extends MapSpotsState>
+    implements $MapSpotsStateCopyWith<$Res> {
+  _$MapSpotsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -228,7 +230,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$_Initial>
+    extends _$MapSpotsStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -241,7 +243,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'MapState.initial()';
+    return 'MapSpotsState.initial()';
   }
 
   @override
@@ -310,6 +312,6 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements MapState {
+abstract class _Initial implements MapSpotsState {
   const factory _Initial() = _$_Initial;
 }

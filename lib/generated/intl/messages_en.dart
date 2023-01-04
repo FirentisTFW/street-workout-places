@@ -25,7 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Street Workout Spots"),
         "dashboardTabForm": MessageLookupByLibrary.simpleMessage("Zgłoś"),
         "dashboardTabHome": MessageLookupByLibrary.simpleMessage("Home"),
-        "dashboardTabMap": MessageLookupByLibrary.simpleMessage("Mapa"),
-        "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej")
+        "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
+        "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
+        "spotsListTabBarButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Lista"),
+        "spotsMapTabBarButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Mapa")
       };
 }

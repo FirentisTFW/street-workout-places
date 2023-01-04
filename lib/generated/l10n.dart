@@ -90,11 +90,31 @@ class S {
     );
   }
 
+  /// `Punkty`
+  String get dashboardTabSpots {
+    return Intl.message(
+      'Punkty',
+      name: 'dashboardTabSpots',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Mapa`
-  String get dashboardTabMap {
+  String get spotsMapTabBarButtonTitle {
     return Intl.message(
       'Mapa',
-      name: 'dashboardTabMap',
+      name: 'spotsMapTabBarButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lista`
+  String get spotsListTabBarButtonTitle {
+    return Intl.message(
+      'Lista',
+      name: 'spotsListTabBarButtonTitle',
       desc: '',
       args: [],
     );

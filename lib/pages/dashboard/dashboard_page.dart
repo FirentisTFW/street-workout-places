@@ -3,8 +3,8 @@ import 'package:app/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/pages/dashboard/dashboard_tab.dart';
 import 'package:app/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/routing/dashboard_tabs/home_routing.dart';
-import 'package:app/routing/dashboard_tabs/map_routing.dart';
 import 'package:app/routing/dashboard_tabs/more_routing.dart';
+import 'package:app/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
   static const List<DashboardTab> _tabs = [
     DashboardTab.home,
-    DashboardTab.map,
+    DashboardTab.spots,
     DashboardTab.form,
     DashboardTab.more,
   ];
@@ -69,8 +69,8 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
           ),
           _buildPage(
             state,
-            onGenerateRoute: MapRouting.getRoute,
-            tab: DashboardTab.map,
+            onGenerateRoute: SpotsRouting.getRoute,
+            tab: DashboardTab.spots,
           ),
           _buildPage(
             state,

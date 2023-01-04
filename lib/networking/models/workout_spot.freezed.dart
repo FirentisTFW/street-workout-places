@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WorkoutSpot {
-// TODO Equipment
   String? get address => throw _privateConstructorUsedError;
   MapPosition? get coordinates => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -202,7 +201,6 @@ class _$_WorkoutSpot extends _WorkoutSpot {
         _images = images,
         super._();
 
-// TODO Equipment
   @override
   final String? address;
   @override
@@ -285,7 +283,7 @@ abstract class _WorkoutSpot extends WorkoutSpot {
       final Surface? surface}) = _$_WorkoutSpot;
   const _WorkoutSpot._() : super._();
 
-  @override // TODO Equipment
+  @override
   String? get address;
   @override
   MapPosition? get coordinates;

@@ -2,11 +2,11 @@ import 'package:app/pages/pages.dart';
 import 'package:app/routing/routing.dart';
 import 'package:flutter/material.dart';
 
-class MapRouting {
-  static const String _prefix = 'map';
-  static const String map = '$_prefix/main';
+class SpotsRouting {
+  static const String _prefix = 'spots';
+  static const String spots = '$_prefix/main';
 
-  const MapRouting._();
+  const SpotsRouting._();
 
   static Route? getRoute(RouteSettings settings) {
     final Widget? page = getPage(settings.name);
@@ -19,8 +19,8 @@ class MapRouting {
 
   static Widget? getPage(String? routeName) {
     switch (routeName) {
-      case map:
-        return Pages.map();
+      case spots:
+        return Pages.spots();
       default:
         return null;
     }

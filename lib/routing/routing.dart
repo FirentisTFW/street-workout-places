@@ -1,8 +1,8 @@
 import 'package:app/pages/pages.dart';
 import 'package:app/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/routing/dashboard_tabs/home_routing.dart';
-import 'package:app/routing/dashboard_tabs/map_routing.dart';
 import 'package:app/routing/dashboard_tabs/more_routing.dart';
+import 'package:app/routing/dashboard_tabs/spots_routing.dart';
 import 'package:flutter/material.dart';
 
 class Routing {
@@ -18,8 +18,8 @@ class Routing {
       return FormRouting.getRoute(settings);
     } else if (HomeRouting.canHandleRoute(routeName)) {
       return HomeRouting.getRoute(settings);
-    } else if (MapRouting.canHandleRoute(routeName)) {
-      return MapRouting.getRoute(settings);
+    } else if (SpotsRouting.canHandleRoute(routeName)) {
+      return SpotsRouting.getRoute(settings);
     } else if (MoreRouting.canHandleRoute(routeName)) {
       return MoreRouting.getRoute(settings);
     }
