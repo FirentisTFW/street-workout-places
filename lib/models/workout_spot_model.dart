@@ -4,19 +4,19 @@ import 'package:app/networking/models/map_position.dart';
 import 'package:app/networking/models/surface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'workout_spot.freezed.dart';
+part 'workout_spot_model.freezed.dart';
 
 @freezed
-class WorkoutSpot with _$WorkoutSpot {
-  const factory WorkoutSpot({
+class WorkoutSpotModel with _$WorkoutSpotModel {
+  const factory WorkoutSpotModel({
     Address? address,
     MapPosition? coordinates,
     String? description,
-    List<Equipment?>? equipment,
-    List<String?>? images,
+    @Default([]) List<Equipment> equipment,
+    @Default([]) List<String> images,
     String? name,
     Surface? surface,
-  }) = _WorkoutSpot;
+  }) = _WorkoutSpotModel;
 
-  const WorkoutSpot._();
+  const WorkoutSpotModel._();
 }

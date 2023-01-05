@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'workout_spot.dart';
+part of 'workout_spot_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,32 +15,32 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$WorkoutSpot {
+mixin _$WorkoutSpotModel {
   Address? get address => throw _privateConstructorUsedError;
   MapPosition? get coordinates => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  List<Equipment?>? get equipment => throw _privateConstructorUsedError;
-  List<String?>? get images => throw _privateConstructorUsedError;
+  List<Equipment> get equipment => throw _privateConstructorUsedError;
+  List<String> get images => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   Surface? get surface => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkoutSpotCopyWith<WorkoutSpot> get copyWith =>
+  $WorkoutSpotModelCopyWith<WorkoutSpotModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WorkoutSpotCopyWith<$Res> {
-  factory $WorkoutSpotCopyWith(
-          WorkoutSpot value, $Res Function(WorkoutSpot) then) =
-      _$WorkoutSpotCopyWithImpl<$Res, WorkoutSpot>;
+abstract class $WorkoutSpotModelCopyWith<$Res> {
+  factory $WorkoutSpotModelCopyWith(
+          WorkoutSpotModel value, $Res Function(WorkoutSpotModel) then) =
+      _$WorkoutSpotModelCopyWithImpl<$Res, WorkoutSpotModel>;
   @useResult
   $Res call(
       {Address? address,
       MapPosition? coordinates,
       String? description,
-      List<Equipment?>? equipment,
-      List<String?>? images,
+      List<Equipment> equipment,
+      List<String> images,
       String? name,
       Surface? surface});
 
@@ -49,9 +49,9 @@ abstract class $WorkoutSpotCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WorkoutSpotCopyWithImpl<$Res, $Val extends WorkoutSpot>
-    implements $WorkoutSpotCopyWith<$Res> {
-  _$WorkoutSpotCopyWithImpl(this._value, this._then);
+class _$WorkoutSpotModelCopyWithImpl<$Res, $Val extends WorkoutSpotModel>
+    implements $WorkoutSpotModelCopyWith<$Res> {
+  _$WorkoutSpotModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -64,8 +64,8 @@ class _$WorkoutSpotCopyWithImpl<$Res, $Val extends WorkoutSpot>
     Object? address = freezed,
     Object? coordinates = freezed,
     Object? description = freezed,
-    Object? equipment = freezed,
-    Object? images = freezed,
+    Object? equipment = null,
+    Object? images = null,
     Object? name = freezed,
     Object? surface = freezed,
   }) {
@@ -82,14 +82,14 @@ class _$WorkoutSpotCopyWithImpl<$Res, $Val extends WorkoutSpot>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipment: freezed == equipment
+      equipment: null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as List<Equipment?>?,
-      images: freezed == images
+              as List<Equipment>,
+      images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String?>?,
+              as List<String>,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -127,19 +127,19 @@ class _$WorkoutSpotCopyWithImpl<$Res, $Val extends WorkoutSpot>
 }
 
 /// @nodoc
-abstract class _$$_WorkoutSpotCopyWith<$Res>
-    implements $WorkoutSpotCopyWith<$Res> {
-  factory _$$_WorkoutSpotCopyWith(
-          _$_WorkoutSpot value, $Res Function(_$_WorkoutSpot) then) =
-      __$$_WorkoutSpotCopyWithImpl<$Res>;
+abstract class _$$_WorkoutSpotModelCopyWith<$Res>
+    implements $WorkoutSpotModelCopyWith<$Res> {
+  factory _$$_WorkoutSpotModelCopyWith(
+          _$_WorkoutSpotModel value, $Res Function(_$_WorkoutSpotModel) then) =
+      __$$_WorkoutSpotModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {Address? address,
       MapPosition? coordinates,
       String? description,
-      List<Equipment?>? equipment,
-      List<String?>? images,
+      List<Equipment> equipment,
+      List<String> images,
       String? name,
       Surface? surface});
 
@@ -150,11 +150,11 @@ abstract class _$$_WorkoutSpotCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WorkoutSpotCopyWithImpl<$Res>
-    extends _$WorkoutSpotCopyWithImpl<$Res, _$_WorkoutSpot>
-    implements _$$_WorkoutSpotCopyWith<$Res> {
-  __$$_WorkoutSpotCopyWithImpl(
-      _$_WorkoutSpot _value, $Res Function(_$_WorkoutSpot) _then)
+class __$$_WorkoutSpotModelCopyWithImpl<$Res>
+    extends _$WorkoutSpotModelCopyWithImpl<$Res, _$_WorkoutSpotModel>
+    implements _$$_WorkoutSpotModelCopyWith<$Res> {
+  __$$_WorkoutSpotModelCopyWithImpl(
+      _$_WorkoutSpotModel _value, $Res Function(_$_WorkoutSpotModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,12 +163,12 @@ class __$$_WorkoutSpotCopyWithImpl<$Res>
     Object? address = freezed,
     Object? coordinates = freezed,
     Object? description = freezed,
-    Object? equipment = freezed,
-    Object? images = freezed,
+    Object? equipment = null,
+    Object? images = null,
     Object? name = freezed,
     Object? surface = freezed,
   }) {
-    return _then(_$_WorkoutSpot(
+    return _then(_$_WorkoutSpotModel(
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -181,14 +181,14 @@ class __$$_WorkoutSpotCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipment: freezed == equipment
+      equipment: null == equipment
           ? _value._equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as List<Equipment?>?,
-      images: freezed == images
+              as List<Equipment>,
+      images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String?>?,
+              as List<String>,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -203,13 +203,13 @@ class __$$_WorkoutSpotCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutSpot extends _WorkoutSpot {
-  const _$_WorkoutSpot(
+class _$_WorkoutSpotModel extends _WorkoutSpotModel {
+  const _$_WorkoutSpotModel(
       {this.address,
       this.coordinates,
       this.description,
-      final List<Equipment?>? equipment,
-      final List<String?>? images,
+      final List<Equipment> equipment = const [],
+      final List<String> images = const [],
       this.name,
       this.surface})
       : _equipment = equipment,
@@ -222,24 +222,22 @@ class _$_WorkoutSpot extends _WorkoutSpot {
   final MapPosition? coordinates;
   @override
   final String? description;
-  final List<Equipment?>? _equipment;
+  final List<Equipment> _equipment;
   @override
-  List<Equipment?>? get equipment {
-    final value = _equipment;
-    if (value == null) return null;
+  @JsonKey()
+  List<Equipment> get equipment {
     if (_equipment is EqualUnmodifiableListView) return _equipment;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_equipment);
   }
 
-  final List<String?>? _images;
+  final List<String> _images;
   @override
-  List<String?>? get images {
-    final value = _images;
-    if (value == null) return null;
+  @JsonKey()
+  List<String> get images {
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_images);
   }
 
   @override
@@ -249,14 +247,14 @@ class _$_WorkoutSpot extends _WorkoutSpot {
 
   @override
   String toString() {
-    return 'WorkoutSpot(address: $address, coordinates: $coordinates, description: $description, equipment: $equipment, images: $images, name: $name, surface: $surface)';
+    return 'WorkoutSpotModel(address: $address, coordinates: $coordinates, description: $description, equipment: $equipment, images: $images, name: $name, surface: $surface)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSpot &&
+            other is _$_WorkoutSpotModel &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.coordinates, coordinates) ||
                 other.coordinates == coordinates) &&
@@ -283,20 +281,20 @@ class _$_WorkoutSpot extends _WorkoutSpot {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutSpotCopyWith<_$_WorkoutSpot> get copyWith =>
-      __$$_WorkoutSpotCopyWithImpl<_$_WorkoutSpot>(this, _$identity);
+  _$$_WorkoutSpotModelCopyWith<_$_WorkoutSpotModel> get copyWith =>
+      __$$_WorkoutSpotModelCopyWithImpl<_$_WorkoutSpotModel>(this, _$identity);
 }
 
-abstract class _WorkoutSpot extends WorkoutSpot {
-  const factory _WorkoutSpot(
+abstract class _WorkoutSpotModel extends WorkoutSpotModel {
+  const factory _WorkoutSpotModel(
       {final Address? address,
       final MapPosition? coordinates,
       final String? description,
-      final List<Equipment?>? equipment,
-      final List<String?>? images,
+      final List<Equipment> equipment,
+      final List<String> images,
       final String? name,
-      final Surface? surface}) = _$_WorkoutSpot;
-  const _WorkoutSpot._() : super._();
+      final Surface? surface}) = _$_WorkoutSpotModel;
+  const _WorkoutSpotModel._() : super._();
 
   @override
   Address? get address;
@@ -305,15 +303,15 @@ abstract class _WorkoutSpot extends WorkoutSpot {
   @override
   String? get description;
   @override
-  List<Equipment?>? get equipment;
+  List<Equipment> get equipment;
   @override
-  List<String?>? get images;
+  List<String> get images;
   @override
   String? get name;
   @override
   Surface? get surface;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutSpotCopyWith<_$_WorkoutSpot> get copyWith =>
+  _$$_WorkoutSpotModelCopyWith<_$_WorkoutSpotModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
