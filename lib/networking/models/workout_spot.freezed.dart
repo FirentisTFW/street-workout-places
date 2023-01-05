@@ -22,6 +22,7 @@ mixin _$WorkoutSpot {
   List<Equipment?>? get equipment => throw _privateConstructorUsedError;
   List<String?>? get images => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  WorkoutSpotSize? get size => throw _privateConstructorUsedError;
   Surface? get surface => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,6 +43,7 @@ abstract class $WorkoutSpotCopyWith<$Res> {
       List<Equipment?>? equipment,
       List<String?>? images,
       String? name,
+      WorkoutSpotSize? size,
       Surface? surface});
 
   $AddressCopyWith<$Res>? get address;
@@ -67,6 +69,7 @@ class _$WorkoutSpotCopyWithImpl<$Res, $Val extends WorkoutSpot>
     Object? equipment = freezed,
     Object? images = freezed,
     Object? name = freezed,
+    Object? size = freezed,
     Object? surface = freezed,
   }) {
     return _then(_value.copyWith(
@@ -94,6 +97,10 @@ class _$WorkoutSpotCopyWithImpl<$Res, $Val extends WorkoutSpot>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as WorkoutSpotSize?,
       surface: freezed == surface
           ? _value.surface
           : surface // ignore: cast_nullable_to_non_nullable
@@ -141,6 +148,7 @@ abstract class _$$_WorkoutSpotCopyWith<$Res>
       List<Equipment?>? equipment,
       List<String?>? images,
       String? name,
+      WorkoutSpotSize? size,
       Surface? surface});
 
   @override
@@ -166,6 +174,7 @@ class __$$_WorkoutSpotCopyWithImpl<$Res>
     Object? equipment = freezed,
     Object? images = freezed,
     Object? name = freezed,
+    Object? size = freezed,
     Object? surface = freezed,
   }) {
     return _then(_$_WorkoutSpot(
@@ -193,6 +202,10 @@ class __$$_WorkoutSpotCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as WorkoutSpotSize?,
       surface: freezed == surface
           ? _value.surface
           : surface // ignore: cast_nullable_to_non_nullable
@@ -211,6 +224,7 @@ class _$_WorkoutSpot extends _WorkoutSpot {
       final List<Equipment?>? equipment,
       final List<String?>? images,
       this.name,
+      this.size,
       this.surface})
       : _equipment = equipment,
         _images = images,
@@ -245,11 +259,13 @@ class _$_WorkoutSpot extends _WorkoutSpot {
   @override
   final String? name;
   @override
+  final WorkoutSpotSize? size;
+  @override
   final Surface? surface;
 
   @override
   String toString() {
-    return 'WorkoutSpot(address: $address, coordinates: $coordinates, description: $description, equipment: $equipment, images: $images, name: $name, surface: $surface)';
+    return 'WorkoutSpot(address: $address, coordinates: $coordinates, description: $description, equipment: $equipment, images: $images, name: $name, size: $size, surface: $surface)';
   }
 
   @override
@@ -266,6 +282,7 @@ class _$_WorkoutSpot extends _WorkoutSpot {
                 .equals(other._equipment, _equipment) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.size, size) || other.size == size) &&
             (identical(other.surface, surface) || other.surface == surface));
   }
 
@@ -278,6 +295,7 @@ class _$_WorkoutSpot extends _WorkoutSpot {
       const DeepCollectionEquality().hash(_equipment),
       const DeepCollectionEquality().hash(_images),
       name,
+      size,
       surface);
 
   @JsonKey(ignore: true)
@@ -295,6 +313,7 @@ abstract class _WorkoutSpot extends WorkoutSpot {
       final List<Equipment?>? equipment,
       final List<String?>? images,
       final String? name,
+      final WorkoutSpotSize? size,
       final Surface? surface}) = _$_WorkoutSpot;
   const _WorkoutSpot._() : super._();
 
@@ -310,6 +329,8 @@ abstract class _WorkoutSpot extends WorkoutSpot {
   List<String?>? get images;
   @override
   String? get name;
+  @override
+  WorkoutSpotSize? get size;
   @override
   Surface? get surface;
   @override
