@@ -27,7 +27,6 @@ class AdaptiveButton extends StatelessWidget {
     } else {
       child = _buildMaterialButton();
     }
-
     return _buildButtonContainer(
       child: child,
     );

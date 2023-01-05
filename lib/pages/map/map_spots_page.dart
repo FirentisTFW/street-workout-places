@@ -14,7 +14,6 @@ class MapSpotsPage extends StatefulWidget {
 class _MapSpotsPageState extends BlocPageState<MapSpotsPage, MapSpotsBloc> {
   @override
   Widget build(BuildContext context) {
-    // TODO Double page - map and list
     return const Scaffold(
       body: Center(
         child: Text('MAP'),
