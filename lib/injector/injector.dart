@@ -1,4 +1,6 @@
 import 'package:app/common/global_navigator.dart';
+import 'package:app/repositories/spots/fake_network_spots_repository.dart';
+import 'package:app/repositories/spots/i_network_spots_repository.dart';
 import 'package:get_it/get_it.dart';
 
 class Injector {
@@ -9,13 +11,19 @@ class Injector {
   factory Injector() => _instance;
 
   Injector._() {
-    _initGlobalNavigator();
+    _registerGlobalNavigator();
+    // TODO Add app flavors and based on that register either fake or real network repositories
+    _registerFakeNetworkRepositories();
   }
 
-  void _initGlobalNavigator() {
+  void _registerGlobalNavigator() {
     _getIt.registerSingleton<GlobalNavigator>(
       GlobalNavigator(),
     );
+  }
+
+  void _registerFakeNetworkRepositories() {
+    _getIt.registerFactory<INetworkSpotsRepository>(() => const FakeNetworkSpotsRepository());
   }
 
   T resolve<T extends Object>([

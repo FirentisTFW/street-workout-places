@@ -1,15 +1,15 @@
-import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/address.dart';
 import 'package:app/networking/models/equipment.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:app/networking/models/surface.dart';
+import 'package:app/networking/models/workout_spot.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
 
 abstract class WorkoutSpotMocks {
   const WorkoutSpotMocks._();
 
-  static List<WorkoutSpotModel> spots = [
-    const WorkoutSpotModel(
+  static List<WorkoutSpot> spots = [
+    const WorkoutSpot(
       address: Address(
         city: 'Poznań',
         street: 'Park Drwęskich',
@@ -33,7 +33,7 @@ abstract class WorkoutSpotMocks {
       size: WorkoutSpotSize.medium,
       surface: Surface.tartan,
     ),
-    const WorkoutSpotModel(
+    const WorkoutSpot(
       address: Address(
         city: 'Poznań',
         street: 'Park Jana Pawła II',
@@ -59,7 +59,7 @@ abstract class WorkoutSpotMocks {
       size: WorkoutSpotSize.medium,
       surface: Surface.tartan,
     ),
-    const WorkoutSpotModel(
+    const WorkoutSpot(
       address: Address(
         city: 'Poznań',
         street: 'Osiedle Zwycięstwa',

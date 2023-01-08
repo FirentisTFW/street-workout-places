@@ -18,33 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SpotsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchPointsRequested,
+    required TResult Function() fetchSpotsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchPointsRequested,
+    TResult? Function()? fetchSpotsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchPointsRequested,
+    TResult Function()? fetchSpotsRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchPointsRequested value) fetchPointsRequested,
+    required TResult Function(_FetchSpotsRequested value) fetchSpotsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchPointsRequested value)? fetchPointsRequested,
+    TResult? Function(_FetchSpotsRequested value)? fetchSpotsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchPointsRequested value)? fetchPointsRequested,
+    TResult Function(_FetchSpotsRequested value)? fetchSpotsRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,35 +69,35 @@ class _$SpotsEventCopyWithImpl<$Res, $Val extends SpotsEvent>
 }
 
 /// @nodoc
-abstract class _$$_FetchPointsRequestedCopyWith<$Res> {
-  factory _$$_FetchPointsRequestedCopyWith(_$_FetchPointsRequested value,
-          $Res Function(_$_FetchPointsRequested) then) =
-      __$$_FetchPointsRequestedCopyWithImpl<$Res>;
+abstract class _$$_FetchSpotsRequestedCopyWith<$Res> {
+  factory _$$_FetchSpotsRequestedCopyWith(_$_FetchSpotsRequested value,
+          $Res Function(_$_FetchSpotsRequested) then) =
+      __$$_FetchSpotsRequestedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchPointsRequestedCopyWithImpl<$Res>
-    extends _$SpotsEventCopyWithImpl<$Res, _$_FetchPointsRequested>
-    implements _$$_FetchPointsRequestedCopyWith<$Res> {
-  __$$_FetchPointsRequestedCopyWithImpl(_$_FetchPointsRequested _value,
-      $Res Function(_$_FetchPointsRequested) _then)
+class __$$_FetchSpotsRequestedCopyWithImpl<$Res>
+    extends _$SpotsEventCopyWithImpl<$Res, _$_FetchSpotsRequested>
+    implements _$$_FetchSpotsRequestedCopyWith<$Res> {
+  __$$_FetchSpotsRequestedCopyWithImpl(_$_FetchSpotsRequested _value,
+      $Res Function(_$_FetchSpotsRequested) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FetchPointsRequested implements _FetchPointsRequested {
-  const _$_FetchPointsRequested();
+class _$_FetchSpotsRequested implements _FetchSpotsRequested {
+  const _$_FetchSpotsRequested();
 
   @override
   String toString() {
-    return 'SpotsEvent.fetchPointsRequested()';
+    return 'SpotsEvent.fetchSpotsRequested()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchPointsRequested);
+        (other.runtimeType == runtimeType && other is _$_FetchSpotsRequested);
   }
 
   @override
@@ -106,27 +106,27 @@ class _$_FetchPointsRequested implements _FetchPointsRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchPointsRequested,
+    required TResult Function() fetchSpotsRequested,
   }) {
-    return fetchPointsRequested();
+    return fetchSpotsRequested();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchPointsRequested,
+    TResult? Function()? fetchSpotsRequested,
   }) {
-    return fetchPointsRequested?.call();
+    return fetchSpotsRequested?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchPointsRequested,
+    TResult Function()? fetchSpotsRequested,
     required TResult orElse(),
   }) {
-    if (fetchPointsRequested != null) {
-      return fetchPointsRequested();
+    if (fetchSpotsRequested != null) {
+      return fetchSpotsRequested();
     }
     return orElse();
   }
@@ -134,34 +134,34 @@ class _$_FetchPointsRequested implements _FetchPointsRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchPointsRequested value) fetchPointsRequested,
+    required TResult Function(_FetchSpotsRequested value) fetchSpotsRequested,
   }) {
-    return fetchPointsRequested(this);
+    return fetchSpotsRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchPointsRequested value)? fetchPointsRequested,
+    TResult? Function(_FetchSpotsRequested value)? fetchSpotsRequested,
   }) {
-    return fetchPointsRequested?.call(this);
+    return fetchSpotsRequested?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchPointsRequested value)? fetchPointsRequested,
+    TResult Function(_FetchSpotsRequested value)? fetchSpotsRequested,
     required TResult orElse(),
   }) {
-    if (fetchPointsRequested != null) {
-      return fetchPointsRequested(this);
+    if (fetchSpotsRequested != null) {
+      return fetchSpotsRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchPointsRequested implements SpotsEvent {
-  const factory _FetchPointsRequested() = _$_FetchPointsRequested;
+abstract class _FetchSpotsRequested implements SpotsEvent {
+  const factory _FetchSpotsRequested() = _$_FetchSpotsRequested;
 }
 
 /// @nodoc
