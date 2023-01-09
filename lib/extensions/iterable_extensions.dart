@@ -31,7 +31,3 @@ extension NullableIterableExtensions<T> on Iterable<T>? {
 
   Iterable<T> orEmpty() => this ?? [];
 }
-
-extension IterableWithNullableValuesExtensions<T> on Iterable<T?> {
-  Iterable<T> filterNotNull() => copy().whereType<T>();
-}

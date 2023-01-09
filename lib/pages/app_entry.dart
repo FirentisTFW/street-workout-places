@@ -19,12 +19,29 @@ class AppEntry extends StatefulWidget {
 }
 
 class _AppEntryState extends State<AppEntry> {
+  late final SpotsBloc spotsBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    spotsBloc = SpotsBloc(
+      spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
+    );
+    spotsBloc.add(
+      const SpotsEvent.fetchSpotsRequested(),
+    );
+  }
+
+  @override
+  void dispose() {
+    spotsBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SpotsBloc>(
-      create: (_) => SpotsBloc(
-        spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
-      ),
+    return BlocProvider<SpotsBloc>.value(
+      value: spotsBloc,
       child: MaterialApp(
         initialRoute: Routing.dashboard,
         localizationsDelegates: const [
