@@ -14,4 +14,20 @@ class AppTextStyles {
       fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
     );
   }
+
+  static TextStyle textFieldContent() {
+    return const TextStyle(
+      color: AppColors.black,
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+    );
+  }
+
+  static TextStyle textFieldLabel() {
+    return const TextStyle(
+      color: AppColors.black,
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+    );
+  }
 }

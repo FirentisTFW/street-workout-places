@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dashboardTabHome": MessageLookupByLibrary.simpleMessage("Home"),
         "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
         "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
+        "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "spotsListTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":
