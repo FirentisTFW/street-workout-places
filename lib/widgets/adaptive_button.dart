@@ -1,13 +1,16 @@
 import 'dart:io';
 
+import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AdaptiveButton extends StatelessWidget {
+  final Duration? animationDuration;
   final Widget child;
   final BoxDecoration? decoration;
   final double height;
+  final bool shouldAnimateDecoration;
   final double? width;
   final VoidCallback onPressed;
 
@@ -17,7 +20,17 @@ class AdaptiveButton extends StatelessWidget {
     this.height = AppDimensions.actionButtonHeight,
     this.width,
     required this.onPressed,
-  });
+  })  : animationDuration = null,
+        shouldAnimateDecoration = false;
+
+  const AdaptiveButton.withAnimatedDecoration({
+    this.animationDuration = AppAnimations.regularDuration,
+    required this.child,
+    this.decoration,
+    this.height = AppDimensions.actionButtonHeight,
+    this.width,
+    required this.onPressed,
+  }) : shouldAnimateDecoration = true;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +79,15 @@ class AdaptiveButton extends StatelessWidget {
   Widget _buildButtonContainer({
     required Widget child,
   }) {
+    if (shouldAnimateDecoration) {
+      return AnimatedContainer(
+        height: height == double.infinity ? null : height,
+        duration: animationDuration ?? AppAnimations.regularDuration,
+        decoration: decoration,
+        padding: EdgeInsets.zero,
+        child: child,
+      );
+    }
     return Container(
       height: height == double.infinity ? null : height,
       decoration: decoration,

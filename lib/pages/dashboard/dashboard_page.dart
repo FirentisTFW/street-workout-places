@@ -129,7 +129,7 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
     required DashboardTab activeTab,
   }) {
     return Container(
-      height: AppDimensions.bottomNavgationBarHeight,
+      height: AppDimensions.height.bottomNavgationBar,
       decoration: AppDecorations.bottomNavigationBar,
       padding: const EdgeInsets.symmetric(
         vertical: 4.0,

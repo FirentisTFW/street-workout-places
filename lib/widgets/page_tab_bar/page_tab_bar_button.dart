@@ -1,4 +1,5 @@
 import 'package:app/styles/app_colors.dart';
+import 'package:app/styles/app_dimensions.dart';
 import 'package:app/styles/app_text_styles.dart';
 import 'package:app/widgets/adaptive_button.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,11 @@ class PageTabBarButton extends StatelessWidget {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
-        AdaptiveButton(
+        AdaptiveButton.withAnimatedDecoration(
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: AppColors.white,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppDimensions.borderRadius.tabBarButton),
+            color: isSelected ? AppColors.blue : AppColors.white,
           ),
           onPressed: onPressed,
           child: Text(

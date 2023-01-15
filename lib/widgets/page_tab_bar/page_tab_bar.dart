@@ -1,7 +1,7 @@
 import 'package:app/extensions/extensions.dart';
 import 'package:app/models/page_tab_bar_button_data.dart';
-import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_colors.dart';
+import 'package:app/styles/app_dimensions.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar_button.dart';
 import 'package:app/widgets/separator.dart';
 import 'package:flutter/material.dart';
@@ -17,17 +17,15 @@ class PageTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 50.0,
-      width: double.infinity,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          _buildButtonsRow(),
-          _buildButtonsSectionBottomBorder(),
-          _buildSelectedButtonIndicator(context),
-        ],
+      padding: const EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppDimensions.borderRadius.tabBarButton),
+        color: AppColors.grey,
       ),
+      width: double.infinity,
+      child: _buildButtonsRow(),
     );
   }
 
@@ -45,16 +43,8 @@ class PageTabBar extends StatelessWidget {
           )
           .toList()
           .separatedBy(
-            _buildButtonsVerticalSeparator(),
+            _buildButtonsSeparator(),
           ),
-    );
-  }
-
-  Widget _buildButtonsSectionBottomBorder() {
-    return Container(
-      height: 1.0,
-      width: double.infinity,
-      color: AppColors.grey,
     );
   }
 
@@ -69,33 +59,9 @@ class PageTabBar extends StatelessWidget {
     );
   }
 
-  Widget _buildButtonsVerticalSeparator() {
+  Widget _buildButtonsSeparator() {
     return const Separator(
-      height: 20.0,
-      width: 1.0,
-    );
-  }
-
-  Widget _buildSelectedButtonIndicator(BuildContext context) {
-    final int numberOfTabs = buttonsData.length;
-    const double possibleRangeAmplitude = 2.0; // -1.0 to 1.0
-    final double offsetFromStart = selectedButtonIndex / (numberOfTabs - 1) * possibleRangeAmplitude;
-    return AnimatedAlign(
-      alignment: Alignment(-1.0 + offsetFromStart, 1.0),
-      duration: AppAnimations.regularDuration,
-      child: FractionallySizedBox(
-        widthFactor: 1.0 / numberOfTabs,
-        child: Container(
-          height: 5.0,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(8.0),
-            ),
-            color: AppColors.blue,
-          ),
-        ),
-      ),
+      width: 4.0,
     );
   }
 }
