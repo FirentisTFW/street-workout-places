@@ -1,12 +1,15 @@
 import 'package:app/common/bloc_page_state.dart';
 import 'package:app/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/pages/dashboard/dashboard_tab.dart';
+import 'package:app/pages/dashboard/widgets/bottom_navigation_bar_button_item.dart';
 import 'package:app/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/routing/dashboard_tabs/home_routing.dart';
 import 'package:app/routing/dashboard_tabs/more_routing.dart';
 import 'package:app/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/styles/app_animations.dart';
-import 'package:app/styles/app_colors.dart';
+import 'package:app/styles/app_decorations.dart';
+import 'package:app/styles/app_dimensions.dart';
+import 'package:app/styles/app_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,9 +40,6 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
       listener: _onStateChanged,
       builder: (_, state) => Scaffold(
         body: _buildBody(state),
-        bottomNavigationBar: _buildBottomNavigationBar(
-          activeTab: state.tab,
-        ),
       ),
     );
   }
@@ -58,6 +58,18 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
   }
 
   Widget _buildBody(DashboardState state) {
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        _buildPages(state),
+        _buildBottomNavigationBar(
+          activeTab: state.tab,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPages(DashboardState state) {
     return AnimatedSwitcher(
       duration: AppAnimations.animatedSwitcherDuration,
       child: Stack(
@@ -116,37 +128,30 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
   Widget _buildBottomNavigationBar({
     required DashboardTab activeTab,
   }) {
-    return BottomNavigationBar(
-      backgroundColor: AppColors.white,
-      currentIndex: _tabs.indexOf(activeTab),
-      elevation: 10.0,
-      items: _buildBottomNavigationBarItems(),
-      onTap: (index) => bloc.add(
-        DashboardEvent.changeTabRequested(
-          tab: _tabs[index],
-        ),
+    return Container(
+      height: AppDimensions.bottomNavgationBarHeight,
+      decoration: AppDecorations.bottomNavigationBar,
+      padding: const EdgeInsets.symmetric(
+        vertical: 4.0,
       ),
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      type: BottomNavigationBarType.fixed,
+      margin: AppPadding.defaultAll,
+      child: Row(
+        children: _tabs
+            .map(
+              (tab) => Expanded(
+                child: BottomNavigationBarButtonItem(
+                  tab: tab,
+                  isSelected: tab == activeTab,
+                  onPressed: () => bloc.add(
+                    DashboardEvent.changeTabRequested(
+                      tab: tab,
+                    ),
+                  ),
+                ),
+              ),
+            )
+            .toList(),
+      ),
     );
-  }
-
-  List<BottomNavigationBarItem> _buildBottomNavigationBarItems() {
-    return _tabs
-        .map(
-          (tab) => BottomNavigationBarItem(
-            activeIcon: Icon(
-              tab.icon,
-              color: AppColors.blue,
-            ),
-            icon: Icon(
-              tab.icon,
-              color: AppColors.black,
-            ),
-            label: tab.getLabel(context),
-          ),
-        )
-        .toList();
   }
 }
