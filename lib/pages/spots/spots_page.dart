@@ -3,11 +3,15 @@ import 'package:app/common/bloc_page_state.dart';
 import 'package:app/common/text_field_essentials.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/models/page_tab_bar_button_data.dart';
+import 'package:app/models/workout_spot_model.dart';
 import 'package:app/pages/spots/spots_page_tab.dart';
+import 'package:app/pages/spots/widgets/spot_list.dart';
+import 'package:app/styles/app_animations.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SpotsPage extends StatefulWidget {
   const SpotsPage({
@@ -19,37 +23,75 @@ class SpotsPage extends StatefulWidget {
 }
 
 class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
+  final PageController _pageController = PageController();
   final TextFieldEssentials _searchTFE = TextFieldEssentials();
   final ValueNotifier<SpotsPageTab> _tabNotifier = ValueNotifier(SpotsPageTab.map);
 
   @override
+  void initState() {
+    super.initState();
+    _tabNotifier.addListener(_onTabChanged);
+  }
+
+  void _onTabChanged() {
+    _pageController.animateToPage(
+      _tabNotifier.value.tabBarButtonIndex,
+      curve: Curves.easeIn,
+      duration: AppAnimations.regularDuration,
+    );
+  }
+
+  @override
   void dispose() {
+    _pageController.dispose();
     _tabNotifier.dispose();
     _searchTFE.dispose();
     super.dispose();
+  }
+
+  void _fetchSpots() {
+    spotsBloc.add(
+      const SpotsEvent.fetchSpotsRequested(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              _buildSearchBar(),
-              const Space.vertical(30.0),
-              _buildTabBar(),
-              _buildPageView(),
-            ],
+        child: BlocBuilder<SpotsBloc, SpotsState>(
+          builder: (_, state) => state.maybeWhen(
+            fetchSpotsInProgress: buildLoadingBody,
+            fetchSpotsSuccess: _buildLoadedBody,
+            fetchSpotsFailure: (error) => buildFullPageErrorBody(
+              error,
+              onRetryPressed: _fetchSpots,
+            ),
+            orElse: buildEmptyBody,
           ),
         ),
       ),
     );
   }
 
+  Widget _buildLoadedBody(List<WorkoutSpotModel> spots) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          _buildSearchBar(),
+          const Space.vertical(30.0),
+          _buildTabBar(),
+          Expanded(
+            child: _buildPageView(spots),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildSearchBar() {
-    // TODO Implemen onChange - filter locations by name
+    // TODO Implement onChange - filter locations by name
     return AppTextField(
       _searchTFE,
       labelText: S.of(context).search,
@@ -77,7 +119,26 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
     );
   }
 
-  Widget _buildPageView() {
-    return const SizedBox.shrink();
+  Widget _buildPageView(List<WorkoutSpotModel> spots) {
+    return PageView(
+      controller: _pageController,
+      children: [
+        _buildMap(),
+        _buildSpotList(spots),
+      ],
+    );
+  }
+
+  Widget _buildMap() {
+    // TODO Implement
+    return const Center(
+      child: Text('Mapa'),
+    );
+  }
+
+  Widget _buildSpotList(List<WorkoutSpotModel> spots) {
+    return SpotList(
+      spots: spots,
+    );
   }
 }
