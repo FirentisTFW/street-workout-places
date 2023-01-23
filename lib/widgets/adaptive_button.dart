@@ -61,17 +61,20 @@ class AdaptiveButton extends StatelessWidget {
 
   Widget _buildMaterialButton() {
     final BorderRadiusGeometry? borderRadius = decoration?.borderRadius;
+    final BoxShape? shape = decoration?.shape;
     return MaterialButton(
       height: height == double.infinity ? null : height,
       minWidth: width,
       elevation: 0.0,
       onPressed: onPressed,
       padding: EdgeInsets.zero,
-      shape: borderRadius != null
-          ? RoundedRectangleBorder(
-              borderRadius: borderRadius,
-            )
-          : null,
+      shape: shape == BoxShape.circle
+          ? const CircleBorder()
+          : borderRadius != null
+              ? RoundedRectangleBorder(
+                  borderRadius: borderRadius,
+                )
+              : null,
       child: child,
     );
   }
@@ -84,13 +87,14 @@ class AdaptiveButton extends StatelessWidget {
         height: height == double.infinity ? null : height,
         duration: animationDuration ?? AppAnimations.regularDuration,
         decoration: decoration,
-        padding: EdgeInsets.zero,
         child: child,
       );
     }
     return Container(
       height: height == double.infinity ? null : height,
+      width: width,
       decoration: decoration,
+      margin: EdgeInsets.zero,
       padding: EdgeInsets.zero,
       child: child,
     );

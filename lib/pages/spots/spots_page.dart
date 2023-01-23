@@ -7,6 +7,7 @@ import 'package:app/models/workout_spot_model.dart';
 import 'package:app/pages/spots/spots_page_tab.dart';
 import 'package:app/pages/spots/widgets/spot_list.dart';
 import 'package:app/styles/app_animations.dart';
+import 'package:app/styles/app_padding.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/widgets/space.dart';
@@ -76,12 +77,15 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
 
   Widget _buildLoadedBody(List<WorkoutSpotModel> spots) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(
+        top: 20.0,
+      ),
       child: Column(
         children: [
           _buildSearchBar(),
           const Space.vertical(30.0),
           _buildTabBar(),
+          const Space.vertical(20.0),
           Expanded(
             child: _buildPageView(spots),
           ),
@@ -92,30 +96,36 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
 
   Widget _buildSearchBar() {
     // TODO Implement onChange - filter locations by name
-    return AppTextField(
-      _searchTFE,
-      labelText: S.of(context).search,
+    return Padding(
+      padding: AppPadding.defaultHorizontal,
+      child: AppTextField(
+        _searchTFE,
+        labelText: S.of(context).search,
+      ),
     );
   }
 
   Widget _buildTabBar() {
-    return ValueListenableBuilder<SpotsPageTab>(
-      valueListenable: _tabNotifier,
-      builder: (context, selectedTab, _) {
-        return PageTabBar(
-          buttonsData: [
-            PageTabBarButtonData(
-              title: S.of(context).spotsMapTabBarButtonTitle,
-              onPressed: () => _tabNotifier.value = SpotsPageTab.map,
-            ),
-            PageTabBarButtonData(
-              title: S.of(context).spotsListTabBarButtonTitle,
-              onPressed: () => _tabNotifier.value = SpotsPageTab.list,
-            ),
-          ],
-          selectedButtonIndex: selectedTab.tabBarButtonIndex,
-        );
-      },
+    return Padding(
+      padding: AppPadding.defaultHorizontal,
+      child: ValueListenableBuilder<SpotsPageTab>(
+        valueListenable: _tabNotifier,
+        builder: (context, selectedTab, _) {
+          return PageTabBar(
+            buttonsData: [
+              PageTabBarButtonData(
+                title: S.of(context).spotsMapTabBarButtonTitle,
+                onPressed: () => _tabNotifier.value = SpotsPageTab.map,
+              ),
+              PageTabBarButtonData(
+                title: S.of(context).spotsListTabBarButtonTitle,
+                onPressed: () => _tabNotifier.value = SpotsPageTab.list,
+              ),
+            ],
+            selectedButtonIndex: selectedTab.tabBarButtonIndex,
+          );
+        },
+      ),
     );
   }
 

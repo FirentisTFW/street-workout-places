@@ -1,3 +1,4 @@
+import 'package:app/extensions/extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'address.freezed.dart';
@@ -11,4 +12,11 @@ class Address with _$Address {
   }) = _Address;
 
   const Address._();
+
+  String? get _streetWithHouseNumber => street.isNotNullOrBlank ? '$street ${houseNumber.orEmpty()}'.trim() : null;
+
+  String get fullAddress => [
+        city,
+        _streetWithHouseNumber,
+      ].filterNotNull().join(', ');
 }
