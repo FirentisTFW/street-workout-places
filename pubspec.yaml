@@ -29,4 +29,13 @@ flutter_intl:
   enabled: true
 
 flutter:  
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Light.ttf
+          weight: 200
+        - asset: fonts/Roboto-Medium.ttf
+          weight: 400
+        - asset: fonts/Roboto-Bold.ttf
+          weight: 700
   uses-material-design: true

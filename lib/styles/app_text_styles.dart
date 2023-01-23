@@ -2,8 +2,43 @@ import 'package:app/styles/app_colors.dart';
 import 'package:flutter/widgets.dart';
 
 class AppTextStyles {
-  // TODO Update text styles, add custom font
   const AppTextStyles._();
+
+  static const String robotoFontFamily = 'Roboto';
+
+  static TextStyle content({
+    Color color = AppColors.black,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
+  static TextStyle spotTitle({
+    Color color = AppColors.black,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18.0,
+      fontWeight: FontWeight.bold,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
+  // FIXME rethink name
+  static TextStyle subtitle({
+    Color color = AppColors.grey2,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+    );
+  }
 
   static TextStyle tabBarButton({
     required bool isSelected,
@@ -12,6 +47,7 @@ class AppTextStyles {
       color: isSelected ? AppColors.white : AppColors.black,
       fontSize: 14.0,
       fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+      fontFamily: robotoFontFamily,
     );
   }
 
@@ -20,6 +56,7 @@ class AppTextStyles {
       color: AppColors.black,
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
     );
   }
 
@@ -28,6 +65,7 @@ class AppTextStyles {
       color: AppColors.black,
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
     );
   }
 }
