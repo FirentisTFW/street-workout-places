@@ -1,3 +1,4 @@
+import 'package:app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 enum WorkoutSpotSize {
@@ -6,14 +7,13 @@ enum WorkoutSpotSize {
   small;
 
   String getDescription(BuildContext context) {
-    // FIXME Localize
     switch (this) {
       case WorkoutSpotSize.big:
-        return 'Duży';
+        return S.of(context).workoutSpotSizeDescriptionBig;
       case WorkoutSpotSize.medium:
-        return 'Średni';
+        return S.of(context).workoutSpotSizeDescriptionMedium;
       case WorkoutSpotSize.small:
-        return 'Mały';
+        return S.of(context).workoutSpotSizeDescriptionSmall;
     }
   }
 }

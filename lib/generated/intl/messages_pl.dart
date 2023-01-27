@@ -20,17 +20,33 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
+  static String m0(size) => "Rozmiar: ${size}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Parki Street Workout"),
+        "contentUnavailableDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),
+        "contentUnavailableDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Funkcja niedostępna"),
         "dashboardTabForm": MessageLookupByLibrary.simpleMessage("Zgłoś"),
         "dashboardTabHome": MessageLookupByLibrary.simpleMessage("Home"),
         "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
         "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
+        "navigationButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Nawiguj"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
+        "size": m0,
         "spotsListTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Mapa")
+            MessageLookupByLibrary.simpleMessage("Mapa"),
+        "workoutSpotSizeDescriptionBig":
+            MessageLookupByLibrary.simpleMessage("Duży"),
+        "workoutSpotSizeDescriptionMedium":
+            MessageLookupByLibrary.simpleMessage("Średni"),
+        "workoutSpotSizeDescriptionSmall":
+            MessageLookupByLibrary.simpleMessage("Mały")
       };
 }

@@ -129,6 +129,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Duży`
+  String get workoutSpotSizeDescriptionBig {
+    return Intl.message(
+      'Duży',
+      name: 'workoutSpotSizeDescriptionBig',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Średni`
+  String get workoutSpotSizeDescriptionMedium {
+    return Intl.message(
+      'Średni',
+      name: 'workoutSpotSizeDescriptionMedium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mały`
+  String get workoutSpotSizeDescriptionSmall {
+    return Intl.message(
+      'Mały',
+      name: 'workoutSpotSizeDescriptionSmall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rozmiar: {size}`
+  String size(Object size) {
+    return Intl.message(
+      'Rozmiar: $size',
+      name: 'size',
+      desc: '',
+      args: [size],
+    );
+  }
+
+  /// `Nawiguj`
+  String get navigationButtonTitle {
+    return Intl.message(
+      'Nawiguj',
+      name: 'navigationButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)`
+  String get contentUnavailableDialogMessage {
+    return Intl.message(
+      'Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)',
+      name: 'contentUnavailableDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Funkcja niedostępna`
+  String get contentUnavailableDialogTitle {
+    return Intl.message(
+      'Funkcja niedostępna',
+      name: 'contentUnavailableDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,4 +1,5 @@
 import 'package:app/extensions/extensions.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/styles/app_text_styles.dart';
 import 'package:app/widgets/adaptive_button.dart';
@@ -62,7 +63,7 @@ class SpotListCell extends StatelessWidget {
   Widget _buildAddress() {
     return Text(
       (spot.address?.fullAddress).orEmpty(),
-      style: AppTextStyles.subtitle(),
+      style: AppTextStyles.informationSecondary(),
     );
   }
 
@@ -70,14 +71,13 @@ class SpotListCell extends StatelessWidget {
     final String? size = spot.size?.getDescription(context);
     if (size == null) return const SizedBox.shrink();
     return Text(
-      // FIXME Localize
-      'Rozmiar: $size',
+      S.of(context).size(size),
       style: AppTextStyles.content(),
     );
   }
 
   Widget _buildEquipment() {
-    // FIXME - Expandable list?
+    // FIXME Names, expandable list?
     return Text(
       spot.equipment.first.toString(),
     );

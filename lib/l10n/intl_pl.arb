@@ -6,5 +6,13 @@
   "dashboardTabSpots": "Punkty",
   "spotsMapTabBarButtonTitle": "Mapa",
   "spotsListTabBarButtonTitle": "Lista",
-  "search": "Szukaj"
+  "search": "Szukaj",
+  "workoutSpotSizeDescriptionBig": "Duży",
+  "workoutSpotSizeDescriptionMedium": "Średni",
+  "workoutSpotSizeDescriptionSmall": "Mały",
+  "size": "Rozmiar: {size}",
+  "navigationButtonTitle": "Nawiguj",
+  "ok": "Ok",
+  "contentUnavailableDialogMessage": "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)",
+  "contentUnavailableDialogTitle": "Funkcja niedostępna"
 }
