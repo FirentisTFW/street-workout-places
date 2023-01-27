@@ -2,12 +2,35 @@ import 'package:app/styles/app_colors.dart';
 import 'package:flutter/widgets.dart';
 
 class AppTextStyles {
-  const AppTextStyles._();
-
   static const String robotoFontFamily = 'Roboto';
+
+  const AppTextStyles._();
 
   static TextStyle content({
     Color color = AppColors.black,
+    double height = 1.0,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+      height: height,
+    );
+  }
+
+  static TextStyle contentMultiline({
+    Color color = AppColors.black,
+    double height = 1.4,
+  }) {
+    return content(
+      color: color,
+      height: height,
+    );
+  }
+
+  static TextStyle informationSecondary({
+    Color color = AppColors.grey2,
   }) {
     return TextStyle(
       color: color,
@@ -24,18 +47,6 @@ class AppTextStyles {
       color: color,
       fontSize: 18.0,
       fontWeight: FontWeight.bold,
-      fontFamily: robotoFontFamily,
-    );
-  }
-
-  // FIXME rethink name
-  static TextStyle subtitle({
-    Color color = AppColors.grey2,
-  }) {
-    return TextStyle(
-      color: color,
-      fontSize: 14.0,
-      fontWeight: FontWeight.normal,
       fontFamily: robotoFontFamily,
     );
   }
