@@ -3,6 +3,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/styles/app_text_styles.dart';
 import 'package:app/widgets/adaptive_button.dart';
+import 'package:app/widgets/app_network_image.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class SpotListCell extends StatelessWidget {
             Expanded(
               child: _buildLeftSection(context),
             ),
+            const Space.horizontal(4.0),
             _buildRightSection(),
           ],
         ),
@@ -48,7 +50,7 @@ class SpotListCell extends StatelessWidget {
         const Space.vertical(8.0),
         _buildSize(context),
         const Space.vertical(4.0),
-        _buildEquipment(),
+        _buildEquipment(context),
       ],
     );
   }
@@ -76,10 +78,11 @@ class SpotListCell extends StatelessWidget {
     );
   }
 
-  Widget _buildEquipment() {
-    // FIXME Names, expandable list?
+  Widget _buildEquipment(BuildContext context) {
     return Text(
-      spot.equipment.first.toString(),
+      spot.getEquipmentDescription(context),
+      maxLines: 3,
+      overflow: TextOverflow.ellipsis,
     );
   }
 
@@ -88,7 +91,7 @@ class SpotListCell extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         _buildDistanceFromUser(),
-        const Space.vertical(16.0),
+        const Space.vertical(12.0),
         _buildPhoto(),
       ],
     );
@@ -103,7 +106,11 @@ class SpotListCell extends StatelessWidget {
   }
 
   Widget _buildPhoto() {
-    // FIXME Update
-    return const SizedBox.shrink();
+    return AppNetworkImage(
+      spot.primaryImage,
+      height: 70.0,
+      width: 90.0,
+      fit: BoxFit.cover,
+    );
   }
 }

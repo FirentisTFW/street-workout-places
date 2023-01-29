@@ -8,6 +8,7 @@ import 'package:app/pages/spots/spots_page_tab.dart';
 import 'package:app/pages/spots/widgets/spot_list.dart';
 import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_padding.dart';
+import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/widgets/space.dart';
@@ -132,6 +133,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
   Widget _buildPageView(List<WorkoutSpotModel> spots) {
     return PageView(
       controller: _pageController,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         _buildMap(),
         _buildSpotList(spots),
@@ -149,6 +151,10 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
   Widget _buildSpotList(List<WorkoutSpotModel> spots) {
     return SpotList(
       spots: spots,
+      onSpotPressed: () {
+        // TODO Implement
+        AlertDialogUtils.showContentUnavailable(context);
+      },
     );
   }
 }

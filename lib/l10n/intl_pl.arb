@@ -14,5 +14,14 @@
   "navigationButtonTitle": "Nawiguj",
   "ok": "Ok",
   "contentUnavailableDialogMessage": "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)",
-  "contentUnavailableDialogTitle": "Funkcja niedostępna"
+  "contentUnavailableDialogTitle": "Funkcja niedostępna",
+  "equipmentDescriptionHighBar": "Drążek wysoki",
+  "equipmentDescriptionHorizontalLadder": "Drabinka pozioma",
+  "equipmentDescriptionLowBar": "Drążek niski",
+  "equipmentDescriptionParallelBars": "Poręcze równoległe",
+  "equipmentDescriptionParkourWalls": "Ścianki do parkour",
+  "equipmentDescriptionPole": "Rurka pionowa",
+  "equipmentDescriptionRings": "Obręcze gimnastczne",
+  "equipmentDescriptionRope": "Lina",
+  "equipmentDescriptionVerticalLadder": "Drabinka pionowa"
 }

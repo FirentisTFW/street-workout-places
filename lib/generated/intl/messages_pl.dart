@@ -33,6 +33,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "dashboardTabHome": MessageLookupByLibrary.simpleMessage("Home"),
         "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
         "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
+        "equipmentDescriptionHighBar":
+            MessageLookupByLibrary.simpleMessage("Drążek wysoki"),
+        "equipmentDescriptionHorizontalLadder":
+            MessageLookupByLibrary.simpleMessage("Drabinka pozioma"),
+        "equipmentDescriptionLowBar":
+            MessageLookupByLibrary.simpleMessage("Drążek niski"),
+        "equipmentDescriptionParallelBars":
+            MessageLookupByLibrary.simpleMessage("Poręcze równoległe"),
+        "equipmentDescriptionParkourWalls":
+            MessageLookupByLibrary.simpleMessage("Ścianki do parkour"),
+        "equipmentDescriptionPole":
+            MessageLookupByLibrary.simpleMessage("Rurka pionowa"),
+        "equipmentDescriptionRings":
+            MessageLookupByLibrary.simpleMessage("Obręcze gimnastczne"),
+        "equipmentDescriptionRope":
+            MessageLookupByLibrary.simpleMessage("Lina"),
+        "equipmentDescriptionVerticalLadder":
+            MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
         "navigationButtonTitle":
             MessageLookupByLibrary.simpleMessage("Nawiguj"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),

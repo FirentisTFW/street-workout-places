@@ -1,15 +1,16 @@
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/pages/spots/widgets/spot_list_cell.dart';
-import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/separator.dart';
 import 'package:flutter/material.dart';
 
 class SpotList extends StatelessWidget {
   final List<WorkoutSpotModel> spots;
+  final VoidCallback onSpotPressed;
 
   const SpotList({
-    required this.spots,
     super.key,
+    required this.spots,
+    required this.onSpotPressed,
   });
 
   @override
@@ -17,10 +18,7 @@ class SpotList extends StatelessWidget {
     return ListView.separated(
       itemBuilder: (_, index) => SpotListCell(
         spot: spots[index],
-        onPressed: () {
-          // TODO Implement
-          AlertDialogUtils.showContentUnavailable(context);
-        },
+        onPressed: onSpotPressed,
       ),
       itemCount: spots.length,
       separatorBuilder: (_, __) => const Separator(),

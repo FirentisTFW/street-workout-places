@@ -209,6 +209,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Drążek wysoki`
+  String get equipmentDescriptionHighBar {
+    return Intl.message(
+      'Drążek wysoki',
+      name: 'equipmentDescriptionHighBar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drabinka pozioma`
+  String get equipmentDescriptionHorizontalLadder {
+    return Intl.message(
+      'Drabinka pozioma',
+      name: 'equipmentDescriptionHorizontalLadder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drążek niski`
+  String get equipmentDescriptionLowBar {
+    return Intl.message(
+      'Drążek niski',
+      name: 'equipmentDescriptionLowBar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Poręcze równoległe`
+  String get equipmentDescriptionParallelBars {
+    return Intl.message(
+      'Poręcze równoległe',
+      name: 'equipmentDescriptionParallelBars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ścianki do parkour`
+  String get equipmentDescriptionParkourWalls {
+    return Intl.message(
+      'Ścianki do parkour',
+      name: 'equipmentDescriptionParkourWalls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rurka pionowa`
+  String get equipmentDescriptionPole {
+    return Intl.message(
+      'Rurka pionowa',
+      name: 'equipmentDescriptionPole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Obręcze gimnastczne`
+  String get equipmentDescriptionRings {
+    return Intl.message(
+      'Obręcze gimnastczne',
+      name: 'equipmentDescriptionRings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lina`
+  String get equipmentDescriptionRope {
+    return Intl.message(
+      'Lina',
+      name: 'equipmentDescriptionRope',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drabinka pionowa`
+  String get equipmentDescriptionVerticalLadder {
+    return Intl.message(
+      'Drabinka pionowa',
+      name: 'equipmentDescriptionVerticalLadder',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
