@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class SpotList extends StatelessWidget {
   final List<WorkoutSpotModel> spots;
-  final VoidCallback onSpotPressed;
+  final void Function(WorkoutSpotModel) onSpotPressed;
 
   const SpotList({
     super.key,
@@ -16,10 +16,12 @@ class SpotList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemBuilder: (_, index) => SpotListCell(
-        spot: spots[index],
-        onPressed: onSpotPressed,
-      ),
+      itemBuilder: (_, index) {
+        return SpotListCell(
+          spot: spots[index],
+          onPressed: () => onSpotPressed(spots[index]),
+        );
+      },
       itemCount: spots.length,
       separatorBuilder: (_, __) => const Separator(),
     );

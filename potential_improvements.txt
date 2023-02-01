@@ -1,4 +1,6 @@
 Potential improvements:
 
--  spots_page.dart:
+- spots_page.dart:
     - consider encapsulating controller and notifier in separate class in order to move tab changing logic away from the page
+- spot_details_page.dart
+    - consider texts "Opis:" and "Sprzęt:" above apropriate widgets

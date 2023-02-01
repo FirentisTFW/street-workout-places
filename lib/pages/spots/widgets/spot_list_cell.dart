@@ -58,14 +58,14 @@ class SpotListCell extends StatelessWidget {
   Widget _buildName() {
     return Text(
       spot.name.orEmpty(),
-      style: AppTextStyles.spotTitle(),
+      style: AppTextStyles.titleSmall(),
     );
   }
 
   Widget _buildAddress() {
     return Text(
       (spot.address?.fullAddress).orEmpty(),
-      style: AppTextStyles.informationSecondary(),
+      style: AppTextStyles.addressSmall(),
     );
   }
 
@@ -83,6 +83,7 @@ class SpotListCell extends StatelessWidget {
       spot.getEquipmentDescription(context),
       maxLines: 3,
       overflow: TextOverflow.ellipsis,
+      style: AppTextStyles.content(),
     );
   }
 
@@ -101,7 +102,7 @@ class SpotListCell extends StatelessWidget {
     // TODO Remove mocks
     return Text(
       '1,2 km',
-      style: AppTextStyles.spotTitle(),
+      style: AppTextStyles.titleSmall(),
     );
   }
 

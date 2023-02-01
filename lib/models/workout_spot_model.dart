@@ -34,9 +34,16 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
     // return images.firstOrNull;
   }
 
-  String getEquipmentDescription(BuildContext context) => equipment
-      .map(
-        (element) => element.getDescription(context),
-      )
-      .join(', ');
+  String getEquipmentDescription(
+    BuildContext context, {
+    bool multiline = false,
+  }) =>
+      equipment
+          .map(
+            (element) => [
+              if (multiline) '-',
+              element.getDescription(context),
+            ].join(' '),
+          )
+          .join(multiline ? '\n' : ', ');
 }

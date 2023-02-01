@@ -12,6 +12,12 @@ class Separator extends StatelessWidget {
     this.width,
   });
 
+  const Separator.ofHeight(
+    this.height, {
+    this.color = AppColors.grey,
+    this.width,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(

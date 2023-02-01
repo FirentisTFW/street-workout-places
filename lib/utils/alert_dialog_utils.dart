@@ -66,7 +66,7 @@ class AlertDialogUtils {
     if (title == null) return null;
     return Text(
       title,
-      style: AppTextStyles.spotTitle(),
+      style: AppTextStyles.titleSmall(),
       textAlign: TextAlign.center,
     );
   }

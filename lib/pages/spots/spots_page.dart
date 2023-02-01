@@ -1,14 +1,16 @@
 import 'package:app/blocs/spots/spots_bloc.dart';
 import 'package:app/common/bloc_page_state.dart';
+import 'package:app/common/root_navigator.dart';
 import 'package:app/common/text_field_essentials.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/models/page_tab_bar_button_data.dart';
 import 'package:app/models/workout_spot_model.dart';
+import 'package:app/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/pages/spots/spots_page_tab.dart';
 import 'package:app/pages/spots/widgets/spot_list.dart';
+import 'package:app/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_padding.dart';
-import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/widgets/space.dart';
@@ -151,10 +153,12 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
   Widget _buildSpotList(List<WorkoutSpotModel> spots) {
     return SpotList(
       spots: spots,
-      onSpotPressed: () {
-        // TODO Implement
-        AlertDialogUtils.showContentUnavailable(context);
-      },
+      onSpotPressed: (spot) => RootNavigator.of(context).pushNamed(
+        SpotsRouting.spotDetails,
+        arguments: SpotDetailsArguments(
+          spot: spot,
+        ),
+      ),
     );
   }
 }

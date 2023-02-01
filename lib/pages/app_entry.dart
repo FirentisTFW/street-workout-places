@@ -68,6 +68,7 @@ class _AppEntryState extends State<AppEntry> {
             ),
           ),
           fontFamily: AppTextStyles.robotoFontFamily,
+          primarySwatch: Colors.blue,
           scaffoldBackgroundColor: AppColors.white,
         ),
       ),

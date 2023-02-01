@@ -6,6 +6,28 @@ class AppTextStyles {
 
   const AppTextStyles._();
 
+  static TextStyle addressBig({
+    Color color = AppColors.grey2,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
+  static TextStyle addressSmall({
+    Color color = AppColors.grey2,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
   static TextStyle content({
     Color color = AppColors.black,
     double height = 1.0,
@@ -26,28 +48,6 @@ class AppTextStyles {
     return content(
       color: color,
       height: height,
-    );
-  }
-
-  static TextStyle informationSecondary({
-    Color color = AppColors.grey2,
-  }) {
-    return TextStyle(
-      color: color,
-      fontSize: 14.0,
-      fontWeight: FontWeight.normal,
-      fontFamily: robotoFontFamily,
-    );
-  }
-
-  static TextStyle spotTitle({
-    Color color = AppColors.black,
-  }) {
-    return TextStyle(
-      color: color,
-      fontSize: 18.0,
-      fontWeight: FontWeight.bold,
-      fontFamily: robotoFontFamily,
     );
   }
 
@@ -76,6 +76,28 @@ class AppTextStyles {
       color: AppColors.black,
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
+  static TextStyle titleBig({
+    Color color = AppColors.black,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 22.0,
+      fontWeight: FontWeight.bold,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
+  static TextStyle titleSmall({
+    Color color = AppColors.black,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18.0,
+      fontWeight: FontWeight.bold,
       fontFamily: robotoFontFamily,
     );
   }
