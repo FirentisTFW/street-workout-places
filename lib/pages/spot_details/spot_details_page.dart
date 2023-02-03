@@ -5,6 +5,8 @@ import 'package:app/pages/spot_details/spot_details_bloc.dart';
 import 'package:app/pages/spot_details/widgets/spot_details_image_slider.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/styles/app_text_styles.dart';
+import 'package:app/utils/alert_dialog_utils.dart';
+import 'package:app/widgets/navigation_button.dart';
 import 'package:app/widgets/separator.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
@@ -69,18 +71,29 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsBl
   }
 
   Widget _buildNameAndAddressSection(WorkoutSpotModel spot) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          spot.name.orEmpty(),
-          style: AppTextStyles.titleBig(),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              spot.name.orEmpty(),
+              style: AppTextStyles.titleBig(),
+            ),
+            const Space.vertical(8.0),
+            Text(
+              (spot.address?.fullAddress).orEmpty(),
+              style: AppTextStyles.addressBig(),
+            ),
+          ],
         ),
-        const Space.vertical(8.0),
-        Text(
-          (spot.address?.fullAddress).orEmpty(),
-          style: AppTextStyles.addressBig(),
+        NavigationButton(
+          onPressed: () {
+            // TODO Implement
+            AlertDialogUtils.showContentUnavailable(context);
+          },
         ),
       ],
     );

@@ -25,7 +25,7 @@ class NavigationButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
             _buildText(context),
@@ -40,7 +40,7 @@ class NavigationButton extends StatelessWidget {
   Widget _buildText(BuildContext context) {
     return Text(
       S.of(context).navigationButtonTitle,
-      style: AppTextStyles.content(
+      style: AppTextStyles.contentBigger(
         color: AppColors.blue,
       ),
     );

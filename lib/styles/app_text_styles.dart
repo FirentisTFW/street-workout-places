@@ -31,12 +31,24 @@ class AppTextStyles {
   static TextStyle content({
     Color color = AppColors.black,
     double height = 1.0,
+    double fontSize = 14.0,
   }) {
     return TextStyle(
       color: color,
-      fontSize: 14.0,
+      fontSize: fontSize,
       fontWeight: FontWeight.normal,
       fontFamily: robotoFontFamily,
+      height: height,
+    );
+  }
+
+  static TextStyle contentBigger({
+    Color color = AppColors.black,
+    double height = 1.0,
+  }) {
+    return content(
+      color: color,
+      fontSize: 16.0,
       height: height,
     );
   }
