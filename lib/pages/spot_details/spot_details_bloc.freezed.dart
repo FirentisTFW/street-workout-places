@@ -214,6 +214,8 @@ abstract class $SpotDetailsStateCopyWith<$Res> {
       _$SpotDetailsStateCopyWithImpl<$Res, SpotDetailsState>;
   @useResult
   $Res call({WorkoutSpotModel spot});
+
+  $WorkoutSpotModelCopyWith<$Res> get spot;
 }
 
 /// @nodoc
@@ -229,14 +231,22 @@ class _$SpotDetailsStateCopyWithImpl<$Res, $Val extends SpotDetailsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? spot = freezed,
+    Object? spot = null,
   }) {
     return _then(_value.copyWith(
-      spot: freezed == spot
+      spot: null == spot
           ? _value.spot
           : spot // ignore: cast_nullable_to_non_nullable
               as WorkoutSpotModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WorkoutSpotModelCopyWith<$Res> get spot {
+    return $WorkoutSpotModelCopyWith<$Res>(_value.spot, (value) {
+      return _then(_value.copyWith(spot: value) as $Val);
+    });
   }
 }
 
@@ -249,6 +259,9 @@ abstract class _$$_InitialCopyWith<$Res>
   @override
   @useResult
   $Res call({WorkoutSpotModel spot});
+
+  @override
+  $WorkoutSpotModelCopyWith<$Res> get spot;
 }
 
 /// @nodoc
@@ -261,10 +274,10 @@ class __$$_InitialCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? spot = freezed,
+    Object? spot = null,
   }) {
     return _then(_$_Initial(
-      spot: freezed == spot
+      spot: null == spot
           ? _value.spot
           : spot // ignore: cast_nullable_to_non_nullable
               as WorkoutSpotModel,
@@ -290,12 +303,11 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            const DeepCollectionEquality().equals(other.spot, spot));
+            (identical(other.spot, spot) || other.spot == spot));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(spot));
+  int get hashCode => Object.hash(runtimeType, spot);
 
   @JsonKey(ignore: true)
   @override

@@ -23,5 +23,9 @@
   "equipmentDescriptionPole": "Rurka pionowa",
   "equipmentDescriptionRings": "Obręcze gimnastczne",
   "equipmentDescriptionRope": "Lina",
-  "equipmentDescriptionVerticalLadder": "Drabinka pionowa"
+  "equipmentDescriptionVerticalLadder": "Drabinka pionowa",
+  "surfaceDescriptionConcrete": "Beton",
+  "surfaceDescriptionDifferent": "Inne",
+  "surfaceDescriptionSand": "Piasek",
+  "surfaceDescriptionTartan": "Tartan"
 }

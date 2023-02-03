@@ -32,11 +32,12 @@ class AppTextStyles {
     Color color = AppColors.black,
     double height = 1.0,
     double fontSize = 14.0,
+    FontWeight fontWeight = FontWeight.normal,
   }) {
     return TextStyle(
       color: color,
       fontSize: fontSize,
-      fontWeight: FontWeight.normal,
+      fontWeight: fontWeight,
       fontFamily: robotoFontFamily,
       height: height,
     );
@@ -50,6 +51,18 @@ class AppTextStyles {
       color: color,
       fontSize: 16.0,
       height: height,
+    );
+  }
+
+  static TextStyle contentBold({
+    Color color = AppColors.black,
+    double height = 1.0,
+    FontWeight fontWeight = FontWeight.bold,
+  }) {
+    return content(
+      color: color,
+      height: height,
+      fontWeight: fontWeight,
     );
   }
 

@@ -5,8 +5,8 @@ part 'map_position.freezed.dart';
 @freezed
 class MapPosition with _$MapPosition {
   const factory MapPosition({
-    double? lat,
-    double? lng,
+    double? latitude,
+    double? longitude,
   }) = _MapPosition;
 
   const MapPosition._();

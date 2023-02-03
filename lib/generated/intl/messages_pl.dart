@@ -60,6 +60,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Mapa"),
+        "surfaceDescriptionConcrete":
+            MessageLookupByLibrary.simpleMessage("Beton"),
+        "surfaceDescriptionDifferent":
+            MessageLookupByLibrary.simpleMessage("Inne"),
+        "surfaceDescriptionSand":
+            MessageLookupByLibrary.simpleMessage("Piasek"),
+        "surfaceDescriptionTartan":
+            MessageLookupByLibrary.simpleMessage("Tartan"),
         "workoutSpotSizeDescriptionBig":
             MessageLookupByLibrary.simpleMessage("Duży"),
         "workoutSpotSizeDescriptionMedium":

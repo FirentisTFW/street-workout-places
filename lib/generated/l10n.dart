@@ -299,6 +299,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Beton`
+  String get surfaceDescriptionConcrete {
+    return Intl.message(
+      'Beton',
+      name: 'surfaceDescriptionConcrete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inne`
+  String get surfaceDescriptionDifferent {
+    return Intl.message(
+      'Inne',
+      name: 'surfaceDescriptionDifferent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Piasek`
+  String get surfaceDescriptionSand {
+    return Intl.message(
+      'Piasek',
+      name: 'surfaceDescriptionSand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tartan`
+  String get surfaceDescriptionTartan {
+    return Intl.message(
+      'Tartan',
+      name: 'surfaceDescriptionTartan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

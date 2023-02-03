@@ -15,8 +15,8 @@ abstract class WorkoutSpotMocks {
         street: 'Park Drwęskich',
       ),
       coordinates: MapPosition(
-        lat: 52.39963,
-        lng: 16.92525,
+        latitude: 52.39963,
+        longitude: 16.92525,
       ),
       description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
@@ -44,8 +44,8 @@ abstract class WorkoutSpotMocks {
         street: 'Park Jana Pawła II',
       ),
       coordinates: MapPosition(
-        lat: 52.38908,
-        lng: 16.92539,
+        latitude: 52.38908,
+        longitude: 16.92539,
       ),
       description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
@@ -73,8 +73,8 @@ abstract class WorkoutSpotMocks {
         street: 'Osiedle Zwycięstwa',
       ),
       coordinates: MapPosition(
-        lat: 52.44089,
-        lng: 16.92665,
+        latitude: 52.44089,
+        longitude: 16.92665,
       ),
       description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',

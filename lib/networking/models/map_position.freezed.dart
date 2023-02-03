@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MapPosition {
-  double? get lat => throw _privateConstructorUsedError;
-  double? get lng => throw _privateConstructorUsedError;
+  double? get latitude => throw _privateConstructorUsedError;
+  double? get longitude => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MapPositionCopyWith<MapPosition> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $MapPositionCopyWith<$Res> {
           MapPosition value, $Res Function(MapPosition) then) =
       _$MapPositionCopyWithImpl<$Res, MapPosition>;
   @useResult
-  $Res call({double? lat, double? lng});
+  $Res call({double? latitude, double? longitude});
 }
 
 /// @nodoc
@@ -46,17 +46,17 @@ class _$MapPositionCopyWithImpl<$Res, $Val extends MapPosition>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lat = freezed,
-    Object? lng = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
   }) {
     return _then(_value.copyWith(
-      lat: freezed == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
+      latitude: freezed == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      lng: freezed == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
+      longitude: freezed == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
     ) as $Val);
   }
@@ -70,7 +70,7 @@ abstract class _$$_MapPositionCopyWith<$Res>
       __$$_MapPositionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double? lat, double? lng});
+  $Res call({double? latitude, double? longitude});
 }
 
 /// @nodoc
@@ -84,17 +84,17 @@ class __$$_MapPositionCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lat = freezed,
-    Object? lng = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
   }) {
     return _then(_$_MapPosition(
-      lat: freezed == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
+      latitude: freezed == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      lng: freezed == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
+      longitude: freezed == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
     ));
   }
@@ -103,16 +103,16 @@ class __$$_MapPositionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MapPosition extends _MapPosition {
-  const _$_MapPosition({this.lat, this.lng}) : super._();
+  const _$_MapPosition({this.latitude, this.longitude}) : super._();
 
   @override
-  final double? lat;
+  final double? latitude;
   @override
-  final double? lng;
+  final double? longitude;
 
   @override
   String toString() {
-    return 'MapPosition(lat: $lat, lng: $lng)';
+    return 'MapPosition(latitude: $latitude, longitude: $longitude)';
   }
 
   @override
@@ -120,12 +120,14 @@ class _$_MapPosition extends _MapPosition {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapPosition &&
-            (identical(other.lat, lat) || other.lat == lat) &&
-            (identical(other.lng, lng) || other.lng == lng));
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lat, lng);
+  int get hashCode => Object.hash(runtimeType, latitude, longitude);
 
   @JsonKey(ignore: true)
   @override
@@ -135,14 +137,14 @@ class _$_MapPosition extends _MapPosition {
 }
 
 abstract class _MapPosition extends MapPosition {
-  const factory _MapPosition({final double? lat, final double? lng}) =
-      _$_MapPosition;
+  const factory _MapPosition(
+      {final double? latitude, final double? longitude}) = _$_MapPosition;
   const _MapPosition._() : super._();
 
   @override
-  double? get lat;
+  double? get latitude;
   @override
-  double? get lng;
+  double? get longitude;
   @override
   @JsonKey(ignore: true)
   _$$_MapPositionCopyWith<_$_MapPosition> get copyWith =>
