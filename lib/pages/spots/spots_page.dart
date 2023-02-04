@@ -12,8 +12,10 @@ import 'package:app/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/widgets/app_text_field.dart';
+import 'package:app/widgets/automatic_keep_alive_client_container.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/widgets/space.dart';
+import 'package:app/widgets/spots_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -137,28 +139,32 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
       controller: _pageController,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        _buildMap(),
+        _buildMap(spots),
         _buildSpotList(spots),
       ],
     );
   }
 
-  Widget _buildMap() {
-    // TODO Implement
-    return const Center(
-      child: Text('Mapa'),
+  Widget _buildMap(List<WorkoutSpotModel> spots) {
+    return AutomaticKeepAliveClientContainer(
+      child: SpotsMap(
+        spots: spots,
+        onSpotIconPressed: _goToSpotDetails,
+      ),
     );
   }
 
   Widget _buildSpotList(List<WorkoutSpotModel> spots) {
     return SpotList(
       spots: spots,
-      onSpotPressed: (spot) => RootNavigator.of(context).pushNamed(
+      onSpotPressed: _goToSpotDetails,
+    );
+  }
+
+  void _goToSpotDetails(WorkoutSpotModel spot) => RootNavigator.of(context).pushNamed(
         SpotsRouting.spotDetails,
         arguments: SpotDetailsArguments(
           spot: spot,
         ),
-      ),
-    );
-  }
+      );
 }

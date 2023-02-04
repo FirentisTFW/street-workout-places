@@ -339,6 +339,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Map data from OpenStreetMap`
+  String get mapDataSourceOpenStreetMap {
+    return Intl.message(
+      'Map data from OpenStreetMap',
+      name: 'mapDataSourceOpenStreetMap',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

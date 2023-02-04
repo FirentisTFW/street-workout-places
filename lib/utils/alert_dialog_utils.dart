@@ -10,7 +10,7 @@ import 'package:app/styles/app_text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AlertDialogUtils {
+abstract class AlertDialogUtils {
   const AlertDialogUtils._();
 
   static Future<void> showContentUnavailable(BuildContext context) {

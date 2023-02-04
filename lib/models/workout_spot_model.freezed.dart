@@ -47,7 +47,6 @@ abstract class $WorkoutSpotModelCopyWith<$Res> {
       Surface? surface});
 
   $AddressCopyWith<$Res>? get address;
-  $MapPositionCopyWith<$Res>? get coordinates;
 }
 
 /// @nodoc
@@ -119,18 +118,6 @@ class _$WorkoutSpotModelCopyWithImpl<$Res, $Val extends WorkoutSpotModel>
       return _then(_value.copyWith(address: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MapPositionCopyWith<$Res>? get coordinates {
-    if (_value.coordinates == null) {
-      return null;
-    }
-
-    return $MapPositionCopyWith<$Res>(_value.coordinates!, (value) {
-      return _then(_value.copyWith(coordinates: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -153,8 +140,6 @@ abstract class _$$_WorkoutSpotModelCopyWith<$Res>
 
   @override
   $AddressCopyWith<$Res>? get address;
-  @override
-  $MapPositionCopyWith<$Res>? get coordinates;
 }
 
 /// @nodoc
@@ -272,8 +257,8 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutSpotModel &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.coordinates, coordinates) ||
-                other.coordinates == coordinates) &&
+            const DeepCollectionEquality()
+                .equals(other.coordinates, coordinates) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -288,7 +273,7 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
   int get hashCode => Object.hash(
       runtimeType,
       address,
-      coordinates,
+      const DeepCollectionEquality().hash(coordinates),
       description,
       const DeepCollectionEquality().hash(_equipment),
       const DeepCollectionEquality().hash(_images),

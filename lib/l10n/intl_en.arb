@@ -27,5 +27,6 @@
   "surfaceDescriptionConcrete": "Beton",
   "surfaceDescriptionDifferent": "Inne",
   "surfaceDescriptionSand": "Piasek",
-  "surfaceDescriptionTartan": "Tartan"
+  "surfaceDescriptionTartan": "Tartan",
+  "mapDataSourceOpenStreetMap": "Map data from OpenStreetMap"
 }

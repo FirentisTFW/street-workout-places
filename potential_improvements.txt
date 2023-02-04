@@ -4,3 +4,5 @@ Potential improvements:
     - consider encapsulating controller and notifier in separate class in order to move tab changing logic away from the page
 - spot_details_page.dart
     - consider texts "Opis:" and "Sprzęt:" above apropriate widgets
+- spot_map.dart
+    - group markers nearby and show one icon for them with the number of spots written

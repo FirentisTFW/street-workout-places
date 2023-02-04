@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lina"),
         "equipmentDescriptionVerticalLadder":
             MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
+        "mapDataSourceOpenStreetMap":
+            MessageLookupByLibrary.simpleMessage("Map data from OpenStreetMap"),
         "navigationButtonTitle":
             MessageLookupByLibrary.simpleMessage("Nawiguj"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),

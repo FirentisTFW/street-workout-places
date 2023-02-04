@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:app/networking/models/map_position.dart';
 import 'package:map_launcher/map_launcher.dart';
 
-class MapUtils {
+abstract class MapUtils {
   const MapUtils._();
 
   static FutureOr<void> openMapAndLaunchNavigation({
