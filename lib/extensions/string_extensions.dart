@@ -1,6 +1,8 @@
 extension StringExtensions on String {
   bool get isBlank => trim().isEmpty;
 
+  bool get isLowerCase => this == toLowerCase();
+
   bool get isNotBlank => !isBlank;
 
   String capitalize() => isNotBlank ? '${this[0].toUpperCase()}${substring(1)}' : this;

@@ -55,6 +55,7 @@ class _SpotsMapState extends State<SpotsMap> {
   }
 
   Marker? _maybeBuildSpotMarker(WorkoutSpotModel spot) {
+    // FIXME Change name - prepareMarker(?) and move builder part to separate widget
     final LatLng? latLng = spot.coordinates?.maybeMapToLatLng();
     if (latLng == null) return null;
     return Marker(
