@@ -1,4 +1,4 @@
-part of 'spots_bloc.dart';
+part of 'spots_cubit.dart';
 
 @freezed
 class SpotsState with _$SpotsState {

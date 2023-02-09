@@ -1,4 +1,4 @@
-import 'package:app/blocs/spots/spots_bloc.dart';
+import 'package:app/blocs/spots/spots_cubit.dart';
 import 'package:app/common/app_locales.dart';
 import 'package:app/common/global_navigator.dart';
 import 'package:app/generated/l10n.dart';
@@ -22,29 +22,27 @@ class AppEntry extends StatefulWidget {
 }
 
 class _AppEntryState extends State<AppEntry> {
-  late final SpotsBloc spotsBloc;
+  late final SpotsCubit spotsCubit;
 
   @override
   void initState() {
     super.initState();
-    spotsBloc = SpotsBloc(
+    spotsCubit = SpotsCubit(
       spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
     );
-    spotsBloc.add(
-      const SpotsEvent.fetchSpotsRequested(),
-    );
+    spotsCubit.fetchSpotsRequested();
   }
 
   @override
   void dispose() {
-    spotsBloc.close();
+    spotsCubit.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SpotsBloc>.value(
-      value: spotsBloc,
+    return BlocProvider<SpotsCubit>.value(
+      value: spotsCubit,
       child: MaterialApp(
         initialRoute: Routing.dashboard,
         localizationsDelegates: const [

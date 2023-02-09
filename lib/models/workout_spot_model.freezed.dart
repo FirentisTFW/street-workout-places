@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'workout_spot_model.dart';
 
@@ -47,6 +47,7 @@ abstract class $WorkoutSpotModelCopyWith<$Res> {
       Surface? surface});
 
   $AddressCopyWith<$Res>? get address;
+  $MapPositionCopyWith<$Res>? get coordinates;
 }
 
 /// @nodoc
@@ -118,6 +119,18 @@ class _$WorkoutSpotModelCopyWithImpl<$Res, $Val extends WorkoutSpotModel>
       return _then(_value.copyWith(address: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MapPositionCopyWith<$Res>? get coordinates {
+    if (_value.coordinates == null) {
+      return null;
+    }
+
+    return $MapPositionCopyWith<$Res>(_value.coordinates!, (value) {
+      return _then(_value.copyWith(coordinates: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -140,6 +153,8 @@ abstract class _$$_WorkoutSpotModelCopyWith<$Res>
 
   @override
   $AddressCopyWith<$Res>? get address;
+  @override
+  $MapPositionCopyWith<$Res>? get coordinates;
 }
 
 /// @nodoc
@@ -225,7 +240,6 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
   @override
   @JsonKey()
   List<Equipment> get equipment {
-    if (_equipment is EqualUnmodifiableListView) return _equipment;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_equipment);
   }
@@ -234,7 +248,6 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
   @override
   @JsonKey()
   List<String> get images {
-    if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
   }
@@ -257,8 +270,8 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutSpotModel &&
             (identical(other.address, address) || other.address == address) &&
-            const DeepCollectionEquality()
-                .equals(other.coordinates, coordinates) &&
+            (identical(other.coordinates, coordinates) ||
+                other.coordinates == coordinates) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -273,7 +286,7 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
   int get hashCode => Object.hash(
       runtimeType,
       address,
-      const DeepCollectionEquality().hash(coordinates),
+      coordinates,
       description,
       const DeepCollectionEquality().hash(_equipment),
       const DeepCollectionEquality().hash(_images),

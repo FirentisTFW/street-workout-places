@@ -1,4 +1,4 @@
-import 'package:app/blocs/spots/spots_bloc.dart';
+import 'package:app/blocs/spots/spots_cubit.dart';
 import 'package:app/common/bloc_page_state.dart';
 import 'package:app/common/root_navigator.dart';
 import 'package:app/common/text_field_essentials.dart';
@@ -28,7 +28,7 @@ class SpotsPage extends StatefulWidget {
   State<SpotsPage> createState() => _SpotsPageState();
 }
 
-class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
+class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   final PageController _pageController = PageController();
   final TextFieldEssentials _searchTFE = TextFieldEssentials();
   final ValueNotifier<SpotsPageTab> _tabNotifier = ValueNotifier(SpotsPageTab.map);
@@ -56,16 +56,14 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsBloc> {
   }
 
   void _fetchSpots() {
-    spotsBloc.add(
-      const SpotsEvent.fetchSpotsRequested(),
-    );
+    spotsCubit.fetchSpotsRequested();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<SpotsBloc, SpotsState>(
+        child: BlocBuilder<SpotsCubit, SpotsState>(
           builder: (_, state) => state.maybeWhen(
             fetchSpotsInProgress: buildLoadingBody,
             fetchSpotsSuccess: _buildLoadedBody,
