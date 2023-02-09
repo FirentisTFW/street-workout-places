@@ -82,56 +82,30 @@ void main() {
           });
         });
       });
-      group('multiple word query -', () {
+      test('multiple word query', () {
         const String query = 'krakow poznanska';
-        test('city', () {
-          const WorkoutSpotModel spotMatchingQuery = WorkoutSpotModel(
-            address: Address(
-              city: 'Kraków',
-              street: 'Warszawska',
-            ),
-          );
-          const WorkoutSpotModel spotNotMatchingQuery = WorkoutSpotModel(
-            address: Address(
-              city: 'Poznań',
-              street: 'Warszawska',
-            ),
-          );
-          final bool resultMatchingQuery = SearchUtils.checkIfSpotMatchesQuery(
-            spot: spotMatchingQuery,
-            query: query,
-          );
-          final bool resultNotMatchingQuery = SearchUtils.checkIfSpotMatchesQuery(
-            spot: spotNotMatchingQuery,
-            query: query,
-          );
-          expect(resultMatchingQuery, true);
-          expect(resultNotMatchingQuery, false);
-        });
-        test('street', () {
-          const WorkoutSpotModel spotMatchingQuery = WorkoutSpotModel(
-            address: Address(
-              city: 'Warszawa',
-              street: 'Poznanska',
-            ),
-          );
-          const WorkoutSpotModel spotNotMatchingQuery = WorkoutSpotModel(
-            address: Address(
-              city: 'Warszawa',
-              street: 'Nowomiejska',
-            ),
-          );
-          final bool resultMatchingQuery = SearchUtils.checkIfSpotMatchesQuery(
-            spot: spotMatchingQuery,
-            query: query,
-          );
-          final bool resultNotMatchingQuery = SearchUtils.checkIfSpotMatchesQuery(
-            spot: spotNotMatchingQuery,
-            query: query,
-          );
-          expect(resultMatchingQuery, true);
-          expect(resultNotMatchingQuery, false);
-        });
+        const WorkoutSpotModel spotMatchingQuery = WorkoutSpotModel(
+          address: Address(
+            city: 'Kraków',
+            street: 'Poznańska',
+          ),
+        );
+        const WorkoutSpotModel spotNotMatchingQuery = WorkoutSpotModel(
+          address: Address(
+            city: 'Kraków',
+            street: 'Warszawska',
+          ),
+        );
+        final bool resultMatchingQuery = SearchUtils.checkIfSpotMatchesQuery(
+          spot: spotMatchingQuery,
+          query: query,
+        );
+        final bool resultNotMatchingQuery = SearchUtils.checkIfSpotMatchesQuery(
+          spot: spotNotMatchingQuery,
+          query: query,
+        );
+        expect(resultMatchingQuery, true);
+        expect(resultNotMatchingQuery, false);
       });
     });
   });

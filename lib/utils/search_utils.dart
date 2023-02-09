@@ -18,8 +18,8 @@ abstract class SearchUtils {
     ].filterNotNull().map((element) => TextUtils.removeDiacritics(element).toLowerCase());
     for (final String queryWord in queryWords) {
       final bool hasMatch = spotLocationEssentials.any((element) => element.contains(queryWord));
-      if (hasMatch) return true;
+      if (!hasMatch) return false;
     }
-    return false;
+    return true;
   }
 }
