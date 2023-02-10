@@ -20,7 +20,9 @@ mixin _$SpotsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchSpotsInProgress,
-    required TResult Function(List<WorkoutSpotModel> spots) fetchSpotsSuccess,
+    required TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)
+        fetchSpotsSuccess,
     required TResult Function(ContainerError error) fetchSpotsFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$SpotsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchSpotsInProgress,
-    TResult? Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult? Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult? Function(ContainerError error)? fetchSpotsFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$SpotsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchSpotsInProgress,
-    TResult Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult Function(ContainerError error)? fetchSpotsFailure,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,9 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchSpotsInProgress,
-    required TResult Function(List<WorkoutSpotModel> spots) fetchSpotsSuccess,
+    required TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)
+        fetchSpotsSuccess,
     required TResult Function(ContainerError error) fetchSpotsFailure,
   }) {
     return initial();
@@ -136,7 +144,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchSpotsInProgress,
-    TResult? Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult? Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult? Function(ContainerError error)? fetchSpotsFailure,
   }) {
     return initial?.call();
@@ -147,7 +157,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchSpotsInProgress,
-    TResult Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult Function(ContainerError error)? fetchSpotsFailure,
     required TResult orElse(),
   }) {
@@ -239,7 +251,9 @@ class _$_FetchSpotsInProgress implements _FetchSpotsInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchSpotsInProgress,
-    required TResult Function(List<WorkoutSpotModel> spots) fetchSpotsSuccess,
+    required TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)
+        fetchSpotsSuccess,
     required TResult Function(ContainerError error) fetchSpotsFailure,
   }) {
     return fetchSpotsInProgress();
@@ -250,7 +264,9 @@ class _$_FetchSpotsInProgress implements _FetchSpotsInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchSpotsInProgress,
-    TResult? Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult? Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult? Function(ContainerError error)? fetchSpotsFailure,
   }) {
     return fetchSpotsInProgress?.call();
@@ -261,7 +277,9 @@ class _$_FetchSpotsInProgress implements _FetchSpotsInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchSpotsInProgress,
-    TResult Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult Function(ContainerError error)? fetchSpotsFailure,
     required TResult orElse(),
   }) {
@@ -319,7 +337,8 @@ abstract class _$$_FetchSpotsSuccessCopyWith<$Res> {
           $Res Function(_$_FetchSpotsSuccess) then) =
       __$$_FetchSpotsSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<WorkoutSpotModel> spots});
+  $Res call(
+      {List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots});
 }
 
 /// @nodoc
@@ -333,9 +352,14 @@ class __$$_FetchSpotsSuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filteredSpots = null,
     Object? spots = null,
   }) {
     return _then(_$_FetchSpotsSuccess(
+      filteredSpots: null == filteredSpots
+          ? _value._filteredSpots
+          : filteredSpots // ignore: cast_nullable_to_non_nullable
+              as List<WorkoutSpotModel>,
       spots: null == spots
           ? _value._spots
           : spots // ignore: cast_nullable_to_non_nullable
@@ -347,8 +371,18 @@ class __$$_FetchSpotsSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
-  const _$_FetchSpotsSuccess({required final List<WorkoutSpotModel> spots})
-      : _spots = spots;
+  const _$_FetchSpotsSuccess(
+      {required final List<WorkoutSpotModel> filteredSpots,
+      required final List<WorkoutSpotModel> spots})
+      : _filteredSpots = filteredSpots,
+        _spots = spots;
+
+  final List<WorkoutSpotModel> _filteredSpots;
+  @override
+  List<WorkoutSpotModel> get filteredSpots {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredSpots);
+  }
 
   final List<WorkoutSpotModel> _spots;
   @override
@@ -359,7 +393,7 @@ class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
 
   @override
   String toString() {
-    return 'SpotsState.fetchSpotsSuccess(spots: $spots)';
+    return 'SpotsState.fetchSpotsSuccess(filteredSpots: $filteredSpots, spots: $spots)';
   }
 
   @override
@@ -367,12 +401,16 @@ class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FetchSpotsSuccess &&
+            const DeepCollectionEquality()
+                .equals(other._filteredSpots, _filteredSpots) &&
             const DeepCollectionEquality().equals(other._spots, _spots));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_spots));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_filteredSpots),
+      const DeepCollectionEquality().hash(_spots));
 
   @JsonKey(ignore: true)
   @override
@@ -386,10 +424,12 @@ class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchSpotsInProgress,
-    required TResult Function(List<WorkoutSpotModel> spots) fetchSpotsSuccess,
+    required TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)
+        fetchSpotsSuccess,
     required TResult Function(ContainerError error) fetchSpotsFailure,
   }) {
-    return fetchSpotsSuccess(spots);
+    return fetchSpotsSuccess(filteredSpots, spots);
   }
 
   @override
@@ -397,10 +437,12 @@ class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchSpotsInProgress,
-    TResult? Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult? Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult? Function(ContainerError error)? fetchSpotsFailure,
   }) {
-    return fetchSpotsSuccess?.call(spots);
+    return fetchSpotsSuccess?.call(filteredSpots, spots);
   }
 
   @override
@@ -408,12 +450,14 @@ class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchSpotsInProgress,
-    TResult Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult Function(ContainerError error)? fetchSpotsFailure,
     required TResult orElse(),
   }) {
     if (fetchSpotsSuccess != null) {
-      return fetchSpotsSuccess(spots);
+      return fetchSpotsSuccess(filteredSpots, spots);
     }
     return orElse();
   }
@@ -458,8 +502,10 @@ class _$_FetchSpotsSuccess implements _FetchSpotsSuccess {
 
 abstract class _FetchSpotsSuccess implements SpotsState {
   const factory _FetchSpotsSuccess(
-      {required final List<WorkoutSpotModel> spots}) = _$_FetchSpotsSuccess;
+      {required final List<WorkoutSpotModel> filteredSpots,
+      required final List<WorkoutSpotModel> spots}) = _$_FetchSpotsSuccess;
 
+  List<WorkoutSpotModel> get filteredSpots;
   List<WorkoutSpotModel> get spots;
   @JsonKey(ignore: true)
   _$$_FetchSpotsSuccessCopyWith<_$_FetchSpotsSuccess> get copyWith =>
@@ -533,7 +579,9 @@ class _$_FetchSpotsFailure implements _FetchSpotsFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchSpotsInProgress,
-    required TResult Function(List<WorkoutSpotModel> spots) fetchSpotsSuccess,
+    required TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)
+        fetchSpotsSuccess,
     required TResult Function(ContainerError error) fetchSpotsFailure,
   }) {
     return fetchSpotsFailure(error);
@@ -544,7 +592,9 @@ class _$_FetchSpotsFailure implements _FetchSpotsFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchSpotsInProgress,
-    TResult? Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult? Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult? Function(ContainerError error)? fetchSpotsFailure,
   }) {
     return fetchSpotsFailure?.call(error);
@@ -555,7 +605,9 @@ class _$_FetchSpotsFailure implements _FetchSpotsFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchSpotsInProgress,
-    TResult Function(List<WorkoutSpotModel> spots)? fetchSpotsSuccess,
+    TResult Function(
+            List<WorkoutSpotModel> filteredSpots, List<WorkoutSpotModel> spots)?
+        fetchSpotsSuccess,
     TResult Function(ContainerError error)? fetchSpotsFailure,
     required TResult orElse(),
   }) {

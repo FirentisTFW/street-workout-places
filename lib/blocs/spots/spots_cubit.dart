@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:app/errors/ui_error.dart';
 import 'package:app/mappers/mappers.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/workout_spot.dart';
 import 'package:app/repositories/spots/i_spots_repository.dart';
+import 'package:app/utils/search_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,7 +19,7 @@ class SpotsCubit extends Cubit<SpotsState> {
     required this.spotsRepository,
   }) : super(const _Initial());
 
-  Future<void> fetchSpotsRequested() async {
+  Future<void> fetchSpots() async {
     try {
       emit(
         const _FetchSpotsInProgress(),
@@ -26,6 +29,7 @@ class SpotsCubit extends Cubit<SpotsState> {
       final List<WorkoutSpotModel> spotsModels = spots.mapToWorkoutSpotModels();
       emit(
         _FetchSpotsSuccess(
+          filteredSpots: spotsModels,
           spots: spotsModels,
         ),
       );
@@ -36,5 +40,24 @@ class SpotsCubit extends Cubit<SpotsState> {
         ),
       );
     }
+  }
+
+  FutureOr<void> filterSpotsByQuery(String query) async {
+    final SpotsState entryState = state;
+    if (entryState is! _FetchSpotsSuccess) return;
+    final List<WorkoutSpotModel> filteredSpots = entryState.spots
+        .where(
+          (spot) => SearchUtils.checkIfSpotMatchesQuery(
+            spot: spot,
+            query: query,
+          ),
+        )
+        .toList();
+    emit(
+      _FetchSpotsSuccess(
+        filteredSpots: filteredSpots,
+        spots: entryState.spots,
+      ),
+    );
   }
 }

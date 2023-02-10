@@ -30,7 +30,7 @@ class _AppEntryState extends State<AppEntry> {
     spotsCubit = SpotsCubit(
       spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
     );
-    spotsCubit.fetchSpotsRequested();
+    spotsCubit.fetchSpots();
   }
 
   @override

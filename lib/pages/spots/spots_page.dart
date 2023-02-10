@@ -1,5 +1,6 @@
 import 'package:app/blocs/spots/spots_cubit.dart';
 import 'package:app/common/bloc_page_state.dart';
+import 'package:app/common/query_handler.dart';
 import 'package:app/common/root_navigator.dart';
 import 'package:app/common/text_field_essentials.dart';
 import 'package:app/generated/l10n.dart';
@@ -30,6 +31,7 @@ class SpotsPage extends StatefulWidget {
 
 class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   final PageController _pageController = PageController();
+  final QueryHandler _queryHandler = QueryHandler.withDefaultDuration();
   final TextFieldEssentials _searchTFE = TextFieldEssentials();
   final ValueNotifier<SpotsPageTab> _tabNotifier = ValueNotifier(SpotsPageTab.map);
 
@@ -52,11 +54,12 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
     _pageController.dispose();
     _tabNotifier.dispose();
     _searchTFE.dispose();
+    _queryHandler.dispose();
     super.dispose();
   }
 
   void _fetchSpots() {
-    spotsCubit.fetchSpotsRequested();
+    spotsCubit.fetchSpots();
   }
 
   @override
@@ -64,11 +67,11 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<SpotsCubit, SpotsState>(
-          builder: (_, state) => state.maybeWhen(
-            fetchSpotsInProgress: buildLoadingBody,
-            fetchSpotsSuccess: _buildLoadedBody,
-            fetchSpotsFailure: (error) => buildFullPageErrorBody(
-              error,
+          builder: (_, state) => state.maybeMap(
+            fetchSpotsInProgress: (_) => buildLoadingBody(),
+            fetchSpotsSuccess: (state) => _buildLoadedBody(state.filteredSpots),
+            fetchSpotsFailure: (state) => buildFullPageErrorBody(
+              state.error,
               onRetryPressed: _fetchSpots,
             ),
             orElse: buildEmptyBody,
@@ -104,6 +107,10 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       child: AppTextField(
         _searchTFE,
         labelText: S.of(context).search,
+        onTextChanged: (text) => _queryHandler.updateQuery(
+          text,
+          action: filterSpots,
+        ),
       ),
     );
   }
@@ -157,6 +164,10 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       spots: spots,
       onSpotPressed: _goToSpotDetails,
     );
+  }
+
+  void filterSpots() {
+    bloc.filterSpotsByQuery(_searchTFE.text);
   }
 
   void _goToSpotDetails(WorkoutSpotModel spot) => RootNavigator.of(context).pushNamed(

@@ -7,6 +7,7 @@ class SpotsState with _$SpotsState {
   const factory SpotsState.fetchSpotsInProgress() = _FetchSpotsInProgress;
 
   const factory SpotsState.fetchSpotsSuccess({
+    required List<WorkoutSpotModel> filteredSpots,
     required List<WorkoutSpotModel> spots,
   }) = _FetchSpotsSuccess;
 

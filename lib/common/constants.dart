@@ -5,6 +5,7 @@ abstract class Constants {
 
   static final _App app = _App();
   static final _Maps maps = _Maps();
+  static final _Search search = _Search();
 }
 
 class _App {
@@ -24,4 +25,10 @@ class _Maps {
         latitude: defaultLatitude,
         longitude: defaultLongitude,
       );
+}
+
+class _Search {
+  final Duration queryTimerReaction = const Duration(
+    milliseconds: 300,
+  );
 }

@@ -3,6 +3,8 @@ import 'package:app/common/mocks/workout_spot_mocks.dart';
 import 'package:app/errors/app_error.dart';
 import 'package:app/errors/ui_error.dart';
 import 'package:app/mappers/workout_spot_mappers.dart';
+import 'package:app/models/workout_spot_model.dart';
+import 'package:app/networking/models/address.dart';
 import 'package:app/repositories/spots/i_spots_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,7 +19,7 @@ void main() {
   });
 
   group('SpotsCubitTest -', () {
-    group('_FetchSpotsRequested -', () {
+    group('fetchSpots -', () {
       blocTest<SpotsCubit, SpotsState>(
         'When successful, emits _FetchSpotsInProgress, _FetchSpotsSuccess',
         setUp: () {
@@ -26,10 +28,11 @@ void main() {
         build: () => SpotsCubit(
           spotsRepository: spotsRepository,
         ),
-        act: (bloc) => bloc.fetchSpotsRequested(),
+        act: (cubit) => cubit.fetchSpots(),
         expect: () => [
           const SpotsState.fetchSpotsInProgress(),
           SpotsState.fetchSpotsSuccess(
+            filteredSpots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
             spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
           ),
         ],
@@ -44,7 +47,7 @@ void main() {
       build: () => SpotsCubit(
         spotsRepository: spotsRepository,
       ),
-      act: (bloc) => bloc.fetchSpotsRequested(),
+      act: (cubit) => cubit.fetchSpots(),
       expect: () => [
         const SpotsState.fetchSpotsInProgress(),
         const SpotsState.fetchSpotsFailure(
@@ -53,5 +56,78 @@ void main() {
       ],
       verify: (_) => verify(() => spotsRepository.workoutSpots()).called(1),
     );
+  });
+  group('filterSpotsByQuery -', () {
+    const WorkoutSpotModel poznanSpot = WorkoutSpotModel(
+      name: 'Poznan fajny park',
+      address: Address(
+        city: 'Poznan',
+        street: 'Warszawska',
+      ),
+    );
+    const WorkoutSpotModel krakowSpot = WorkoutSpotModel(
+      name: 'Krakow fajny park',
+      address: Address(
+        city: 'Krakow',
+        street: 'Poznanska',
+      ),
+    );
+
+    const List<WorkoutSpotModel> spots = [
+      poznanSpot,
+      krakowSpot,
+    ];
+    blocTest<SpotsCubit, SpotsState>(
+      'When entry state is not _FetchSpotsSuccess, emits nothing',
+      build: () => SpotsCubit(
+        spotsRepository: spotsRepository,
+      ),
+      act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
+      expect: () => [],
+    );
+    group('When entry state is _FetchSpotsSuccess -', () {
+      const SpotsState initialState = SpotsState.fetchSpotsSuccess(
+        filteredSpots: spots,
+        spots: spots,
+      );
+      blocTest<SpotsCubit, SpotsState>(
+        'Every spot matching query',
+        build: () => SpotsCubit(
+          spotsRepository: spotsRepository,
+        )..emit(initialState),
+        act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
+        expect: () => [
+          // no state is emitted since the filtered spots hasn't changed
+        ],
+      );
+      blocTest<SpotsCubit, SpotsState>(
+        'Some spots matching query',
+        build: () => SpotsCubit(
+          spotsRepository: spotsRepository,
+        )..emit(initialState),
+        act: (cubit) => cubit.filterSpotsByQuery('Krakow'),
+        expect: () => [
+          const SpotsState.fetchSpotsSuccess(
+            filteredSpots: [
+              krakowSpot,
+            ],
+            spots: spots,
+          ),
+        ],
+      );
+      blocTest<SpotsCubit, SpotsState>(
+        'None spots matching query',
+        build: () => SpotsCubit(
+          spotsRepository: spotsRepository,
+        )..emit(initialState),
+        act: (cubit) => cubit.filterSpotsByQuery('Gdansk'),
+        expect: () => [
+          const SpotsState.fetchSpotsSuccess(
+            filteredSpots: [],
+            spots: spots,
+          ),
+        ],
+      );
+    });
   });
 }
