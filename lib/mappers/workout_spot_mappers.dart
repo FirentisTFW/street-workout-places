@@ -15,7 +15,7 @@ extension WorkoutSpotMapper on WorkoutSpot {
       );
 }
 
-extension WorkoutSpotMapperList on List<WorkoutSpot> {
+extension WorkoutSpotListMapper on List<WorkoutSpot> {
   List<WorkoutSpotModel> mapToWorkoutSpotModels() {
     return map(
       (element) => element.mapToWorkoutSpotModel(),
