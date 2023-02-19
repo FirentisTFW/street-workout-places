@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:app/blocs/spots/spots_cubit.dart';
+import 'package:app/common/maps/i_map_coordinator.dart';
 import 'package:app/models/map_bounds_model.dart';
 import 'package:app/models/map_cluster_model.dart';
 import 'package:app/models/workout_spot_model.dart';
-import 'package:app/networking/models/map_position.dart';
 import 'package:app/services/map_clusters_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,9 +16,11 @@ class MapClustersCubit extends Cubit<MapClustersState> {
   final MapClustersService mapClustersService;
   final SpotsCubit spotsCubit;
   late final StreamSubscription<SpotsState> spotsCubitStreamSubscription;
+  final IMapCoordinator mapCoordinator;
 
   MapClustersCubit({
     required this.mapClustersService,
+    required this.mapCoordinator,
     required this.spotsCubit,
   }) : super(
           const MapClustersState.initial(
@@ -32,14 +34,17 @@ class MapClustersCubit extends Cubit<MapClustersState> {
     spotsCubitStreamSubscription = spotsCubit.stream.listen(
       (state) {
         state.maybeMap(
-          fetchSpotsSuccess: (state) => updateClustersBasedOnSpots(
-            // FIXME Remove mocks
-            bounds: const MapBoundsModel(northEast: MapPosition(), southWest: MapPosition()),
-            spots: state.filteredSpots,
-            zoom: 8.0,
-          ),
+          fetchSpotsSuccess: (state) {
+            final MapBoundsModel? mapBounds = mapCoordinator.bounds;
+            if (mapBounds == null) return;
+            updateClustersBasedOnSpots(
+              bounds: mapBounds,
+              spots: state.filteredSpots,
+              zoom: mapCoordinator.zoom,
+            );
+          },
           orElse: () {
-            // No implementation needed
+            /* No implementation needed */
           },
         );
       },

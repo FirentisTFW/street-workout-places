@@ -1,4 +1,5 @@
 import 'package:app/blocs/spots/spots_cubit.dart';
+import 'package:app/common/maps/i_map_coordinator.dart';
 import 'package:app/models/map_bounds_model.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
@@ -54,6 +55,7 @@ void main() {
         final MapClustersCubit mapClustersCubit = MapClustersCubit(
           mapClustersService: mapClustersService,
           spotsCubit: spotsCubit,
+          mapCoordinator: IMapCoordinator.create(),
         );
         spotsCubit.emit(
           SpotsState.fetchSpotsSuccess(

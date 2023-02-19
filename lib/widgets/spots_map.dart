@@ -1,12 +1,9 @@
 import 'package:app/common/constants.dart';
-import 'package:app/extensions/extensions.dart';
-import 'package:app/generated/l10n.dart';
-import 'package:app/mappers/mappers.dart';
 import 'package:app/models/workout_spot_model.dart';
-import 'package:app/styles/app_colors.dart';
+import 'package:app/networking/models/map_position.dart';
+import 'package:app/pages/map_clusters/map_clusters_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/plugin_api.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SpotsMap extends StatefulWidget {
   final List<WorkoutSpotModel> spots;
@@ -22,58 +19,20 @@ class SpotsMap extends StatefulWidget {
 }
 
 class _SpotsMapState extends State<SpotsMap> {
-  final MapController _mapController = MapController();
-
-  @override
-  void dispose() {
-    _mapController.dispose();
-    super.dispose();
-  }
+  MapClustersCubit get _mapClustersCubit => BlocProvider.of<MapClustersCubit>(context);
 
   @override
   Widget build(BuildContext context) {
     final mapConstants = Constants.maps;
-    return FlutterMap(
-      mapController: _mapController,
-      options: MapOptions(
-        center: LatLng(mapConstants.defaultLatitude, mapConstants.defaultLongitude),
-        enableMultiFingerGestureRace: true,
-        maxZoom: mapConstants.maxLocationZoom,
-        minZoom: mapConstants.minLocationZoom,
-        zoom: mapConstants.defaultZoom,
+    return _mapClustersCubit.mapCoordinator.buildMap(
+      context,
+      initialCoordinates: MapPosition(
+        latitude: mapConstants.defaultLatitude,
+        longitude: mapConstants.defaultLongitude,
       ),
-      nonRotatedChildren: [
-        AttributionWidget.defaultWidget(
-          source: S.of(context).mapDataSourceOpenStreetMap,
-        ),
-      ],
-      children: [
-        TileLayer(
-          urlTemplate: mapConstants.openStreetMapTileUrlTemplate,
-          userAgentPackageName: Constants.app.packageName,
-        ),
-        MarkerLayer(
-          markers: widget.spots.map(_maybeBuildSpotMarker).toList().filterNotNull(),
-          rotate: true,
-        ),
-      ],
-    );
-  }
-
-  Marker? _maybeBuildSpotMarker(WorkoutSpotModel spot) {
-    // FIXME Change name - prepareMarker(?) and move builder part to separate widget
-    final LatLng? latLng = spot.coordinates?.maybeMapToLatLng();
-    if (latLng == null) return null;
-    return Marker(
-      point: latLng,
-      builder: (_) => GestureDetector(
-        onTap: () => widget.onSpotIconPressed(spot),
-        child: const Icon(
-          Icons.location_pin,
-          color: AppColors.blue,
-          size: 36.0,
-        ),
-      ),
+      maxZoom: mapConstants.maxLocationZoom,
+      minZoom: mapConstants.minLocationZoom,
+      zoom: mapConstants.defaultZoom,
     );
   }
 }
