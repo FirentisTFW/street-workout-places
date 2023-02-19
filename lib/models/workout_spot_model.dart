@@ -17,7 +17,7 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
     MapPosition? coordinates,
     String? description,
     @Default([]) List<Equipment> equipment,
-    String? id,
+    int? id,
     @Default([]) List<String> images,
     String? name,
     WorkoutSpotSize? size,

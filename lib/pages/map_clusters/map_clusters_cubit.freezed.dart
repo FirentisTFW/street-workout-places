@@ -51,19 +51,22 @@ mixin _$MapClustersState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MapClustersStateCopyWith<MapClustersState> get copyWith => throw _privateConstructorUsedError;
+  $MapClustersStateCopyWith<MapClustersState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapClustersStateCopyWith<$Res> {
-  factory $MapClustersStateCopyWith(MapClustersState value, $Res Function(MapClustersState) then) =
+  factory $MapClustersStateCopyWith(
+          MapClustersState value, $Res Function(MapClustersState) then) =
       _$MapClustersStateCopyWithImpl<$Res, MapClustersState>;
   @useResult
   $Res call({List<MapClusterModel> clusters});
 }
 
 /// @nodoc
-class _$MapClustersStateCopyWithImpl<$Res, $Val extends MapClustersState> implements $MapClustersStateCopyWith<$Res> {
+class _$MapClustersStateCopyWithImpl<$Res, $Val extends MapClustersState>
+    implements $MapClustersStateCopyWith<$Res> {
   _$MapClustersStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -86,17 +89,22 @@ class _$MapClustersStateCopyWithImpl<$Res, $Val extends MapClustersState> implem
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> implements $MapClustersStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) = __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res>
+    implements $MapClustersStateCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<MapClusterModel> clusters});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$MapClustersStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$MapClustersStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then) : super(_value, _then);
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -115,7 +123,8 @@ class __$$_InitialCopyWithImpl<$Res> extends _$MapClustersStateCopyWithImpl<$Res
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required final List<MapClusterModel> clusters}) : _clusters = clusters;
+  const _$_Initial({required final List<MapClusterModel> clusters})
+      : _clusters = clusters;
 
   final List<MapClusterModel> _clusters;
   @override
@@ -138,12 +147,14 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_clusters));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_clusters));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith => __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -203,11 +214,13 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements MapClustersState {
-  const factory _Initial({required final List<MapClusterModel> clusters}) = _$_Initial;
+  const factory _Initial({required final List<MapClusterModel> clusters}) =
+      _$_Initial;
 
   @override
   List<MapClusterModel> get clusters;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith => throw _privateConstructorUsedError;
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }

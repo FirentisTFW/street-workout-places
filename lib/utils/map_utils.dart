@@ -54,21 +54,15 @@ abstract class MapUtils {
         BaseCluster? cluster,
         double? longitude,
         double? latitude,
-      ) {
-        return MapClusterModel(
-          clusterId: cluster?.id,
-          icon: Icons.location_pin,
-          coordinates: MapPosition(
-            latitude: latitude,
-            longitude: longitude,
-          ),
-          onPressed: () {
-            // TODO Implement
-            print('jest git');
-            // AlertDialogUtils.showContentUnavailable(context);
-          },
-        );
-      },
+      ) =>
+          MapClusterModel(
+        clusterId: cluster?.id,
+        icon: Icons.location_pin,
+        coordinates: MapPosition(
+          latitude: latitude,
+          longitude: longitude,
+        ),
+      ),
     );
   }
 }

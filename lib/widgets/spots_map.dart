@@ -25,6 +25,12 @@ class _SpotsMapState extends State<SpotsMap> {
   final MapController _mapController = MapController();
 
   @override
+  void dispose() {
+    _mapController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final mapConstants = Constants.maps;
     return FlutterMap(

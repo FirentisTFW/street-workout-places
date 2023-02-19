@@ -5,12 +5,11 @@ import 'package:app/errors/ui_error.dart';
 import 'package:app/mappers/workout_spot_mappers.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/address.dart';
-import 'package:app/repositories/spots/i_spots_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockSpotsRepository extends Mock implements ISpotsRepository {}
+import '../../helpers/mock_repositories.dart';
 
 void main() {
   late MockSpotsRepository spotsRepository;

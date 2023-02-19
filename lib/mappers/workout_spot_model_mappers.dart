@@ -7,10 +7,6 @@ extension WorkoutSpotModelMapper on WorkoutSpotModel {
         clusterId: id,
         coordinates: coordinates,
         icon: Icons.location_pin,
-        onPressed: () {
-          // TODO Implement
-          print('jest git');
-        },
       );
 }
 
