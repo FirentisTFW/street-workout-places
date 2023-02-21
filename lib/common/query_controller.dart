@@ -3,16 +3,16 @@ import 'dart:ui';
 
 import 'package:app/common/constants.dart';
 
-class QueryHandler {
+class QueryController {
   final Duration duration;
   String _lastQuery = '';
   Timer? _timer;
 
-  QueryHandler({
+  QueryController({
     required this.duration,
   });
 
-  QueryHandler.withDefaultDuration() : duration = Constants.search.queryTimerReaction;
+  QueryController.withDefaultDuration() : duration = Constants.search.queryTimerReaction;
 
   void updateQuery(
     String query, {

@@ -14,9 +14,9 @@ part 'map_clusters_state.dart';
 
 class MapClustersCubit extends Cubit<MapClustersState> {
   final MapClustersService mapClustersService;
+  final IMapCoordinator mapCoordinator;
   final SpotsCubit spotsCubit;
   late final StreamSubscription<SpotsState> spotsCubitStreamSubscription;
-  final IMapCoordinator mapCoordinator;
 
   MapClustersCubit({
     required this.mapClustersService,
@@ -34,15 +34,9 @@ class MapClustersCubit extends Cubit<MapClustersState> {
     spotsCubitStreamSubscription = spotsCubit.stream.listen(
       (state) {
         state.maybeMap(
-          fetchSpotsSuccess: (state) {
-            final MapBoundsModel? mapBounds = mapCoordinator.bounds;
-            if (mapBounds == null) return;
-            updateClustersBasedOnSpots(
-              bounds: mapBounds,
-              spots: state.filteredSpots,
-              zoom: mapCoordinator.zoom,
-            );
-          },
+          fetchSpotsSuccess: (state) => updateClusters(
+            spots: state.filteredSpots,
+          ),
           orElse: () {
             /* No implementation needed */
           },
@@ -57,15 +51,15 @@ class MapClustersCubit extends Cubit<MapClustersState> {
     return super.close();
   }
 
-  void updateClustersBasedOnSpots({
-    required MapBoundsModel bounds,
+  void updateClusters({
     required List<WorkoutSpotModel> spots,
-    required double zoom,
   }) {
+    final MapBoundsModel? mapBounds = mapCoordinator.bounds;
+    if (mapBounds == null) return;
     final List<MapClusterModel> clusters = mapClustersService.createClustersForSpots(
-      bounds: bounds,
+      bounds: mapBounds,
       spots: spots,
-      zoom: zoom,
+      zoom: mapCoordinator.zoom,
     );
     // ..map(
     //     (cluster) {

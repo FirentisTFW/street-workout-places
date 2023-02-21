@@ -12,16 +12,17 @@ import '../../helpers/mock_repositories.dart';
 
 class MockMapClustersService extends Mock implements MapClustersService {}
 
+class MockMapCoordinator extends Mock implements IMapCoordinator {}
+
 void main() {
   group('MapClustersCubitTest -', () {
     group('updateClustersBasedOnSpots -', () {
+      const MapBoundsModel mapBounds = MapBoundsModel(
+        northEast: MapPosition(latitude: 1.0, longitude: 2.0),
+        southWest: MapPosition(latitude: 2.0, longitude: 1.0),
+      );
       setUp(
-        () => registerFallbackValue(
-          const MapBoundsModel(
-            northEast: MapPosition(latitude: 1.0, longitude: 2.0),
-            southWest: MapPosition(latitude: 2.0, longitude: 1.0),
-          ),
-        ),
+        () => registerFallbackValue(mapBounds),
       );
       final List<WorkoutSpotModel> spots = [
         const WorkoutSpotModel(
@@ -41,6 +42,7 @@ void main() {
         spotsRepository: MockSpotsRepository(),
       );
       final MapClustersService mapClustersService = MockMapClustersService();
+      final IMapCoordinator mapCoordinator = MockMapCoordinator();
       test(
           'When SpotsCubit emits new state with filtered spots, MapClustersService.createClustersForSpots() method is called',
           () async {
@@ -51,11 +53,13 @@ void main() {
             zoom: any(named: 'zoom'),
           ),
         ).thenReturn([]);
+        when(() => mapCoordinator.bounds).thenReturn(mapBounds);
+        when(() => mapCoordinator.zoom).thenReturn(8.0);
         // ignore: unused_local_variable
         final MapClustersCubit mapClustersCubit = MapClustersCubit(
           mapClustersService: mapClustersService,
           spotsCubit: spotsCubit,
-          mapCoordinator: IMapCoordinator.create(),
+          mapCoordinator: mapCoordinator,
         );
         spotsCubit.emit(
           SpotsState.fetchSpotsSuccess(

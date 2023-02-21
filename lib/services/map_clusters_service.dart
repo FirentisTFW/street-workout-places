@@ -20,7 +20,7 @@ class MapClustersService {
     _clusterMaker = MapUtils.provideClusterMaker(
       spots: spots,
     );
-    _clusterMaker.clusters(boundingBox, zoom.round());
-    return [];
+    final List<MapClusterModel> clusters = _clusterMaker.clusters(boundingBox, zoom.round());
+    return clusters;
   }
 }

@@ -28,8 +28,9 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     required double maxZoom,
     required double minZoom,
     required double zoom,
+    VoidCallback? onPositionChanged,
   }) {
-    throw FlutterMap(
+    return FlutterMap(
       mapController: _mapController,
       options: MapOptions(
         center: initialCoordinates.maybeMapToLatLng(),
@@ -37,6 +38,7 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
         maxZoom: maxZoom,
         minZoom: minZoom,
         zoom: zoom,
+        onPositionChanged: (_, __) => onPositionChanged?.call(),
       ),
       nonRotatedChildren: [
         AttributionWidget.defaultWidget(

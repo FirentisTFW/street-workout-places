@@ -20,6 +20,7 @@ abstract class IMapCoordinator {
     required double maxZoom,
     required double minZoom,
     required double zoom,
+    VoidCallback? onPositionChanged,
   });
 
   void close();

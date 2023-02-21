@@ -1,15 +1,18 @@
 import 'package:app/blocs/spots/spots_cubit.dart';
 import 'package:app/common/bloc_page_state.dart';
-import 'package:app/common/query_handler.dart';
+import 'package:app/common/maps/i_map_coordinator.dart';
+import 'package:app/common/query_controller.dart';
 import 'package:app/common/root_navigator.dart';
 import 'package:app/common/text_field_essentials.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/models/page_tab_bar_button_data.dart';
 import 'package:app/models/workout_spot_model.dart';
+import 'package:app/pages/map_clusters/map_clusters_cubit.dart';
 import 'package:app/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/pages/spots/spots_page_tab.dart';
 import 'package:app/pages/spots/widgets/spot_list.dart';
 import 'package:app/routing/dashboard_tabs/spots_routing.dart';
+import 'package:app/services/map_clusters_service.dart';
 import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/widgets/app_text_field.dart';
@@ -31,7 +34,7 @@ class SpotsPage extends StatefulWidget {
 
 class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   final PageController _pageController = PageController();
-  final QueryHandler _queryHandler = QueryHandler.withDefaultDuration();
+  final QueryController _queryController = QueryController.withDefaultDuration();
   final TextFieldEssentials _searchTFE = TextFieldEssentials();
   final ValueNotifier<SpotsPageTab> _tabNotifier = ValueNotifier(SpotsPageTab.map);
 
@@ -54,7 +57,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
     _pageController.dispose();
     _tabNotifier.dispose();
     _searchTFE.dispose();
-    _queryHandler.dispose();
+    _queryController.dispose();
     super.dispose();
   }
 
@@ -66,15 +69,23 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<SpotsCubit, SpotsState>(
-          builder: (_, state) => state.maybeMap(
-            fetchSpotsInProgress: (_) => buildLoadingBody(),
-            fetchSpotsSuccess: (state) => _buildLoadedBody(state.filteredSpots),
-            fetchSpotsFailure: (state) => buildFullPageErrorBody(
-              state.error,
-              onRetryPressed: _fetchSpots,
+        child: BlocProvider<MapClustersCubit>(
+          create: (_) => MapClustersCubit(
+            // FIXME Use injector
+            mapClustersService: MapClustersService(),
+            mapCoordinator: IMapCoordinator.create(),
+            spotsCubit: spotsCubit,
+          ),
+          child: BlocBuilder<SpotsCubit, SpotsState>(
+            builder: (_, state) => state.maybeMap(
+              fetchSpotsInProgress: (_) => buildLoadingBody(),
+              fetchSpotsSuccess: (state) => _buildLoadedBody(state.filteredSpots),
+              fetchSpotsFailure: (state) => buildFullPageErrorBody(
+                state.error,
+                onRetryPressed: _fetchSpots,
+              ),
+              orElse: buildEmptyBody,
             ),
-            orElse: buildEmptyBody,
           ),
         ),
       ),
@@ -107,7 +118,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       child: AppTextField(
         _searchTFE,
         labelText: S.of(context).search,
-        onTextChanged: (text) => _queryHandler.updateQuery(
+        onTextChanged: (text) => _queryController.updateQuery(
           text,
           action: filterSpots,
         ),
@@ -152,9 +163,13 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
 
   Widget _buildMap(List<WorkoutSpotModel> spots) {
     return AutomaticKeepAliveClientContainer(
-      child: SpotsMap(
-        spots: spots,
-        onSpotIconPressed: _goToSpotDetails,
+      child: BlocBuilder<MapClustersCubit, MapClustersState>(
+        builder: (_, state) => state.map(
+          initial: (state) => SpotsMap(
+            clusters: state.clusters,
+            onSpotIconPressed: _goToSpotDetails,
+          ),
+        ),
       ),
     );
   }
