@@ -5,7 +5,6 @@ import 'package:app/models/map_cluster_model.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:fluster/fluster.dart';
-import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
 
 abstract class MapUtils {
@@ -57,11 +56,12 @@ abstract class MapUtils {
       ) =>
           MapClusterModel(
         clusterId: cluster?.id,
-        icon: Icons.location_pin,
         coordinates: MapPosition(
           latitude: latitude,
           longitude: longitude,
         ),
+        isCluster: cluster?.isCluster,
+        pointsSize: cluster?.pointsSize,
       ),
     );
   }

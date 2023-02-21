@@ -5,6 +5,7 @@ import 'package:app/common/query_controller.dart';
 import 'package:app/common/root_navigator.dart';
 import 'package:app/common/text_field_essentials.dart';
 import 'package:app/generated/l10n.dart';
+import 'package:app/injector/injector.dart';
 import 'package:app/models/page_tab_bar_button_data.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/pages/map_clusters/map_clusters_cubit.dart';
@@ -71,8 +72,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       body: SafeArea(
         child: BlocProvider<MapClustersCubit>(
           create: (_) => MapClustersCubit(
-            // FIXME Use injector
-            mapClustersService: MapClustersService(),
+            mapClustersService: Injector().resolve<MapClustersService>(),
             mapCoordinator: IMapCoordinator.create(),
             spotsCubit: spotsCubit,
           ),

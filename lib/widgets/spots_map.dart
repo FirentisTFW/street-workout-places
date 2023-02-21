@@ -51,13 +51,13 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
   }
 
   void _updateMapClusters() {
-    final List<WorkoutSpotModel>? spots = spotsCubit.state.maybeMap(
-      fetchSpotsSuccess: (state) => state.filteredSpots,
-      orElse: () => null,
-    );
-    if (spots == null) return;
-    _mapClustersCubit.updateClusters(
-      spots: spots,
+    spotsCubit.state.maybeMap(
+      fetchSpotsSuccess: (state) => _mapClustersCubit.updateClusters(
+        spots: state.spots,
+      ),
+      orElse: () {
+        // No implementation needed
+      },
     );
   }
 }

@@ -61,13 +61,6 @@ class MapClustersCubit extends Cubit<MapClustersState> {
       spots: spots,
       zoom: mapCoordinator.zoom,
     );
-    // ..map(
-    //     (cluster) {
-    //       // FIXME Update clusters - icon, onPressed etc.
-    //       return cluster;
-    //     },
-    //   ).toList();
-
     emit(
       _Initial(
         clusters: clusters,

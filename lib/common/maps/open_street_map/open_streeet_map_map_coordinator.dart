@@ -6,7 +6,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/models/map_bounds_model.dart';
 import 'package:app/models/map_cluster_model.dart';
 import 'package:app/networking/models/map_position.dart';
-import 'package:app/styles/app_colors.dart';
+import 'package:app/widgets/map_marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart' hide MapPosition;
 import 'package:latlong2/latlong.dart';
@@ -68,14 +68,8 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     if (latLng == null) return null;
     return Marker(
       point: latLng,
-      // FIXME Move this to separate widget
-      builder: (_) => GestureDetector(
-        onTap: cluster.onPressed,
-        child: Icon(
-          cluster.icon,
-          color: AppColors.blue,
-          size: 36.0,
-        ),
+      builder: (_) => MapMarker(
+        mapCluster: cluster,
       ),
     );
   }
