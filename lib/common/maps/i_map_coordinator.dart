@@ -1,6 +1,7 @@
 import 'package:app/common/maps/open_street_map/open_streeet_map_map_coordinator.dart';
 import 'package:app/models/map_bounds_model.dart';
 import 'package:app/models/map_cluster_model.dart';
+import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ abstract class IMapCoordinator {
     required double minZoom,
     required double zoom,
     VoidCallback? onPositionChanged,
+    void Function(WorkoutSpotModel)? onSpotPressed,
   });
 
   void close();

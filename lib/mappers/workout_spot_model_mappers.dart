@@ -5,6 +5,7 @@ extension WorkoutSpotModelMapper on WorkoutSpotModel {
   MapClusterModel mapToMapClusterModel() => MapClusterModel(
         clusterId: id,
         coordinates: coordinates,
+        directSpot: this,
       );
 }
 

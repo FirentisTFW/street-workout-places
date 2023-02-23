@@ -5,6 +5,7 @@ import 'package:app/extensions/extensions.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/models/map_bounds_model.dart';
 import 'package:app/models/map_cluster_model.dart';
+import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:app/widgets/map_marker.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     required double minZoom,
     required double zoom,
     VoidCallback? onPositionChanged,
+    void Function(WorkoutSpotModel)? onSpotPressed,
   }) {
     return FlutterMap(
       mapController: _mapController,
@@ -51,7 +53,15 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
           userAgentPackageName: Constants.app.packageName,
         ),
         MarkerLayer(
-          markers: clusters.map(_maybePrepareSpotMarker).toList().filterNotNull(),
+          markers: clusters
+              .map(
+                (cluster) => _maybePrepareSpotMarker(
+                  cluster: cluster,
+                  onSpotPressed: onSpotPressed,
+                ),
+              )
+              .toList()
+              .filterNotNull(),
           rotate: true,
         ),
       ],
@@ -63,13 +73,18 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     _mapController.dispose();
   }
 
-  Marker? _maybePrepareSpotMarker(MapClusterModel cluster) {
+  Marker? _maybePrepareSpotMarker({
+    required MapClusterModel cluster,
+    required void Function(WorkoutSpotModel)? onSpotPressed,
+  }) {
     final LatLng? latLng = cluster.maybeMapToLatLng();
     if (latLng == null) return null;
+    final WorkoutSpotModel? spot = cluster.directSpot;
     return Marker(
       point: latLng,
       builder: (_) => MapMarker(
         mapCluster: cluster,
+        onPressed: onSpotPressed == null || spot == null ? null : () => onSpotPressed(spot),
       ),
     );
   }

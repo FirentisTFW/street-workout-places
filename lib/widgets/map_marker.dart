@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 
 class MapMarker extends StatelessWidget {
   final MapClusterModel mapCluster;
+  final VoidCallback? onPressed;
 
   const MapMarker({
     required this.mapCluster,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // TODO Rethink onPressed placement
-      onTap: mapCluster.onPressed,
+      onTap: onPressed,
       child: mapCluster.isCluster ?? false ? _buildClusterIconWithElementsSize() : _buildSingleLocationIcon(),
     );
   }

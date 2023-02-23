@@ -1,10 +1,13 @@
 import 'package:app/common/constants.dart';
 import 'package:app/common/controllers/delayed_replacable_action_controller.dart';
 import 'package:app/common/global_blocs_mixin.dart';
+import 'package:app/common/root_navigator.dart';
 import 'package:app/models/map_cluster_model.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:app/pages/map_clusters/map_clusters_cubit.dart';
+import 'package:app/pages/spot_details/spot_details_arguments.dart';
+import 'package:app/routing/dashboard_tabs/spots_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,6 +50,7 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
       minZoom: mapConstants.minLocationZoom,
       zoom: mapConstants.defaultZoom,
       onPositionChanged: () => _maPositionReationController.replaceAction(_updateMapClusters),
+      onSpotPressed: _goToSpotDetails,
     );
   }
 
@@ -60,4 +64,11 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
       },
     );
   }
+
+  void _goToSpotDetails(WorkoutSpotModel spot) => RootNavigator.of(context).pushNamed(
+        SpotsRouting.spotDetails,
+        arguments: SpotDetailsArguments(
+          spot: spot,
+        ),
+      );
 }

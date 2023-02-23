@@ -1,1 +1,1 @@
-- implement onPressed callbacks for map markers
+- implement onPressed callbacks for map clusters
