@@ -35,9 +35,23 @@
 - description
 - reviews (?)
 
-## 5. ADD SPOT FORM
-- input for spot details
-- how location would be handled? by selecting a spot on map? then we need another screen with map
+## 5. ADD SPOT FORM - 3 PAGES
+### ADD SPOT FORM 1
+- input for spot details:
+    - name
+    - size (dropdown)
+    - surface (dropdown)
+    - coordinates - raw latitude and longitude inputs with map preview and "select on the map" button. When user clicks the button, another screen appears - a map where user can select a direct spot. Maybe inital zoom should be adjusted, and default location should be user's location? Maybe a dialog to ask if users wants it?
+    - address:
+        - city
+        - house number - optional
+        - street - optional
+    - description
+### ADD SPOT FORM 2
+- equipment - list of selectable items
+
+### ADD SPOT FORM 3
+- images - at least one required, possibility to select main image
 
 ## 6. CONTACT/HELP
 - basic contact and legal information
