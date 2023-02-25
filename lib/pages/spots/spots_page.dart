@@ -18,6 +18,7 @@ import 'package:app/styles/app_animations.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/automatic_keep_alive_client_container.dart';
+import 'package:app/widgets/error_view_big.dart';
 import 'package:app/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/widgets/space.dart';
 import 'package:app/widgets/spots_map.dart';
@@ -80,8 +81,8 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
             builder: (_, state) => state.maybeMap(
               fetchSpotsInProgress: (_) => buildLoadingBody(),
               fetchSpotsSuccess: (state) => _buildLoadedBody(state.filteredSpots),
-              fetchSpotsFailure: (state) => buildFullPageErrorBody(
-                state.error,
+              fetchSpotsFailure: (state) => ErrorViewBig(
+                error: state.error,
                 onRetryPressed: _fetchSpots,
               ),
               orElse: buildEmptyBody,
