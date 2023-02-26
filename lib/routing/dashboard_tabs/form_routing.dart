@@ -20,7 +20,7 @@ class FormRouting {
   static Widget? getPage(String? routeName) {
     switch (routeName) {
       case form:
-        return Pages.form();
+        return Pages.newSpot();
       default:
         return null;
     }

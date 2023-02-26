@@ -35,8 +35,8 @@
 - description
 - reviews (?)
 
-## 5. ADD SPOT FORM - 3 PAGES
-### ADD SPOT FORM 1
+## 5. NEW SPOT FORM - 3 PAGES
+### NEW SPOT FORM 1
 - input for spot details:
     - name
     - size (dropdown)
@@ -47,10 +47,10 @@
         - house number - optional
         - street - optional
     - description
-### ADD SPOT FORM 2
+### NEW SPOT FORM 2
 - equipment - list of selectable items
 
-### ADD SPOT FORM 3
+### NEW SPOT FORM 3
 - images - at least one required, possibility to select main image
 
 ## 6. CONTACT/HELP

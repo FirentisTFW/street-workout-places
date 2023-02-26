@@ -7,7 +7,7 @@ class AppTextField extends StatefulWidget {
   final String? additionalInfoText;
   final bool autofocus;
   final Color? backgroundColor;
-  final TextFieldEssentials data;
+  final TextFieldEssentials essentials;
   final bool isEnabled;
   final TextInputType? keyboardType;
   final String? labelText;
@@ -30,7 +30,7 @@ class AppTextField extends StatefulWidget {
   final void Function(String)? onTextChanged;
 
   const AppTextField(
-    this.data, {
+    this.essentials, {
     this.additionalInfoText,
     this.autofocus = false,
     this.backgroundColor,
@@ -63,9 +63,9 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   bool _hasLostFirstFocus = false;
 
-  TextEditingController get _controller => widget.data.controller;
+  TextEditingController get _controller => widget.essentials.controller;
 
-  FocusNode get _focusNode => widget.data.focusNode;
+  FocusNode get _focusNode => widget.essentials.focusNode;
 
   // TODO Consider ability to force validation
   bool get _shouldValidate => _hasLostFirstFocus;

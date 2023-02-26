@@ -37,7 +37,7 @@ class SpotsPage extends StatefulWidget {
 class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   final PageController _pageController = PageController();
   final QueryController _queryController = QueryController.withDefaultDuration();
-  final TextFieldEssentials _searchTFE = TextFieldEssentials();
+  final TextFieldEssentials _searchTFE = TextFieldEssentials.noValidation();
   final ValueNotifier<SpotsPageTab> _tabNotifier = ValueNotifier(SpotsPageTab.map);
 
   @override
@@ -113,7 +113,6 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   }
 
   Widget _buildSearchBar() {
-    // TODO Implement onChange - filter locations by name
     return Padding(
       padding: AppPadding.defaultHorizontal,
       child: AppTextField(

@@ -1,1 +1,3 @@
 - implement onPressed callbacks for map clusters
+
+- new spot form part 1
