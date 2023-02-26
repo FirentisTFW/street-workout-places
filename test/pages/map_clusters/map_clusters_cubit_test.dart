@@ -8,11 +8,7 @@ import 'package:app/services/map_clusters_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../helpers/mock_repositories.dart';
-
-class MockMapClustersService extends Mock implements MapClustersService {}
-
-class MockMapCoordinator extends Mock implements IMapCoordinator {}
+import '../../helpers/mocks.dart';
 
 void main() {
   group('MapClustersCubitTest -', () {

@@ -8,14 +8,13 @@ import 'package:app/widgets/app_progress_indicator.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/error_view_big.dart';
 import 'package:app/widgets/spots_map.dart';
-import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 
-class MockSpotsCubit extends MockCubit<SpotsState> implements SpotsCubit {}
+import '../../helpers/mocks.dart';
 
 void main() {
   late SpotsCubit spotsCubit;

@@ -9,7 +9,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../helpers/mock_repositories.dart';
+import '../../helpers/mocks.dart';
 
 void main() {
   late MockSpotsRepository spotsRepository;
