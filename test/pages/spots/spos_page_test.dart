@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:patrol/patrol.dart';
 
 class MockSpotsCubit extends MockCubit<SpotsState> implements SpotsCubit {}
 
@@ -36,20 +37,20 @@ void main() {
   }
 
   group('SposPageTest -', () {
-    testWidgets(
+    patrolTest(
       'When fecthing spots is in progress, shows progress indicator',
-      (tester) async {
+      ($) async {
         when(() => spotsCubit.state).thenReturn(const SpotsState.fetchSpotsInProgress());
 
-        await tester.pumpWidget(provideTestablePage());
-        await tester.pump();
+        await $.pumpWidget(provideTestablePage());
+        await $.pump();
 
         expect(find.byType(AppProgressIndicator), equals(findsOneWidget));
       },
     );
-    testWidgets(
+    patrolTest(
       'When spots are fetched, shows a loaded page',
-      (tester) async {
+      ($) async {
         when(() => spotsCubit.state).thenReturn(
           const SpotsState.fetchSpotsSuccess(
             spots: [],
@@ -57,25 +58,23 @@ void main() {
           ),
         );
 
-        await tester.pumpWidget(provideTestablePage());
-        await tester.pumpAndSettle();
+        await $.pumpWidgetAndSettle(provideTestablePage());
 
         expect(find.byType(AppTextField), equals(findsOneWidget));
         expect(find.byType(PageView), equals(findsOneWidget));
         expect(find.byType(SpotsMap), equals(findsOneWidget));
       },
     );
-    testWidgets(
+    patrolTest(
       'When fetching spots fails, shows error page',
-      (tester) async {
+      ($) async {
         when(() => spotsCubit.state).thenReturn(
           const SpotsState.fetchSpotsFailure(
             error: ContainerError(UnknownError()),
           ),
         );
 
-        await tester.pumpWidget(provideTestablePage());
-        await tester.pumpAndSettle();
+        await $.pumpWidgetAndSettle(provideTestablePage());
 
         expect(find.byType(ErrorViewBig), equals(findsOneWidget));
       },
