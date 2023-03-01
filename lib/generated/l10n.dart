@@ -161,10 +161,10 @@ class S {
   }
 
   /// `Rozmiar: {size}`
-  String size(Object size) {
+  String sizeSelected(Object size) {
     return Intl.message(
       'Rozmiar: $size',
-      name: 'size',
+      name: 'sizeSelected',
       desc: '',
       args: [size],
     );
@@ -345,6 +345,26 @@ class S {
     return Intl.message(
       'Map data from OpenStreetMap',
       name: 'mapDataSourceOpenStreetMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rozmiar`
+  String get size {
+    return Intl.message(
+      'Rozmiar',
+      name: 'size',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Podłoże`
+  String get surface {
+    return Intl.message(
+      'Podłoże',
+      name: 'surface',
       desc: '',
       args: [],
     );

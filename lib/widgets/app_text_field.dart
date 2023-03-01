@@ -12,6 +12,7 @@ class AppTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final String? labelText;
   final int minLines;
+  final int maxLines;
   final Widget? prefix;
   final String? prefixText;
   final Widget? rightScope;
@@ -38,6 +39,7 @@ class AppTextField extends StatefulWidget {
     this.keyboardType,
     this.labelText,
     this.minLines = 1,
+    this.maxLines = 1,
     this.prefix,
     this.prefixText,
     this.rightScope,
@@ -100,7 +102,7 @@ class _AppTextFieldState extends State<AppTextField> {
       focusNode: _focusNode,
       keyboardType: widget.keyboardType,
       minLines: widget.minLines,
-      maxLines: widget.keyboardType == TextInputType.multiline ? null : 1,
+      maxLines: widget.keyboardType == TextInputType.multiline ? null : widget.maxLines,
       onChanged: widget.onTextChanged,
       onFieldSubmitted: (_) => widget.onSubmitted?.call(),
       style: AppTextStyles.textFieldContent(),

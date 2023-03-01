@@ -73,7 +73,7 @@ class SpotListCell extends StatelessWidget {
     final String? size = spot.size?.getDescription(context);
     if (size == null) return const SizedBox.shrink();
     return Text(
-      S.of(context).size(size),
+      S.of(context).sizeSelected(size),
       style: AppTextStyles.content(),
     );
   }

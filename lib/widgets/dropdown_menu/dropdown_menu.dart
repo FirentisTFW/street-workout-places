@@ -5,19 +5,20 @@ import 'package:app/styles/app_text_styles.dart';
 import 'package:app/widgets/adaptive_button.dart';
 import 'package:app/widgets/dropdown_menu/app_dropdown_menu_item.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_item_style.dart';
+import 'package:app/widgets/dropdown_menu/dropdown_menu_cell.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_menu_separator.dart';
 import 'package:app/widgets/space_text_span.dart';
 import 'package:flutter/material.dart';
 
-class DropdownMenu extends StatefulWidget {
+class DropdownMenu<T> extends StatefulWidget {
   final bool shouldAlwaysDisplayPlaceholder;
   final double arrowHeight;
   final double bottomOffset;
   final DropdownItemStyle dropdownItemStyle;
   final double height;
   final String? initialValue;
-  final List<String> items;
-  final void Function(String) onItemSelected;
+  final List<AppDropdownMenuItem<T>> items;
+  final void Function(T value) onItemSelected;
   final String? placeholderText;
   final TextStyle? placeholderTextStyle;
 
@@ -35,10 +36,10 @@ class DropdownMenu extends StatefulWidget {
   });
 
   @override
-  _DropdownMenuState createState() => _DropdownMenuState();
+  _DropdownMenuState<T> createState() => _DropdownMenuState<T>();
 }
 
-class _DropdownMenuState<T> extends State<DropdownMenu> with TickerProviderStateMixin {
+class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderStateMixin {
   final LayerLink _layerLink = LayerLink();
   late final AnimationController _animationController;
   late final Animation<double> _expandAnimation;
@@ -52,7 +53,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu> with TickerProviderState
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.items.indexWhere((item) => item == widget.initialValue);
+    _currentIndex = widget.items.indexWhere((item) => item.value == widget.initialValue);
     _animationController = AnimationController(
       duration: AppAnimations.regularDuration,
       vsync: this,
@@ -64,9 +65,9 @@ class _DropdownMenuState<T> extends State<DropdownMenu> with TickerProviderState
   }
 
   @override
-  void didUpdateWidget(covariant DropdownMenu oldWidget) {
+  void didUpdateWidget(covariant DropdownMenu<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _currentIndex = widget.items.indexWhere((item) => item == widget.initialValue);
+    _currentIndex = widget.items.indexWhere((item) => item.value == widget.initialValue);
   }
 
   @override
@@ -117,7 +118,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu> with TickerProviderState
               children: [
                 const SpaceTextSpan(),
                 TextSpan(
-                  text: widget.items[_currentIndex],
+                  text: widget.items[_currentIndex].text,
                   style: AppTextStyles.textFieldLabel(),
                 ),
               ],
@@ -125,7 +126,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu> with TickerProviderState
           )
         else
           Text(
-            widget.items[_currentIndex],
+            widget.items[_currentIndex].text,
             style: AppTextStyles.contentBigger(),
           ),
       ],
@@ -202,13 +203,13 @@ class _DropdownMenuState<T> extends State<DropdownMenu> with TickerProviderState
             ),
         child: ListView.separated(
           itemBuilder: (_, index) {
-            final String item = widget.items[index];
-            return AppDropdownMenuItem(
-              item,
+            final AppDropdownMenuItem<T> item = widget.items[index];
+            return DropdownMenuCell(
+              item.text,
               borderRadius: widget.dropdownItemStyle.borderRadius,
               onPressed: () {
                 setState(() => _currentIndex = index);
-                widget.onItemSelected(item);
+                widget.onItemSelected.call(item.value);
                 _toggleDropdown();
               },
             );

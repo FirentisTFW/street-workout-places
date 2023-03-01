@@ -1,5 +1,6 @@
 import 'package:app/common/bloc_page_state.dart';
 import 'package:app/extensions/extensions.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:app/networking/models/surface.dart';
@@ -117,13 +118,13 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsBl
         if (size != null)
           InformationWithTitle(
             value: size.getDescription(context),
-            title: 'Rozmiar',
+            title: S.of(context).size,
           ),
         const Space.vertical(8.0),
         if (surface != null)
           InformationWithTitle(
             value: surface.getDescription(context),
-            title: 'Podłoże',
+            title: S.of(context).surface,
           ),
       ],
     );

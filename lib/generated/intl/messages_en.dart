@@ -57,11 +57,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nawiguj"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
-        "size": m0,
+        "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
+        "sizeSelected": m0,
         "spotsListTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Mapa"),
+        "surface": MessageLookupByLibrary.simpleMessage("Podłoże"),
         "surfaceDescriptionConcrete":
             MessageLookupByLibrary.simpleMessage("Beton"),
         "surfaceDescriptionDifferent":

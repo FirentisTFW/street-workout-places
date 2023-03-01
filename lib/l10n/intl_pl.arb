@@ -10,7 +10,7 @@
   "workoutSpotSizeDescriptionBig": "Duży",
   "workoutSpotSizeDescriptionMedium": "Średni",
   "workoutSpotSizeDescriptionSmall": "Mały",
-  "size": "Rozmiar: {size}",
+  "sizeSelected": "Rozmiar: {size}",
   "navigationButtonTitle": "Nawiguj",
   "ok": "Ok",
   "contentUnavailableDialogMessage": "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)",
@@ -28,5 +28,7 @@
   "surfaceDescriptionDifferent": "Inne",
   "surfaceDescriptionSand": "Piasek",
   "surfaceDescriptionTartan": "Tartan",
-  "mapDataSourceOpenStreetMap": "Map data from OpenStreetMap"
+  "mapDataSourceOpenStreetMap": "Map data from OpenStreetMap",
+  "size": "Rozmiar",
+  "surface": "Podłoże"
 }

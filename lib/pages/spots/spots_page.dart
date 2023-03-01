@@ -118,6 +118,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       child: AppTextField(
         _searchTFE,
         labelText: S.of(context).search,
+        textInputAction: TextInputAction.done,
         onTextChanged: (text) => _queryController.updateQuery(
           text,
           action: filterSpots,

@@ -18,6 +18,7 @@ import '../../helpers/mocks.dart';
 
 void main() {
   late SpotsCubit spotsCubit;
+
   setUp(() {
     return spotsCubit = MockSpotsCubit();
   });

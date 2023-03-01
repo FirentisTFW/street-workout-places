@@ -1,38 +1,9 @@
-import 'package:app/styles/app_text_styles.dart';
-import 'package:app/widgets/adaptive_button.dart';
-import 'package:flutter/material.dart';
-
-class AppDropdownMenuItem extends StatelessWidget {
-  final BorderRadius? borderRadius;
+class AppDropdownMenuItem<T> {
   final String text;
-  final VoidCallback onPressed;
+  final T value;
 
-  const AppDropdownMenuItem(
-    this.text, {
-    required this.borderRadius,
-    required this.onPressed,
+  const AppDropdownMenuItem({
+    required this.text,
+    required this.value,
   });
-
-  @override
-  Widget build(BuildContext context) {
-    return AdaptiveButton(
-      decoration: BoxDecoration(
-        borderRadius: borderRadius,
-      ),
-      onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10.0,
-          vertical: 12.0,
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: AppTextStyles.contentBigger(),
-            textAlign: TextAlign.start,
-          ),
-        ),
-      ),
-    );
-  }
 }
