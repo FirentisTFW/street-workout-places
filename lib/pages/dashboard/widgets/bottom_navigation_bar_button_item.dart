@@ -1,6 +1,6 @@
 import 'package:app/pages/dashboard/dashboard_tab.dart';
 import 'package:app/styles/app_colors.dart';
-import 'package:app/widgets/ios_ripple_remover.dart';
+import 'package:app/widgets/circular_button.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
 
@@ -17,19 +17,15 @@ class BottomNavigationBarButtonItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IosRippleRemover(
-      child: MaterialButton(
-        height: 70.0,
-        shape: const CircleBorder(),
-        onPressed: onPressed,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildIcon(),
-            const Space.vertical(6.0),
-            _buildText(context),
-          ],
-        ),
+    return CircularButton(
+      onPressed: onPressed,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildIcon(),
+          const Space.vertical(6.0),
+          _buildText(context),
+        ],
       ),
     );
   }

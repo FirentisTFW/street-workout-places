@@ -7,9 +7,11 @@ import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
 import 'package:app/pages/spot_details/spot_details_bloc.dart';
 import 'package:app/pages/spot_details/widgets/spot_details_image_slider.dart';
+import 'package:app/styles/app_colors.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/styles/app_text_styles.dart';
 import 'package:app/utils/map_utils.dart';
+import 'package:app/widgets/circular_button.dart';
 import 'package:app/widgets/information_with_title.dart';
 import 'package:app/widgets/navigation_button.dart';
 import 'package:app/widgets/separator.dart';
@@ -25,17 +27,40 @@ class SpotDetailsPage extends StatefulWidget {
 }
 
 class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsBloc> {
-  // FIXME Display back arrow
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<SpotDetailsBloc, SpotDetailsState>(
         builder: (_, state) {
-          return state.maybeWhen(
-            initial: _buildLoadedBody,
-            orElse: buildLoadingBody,
+          return Stack(
+            children: [
+              state.maybeWhen(
+                initial: _buildLoadedBody,
+                orElse: buildLoadingBody,
+              ),
+              Positioned(
+                top: 2.0,
+                left: 2.0,
+                child: _buildBackArrow(),
+              ),
+            ],
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildBackArrow() {
+    return SafeArea(
+      child: CircularButton(
+        color: AppColors.white,
+        circleSize: 40.0,
+        onPressed: () => Navigator.pop(context),
+        child: const Icon(
+          Icons.arrow_back,
+          color: AppColors.blue,
+          size: 28.0,
+        ),
       ),
     );
   }
@@ -65,7 +90,6 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsBl
           _buildSizeAndSurface(spot),
           _buildDescription(spot),
           _buildEquipment(spot),
-          // _buildReviews(),
         ].separatedBy(
           const Space.vertical(20.0),
         ),
