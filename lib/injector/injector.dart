@@ -25,7 +25,7 @@ class Injector {
   }
 
   void _registerServices() {
-    _getIt.registerFactory(() => MapClustersService());
+    _getIt.registerFactory(MapClustersService.new);
   }
 
   void _registerFakeNetworkRepositories() {

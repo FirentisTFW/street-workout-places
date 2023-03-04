@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Parki Street Workout"),
+        "city": MessageLookupByLibrary.simpleMessage("Miasto"),
         "contentUnavailableDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),
         "contentUnavailableDialogTitle":
@@ -33,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dashboardTabHome": MessageLookupByLibrary.simpleMessage("Home"),
         "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
         "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
+        "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "equipmentDescriptionHighBar":
             MessageLookupByLibrary.simpleMessage("Drążek wysoki"),
         "equipmentDescriptionHorizontalLadder":
@@ -51,10 +53,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lina"),
         "equipmentDescriptionVerticalLadder":
             MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
+        "hosueNumber": MessageLookupByLibrary.simpleMessage("Nr domu"),
+        "latitudeShort": MessageLookupByLibrary.simpleMessage("Szer. geogr."),
+        "longitudeShort": MessageLookupByLibrary.simpleMessage("Dł. geogr."),
         "mapDataSourceOpenStreetMap":
             MessageLookupByLibrary.simpleMessage("Map data from OpenStreetMap"),
+        "name": MessageLookupByLibrary.simpleMessage("Nazwa"),
         "navigationButtonTitle":
             MessageLookupByLibrary.simpleMessage("Nawiguj"),
+        "newSpotCoordinatesSectionButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
@@ -63,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Mapa"),
+        "street": MessageLookupByLibrary.simpleMessage("Ulica"),
         "surface": MessageLookupByLibrary.simpleMessage("Podłoże"),
         "surfaceDescriptionConcrete":
             MessageLookupByLibrary.simpleMessage("Beton"),

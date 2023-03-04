@@ -76,6 +76,16 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle primaryButton({
+    Color color = AppColors.white,
+  }) {
+    return TextStyle(
+      color: color,
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
+    );
+  }
+
   static TextStyle tabBarButton({
     required bool isSelected,
   }) {

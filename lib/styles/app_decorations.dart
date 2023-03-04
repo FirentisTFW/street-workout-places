@@ -15,4 +15,9 @@ class AppDecorations {
     ],
     color: Colors.white,
   );
+
+  static final BoxDecoration primaryButton = BoxDecoration(
+    borderRadius: BorderRadius.circular(20.0),
+    color: AppColors.blue,
+  );
 }

@@ -7,6 +7,8 @@ mixin NewSpotForm on Cubit<NewSpotState> {
   final TextFieldEssentials cityTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final TextFieldEssentials descriptionTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final TextFieldEssentials houseNumberTFE = TextFieldEssentials.noValidation();
+  final TextFieldEssentials latitudeTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
+  final TextFieldEssentials longitudeTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final TextFieldEssentials nameTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final TextFieldEssentials streetTFE = TextFieldEssentials.noValidation();
 
@@ -14,6 +16,8 @@ mixin NewSpotForm on Cubit<NewSpotState> {
         cityTFE,
         descriptionTFE,
         houseNumberTFE,
+        latitudeTFE,
+        longitudeTFE,
         nameTFE,
         streetTFE,
       ];

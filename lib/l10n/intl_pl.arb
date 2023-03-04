@@ -30,5 +30,13 @@
   "surfaceDescriptionTartan": "Tartan",
   "mapDataSourceOpenStreetMap": "Map data from OpenStreetMap",
   "size": "Rozmiar",
-  "surface": "Podłoże"
+  "surface": "Podłoże",
+  "name": "Nazwa",
+  "city": "Miasto",
+  "street": "Ulica",
+  "hosueNumber": "Nr domu",
+  "description": "Opis",
+  "latitudeShort": "Szer. geogr.",
+  "longitudeShort": "Dł. geogr.",
+  "newSpotCoordinatesSectionButtonTitle": "Zaznacz miejsce na mapie"
 }

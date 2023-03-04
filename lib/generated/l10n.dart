@@ -369,6 +369,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Nazwa`
+  String get name {
+    return Intl.message(
+      'Nazwa',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Miasto`
+  String get city {
+    return Intl.message(
+      'Miasto',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ulica`
+  String get street {
+    return Intl.message(
+      'Ulica',
+      name: 'street',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nr domu`
+  String get hosueNumber {
+    return Intl.message(
+      'Nr domu',
+      name: 'hosueNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opis`
+  String get description {
+    return Intl.message(
+      'Opis',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Szer. geogr.`
+  String get latitudeShort {
+    return Intl.message(
+      'Szer. geogr.',
+      name: 'latitudeShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dł. geogr.`
+  String get longitudeShort {
+    return Intl.message(
+      'Dł. geogr.',
+      name: 'longitudeShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zaznacz miejsce na mapie`
+  String get newSpotCoordinatesSectionButtonTitle {
+    return Intl.message(
+      'Zaznacz miejsce na mapie',
+      name: 'newSpotCoordinatesSectionButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -41,7 +41,7 @@
     - name
     - size (dropdown)
     - surface (dropdown)
-    - coordinates - raw latitude and longitude inputs with map preview and "select on the map" button. When user clicks the button, another screen appears - a map where user can select a direct spot. Maybe inital zoom should be adjusted, and default location should be user's location? Maybe a dialog to ask if users wants it?
+    - coordinates - raw latitude and longitude inputs with map preview and "select on the map" button. When user clicks the button, another screen appears - a map where user can select a direct spot. Maybe inital zoom should be adjusted, and default location should be user's location? Maybe a dialog to ask if the user wants it?
     - address:
         - city
         - house number - optional
