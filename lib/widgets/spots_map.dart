@@ -39,7 +39,7 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
   @override
   Widget build(BuildContext context) {
     final mapConstants = Constants.maps;
-    return _mapClustersCubit.mapCoordinator.buildMap(
+    return _mapClustersCubit.mapCoordinator.buildMapWithSpots(
       context,
       clusters: widget.clusters,
       initialCoordinates: MapPosition(

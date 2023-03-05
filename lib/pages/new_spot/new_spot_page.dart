@@ -12,6 +12,7 @@ import 'package:app/widgets/dropdown_menu/app_dropdown_menu_item.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_item_style.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_menu.dart';
 import 'package:app/widgets/form_gesture_detector.dart';
+import 'package:app/widgets/primary_button.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,28 +32,30 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: AppPadding.defaultAll,
-          child: BlocBuilder<NewSpotCubit, NewSpotState>(
-            builder: (_, state) {
-              return FormGestureDetector(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
+        child: BlocBuilder<NewSpotCubit, NewSpotState>(
+          builder: (_, state) {
+            return FormGestureDetector(
+              child: SingleChildScrollView(
+                padding: AppPadding.defaultAll,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ...[
                       _buildNameTextField(),
                       _buildSizeAndSurfaceSelectors(),
                       _buildCoordinatesSection(),
                       ..._buildAddressSection(),
                       _buildDescriptionTextField(),
+                      _buildNextButton(),
                     ].separatedBy(
                       const Space.vertical(20.0),
                     ),
-                  ),
+                    const Space.vertical(50.0),
+                  ],
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -180,6 +183,16 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
       labelText: S.of(context).description,
       minLines: 6,
       textInputAction: TextInputAction.done,
+    );
+  }
+
+  Widget _buildNextButton() {
+    return PrimaryButton(
+      'Dalej',
+      onPressed: () {
+        // TODO Implement
+        AlertDialogUtils.showContentUnavailable(context);
+      },
     );
   }
 }

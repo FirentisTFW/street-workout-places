@@ -1,3 +1,3 @@
 - implement onPressed callbacks for map clusters
-
-- new spot form part 1
+- new spot form part 1 - map, selecting location, form validation
+- new spot form part 2 - equipment

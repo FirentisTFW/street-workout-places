@@ -22,7 +22,7 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
   double get zoom => _mapController.zoom;
 
   @override
-  Widget buildMap(
+  Widget buildMapWithSpots(
     BuildContext context, {
     List<MapClusterModel> clusters = const [],
     required MapPosition initialCoordinates,

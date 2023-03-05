@@ -14,7 +14,7 @@ abstract class IMapCoordinator {
 
   double get zoom;
 
-  Widget buildMap(
+  Widget buildMapWithSpots(
     BuildContext context, {
     List<MapClusterModel> clusters,
     required MapPosition initialCoordinates,
