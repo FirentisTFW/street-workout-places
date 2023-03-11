@@ -16,11 +16,11 @@ class DropdownMenu<T> extends StatefulWidget {
   final double bottomOffset;
   final DropdownItemStyle dropdownItemStyle;
   final double height;
-  final String? initialValue;
   final List<AppDropdownMenuItem<T>> items;
   final void Function(T value) onItemSelected;
   final String? placeholderText;
   final TextStyle? placeholderTextStyle;
+  final T? value;
 
   const DropdownMenu({
     this.shouldAlwaysDisplayPlaceholder = false,
@@ -28,11 +28,11 @@ class DropdownMenu<T> extends StatefulWidget {
     this.bottomOffset = 100.0,
     this.dropdownItemStyle = const DropdownItemStyle(),
     this.height = 50.0,
-    this.initialValue,
     required this.items,
     required this.onItemSelected,
     this.placeholderText,
     this.placeholderTextStyle,
+    this.value,
   });
 
   @override
@@ -53,7 +53,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.items.indexWhere((item) => item.value == widget.initialValue);
+    _currentIndex = widget.items.indexWhere((item) => item.value == widget.value);
     _animationController = AnimationController(
       duration: AppAnimations.regularDuration,
       vsync: this,
@@ -67,7 +67,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
   @override
   void didUpdateWidget(covariant DropdownMenu<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _currentIndex = widget.items.indexWhere((item) => item.value == widget.initialValue);
+    _currentIndex = widget.items.indexWhere((item) => item.value == widget.value);
   }
 
   @override

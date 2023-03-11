@@ -90,43 +90,49 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
   }
 
   Widget _buildSizeSelector() {
-    return app.DropdownMenu<WorkoutSpotSize>(
-      dropdownItemStyle: DropdownItemStyle(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      items: WorkoutSpotSize.values
-          .map(
-            (size) => AppDropdownMenuItem<WorkoutSpotSize>(
-              text: size.getDescription(context),
-              value: size,
-            ),
-          )
-          .toList(),
-      placeholderText: S.of(context).size,
-      onItemSelected: (value) {
-        // TODO Implement - update selected value
-        AlertDialogUtils.showContentUnavailable(context);
+    return ValueListenableBuilder(
+      valueListenable: bloc.sizeNotifier,
+      builder: (context, size, _) {
+        return app.DropdownMenu<WorkoutSpotSize>(
+          dropdownItemStyle: DropdownItemStyle(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          value: size,
+          items: WorkoutSpotSize.values
+              .map(
+                (size) => AppDropdownMenuItem<WorkoutSpotSize>(
+                  text: size.getDescription(context),
+                  value: size,
+                ),
+              )
+              .toList(),
+          placeholderText: S.of(context).size,
+          onItemSelected: (value) => bloc.sizeNotifier.value = value,
+        );
       },
     );
   }
 
   Widget _buildSurfaceSelector() {
-    return app.DropdownMenu<Surface>(
-      dropdownItemStyle: DropdownItemStyle(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      items: Surface.values
-          .map(
-            (surface) => AppDropdownMenuItem<Surface>(
-              text: surface.getDescription(context),
-              value: surface,
-            ),
-          )
-          .toList(),
-      placeholderText: S.of(context).surface,
-      onItemSelected: (value) {
-        // TODO Implement - update selected value
-        AlertDialogUtils.showContentUnavailable(context);
+    return ValueListenableBuilder(
+      valueListenable: bloc.surfaceNotifier,
+      builder: (context, surface, _) {
+        return app.DropdownMenu<Surface>(
+          dropdownItemStyle: DropdownItemStyle(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          value: surface,
+          items: Surface.values
+              .map(
+                (surface) => AppDropdownMenuItem<Surface>(
+                  text: surface.getDescription(context),
+                  value: surface,
+                ),
+              )
+              .toList(),
+          placeholderText: S.of(context).surface,
+          onItemSelected: (value) => bloc.surfaceNotifier.value = value,
+        );
       },
     );
   }
