@@ -235,7 +235,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
       final OverlayEntry? overlayEntry = _createOverlayEntry();
       if (overlayEntry != null) {
         _overlayEntry = overlayEntry;
-        Overlay.of(context)?.insert(_overlayEntry);
+        Overlay.of(context).insert(_overlayEntry);
         setState(() => _isOpen = true);
         _animationController.forward();
       }

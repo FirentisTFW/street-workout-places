@@ -10,7 +10,7 @@ import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/dropdown_menu/app_dropdown_menu_item.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_item_style.dart';
-import 'package:app/widgets/dropdown_menu/dropdown_menu.dart';
+import 'package:app/widgets/dropdown_menu/dropdown_menu.dart' as app;
 import 'package:app/widgets/form_gesture_detector.dart';
 import 'package:app/widgets/primary_button.dart';
 import 'package:app/widgets/space.dart';
@@ -90,7 +90,7 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
   }
 
   Widget _buildSizeSelector() {
-    return DropdownMenu<WorkoutSpotSize>(
+    return app.DropdownMenu<WorkoutSpotSize>(
       dropdownItemStyle: DropdownItemStyle(
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -111,7 +111,7 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
   }
 
   Widget _buildSurfaceSelector() {
-    return DropdownMenu<Surface>(
+    return app.DropdownMenu<Surface>(
       dropdownItemStyle: DropdownItemStyle(
         borderRadius: BorderRadius.circular(20.0),
       ),
