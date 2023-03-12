@@ -1,3 +1,4 @@
+import 'package:app/models/map_essentials.dart';
 import 'package:app/networking/models/map_position.dart';
 
 abstract class Constants {
@@ -24,6 +25,13 @@ class _Maps {
   MapPosition get defaultLocation => MapPosition(
         latitude: defaultLatitude,
         longitude: defaultLongitude,
+      );
+
+  MapEssentials get essentials => MapEssentials(
+        initialCoordinates: defaultLocation,
+        maxZoom: maxLocationZoom,
+        minZoom: minLocationZoom,
+        zoom: defaultZoom,
       );
 }
 

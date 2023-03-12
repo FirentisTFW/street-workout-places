@@ -11,11 +11,13 @@ mixin NewSpotForm on Cubit<NewSpotState> {
   final TextFieldEssentials cityTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final TextFieldEssentials descriptionTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final TextFieldEssentials houseNumberTFE = TextFieldEssentials.noValidation();
+  final ValueNotifier<MapPosition?> mapPositionNotifier = ValueNotifier(null);
   final TextFieldEssentials nameTFE = TextFieldEssentials(TextFieldValidationUtils.notBlank);
   final ValueNotifier<WorkoutSpotSize?> sizeNotifier = ValueNotifier(null);
   final TextFieldEssentials streetTFE = TextFieldEssentials.noValidation();
   final ValueNotifier<Surface?> surfaceNotifier = ValueNotifier(null);
-  MapPosition? position;
+
+  bool get isMapPositionSelected => mapPositionNotifier.value != null;
 
   List<TextFieldEssentials> get textFieldsToValidate => [
         cityTFE,
@@ -29,6 +31,7 @@ mixin NewSpotForm on Cubit<NewSpotState> {
     for (final TextFieldEssentials element in textFieldsToValidate) {
       element.dispose();
     }
+    mapPositionNotifier.dispose();
     sizeNotifier.dispose();
     surfaceNotifier.dispose();
   }

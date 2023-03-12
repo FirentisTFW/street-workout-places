@@ -1,6 +1,6 @@
 import 'package:app/generated/l10n.dart';
+import 'package:app/modals/bottom_sheets/select_location_on_map_bottom_sheet.dart';
 import 'package:app/pages/new_spot/new_spot_cubit.dart';
-import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/primary_button.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class NewSpotCoordinatesSection extends StatelessWidget {
   final NewSpotCubit bloc;
 
-  bool get _shouldDisplayMap => bloc.position != null;
+  bool get _shouldDisplayMap => bloc.isMapPositionSelected;
 
   const NewSpotCoordinatesSection({
     required this.bloc,
@@ -35,8 +35,10 @@ class NewSpotCoordinatesSection extends StatelessWidget {
     return PrimaryButton(
       S.of(context).newSpotCoordinatesSectionButtonTitle,
       onPressed: () {
-        // FIXME Open map page
-        AlertDialogUtils.showContentUnavailable(context);
+        SelectLocationOnMapBottomSheet(
+          context,
+          onPositionSelected: (position) => bloc.mapPositionNotifier.value = position,
+        ).show();
       },
     );
   }

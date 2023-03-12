@@ -38,5 +38,7 @@
   "description": "Opis",
   "latitudeShort": "Szer. geogr.",
   "longitudeShort": "Dł. geogr.",
-  "newSpotCoordinatesSectionButtonTitle": "Zaznacz miejsce na mapie"
+  "newSpotCoordinatesSectionButtonTitle": "Zaznacz miejsce na mapie",
+  "save": "Zapisz",
+  "selectLocationOnMapDescription": "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność."
 }

@@ -64,7 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "newSpotCoordinatesSectionButtonTitle":
             MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
+        "selectLocationOnMapDescription": MessageLookupByLibrary.simpleMessage(
+            "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność."),
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
         "sizeSelected": m0,
         "spotsListTabBarButtonTitle":

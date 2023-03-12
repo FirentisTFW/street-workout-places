@@ -54,6 +54,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle contentBiggerMultiline({
+    Color color = AppColors.black,
+  }) {
+    return contentBigger(
+      color: color,
+      height: 1.4,
+    );
+  }
+
   static TextStyle contentBold({
     Color color = AppColors.black,
     double height = 1.0,

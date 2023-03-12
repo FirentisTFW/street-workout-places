@@ -5,9 +5,11 @@ import 'package:app/extensions/extensions.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/models/map_bounds_model.dart';
 import 'package:app/models/map_cluster_model.dart';
+import 'package:app/models/map_essentials.dart';
 import 'package:app/models/workout_spot_model.dart';
 import 'package:app/networking/models/map_position.dart';
-import 'package:app/widgets/map_marker.dart';
+import 'package:app/widgets/map_markers/map_markers_factory.dart';
+import 'package:app/widgets/map_markers/map_single_marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart' hide MapPosition;
 import 'package:latlong2/latlong.dart';
@@ -25,21 +27,18 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
   Widget buildMapWithSpots(
     BuildContext context, {
     List<MapClusterModel> clusters = const [],
-    required MapPosition initialCoordinates,
-    required double maxZoom,
-    required double minZoom,
-    required double zoom,
+    required MapEssentials mapEssentials,
     VoidCallback? onPositionChanged,
     void Function(WorkoutSpotModel)? onSpotPressed,
   }) {
     return FlutterMap(
       mapController: _mapController,
       options: MapOptions(
-        center: initialCoordinates.maybeMapToLatLng(),
+        center: mapEssentials.initialCoordinates.maybeMapToLatLng(),
         enableMultiFingerGestureRace: true,
-        maxZoom: maxZoom,
-        minZoom: minZoom,
-        zoom: zoom,
+        maxZoom: mapEssentials.maxZoom,
+        minZoom: mapEssentials.minZoom,
+        zoom: mapEssentials.zoom,
         onPositionChanged: (_, __) => onPositionChanged?.call(),
       ),
       nonRotatedChildren: [
@@ -69,21 +68,70 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
   }
 
   @override
+  Widget buildSimpleMap(
+    BuildContext context, {
+    required MapEssentials mapEssentials,
+    List<MapPosition> positions = const [],
+    VoidCallback? onPositionChanged,
+    void Function(MapPosition)? onPositionSelected,
+  }) {
+    return FlutterMap(
+      mapController: _mapController,
+      options: MapOptions(
+        center: mapEssentials.initialCoordinates.maybeMapToLatLng(),
+        enableMultiFingerGestureRace: true,
+        maxZoom: mapEssentials.maxZoom,
+        minZoom: mapEssentials.minZoom,
+        zoom: mapEssentials.zoom,
+        onPositionChanged: (_, __) => onPositionChanged?.call(),
+        onTap: (_, point) => onPositionSelected?.call(point.mapToMapPosition()),
+      ),
+      nonRotatedChildren: [
+        AttributionWidget.defaultWidget(
+          source: S.of(context).mapDataSourceOpenStreetMap,
+        ),
+      ],
+      children: [
+        TileLayer(
+          urlTemplate: Constants.maps.openStreetMapTileUrlTemplate,
+          userAgentPackageName: Constants.app.packageName,
+        ),
+        MarkerLayer(
+          markers: positions
+              .map(
+                (position) {
+                  final LatLng? latLng = position.maybeMapToLatLng();
+                  if (latLng == null) return null;
+                  return Marker(
+                    point: latLng,
+                    builder: (_) => const MapSingleMarker(),
+                  );
+                },
+              )
+              .toList()
+              .filterNotNull(),
+          rotate: true,
+        ),
+      ],
+    );
+  }
+
+  @override
   void close() {
     _mapController.dispose();
   }
 
   Marker? _maybePrepareSpotMarker({
     required MapClusterModel cluster,
-    required void Function(WorkoutSpotModel)? onSpotPressed,
+    void Function(WorkoutSpotModel)? onSpotPressed,
   }) {
     final LatLng? latLng = cluster.maybeMapToLatLng();
     if (latLng == null) return null;
     final WorkoutSpotModel? spot = cluster.directSpot;
     return Marker(
       point: latLng,
-      builder: (_) => MapMarker(
-        mapCluster: cluster,
+      builder: (_) => MapMarkersFactory.fromMapCluster(
+        cluster,
         onPressed: onSpotPressed == null || spot == null ? null : () => onSpotPressed(spot),
       ),
     );

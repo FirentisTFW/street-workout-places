@@ -4,7 +4,6 @@ import 'package:app/common/global_blocs_mixin.dart';
 import 'package:app/common/root_navigator.dart';
 import 'package:app/models/map_cluster_model.dart';
 import 'package:app/models/workout_spot_model.dart';
-import 'package:app/networking/models/map_position.dart';
 import 'package:app/pages/map_clusters/map_clusters_cubit.dart';
 import 'package:app/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/routing/dashboard_tabs/spots_routing.dart';
@@ -38,17 +37,10 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
 
   @override
   Widget build(BuildContext context) {
-    final mapConstants = Constants.maps;
     return _mapClustersCubit.mapCoordinator.buildMapWithSpots(
       context,
       clusters: widget.clusters,
-      initialCoordinates: MapPosition(
-        latitude: mapConstants.defaultLatitude,
-        longitude: mapConstants.defaultLongitude,
-      ),
-      maxZoom: mapConstants.maxLocationZoom,
-      minZoom: mapConstants.minLocationZoom,
-      zoom: mapConstants.defaultZoom,
+      mapEssentials: Constants.maps.essentials,
       onPositionChanged: () => _maPositionReationController.replaceAction(_updateMapClusters),
       onSpotPressed: _goToSpotDetails,
     );

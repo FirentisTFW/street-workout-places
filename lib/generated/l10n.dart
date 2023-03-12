@@ -449,6 +449,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Zapisz`
+  String get save {
+    return Intl.message(
+      'Zapisz',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność.`
+  String get selectLocationOnMapDescription {
+    return Intl.message(
+      'Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność.',
+      name: 'selectLocationOnMapDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
