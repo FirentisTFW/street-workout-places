@@ -6,7 +6,7 @@ build_android: ## Builds apk
 files: ## Runs flutter build runner command
 	$(prefix) flutter packages pub run build_runner build --delete-conflicting-outputs
 	
-watch_freezed: ## Runs build runner watch command
+watch_generated: ## Runs build runner watch command
 	$(prefix) flutter pub run build_runner watch --delete-conflicting-outputs
 
 help:

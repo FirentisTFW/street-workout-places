@@ -1,3 +1,4 @@
+import 'package:app/common/maps/i_map_coordinator.dart';
 import 'package:app/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/pages/dashboard/dashboard_page.dart';
 import 'package:app/pages/home/home_bloc.dart';
@@ -39,7 +40,9 @@ abstract class Pages {
 
   static Widget newSpot() {
     return BlocProvider<NewSpotCubit>(
-      create: (_) => NewSpotCubit(),
+      create: (_) => NewSpotCubit(
+        mapCoordinator: IMapCoordinator.create(),
+      ),
       child: const NewSpotPage(),
     );
   }

@@ -84,8 +84,12 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
   }
 
   Widget _buildCoordinatesSection() {
-    return NewSpotCoordinatesSection(
-      bloc: bloc,
+    return ValueListenableBuilder(
+      valueListenable: bloc.mapPositionNotifier,
+      builder: (_, mapPosition, __) => NewSpotCoordinatesSection(
+        bloc: bloc,
+        mapPosition: mapPosition,
+      ),
     );
   }
 

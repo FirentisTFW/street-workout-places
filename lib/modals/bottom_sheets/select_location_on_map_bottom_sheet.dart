@@ -1,5 +1,5 @@
 import 'package:app/common/constants.dart';
-import 'package:app/common/maps/open_street_map/open_streeet_map_map_coordinator.dart';
+import 'package:app/common/maps/i_map_coordinator.dart';
 import 'package:app/extensions/extensions.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/modals/bottom_sheets/basic_bottom_sheet.dart';
@@ -12,10 +12,14 @@ import 'package:flutter/material.dart';
 
 class SelectLocationOnMapBottomSheet {
   final BuildContext context;
+  final MapPosition? initialPosition;
+  final IMapCoordinator mapCoordinator;
   final void Function(MapPosition postition) onPositionSelected;
 
   const SelectLocationOnMapBottomSheet(
     this.context, {
+    required this.initialPosition,
+    required this.mapCoordinator,
     required this.onPositionSelected,
   });
 
@@ -23,6 +27,8 @@ class SelectLocationOnMapBottomSheet {
     return BasicBottomSheet(
       context,
       child: _SelectLocationOnMapBottomSheetBody(
+        mapCoordinator: mapCoordinator,
+        initialPosition: initialPosition,
         onPositionSelected: onPositionSelected,
       ),
     ).show();
@@ -30,9 +36,13 @@ class SelectLocationOnMapBottomSheet {
 }
 
 class _SelectLocationOnMapBottomSheetBody extends StatefulWidget {
+  final IMapCoordinator mapCoordinator;
+  final MapPosition? initialPosition;
   final void Function(MapPosition postition) onPositionSelected;
 
   const _SelectLocationOnMapBottomSheetBody({
+    required this.mapCoordinator,
+    required this.initialPosition,
     required this.onPositionSelected,
   });
 
@@ -44,6 +54,12 @@ class _SelectLocationOnMapBottomSheetBodyState extends State<_SelectLocationOnMa
   MapPosition? _selectedPosition;
 
   bool get _isPositionSelected => _selectedPosition != null;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPosition = widget.initialPosition;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +85,7 @@ class _SelectLocationOnMapBottomSheetBodyState extends State<_SelectLocationOnMa
   Widget _buildMap() {
     return SizedBox(
       height: 300.0,
-      // FIXME DI for Coordinator
-      child: OpenStreetMapMapCoordinator().buildSimpleMap(
+      child: widget.mapCoordinator.buildSimpleMap(
         context,
         mapEssentials: Constants.maps.essentials,
         positions: [

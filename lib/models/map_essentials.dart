@@ -1,15 +1,20 @@
 import 'package:app/networking/models/map_position.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class MapEssentials {
-  final MapPosition initialCoordinates;
-  final double maxZoom;
-  final double minZoom;
-  final double zoom;
+part 'map_essentials.freezed.dart';
 
-  const MapEssentials({
-    required this.initialCoordinates,
-    required this.maxZoom,
-    required this.minZoom,
-    required this.zoom,
-  });
+@freezed
+class MapEssentials with _$MapEssentials {
+  const factory MapEssentials({
+    required MapPosition initialCoordinates,
+    required double maxZoom,
+    required double minZoom,
+    required double zoom,
+  }) = _MapEssentials;
+
+  const MapEssentials._();
+
+  MapEssentials updateZoom(double newZoom) => copyWith(
+        zoom: newZoom,
+      );
 }

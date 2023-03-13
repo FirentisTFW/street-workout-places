@@ -121,6 +121,13 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     _mapController.dispose();
   }
 
+  @override
+  void moveToPosition(MapPosition position) {
+    final LatLng? latLng = position.maybeMapToLatLng();
+    if (latLng == null) return;
+    _mapController.move(latLng, _mapController.zoom);
+  }
+
   Marker? _maybePrepareSpotMarker({
     required MapClusterModel cluster,
     void Function(WorkoutSpotModel)? onSpotPressed,

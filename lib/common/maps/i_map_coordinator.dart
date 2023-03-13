@@ -26,9 +26,12 @@ abstract class IMapCoordinator {
   Widget buildSimpleMap(
     BuildContext context, {
     required MapEssentials mapEssentials,
+    List<MapPosition> positions,
     VoidCallback? onPositionChanged,
     void Function(MapPosition)? onPositionSelected,
   });
 
   void close();
+
+  void moveToPosition(MapPosition position);
 }
