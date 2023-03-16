@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Street Workout Spots"),
+        "blankTextFieldErrorMessage":
+            MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
         "contentUnavailableDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),
@@ -63,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nawiguj"),
         "newSpotCoordinatesSectionButtonTitle":
             MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
+        "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),

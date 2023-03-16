@@ -5,6 +5,7 @@ import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
 import 'package:app/pages/new_spot/new_spot_cubit.dart';
 import 'package:app/pages/new_spot/widgets/new_spot_coordinates_section.dart';
+import 'package:app/styles/app_dimensions.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/app_text_field.dart';
@@ -50,7 +51,7 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
                     ].separatedBy(
                       const Space.vertical(20.0),
                     ),
-                    const Space.vertical(50.0),
+                    Space.vertical(AppDimensions.height.bottomNavgationBar + 30.0)
                   ],
                 ),
               ),
@@ -198,7 +199,7 @@ class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
 
   Widget _buildNextButton() {
     return PrimaryButton(
-      'Dalej',
+      S.of(context).next,
       onPressed: () {
         // TODO Implement
         AlertDialogUtils.showContentUnavailable(context);

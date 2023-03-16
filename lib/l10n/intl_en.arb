@@ -40,5 +40,7 @@
   "longitudeShort": "Dł. geogr.",
   "newSpotCoordinatesSectionButtonTitle": "Zaznacz miejsce na mapie",
   "save": "Zapisz",
-  "selectLocationOnMapDescription": "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność."
+  "selectLocationOnMapDescription": "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność.",
+  "next": "Dalej",
+  "blankTextFieldErrorMessage": "To pole nie może być puste"
 }

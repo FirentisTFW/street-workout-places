@@ -4,10 +4,10 @@ import 'package:app/extensions/string_extensions.dart';
 abstract class TextFieldValidationUtils {
   const TextFieldValidationUtils._();
 
-  static TextFieldError notBlank(String input) {
+  static TextFieldError? notBlank(String input) {
     if (input.isBlank) return const BlankTextFieldError();
-    return const NoneTextFieldError();
+    return null;
   }
 
-  static TextFieldError noValidation(String _) => const NoneTextFieldError();
+  static TextFieldError? noValidation(String _) => null;
 }

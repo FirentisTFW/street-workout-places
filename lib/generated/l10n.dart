@@ -469,6 +469,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Dalej`
+  String get next {
+    return Intl.message(
+      'Dalej',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To pole nie może być puste`
+  String get blankTextFieldErrorMessage {
+    return Intl.message(
+      'To pole nie może być puste',
+      name: 'blankTextFieldErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

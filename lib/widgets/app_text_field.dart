@@ -1,4 +1,5 @@
 import 'package:app/common/text_field_essentials.dart';
+import 'package:app/extensions/extensions.dart';
 import 'package:app/styles/app_colors.dart';
 import 'package:app/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -110,6 +111,7 @@ class _AppTextFieldState extends State<AppTextField> {
       textCapitalization: widget.textCapitalization ??
           (widget.keyboardType == TextInputType.name ? TextCapitalization.sentences : TextCapitalization.none),
       textInputAction: widget.textInputAction,
+      validator: (value) => widget.essentials.validator(value.orEmpty())?.getMessage(context),
     );
   }
 
@@ -126,9 +128,6 @@ class _AppTextFieldState extends State<AppTextField> {
         color: AppColors.red,
       ),
       errorMaxLines: 3,
-      errorStyle: const TextStyle(
-        height: 0.0,
-      ),
       fillColor: AppColors.white,
       filled: true,
       floatingLabelStyle: AppTextStyles.textFieldLabel(),
