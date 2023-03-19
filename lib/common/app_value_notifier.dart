@@ -34,6 +34,11 @@ class AppValueNotifier<T> extends UserInputField {
     return validator(value)?.getMessage(context);
   }
 
+  String? provideErrorMessageIfShouldBeDisplayed() {
+    if (!shouldForceDisplayingError) return null;
+    return provideErrorMessage();
+  }
+
   @override
   bool validate() => validator(value) == null;
 }

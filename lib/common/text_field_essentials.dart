@@ -10,11 +10,11 @@ class TextFieldEssentials extends UserInputField {
   final FocusNode focusNode = FocusNode();
   final TextFieldValidator validator;
 
+  String get text => controller.text;
+
   TextFieldEssentials(this.validator);
 
   TextFieldEssentials.noValidation() : validator = TextFieldValidationUtils.noValidation;
-
-  String get text => controller.text;
 
   @override
   void dispose() {

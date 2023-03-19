@@ -23,7 +23,7 @@ class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
   }
 
   void proceedToNextStep() {
-    final bool isFormValid = userInputValidator.validate(textFieldsToValidate);
+    final bool isFormValid = userInputValidator.validate(userInputsToValidate);
     if (!isFormValid) {
       emit(
         _$_ValidationFailed(

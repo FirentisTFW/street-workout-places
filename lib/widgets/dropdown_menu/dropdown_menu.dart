@@ -11,7 +11,6 @@ import 'package:app/widgets/space_text_span.dart';
 import 'package:flutter/material.dart';
 
 class DropdownMenu<T> extends StatefulWidget {
-  final bool shouldAlwaysDisplayPlaceholder;
   final double arrowHeight;
   final double bottomOffset;
   final DropdownItemStyle dropdownItemStyle;
@@ -20,10 +19,10 @@ class DropdownMenu<T> extends StatefulWidget {
   final void Function(T value) onItemSelected;
   final String? placeholderText;
   final TextStyle? placeholderTextStyle;
+  final bool shouldAlwaysDisplayPlaceholder;
   final T? value;
 
   const DropdownMenu({
-    this.shouldAlwaysDisplayPlaceholder = false,
     this.arrowHeight = 10.0,
     this.bottomOffset = 100.0,
     this.dropdownItemStyle = const DropdownItemStyle(),
@@ -32,6 +31,7 @@ class DropdownMenu<T> extends StatefulWidget {
     required this.onItemSelected,
     this.placeholderText,
     this.placeholderTextStyle,
+    this.shouldAlwaysDisplayPlaceholder = false,
     this.value,
   });
 
@@ -113,7 +113,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
         else if (widget.shouldAlwaysDisplayPlaceholder)
           Text.rich(
             TextSpan(
-              text: widget.placeholderText,
+              text: '${widget.placeholderText}:',
               style: widget.placeholderTextStyle ?? AppTextStyles.textFieldLabel(),
               children: [
                 const SpaceTextSpan(),
@@ -228,6 +228,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
     bool close = false,
   }) async {
     if (_isOpen || close) {
+      if (!mounted) return;
       await _animationController.reverse();
       _overlayEntry.remove();
       setState(() => _isOpen = false);

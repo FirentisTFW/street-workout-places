@@ -5,13 +5,18 @@ class UserInputValidationService {
 
   String? get failureMessage => _failureMessage;
 
-  bool validate(List<UserInputField> userInputFields) {
+  bool validate(
+    List<UserInputField> userInputFields, {
+    bool shouldForceDisplayingError = true,
+  }) {
+    bool isValid = true;
     for (final UserInputField userInputField in userInputFields) {
       if (!userInputField.validate()) {
         _failureMessage = userInputField.provideErrorMessage();
-        return false;
+        userInputField.shouldForceDisplayingError = shouldForceDisplayingError;
+        isValid = false;
       }
     }
-    return true;
+    return isValid;
   }
 }

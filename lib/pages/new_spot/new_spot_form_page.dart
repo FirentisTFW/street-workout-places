@@ -7,7 +7,6 @@ import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
 import 'package:app/pages/new_spot/widgets/new_spot_coordinates_section.dart';
 import 'package:app/styles/app_dimensions.dart';
 import 'package:app/styles/app_padding.dart';
-import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/dropdown_menu/app_dropdown_menu_item.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_item_style.dart';
@@ -15,6 +14,7 @@ import 'package:app/widgets/dropdown_menu/dropdown_menu.dart' as app;
 import 'package:app/widgets/form_gesture_detector.dart';
 import 'package:app/widgets/primary_button.dart';
 import 'package:app/widgets/space.dart';
+import 'package:app/widgets/widget_with_possible_error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -98,21 +98,26 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
     return ValueListenableBuilder(
       valueListenable: bloc.sizeNotifier.notifier,
       builder: (context, size, _) {
-        return app.DropdownMenu<WorkoutSpotSize>(
-          dropdownItemStyle: DropdownItemStyle(
-            borderRadius: BorderRadius.circular(20.0),
+        return WidgetWithPossibleErrorMessage(
+          errorMessage: bloc.sizeNotifier.provideErrorMessageIfShouldBeDisplayed(),
+          key: ValueKey(bloc.sizeNotifier),
+          child: app.DropdownMenu<WorkoutSpotSize>(
+            dropdownItemStyle: DropdownItemStyle(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            value: size,
+            items: WorkoutSpotSize.values
+                .map(
+                  (size) => AppDropdownMenuItem<WorkoutSpotSize>(
+                    text: size.getDescription(context),
+                    value: size,
+                  ),
+                )
+                .toList(),
+            placeholderText: S.of(context).size,
+            shouldAlwaysDisplayPlaceholder: true,
+            onItemSelected: (value) => bloc.sizeNotifier.value = value,
           ),
-          value: size,
-          items: WorkoutSpotSize.values
-              .map(
-                (size) => AppDropdownMenuItem<WorkoutSpotSize>(
-                  text: size.getDescription(context),
-                  value: size,
-                ),
-              )
-              .toList(),
-          placeholderText: S.of(context).size,
-          onItemSelected: (value) => bloc.sizeNotifier.value = value,
         );
       },
     );
@@ -122,21 +127,26 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
     return ValueListenableBuilder(
       valueListenable: bloc.surfaceNotifier.notifier,
       builder: (context, surface, _) {
-        return app.DropdownMenu<Surface>(
-          dropdownItemStyle: DropdownItemStyle(
-            borderRadius: BorderRadius.circular(20.0),
+        return WidgetWithPossibleErrorMessage(
+          errorMessage: bloc.surfaceNotifier.provideErrorMessageIfShouldBeDisplayed(),
+          key: ValueKey(bloc.surfaceNotifier),
+          child: app.DropdownMenu<Surface>(
+            dropdownItemStyle: DropdownItemStyle(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            value: surface,
+            items: Surface.values
+                .map(
+                  (surface) => AppDropdownMenuItem<Surface>(
+                    text: surface.getDescription(context),
+                    value: surface,
+                  ),
+                )
+                .toList(),
+            placeholderText: S.of(context).surface,
+            shouldAlwaysDisplayPlaceholder: true,
+            onItemSelected: (value) => bloc.surfaceNotifier.value = value,
           ),
-          value: surface,
-          items: Surface.values
-              .map(
-                (surface) => AppDropdownMenuItem<Surface>(
-                  text: surface.getDescription(context),
-                  value: surface,
-                ),
-              )
-              .toList(),
-          placeholderText: S.of(context).surface,
-          onItemSelected: (value) => bloc.surfaceNotifier.value = value,
         );
       },
     );
@@ -200,10 +210,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
   Widget _buildNextButton() {
     return PrimaryButton(
       S.of(context).next,
-      onPressed: () {
-        // TODO Implement
-        AlertDialogUtils.showContentUnavailable(context);
-      },
+      onPressed: bloc.proceedToNextStep,
     );
   }
 }

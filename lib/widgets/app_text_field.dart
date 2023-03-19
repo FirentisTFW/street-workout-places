@@ -66,12 +66,13 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   bool _hasLostFirstFocus = false;
 
-  TextEditingController get _controller => widget.essentials.controller;
+  TextEditingController get _controller => _essentials.controller;
 
-  FocusNode get _focusNode => widget.essentials.focusNode;
+  TextFieldEssentials get _essentials => widget.essentials;
 
-  // TODO Consider ability to force validation
-  bool get _shouldValidate => _hasLostFirstFocus;
+  FocusNode get _focusNode => _essentials.focusNode;
+
+  bool get _shouldValidate => _hasLostFirstFocus || _essentials.shouldForceDisplayingError;
 
   @override
   void initState() {
@@ -111,7 +112,7 @@ class _AppTextFieldState extends State<AppTextField> {
       textCapitalization: widget.textCapitalization ??
           (widget.keyboardType == TextInputType.name ? TextCapitalization.sentences : TextCapitalization.none),
       textInputAction: widget.textInputAction,
-      validator: (value) => widget.essentials.validator(value.orEmpty())?.getMessage(context),
+      validator: (value) => _essentials.validator(value.orEmpty())?.getMessage(context),
     );
   }
 
@@ -127,6 +128,7 @@ class _AppTextFieldState extends State<AppTextField> {
       errorBorder: _buildBorder(
         color: AppColors.red,
       ),
+      errorStyle: AppTextStyles.error(),
       errorMaxLines: 3,
       fillColor: AppColors.white,
       filled: true,

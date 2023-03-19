@@ -85,6 +85,16 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle error({
+    Color color = AppColors.red,
+  }) {
+    return TextStyle(
+      color: color,
+      fontWeight: FontWeight.normal,
+      fontSize: 12.0,
+    );
+  }
+
   static TextStyle primaryButton({
     Color color = AppColors.white,
   }) {

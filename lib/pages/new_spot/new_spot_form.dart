@@ -1,5 +1,6 @@
 import 'package:app/common/app_value_notifier.dart';
 import 'package:app/common/text_field_essentials.dart';
+import 'package:app/common/user_input_field.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
@@ -19,20 +20,20 @@ mixin NewSpotForm on Cubit<NewSpotFormState> {
 
   bool get isMapPositionSelected => mapPositionNotifier.value != null;
 
-  List<TextFieldEssentials> get textFieldsToValidate => [
+  List<UserInputField> get userInputsToValidate => [
         cityTFE,
         descriptionTFE,
         houseNumberTFE,
+        mapPositionNotifier,
         nameTFE,
+        sizeNotifier,
         streetTFE,
+        surfaceNotifier,
       ];
 
   void disposeForm() {
-    for (final TextFieldEssentials element in textFieldsToValidate) {
+    for (final UserInputField element in userInputsToValidate) {
       element.dispose();
     }
-    mapPositionNotifier.dispose();
-    sizeNotifier.dispose();
-    surfaceNotifier.dispose();
   }
 }
