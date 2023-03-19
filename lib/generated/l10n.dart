@@ -489,6 +489,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Należy wybrać wartość`
+  String get emptyValueNotifierErrorMessage {
+    return Intl.message(
+      'Należy wybrać wartość',
+      name: 'emptyValueNotifierErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

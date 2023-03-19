@@ -16,6 +16,7 @@ class TextFieldEssentials extends UserInputField {
 
   String get text => controller.text;
 
+  @override
   void dispose() {
     controller.dispose();
     focusNode.dispose();

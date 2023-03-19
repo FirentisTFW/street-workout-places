@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
         "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
+        "emptyValueNotifierErrorMessage":
+            MessageLookupByLibrary.simpleMessage("Należy wybrać wartość"),
         "equipmentDescriptionHighBar":
             MessageLookupByLibrary.simpleMessage("Drążek wysoki"),
         "equipmentDescriptionHorizontalLadder":

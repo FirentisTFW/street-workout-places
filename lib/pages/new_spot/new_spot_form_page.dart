@@ -86,7 +86,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
 
   Widget _buildCoordinatesSection() {
     return ValueListenableBuilder(
-      valueListenable: bloc.mapPositionNotifier,
+      valueListenable: bloc.mapPositionNotifier.notifier,
       builder: (_, mapPosition, __) => NewSpotCoordinatesSection(
         bloc: bloc,
         mapPosition: mapPosition,
@@ -96,7 +96,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
 
   Widget _buildSizeSelector() {
     return ValueListenableBuilder(
-      valueListenable: bloc.sizeNotifier,
+      valueListenable: bloc.sizeNotifier.notifier,
       builder: (context, size, _) {
         return app.DropdownMenu<WorkoutSpotSize>(
           dropdownItemStyle: DropdownItemStyle(
@@ -120,7 +120,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
 
   Widget _buildSurfaceSelector() {
     return ValueListenableBuilder(
-      valueListenable: bloc.surfaceNotifier,
+      valueListenable: bloc.surfaceNotifier.notifier,
       builder: (context, surface, _) {
         return app.DropdownMenu<Surface>(
           dropdownItemStyle: DropdownItemStyle(
