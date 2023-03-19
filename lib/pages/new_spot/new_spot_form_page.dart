@@ -3,7 +3,7 @@ import 'package:app/extensions/extensions.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
-import 'package:app/pages/new_spot/new_spot_cubit.dart';
+import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
 import 'package:app/pages/new_spot/widgets/new_spot_coordinates_section.dart';
 import 'package:app/styles/app_dimensions.dart';
 import 'package:app/styles/app_padding.dart';
@@ -18,22 +18,22 @@ import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NewSpotPage extends StatefulWidget {
-  const NewSpotPage({
+class NewSpotFormPage extends StatefulWidget {
+  const NewSpotFormPage({
     super.key,
   });
 
   @override
-  State<NewSpotPage> createState() => _NewSpotPageState();
+  State<NewSpotFormPage> createState() => _NewSpotFormPageState();
 }
 
 // FIXME Adjust font styles for the file
-class _NewSpotPageState extends BlocPageState<NewSpotPage, NewSpotCubit> {
+class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCubit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<NewSpotCubit, NewSpotState>(
+        child: BlocBuilder<NewSpotFormCubit, NewSpotFormState>(
           builder: (_, state) {
             return FormGestureDetector(
               child: SingleChildScrollView(
