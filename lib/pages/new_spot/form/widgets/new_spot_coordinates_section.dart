@@ -5,7 +5,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/modals/bottom_sheets/select_location_on_map_bottom_sheet.dart';
 import 'package:app/models/map_essentials.dart';
 import 'package:app/networking/models/map_position.dart';
-import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
+import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/widgets/primary_button.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';

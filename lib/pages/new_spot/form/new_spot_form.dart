@@ -4,7 +4,7 @@ import 'package:app/common/user_input_field.dart';
 import 'package:app/networking/models/map_position.dart';
 import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
-import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
+import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/utils/text_field_validation_utils.dart';
 import 'package:app/utils/value_notifier_validation_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

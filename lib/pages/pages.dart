@@ -5,8 +5,11 @@ import 'package:app/pages/home/home_bloc.dart';
 import 'package:app/pages/home/home_page.dart';
 import 'package:app/pages/more/more_bloc.dart';
 import 'package:app/pages/more/more_page.dart';
-import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
-import 'package:app/pages/new_spot/new_spot_form_page.dart';
+import 'package:app/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
+import 'package:app/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
+import 'package:app/pages/new_spot/equipment/new_spot_equipment_page.dart';
+import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
+import 'package:app/pages/new_spot/form/new_spot_form_page.dart';
 import 'package:app/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/pages/spot_details/spot_details_bloc.dart';
 import 'package:app/pages/spot_details/spot_details_page.dart';
@@ -39,7 +42,16 @@ abstract class Pages {
     );
   }
 
-  static Widget newSpot() {
+  static Widget newSpotEquipment(dynamic arguments) {
+    return BlocProvider<NewSpotEquipmentCubit>(
+      create: (_) => NewSpotEquipmentCubit(
+        arguments: arguments as NewSpotEquipmentArguments,
+      ),
+      child: const NewSpotEquipmentPage(),
+    );
+  }
+
+  static Widget newSpotForm() {
     return BlocProvider<NewSpotFormCubit>(
       create: (_) => NewSpotFormCubit(
         mapCoordinator: IMapCoordinator.create(),

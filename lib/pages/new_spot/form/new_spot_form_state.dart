@@ -8,5 +8,8 @@ class NewSpotFormState with _$NewSpotFormState {
     required String? message,
   }) = _ValidationFailed;
 
-  const factory NewSpotFormState.validationSuccessful() = _ValidationSuccessful;
+  const factory NewSpotFormState.validationSuccessful({
+    required NewSpotFormData formData,
+    UniqueProp? uniqueProp,
+  }) = _ValidationSuccessful;
 }

@@ -20,21 +20,24 @@ mixin _$NewSpotFormState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String? message) validationFailed,
-    required TResult Function() validationSuccessful,
+    required TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)
+        validationSuccessful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String? message)? validationFailed,
-    TResult? Function()? validationSuccessful,
+    TResult? Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? message)? validationFailed,
-    TResult Function()? validationSuccessful,
+    TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +122,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String? message) validationFailed,
-    required TResult Function() validationSuccessful,
+    required TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)
+        validationSuccessful,
   }) {
     return initial();
   }
@@ -129,7 +133,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String? message)? validationFailed,
-    TResult? Function()? validationSuccessful,
+    TResult? Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
   }) {
     return initial?.call();
   }
@@ -139,7 +144,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? message)? validationFailed,
-    TResult Function()? validationSuccessful,
+    TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -253,7 +259,8 @@ class _$_ValidationFailed implements _ValidationFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String? message) validationFailed,
-    required TResult Function() validationSuccessful,
+    required TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)
+        validationSuccessful,
   }) {
     return validationFailed(message);
   }
@@ -263,7 +270,8 @@ class _$_ValidationFailed implements _ValidationFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String? message)? validationFailed,
-    TResult? Function()? validationSuccessful,
+    TResult? Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
   }) {
     return validationFailed?.call(message);
   }
@@ -273,7 +281,8 @@ class _$_ValidationFailed implements _ValidationFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? message)? validationFailed,
-    TResult Function()? validationSuccessful,
+    TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
     required TResult orElse(),
   }) {
     if (validationFailed != null) {
@@ -332,6 +341,10 @@ abstract class _$$_ValidationSuccessfulCopyWith<$Res> {
   factory _$$_ValidationSuccessfulCopyWith(_$_ValidationSuccessful value,
           $Res Function(_$_ValidationSuccessful) then) =
       __$$_ValidationSuccessfulCopyWithImpl<$Res>;
+  @useResult
+  $Res call({NewSpotFormData formData, UniqueProp? uniqueProp});
+
+  $NewSpotFormDataCopyWith<$Res> get formData;
 }
 
 /// @nodoc
@@ -341,35 +354,79 @@ class __$$_ValidationSuccessfulCopyWithImpl<$Res>
   __$$_ValidationSuccessfulCopyWithImpl(_$_ValidationSuccessful _value,
       $Res Function(_$_ValidationSuccessful) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formData = null,
+    Object? uniqueProp = freezed,
+  }) {
+    return _then(_$_ValidationSuccessful(
+      formData: null == formData
+          ? _value.formData
+          : formData // ignore: cast_nullable_to_non_nullable
+              as NewSpotFormData,
+      uniqueProp: freezed == uniqueProp
+          ? _value.uniqueProp
+          : uniqueProp // ignore: cast_nullable_to_non_nullable
+              as UniqueProp?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NewSpotFormDataCopyWith<$Res> get formData {
+    return $NewSpotFormDataCopyWith<$Res>(_value.formData, (value) {
+      return _then(_value.copyWith(formData: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_ValidationSuccessful implements _ValidationSuccessful {
-  const _$_ValidationSuccessful();
+  const _$_ValidationSuccessful({required this.formData, this.uniqueProp});
+
+  @override
+  final NewSpotFormData formData;
+  @override
+  final UniqueProp? uniqueProp;
 
   @override
   String toString() {
-    return 'NewSpotFormState.validationSuccessful()';
+    return 'NewSpotFormState.validationSuccessful(formData: $formData, uniqueProp: $uniqueProp)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ValidationSuccessful);
+        (other.runtimeType == runtimeType &&
+            other is _$_ValidationSuccessful &&
+            (identical(other.formData, formData) ||
+                other.formData == formData) &&
+            (identical(other.uniqueProp, uniqueProp) ||
+                other.uniqueProp == uniqueProp));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, formData, uniqueProp);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ValidationSuccessfulCopyWith<_$_ValidationSuccessful> get copyWith =>
+      __$$_ValidationSuccessfulCopyWithImpl<_$_ValidationSuccessful>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String? message) validationFailed,
-    required TResult Function() validationSuccessful,
+    required TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)
+        validationSuccessful,
   }) {
-    return validationSuccessful();
+    return validationSuccessful(formData, uniqueProp);
   }
 
   @override
@@ -377,9 +434,10 @@ class _$_ValidationSuccessful implements _ValidationSuccessful {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String? message)? validationFailed,
-    TResult? Function()? validationSuccessful,
+    TResult? Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
   }) {
-    return validationSuccessful?.call();
+    return validationSuccessful?.call(formData, uniqueProp);
   }
 
   @override
@@ -387,11 +445,12 @@ class _$_ValidationSuccessful implements _ValidationSuccessful {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? message)? validationFailed,
-    TResult Function()? validationSuccessful,
+    TResult Function(NewSpotFormData formData, UniqueProp? uniqueProp)?
+        validationSuccessful,
     required TResult orElse(),
   }) {
     if (validationSuccessful != null) {
-      return validationSuccessful();
+      return validationSuccessful(formData, uniqueProp);
     }
     return orElse();
   }
@@ -432,5 +491,13 @@ class _$_ValidationSuccessful implements _ValidationSuccessful {
 }
 
 abstract class _ValidationSuccessful implements NewSpotFormState {
-  const factory _ValidationSuccessful() = _$_ValidationSuccessful;
+  const factory _ValidationSuccessful(
+      {required final NewSpotFormData formData,
+      final UniqueProp? uniqueProp}) = _$_ValidationSuccessful;
+
+  NewSpotFormData get formData;
+  UniqueProp? get uniqueProp;
+  @JsonKey(ignore: true)
+  _$$_ValidationSuccessfulCopyWith<_$_ValidationSuccessful> get copyWith =>
+      throw _privateConstructorUsedError;
 }

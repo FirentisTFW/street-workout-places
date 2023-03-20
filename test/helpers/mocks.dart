@@ -1,7 +1,7 @@
 import 'package:app/blocs/spots/spots_cubit.dart';
 import 'package:app/common/maps/i_map_coordinator.dart';
-import 'package:app/pages/new_spot/new_spot_form.dart';
-import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
+import 'package:app/pages/new_spot/form/new_spot_form.dart';
+import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/repositories/spots/i_spots_repository.dart';
 import 'package:app/services/map_clusters_service.dart';
 import 'package:app/services/user_input_validation_service.dart';

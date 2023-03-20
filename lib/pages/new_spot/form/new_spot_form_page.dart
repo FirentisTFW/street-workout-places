@@ -3,8 +3,10 @@ import 'package:app/extensions/extensions.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
-import 'package:app/pages/new_spot/new_spot_form_cubit.dart';
-import 'package:app/pages/new_spot/widgets/new_spot_coordinates_section.dart';
+import 'package:app/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
+import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
+import 'package:app/pages/new_spot/form/widgets/new_spot_coordinates_section.dart';
+import 'package:app/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/styles/app_dimensions.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/widgets/app_text_field.dart';
@@ -32,7 +34,8 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<NewSpotFormCubit, NewSpotFormState>(
+        child: BlocConsumer<NewSpotFormCubit, NewSpotFormState>(
+          listener: _onStateChanged,
           builder: (_, state) {
             return FormGestureDetector(
               child: SingleChildScrollView(
@@ -56,6 +59,18 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+
+  void _onStateChanged(BuildContext context, NewSpotFormState state) {
+    state.mapOrNull(
+      validationSuccessful: (state) => Navigator.pushNamed(
+        context,
+        FormRouting.equipment,
+        arguments: NewSpotEquipmentArguments(
+          formData: state.formData,
         ),
       ),
     );
