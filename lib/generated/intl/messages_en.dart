@@ -68,6 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "newSpotCoordinatesSectionButtonTitle":
             MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
+        "notSelectedMapPositionValueNotifierErrorMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Należy wybrać lokalizację punktu na mapie"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),

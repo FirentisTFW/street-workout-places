@@ -8,13 +8,19 @@ import 'package:flutter/material.dart';
 class TextFieldEssentials extends UserInputField {
   final TextEditingController controller = TextEditingController();
   final FocusNode focusNode = FocusNode();
+  final bool isRequired;
   final TextFieldValidator validator;
 
   String get text => controller.text;
 
-  TextFieldEssentials(this.validator);
+  TextFieldEssentials(
+    this.validator, {
+    this.isRequired = false,
+  });
 
-  TextFieldEssentials.noValidation() : validator = TextFieldValidationUtils.noValidation;
+  TextFieldEssentials.noValidation({
+    this.isRequired = false,
+  }) : validator = TextFieldValidationUtils.noValidation;
 
   @override
   void dispose() {

@@ -43,5 +43,6 @@
   "selectLocationOnMapDescription": "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność.",
   "next": "Dalej",
   "blankTextFieldErrorMessage": "To pole nie może być puste",
-  "emptyValueNotifierErrorMessage": "Należy wybrać wartość"
+  "emptyValueNotifierErrorMessage": "Należy wybrać wartość",
+  "notSelectedMapPositionValueNotifierErrorMessage": "Należy wybrać lokalizację punktu na mapie"
 }

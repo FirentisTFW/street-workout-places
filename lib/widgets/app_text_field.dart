@@ -18,7 +18,6 @@ class AppTextField extends StatefulWidget {
   final String? prefixText;
   final Widget? rightScope;
   final bool shouldShowAdditionalInfoOnFocus;
-  final bool shouldShowRequiredSign;
   final Widget? suffix;
   final Widget? suffixIcon;
   final double suffixIconSize;
@@ -45,7 +44,6 @@ class AppTextField extends StatefulWidget {
     this.prefixText,
     this.rightScope,
     this.shouldShowAdditionalInfoOnFocus = false,
-    this.shouldShowRequiredSign = false,
     this.suffix,
     this.suffixIcon,
     this.suffixIconSize = 20.0,
@@ -139,7 +137,7 @@ class _AppTextFieldState extends State<AppTextField> {
       focusedErrorBorder: _buildBorder(
         color: AppColors.blue,
       ),
-      labelText: widget.labelText,
+      labelText: _essentials.isRequired ? '${widget.labelText}*' : widget.labelText,
       labelStyle: AppTextStyles.textFieldLabel(),
       prefixText: widget.prefixText,
       prefix: widget.prefix,

@@ -78,7 +78,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    // link the overlay to the button
+    // links the overlay to the button
     return CompositedTransformTarget(
       link: _layerLink,
       child: SizedBox(
@@ -94,14 +94,14 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
             padding: const EdgeInsets.symmetric(
               horizontal: 12.0,
             ),
-            child: _buildTextAndArrow(),
+            child: _buildText(),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildTextAndArrow() {
+  Widget _buildText() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

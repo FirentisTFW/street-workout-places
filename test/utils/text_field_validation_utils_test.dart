@@ -1,4 +1,4 @@
-import 'package:app/errors/text_field_error.dart';
+import 'package:app/errors/user_input/text_field_error.dart';
 import 'package:app/utils/text_field_validation_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 

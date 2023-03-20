@@ -27,7 +27,6 @@ class NewSpotFormPage extends StatefulWidget {
   State<NewSpotFormPage> createState() => _NewSpotFormPageState();
 }
 
-// FIXME Adjust font styles for the file
 class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCubit> {
   @override
   Widget build(BuildContext context) {
@@ -72,6 +71,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
 
   Widget _buildSizeAndSurfaceSelectors() {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
           child: _buildSizeSelector(),
@@ -87,9 +87,12 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
   Widget _buildCoordinatesSection() {
     return ValueListenableBuilder(
       valueListenable: bloc.mapPositionNotifier.notifier,
-      builder: (_, mapPosition, __) => NewSpotCoordinatesSection(
-        bloc: bloc,
-        mapPosition: mapPosition,
+      builder: (_, mapPosition, __) => WidgetWithPossibleErrorMessage(
+        errorMessage: bloc.mapPositionNotifier.provideErrorMessageIfShouldBeDisplayed(),
+        child: NewSpotCoordinatesSection(
+          bloc: bloc,
+          mapPosition: mapPosition,
+        ),
       ),
     );
   }

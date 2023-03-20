@@ -2,7 +2,7 @@ import 'package:app/styles/app_text_styles.dart';
 import 'package:app/widgets/space.dart';
 import 'package:flutter/material.dart';
 
-// TODO Think of better name for this widget
+// TODO Think of a better name for this widget
 class WidgetWithPossibleErrorMessage extends StatelessWidget {
   final Widget child;
   final String? errorMessage;
@@ -23,13 +23,12 @@ class WidgetWithPossibleErrorMessage extends StatelessWidget {
         if (errorMessageLocal != null) ...[
           const Space.vertical(10.0),
           _buildErrorMessage(errorMessageLocal),
-        ]
+        ],
       ],
     );
   }
 
   Widget _buildErrorMessage(String message) {
-    // FIXME Style
     return Padding(
       padding: const EdgeInsets.only(
         left: 16.0,

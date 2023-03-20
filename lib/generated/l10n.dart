@@ -499,6 +499,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Należy wybrać lokalizację punktu na mapie`
+  String get notSelectedMapPositionValueNotifierErrorMessage {
+    return Intl.message(
+      'Należy wybrać lokalizację punktu na mapie',
+      name: 'notSelectedMapPositionValueNotifierErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

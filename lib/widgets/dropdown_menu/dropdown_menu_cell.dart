@@ -28,7 +28,7 @@ class DropdownMenuCell extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: AppTextStyles.contentBigger(),
+            style: AppTextStyles.textFieldLabel(),
             textAlign: TextAlign.start,
           ),
         ),

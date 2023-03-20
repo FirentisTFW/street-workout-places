@@ -1,4 +1,4 @@
-import 'package:app/errors/text_field_error.dart';
+import 'package:app/errors/user_input/text_field_error.dart';
 import 'package:app/extensions/string_extensions.dart';
 
 abstract class TextFieldValidationUtils {
