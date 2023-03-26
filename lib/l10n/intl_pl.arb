@@ -44,5 +44,11 @@
   "next": "Dalej",
   "blankTextFieldErrorMessage": "To pole nie może być puste",
   "emptyValueNotifierErrorMessage": "Należy wybrać wartość",
-  "notSelectedMapPositionValueNotifierErrorMessage": "Należy wybrać lokalizację punktu na mapie"
+  "notSelectedMapPositionValueNotifierErrorMessage": "Należy wybrać lokalizację punktu na mapie",
+  "newSpotEquipmentAppBarTitle": "Zgłoś plac 2/3",
+  "newSpotEquipmentHeadline": "Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu.",
+  "newSpotFormAppBarTitle": "Zgłoś plac 1/3",
+  "newSpotInitialHeader": "Dodaj nową lokację",
+  "newSpotInitialDescription": "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!",
+  "newSpotInitialNextButtonTitle": "Chcę dodać lokację"
 }

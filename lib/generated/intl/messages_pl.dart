@@ -67,6 +67,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nawiguj"),
         "newSpotCoordinatesSectionButtonTitle":
             MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
+        "newSpotEquipmentAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Zgłoś plac 2/3"),
+        "newSpotEquipmentHeadline": MessageLookupByLibrary.simpleMessage(
+            "Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu."),
+        "newSpotFormAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Zgłoś plac 1/3"),
+        "newSpotInitialDescription": MessageLookupByLibrary.simpleMessage(
+            "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!"),
+        "newSpotInitialHeader":
+            MessageLookupByLibrary.simpleMessage("Dodaj nową lokację"),
+        "newSpotInitialNextButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Chcę dodać lokację"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "notSelectedMapPositionValueNotifierErrorMessage":
             MessageLookupByLibrary.simpleMessage(

@@ -6,6 +6,7 @@ class FormRouting {
   static const String _prefix = 'form';
   static const String equipment = '$_prefix/equipment';
   static const String form = '$_prefix/main';
+  static const String start = '$_prefix/start';
 
   const FormRouting._();
 
@@ -24,6 +25,8 @@ class FormRouting {
         return Pages.newSpotEquipment(settings.arguments);
       case form:
         return Pages.newSpotForm();
+      case start:
+        return Pages.newSpotInitial();
       default:
         return null;
     }

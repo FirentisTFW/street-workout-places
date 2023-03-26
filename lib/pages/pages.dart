@@ -1,4 +1,5 @@
 import 'package:app/common/maps/i_map_coordinator.dart';
+import 'package:app/networking/models/equipment.dart';
 import 'package:app/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/pages/dashboard/dashboard_page.dart';
 import 'package:app/pages/home/home_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:app/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
 import 'package:app/pages/new_spot/equipment/new_spot_equipment_page.dart';
 import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/pages/new_spot/form/new_spot_form_page.dart';
+import 'package:app/pages/new_spot/initial/new_spot_initial_page.dart';
 import 'package:app/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/pages/spot_details/spot_details_bloc.dart';
 import 'package:app/pages/spot_details/spot_details_page.dart';
@@ -46,6 +48,7 @@ abstract class Pages {
     return BlocProvider<NewSpotEquipmentCubit>(
       create: (_) => NewSpotEquipmentCubit(
         arguments: arguments as NewSpotEquipmentArguments,
+        equipment: Equipment.values,
       ),
       child: const NewSpotEquipmentPage(),
     );
@@ -59,6 +62,10 @@ abstract class Pages {
       ),
       child: const NewSpotFormPage(),
     );
+  }
+
+  static Widget newSpotInitial() {
+    return const NewSpotInitialPage();
   }
 
   static Widget spotDetails(SpotDetailsArguments arguments) {

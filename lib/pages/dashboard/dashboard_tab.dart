@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 enum DashboardTab {
   form(
     icon: Icons.add_circle_outline,
-    initialRoute: FormRouting.form,
+    initialRoute: FormRouting.start,
   ),
   home(
     icon: Icons.home,

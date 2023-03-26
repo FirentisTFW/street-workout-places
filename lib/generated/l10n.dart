@@ -509,6 +509,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Zgłoś plac 2/3`
+  String get newSpotEquipmentAppBarTitle {
+    return Intl.message(
+      'Zgłoś plac 2/3',
+      name: 'newSpotEquipmentAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu.`
+  String get newSpotEquipmentHeadline {
+    return Intl.message(
+      'Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu.',
+      name: 'newSpotEquipmentHeadline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zgłoś plac 1/3`
+  String get newSpotFormAppBarTitle {
+    return Intl.message(
+      'Zgłoś plac 1/3',
+      name: 'newSpotFormAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dodaj nową lokację`
+  String get newSpotInitialHeader {
+    return Intl.message(
+      'Dodaj nową lokację',
+      name: 'newSpotInitialHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!`
+  String get newSpotInitialDescription {
+    return Intl.message(
+      'Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!',
+      name: 'newSpotInitialDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chcę dodać lokację`
+  String get newSpotInitialNextButtonTitle {
+    return Intl.message(
+      'Chcę dodać lokację',
+      name: 'newSpotInitialNextButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

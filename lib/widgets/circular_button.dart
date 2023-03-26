@@ -1,4 +1,4 @@
-import 'package:app/widgets/ios_ripple_remover.dart';
+import 'package:app/widgets/ripple_remover.dart';
 import 'package:flutter/material.dart';
 
 class CircularButton extends StatelessWidget {

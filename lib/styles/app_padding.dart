@@ -8,4 +8,7 @@ class AppPadding {
   static const EdgeInsets defaultHorizontal = EdgeInsets.symmetric(
     horizontal: _defaultValue,
   );
+  static const EdgeInsets defaultVertical = EdgeInsets.symmetric(
+    vertical: _defaultValue,
+  );
 }

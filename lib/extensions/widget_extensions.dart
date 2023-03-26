@@ -1,6 +1,12 @@
 import 'package:app/extensions/iterable_extensions.dart';
 import 'package:flutter/material.dart';
 
+extension WidgetExtensions on Widget {
+  Widget withSliverToBoxAdapter() => SliverToBoxAdapter(
+        child: this,
+      );
+}
+
 extension WidgetListExtensions on List<Widget> {
   List<Widget> eachElementFollowedBy(Widget followingWidget) => copy()
       .expand(

@@ -7,8 +7,8 @@ import 'package:app/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
 import 'package:app/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/pages/new_spot/form/widgets/new_spot_coordinates_section.dart';
 import 'package:app/routing/dashboard_tabs/form_routing.dart';
-import 'package:app/styles/app_dimensions.dart';
 import 'package:app/styles/app_padding.dart';
+import 'package:app/widgets/app_app_bar.dart';
 import 'package:app/widgets/app_text_field.dart';
 import 'package:app/widgets/dropdown_menu/app_dropdown_menu_item.dart';
 import 'package:app/widgets/dropdown_menu/dropdown_item_style.dart';
@@ -33,6 +33,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _buildAppBar(),
       body: SafeArea(
         child: BlocConsumer<NewSpotFormCubit, NewSpotFormState>(
           listener: _onStateChanged,
@@ -43,18 +44,15 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    ...[
-                      _buildNameTextField(),
-                      _buildSizeAndSurfaceSelectors(),
-                      _buildCoordinatesSection(),
-                      ..._buildAddressSection(),
-                      _buildDescriptionTextField(),
-                      _buildNextButton(),
-                    ].separatedBy(
-                      const Space.vertical(20.0),
-                    ),
-                    Space.vertical(AppDimensions.height.bottomNavgationBar + 30.0)
-                  ],
+                    _buildNameTextField(),
+                    _buildSizeAndSurfaceSelectors(),
+                    _buildCoordinatesSection(),
+                    ..._buildAddressSection(),
+                    _buildDescriptionTextField(),
+                    _buildNextButton(),
+                  ].separatedBy(
+                    const Space.vertical(20.0),
+                  ),
                 ),
               ),
             );
@@ -73,6 +71,12 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
           formData: state.formData,
         ),
       ),
+    );
+  }
+
+  PreferredSizeWidget _buildAppBar() {
+    return AppAppBar(
+      title: S.of(context).newSpotFormAppBarTitle,
     );
   }
 

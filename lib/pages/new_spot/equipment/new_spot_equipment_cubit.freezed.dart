@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewSpotEquipmentState {
+  List<Equipment> get equipment => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<Equipment> equipment) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<Equipment> equipment)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<Equipment> equipment)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$NewSpotEquipmentState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $NewSpotEquipmentStateCopyWith<NewSpotEquipmentState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,8 @@ abstract class $NewSpotEquipmentStateCopyWith<$Res> {
   factory $NewSpotEquipmentStateCopyWith(NewSpotEquipmentState value,
           $Res Function(NewSpotEquipmentState) then) =
       _$NewSpotEquipmentStateCopyWithImpl<$Res, NewSpotEquipmentState>;
+  @useResult
+  $Res call({List<Equipment> equipment});
 }
 
 /// @nodoc
@@ -67,13 +74,30 @@ class _$NewSpotEquipmentStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+  }) {
+    return _then(_value.copyWith(
+      equipment: null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as List<Equipment>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
+abstract class _$$_InitialCopyWith<$Res>
+    implements $NewSpotEquipmentStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Equipment> equipment});
 }
 
 /// @nodoc
@@ -82,51 +106,82 @@ class __$$_InitialCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+  }) {
+    return _then(_$_Initial(
+      equipment: null == equipment
+          ? _value._equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as List<Equipment>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial();
+  const _$_Initial({required final List<Equipment> equipment})
+      : _equipment = equipment;
+
+  final List<Equipment> _equipment;
+  @override
+  List<Equipment> get equipment {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_equipment);
+  }
 
   @override
   String toString() {
-    return 'NewSpotEquipmentState.initial()';
+    return 'NewSpotEquipmentState.initial(equipment: $equipment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_Initial &&
+            const DeepCollectionEquality()
+                .equals(other._equipment, _equipment));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_equipment));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<Equipment> equipment) initial,
   }) {
-    return initial();
+    return initial(equipment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<Equipment> equipment)? initial,
   }) {
-    return initial?.call();
+    return initial?.call(equipment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<Equipment> equipment)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(equipment);
     }
     return orElse();
   }
@@ -161,5 +216,13 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements NewSpotEquipmentState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial({required final List<Equipment> equipment}) =
+      _$_Initial;
+
+  @override
+  List<Equipment> get equipment;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }

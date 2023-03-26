@@ -28,6 +28,17 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle appBar({
+    Color color = AppColors.grey2,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18.0,
+      fontWeight: FontWeight.normal,
+      fontFamily: robotoFontFamily,
+    );
+  }
+
   static TextStyle content({
     Color color = AppColors.black,
     double height = 1.0,
