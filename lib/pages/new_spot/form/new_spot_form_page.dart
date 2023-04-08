@@ -37,7 +37,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
       body: SafeArea(
         child: BlocConsumer<NewSpotFormCubit, NewSpotFormState>(
           listener: _onStateChanged,
-          builder: (_, state) {
+          builder: (_, __) {
             return FormGestureDetector(
               child: SingleChildScrollView(
                 padding: AppPadding.defaultAll,
@@ -63,15 +63,15 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
   }
 
   void _onStateChanged(BuildContext context, NewSpotFormState state) {
-    state.mapOrNull(
-      validationSuccessful: (state) => Navigator.pushNamed(
+    if (state is NewSpotFormValidationSuccessful) {
+      Navigator.pushNamed(
         context,
         FormRouting.equipment,
         arguments: NewSpotEquipmentArguments(
           formData: state.formData,
         ),
-      ),
-    );
+      );
+    }
   }
 
   PreferredSizeWidget _buildAppBar() {

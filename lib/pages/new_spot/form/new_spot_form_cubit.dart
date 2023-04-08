@@ -6,10 +6,10 @@ import 'package:app/networking/models/surface.dart';
 import 'package:app/networking/models/workout_spot_size.dart';
 import 'package:app/pages/new_spot/form/new_spot_form.dart';
 import 'package:app/services/user_input_validation_service.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'new_spot_form_cubit.freezed.dart';
 part 'new_spot_form_state.dart';
 
 class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
@@ -19,7 +19,7 @@ class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
   NewSpotFormCubit({
     required this.mapCoordinator,
     required this.userInputValidator,
-  }) : super(const _Initial());
+  }) : super(const NewSpotFormInitial());
 
   @override
   Future<void> close() {
@@ -31,7 +31,7 @@ class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
     final bool isFormValid = userInputValidator.validate(userInputsToValidate);
     if (!isFormValid) {
       emit(
-        _$_ValidationFailed(
+        NewSpotFormValidationFailed(
           message: userInputValidator.failureMessage,
         ),
       );
@@ -39,9 +39,8 @@ class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
       final NewSpotFormData? formData = _maybePrepareFormData();
       if (formData == null) return;
       emit(
-        _ValidationSuccessful(
+        NewSpotFormValidationSuccessful(
           formData: formData,
-          uniqueProp: UniqueProp(),
         ),
       );
     }

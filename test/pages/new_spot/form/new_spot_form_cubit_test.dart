@@ -5,7 +5,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../helpers/mocks.dart';
+import '../../../helpers/mocks.dart';
 
 void main() {
   late UserInputValidationService validationService;
@@ -44,7 +44,7 @@ void main() {
         ),
         act: (cubit) => cubit.proceedToNextStep(),
         expect: () => const [
-          NewSpotFormState.validationFailed(
+          NewSpotFormValidationFailed(
             message: failureMessage,
           ),
         ],
