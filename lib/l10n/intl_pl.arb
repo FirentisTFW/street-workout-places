@@ -50,5 +50,6 @@
   "newSpotFormAppBarTitle": "Zgłoś plac 1/3",
   "newSpotInitialHeader": "Dodaj nową lokację",
   "newSpotInitialDescription": "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!",
-  "newSpotInitialNextButtonTitle": "Chcę dodać lokację"
+  "newSpotInitialNextButtonTitle": "Chcę dodać lokację",
+  "NotSelectedAnyEquipmentItemErrorMessage": "Nie wybrano żadnego sprzętu."
 }

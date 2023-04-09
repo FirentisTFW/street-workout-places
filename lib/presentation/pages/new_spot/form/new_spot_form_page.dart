@@ -107,7 +107,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
     return ValueListenableBuilder(
       valueListenable: bloc.mapPositionNotifier.notifier,
       builder: (_, mapPosition, __) => WidgetWithPossibleErrorMessage(
-        errorMessage: bloc.mapPositionNotifier.provideErrorMessageIfShouldBeDisplayed(),
+        errorMessage: bloc.mapPositionNotifier.provideErrorMessageIfShouldBeDisplayed(context),
         child: NewSpotCoordinatesSection(
           bloc: bloc,
           mapPosition: mapPosition,
@@ -121,7 +121,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
       valueListenable: bloc.sizeNotifier.notifier,
       builder: (context, size, _) {
         return WidgetWithPossibleErrorMessage(
-          errorMessage: bloc.sizeNotifier.provideErrorMessageIfShouldBeDisplayed(),
+          errorMessage: bloc.sizeNotifier.provideErrorMessageIfShouldBeDisplayed(context),
           key: ValueKey(bloc.sizeNotifier),
           child: app.DropdownMenu<WorkoutSpotSize>(
             dropdownItemStyle: DropdownItemStyle(
@@ -150,7 +150,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
       valueListenable: bloc.surfaceNotifier.notifier,
       builder: (context, surface, _) {
         return WidgetWithPossibleErrorMessage(
-          errorMessage: bloc.surfaceNotifier.provideErrorMessageIfShouldBeDisplayed(),
+          errorMessage: bloc.surfaceNotifier.provideErrorMessageIfShouldBeDisplayed(context),
           key: ValueKey(bloc.surfaceNotifier),
           child: app.DropdownMenu<Surface>(
             dropdownItemStyle: DropdownItemStyle(

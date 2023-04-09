@@ -1,10 +1,10 @@
 import 'package:app/domain/core/common/constants.dart';
 import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
 import 'package:app/domain/core/extensions/list_extensions.dart';
-import 'package:app/generated/l10n.dart';
-import 'package:app/presentation/modals/bottom_sheets/select_location_on_map_bottom_sheet.dart';
 import 'package:app/domain/models/map_essentials.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
+import 'package:app/presentation/modals/bottom_sheets/select_location_on_map_bottom_sheet.dart';
 import 'package:app/presentation/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/presentation/widgets/primary_button.dart';
 import 'package:app/presentation/widgets/space.dart';

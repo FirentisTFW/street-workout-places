@@ -24,6 +24,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "NotSelectedAnyEquipmentItemErrorMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Nie wybrano żadnego sprzętu."),
         "appName": MessageLookupByLibrary.simpleMessage("Parki Street Workout"),
         "blankTextFieldErrorMessage":
             MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),

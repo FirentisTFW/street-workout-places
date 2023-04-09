@@ -13,16 +13,16 @@ class NewSpotFormInitial extends NewSpotFormState {
 }
 
 class NewSpotFormValidationFailed extends NewSpotFormState {
-  final String? message;
+  final DialogError error;
 
   const NewSpotFormValidationFailed({
-    required this.message,
+    required this.error,
   });
 
   @override
   List<Object?> get props => [
         ...super.props,
-        message,
+        error,
       ];
 }
 

@@ -1,22 +1,19 @@
 import 'package:app/domain/core/common/user_input_field.dart';
+import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 
 class UserInputValidationService {
-  String? _failureMessage;
-
-  String? get failureMessage => _failureMessage;
-
-  bool validate(
+  UserInputError? validate(
     List<UserInputField> userInputFields, {
     bool shouldForceDisplayingError = true,
   }) {
-    bool isValid = true;
+    UserInputError? error;
     for (final UserInputField userInputField in userInputFields) {
-      if (!userInputField.validate()) {
-        _failureMessage = userInputField.provideErrorMessage();
+      final UserInputError? validationError = userInputField.validate();
+      if (validationError != null) {
+        error = validationError;
         userInputField.shouldForceDisplayingError = shouldForceDisplayingError;
-        isValid = false;
       }
     }
-    return isValid;
+    return error;
   }
 }

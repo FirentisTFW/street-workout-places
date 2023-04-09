@@ -1,6 +1,6 @@
 import 'package:app/domain/core/errors/user_input/value_notifier_error.dart';
-import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/domain/core/utils/value_notifier_validation_utils.dart';
+import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

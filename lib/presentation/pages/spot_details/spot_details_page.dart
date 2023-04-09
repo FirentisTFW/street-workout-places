@@ -1,7 +1,8 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
-import 'package:app/generated/l10n.dart';
+import 'package:app/domain/core/utils/map_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/infrastructure/networking/models/surface.dart';
 import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
@@ -10,7 +11,6 @@ import 'package:app/presentation/pages/spot_details/widgets/spot_details_image_s
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
-import 'package:app/domain/core/utils/map_utils.dart';
 import 'package:app/presentation/widgets/circular_button.dart';
 import 'package:app/presentation/widgets/information_with_title.dart';
 import 'package:app/presentation/widgets/navigation_button.dart';

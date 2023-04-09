@@ -1,6 +1,6 @@
 import 'package:app/domain/core/extensions/extensions.dart';
-import 'package:app/generated/l10n.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/adaptive_button.dart';
 import 'package:app/presentation/widgets/app_network_image.dart';

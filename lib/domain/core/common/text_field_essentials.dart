@@ -1,7 +1,6 @@
 import 'package:app/domain/core/common/custom_types.dart';
-import 'package:app/domain/core/common/global_navigator.dart';
 import 'package:app/domain/core/common/user_input_field.dart';
-import 'package:app/injector.dart';
+import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/utils/text_field_validation_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -29,12 +28,8 @@ class TextFieldEssentials extends UserInputField {
   }
 
   @override
-  bool validate() => validator(text) == null;
+  UserInputError? validate() => validator(text);
 
   @override
-  String? provideErrorMessage() {
-    final BuildContext? context = Injector().resolve<GlobalNavigator>().currentContext;
-    if (context == null) return null;
-    return validator(text)?.getMessage(context);
-  }
+  String? provideErrorMessage(BuildContext context) => validator(text)?.getMessage(context);
 }

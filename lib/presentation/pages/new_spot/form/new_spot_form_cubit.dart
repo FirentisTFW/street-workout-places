@@ -1,5 +1,7 @@
 import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
 import 'package:app/domain/core/common/unique_prop_provider.dart';
+import 'package:app/domain/core/errors/ui_error.dart';
+import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/models/new_spot_form_data.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
@@ -28,11 +30,12 @@ class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
   }
 
   void proceedToNextStep() {
-    final bool isFormValid = userInputValidator.validate(userInputsToValidate);
+    final UserInputError? validationError = userInputValidator.validate(userInputsToValidate);
+    final bool isFormValid = validationError == null;
     if (!isFormValid) {
       emit(
         NewSpotFormValidationFailed(
-          message: userInputValidator.failureMessage,
+          error: DialogError.fromException(validationError),
         ),
       );
     } else {

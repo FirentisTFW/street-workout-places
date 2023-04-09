@@ -1,7 +1,6 @@
 import 'package:app/domain/core/common/custom_types.dart';
-import 'package:app/domain/core/common/global_navigator.dart';
 import 'package:app/domain/core/common/user_input_field.dart';
-import 'package:app/injector.dart';
+import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/utils/value_notifier_validation_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -28,17 +27,13 @@ class AppValueNotifier<T> extends UserInputField {
   void dispose() => _notifier.dispose();
 
   @override
-  String? provideErrorMessage() {
-    final BuildContext? context = Injector().resolve<GlobalNavigator>().currentContext;
-    if (context == null) return null;
-    return validator(value)?.getMessage(context);
-  }
+  String? provideErrorMessage(BuildContext context) => validator(value)?.getMessage(context);
 
-  String? provideErrorMessageIfShouldBeDisplayed() {
+  String? provideErrorMessageIfShouldBeDisplayed(BuildContext context) {
     if (!shouldForceDisplayingError) return null;
-    return provideErrorMessage();
+    return provideErrorMessage(context);
   }
 
   @override
-  bool validate() => validator(value) == null;
+  UserInputError? validate() => validator(value);
 }

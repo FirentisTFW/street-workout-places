@@ -1,4 +1,5 @@
 import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_bloc.dart';
@@ -49,6 +50,7 @@ abstract class Pages {
       create: (_) => NewSpotEquipmentCubit(
         arguments: arguments as NewSpotEquipmentArguments,
         equipment: Equipment.values,
+        selectedEquipmentValidator: EquipmentSelectionValidationService(),
       ),
       child: const NewSpotEquipmentPage(),
     );

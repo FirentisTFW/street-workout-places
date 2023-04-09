@@ -6,7 +6,7 @@ class ErrorFactory {
   const ErrorFactory(this.exception);
 
   AppError prepare() {
-    // TODO Prepare proper app error based on error
+    // TODO Prepare proper app error based on exception
     return const UnknownError();
   }
 }

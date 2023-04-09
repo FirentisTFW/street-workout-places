@@ -569,6 +569,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Nie wybrano żadnego sprzętu.`
+  String get NotSelectedAnyEquipmentItemErrorMessage {
+    return Intl.message(
+      'Nie wybrano żadnego sprzętu.',
+      name: 'NotSelectedAnyEquipmentItemErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
