@@ -1,10 +1,10 @@
-import 'package:app/blocs/spots/spots_cubit.dart';
-import 'package:app/common/mocks/workout_spot_mocks.dart';
-import 'package:app/errors/app_error.dart';
-import 'package:app/errors/ui_error.dart';
-import 'package:app/mappers/workout_spot_mappers.dart';
-import 'package:app/models/workout_spot_model.dart';
-import 'package:app/networking/models/address.dart';
+import 'package:app/application/blocs/spots/spots_cubit.dart';
+import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
+import 'package:app/domain/core/errors/app_error.dart';
+import 'package:app/domain/core/errors/ui_error.dart';
+import 'package:app/domain/core/mappers/workout_spot_mappers.dart';
+import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

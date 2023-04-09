@@ -1,4 +1,4 @@
-import 'package:app/utils/text_utils.dart';
+import 'package:app/domain/core/utils/text_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -1,9 +1,9 @@
-import 'package:app/models/new_spot_form_data.dart';
-import 'package:app/networking/models/equipment.dart';
-import 'package:app/networking/models/map_position.dart';
-import 'package:app/networking/models/surface.dart';
-import 'package:app/networking/models/workout_spot_size.dart';
-import 'package:app/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
+import 'package:app/domain/models/new_spot_form_data.dart';
+import 'package:app/infrastructure/networking/models/equipment.dart';
+import 'package:app/infrastructure/networking/models/map_position.dart';
+import 'package:app/infrastructure/networking/models/surface.dart';
+import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
+import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -1,0 +1,40 @@
+import 'package:app/domain/core/common/custom_types.dart';
+import 'package:app/domain/core/common/global_navigator.dart';
+import 'package:app/domain/core/common/user_input_field.dart';
+import 'package:app/injector.dart';
+import 'package:app/domain/core/utils/text_field_validation_utils.dart';
+import 'package:flutter/material.dart';
+
+class TextFieldEssentials extends UserInputField {
+  final TextEditingController controller = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+  final bool isRequired;
+  final TextFieldValidator validator;
+
+  String get text => controller.text;
+
+  TextFieldEssentials(
+    this.validator, {
+    this.isRequired = false,
+  });
+
+  TextFieldEssentials.noValidation({
+    this.isRequired = false,
+  }) : validator = TextFieldValidationUtils.noValidation;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    focusNode.dispose();
+  }
+
+  @override
+  bool validate() => validator(text) == null;
+
+  @override
+  String? provideErrorMessage() {
+    final BuildContext? context = Injector().resolve<GlobalNavigator>().currentContext;
+    if (context == null) return null;
+    return validator(text)?.getMessage(context);
+  }
+}

@@ -1,6 +1,6 @@
-import 'package:app/models/workout_spot_model.dart';
-import 'package:app/networking/models/address.dart';
-import 'package:app/utils/search_utils.dart';
+import 'package:app/domain/core/utils/search_utils.dart';
+import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

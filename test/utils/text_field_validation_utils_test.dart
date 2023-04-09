@@ -1,5 +1,5 @@
-import 'package:app/errors/user_input/text_field_error.dart';
-import 'package:app/utils/text_field_validation_utils.dart';
+import 'package:app/domain/core/errors/user_input/text_field_error.dart';
+import 'package:app/domain/core/utils/text_field_validation_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
