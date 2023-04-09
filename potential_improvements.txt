@@ -6,3 +6,5 @@ Potential improvements:
     - consider texts "Opis:" and "Sprzęt:" above apropriate widgets
 - new_spot_page.dart
     - consider setting up properties like city, street and house number based on the location selected by user
+- new_spot_form and new_spot_equipment
+    - consider using bloc_presentation library for validation reactions

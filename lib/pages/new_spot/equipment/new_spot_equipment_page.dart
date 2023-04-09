@@ -6,7 +6,6 @@ import 'package:app/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
 import 'package:app/pages/new_spot/equipment/widgets/equipment_cell.dart';
 import 'package:app/styles/app_padding.dart';
 import 'package:app/styles/app_text_styles.dart';
-import 'package:app/utils/alert_dialog_utils.dart';
 import 'package:app/widgets/app_app_bar.dart';
 import 'package:app/widgets/primary_button.dart';
 import 'package:app/widgets/space.dart';
@@ -60,25 +59,21 @@ class _NewSpotEquipmentPageState extends BlocPageState<NewSpotEquipmentPage, New
   Widget _buildSelectableEquipment() {
     return BlocBuilder<NewSpotEquipmentCubit, NewSpotEquipmentState>(
       builder: (_, state) {
-        return state.map(
-          initial: (state) {
-            return ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (_, index) {
-                final Equipment equipment = state.equipment[index];
-                final ValueNotifier<bool>? notifier = bloc.equipmentNotifiers[equipment];
-                if (notifier == null) return const SizedBox.shrink();
-                return EquipmentCell(
-                  equipment,
-                  onToggled: () => bloc.equipmentNotifiers[equipment]?.toggle(),
-                  isSelectedNotifier: notifier,
-                );
-              },
-              itemCount: state.equipment.length,
-              separatorBuilder: (_, __) => const Space.vertical(10.0),
+        return ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (_, index) {
+            final Equipment equipment = state.equipment[index];
+            final ValueNotifier<bool>? notifier = bloc.equipmentNotifiers[equipment];
+            if (notifier == null) return const SizedBox.shrink();
+            return EquipmentCell(
+              equipment,
+              onToggled: () => bloc.equipmentNotifiers[equipment]?.toggle(),
+              isSelectedNotifier: notifier,
             );
           },
+          itemCount: state.equipment.length,
+          separatorBuilder: (_, __) => const Space.vertical(10.0),
         );
       },
     );
@@ -87,10 +82,7 @@ class _NewSpotEquipmentPageState extends BlocPageState<NewSpotEquipmentPage, New
   Widget _buildNextButton() {
     return PrimaryButton(
       S.of(context).next,
-      onPressed: () {
-        // FIXME Implement
-        AlertDialogUtils.showContentUnavailable(context);
-      },
+      onPressed: bloc.proceedToNextStep,
     );
   }
 }
