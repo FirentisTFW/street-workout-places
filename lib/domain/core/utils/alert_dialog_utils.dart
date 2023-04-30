@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:app/domain/core/common/global_navigator.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
+import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/injector.dart';
 import 'package:app/presentation/styles/app_colors.dart';
@@ -18,6 +19,13 @@ abstract class AlertDialogUtils {
       context,
       message: S.of(context).contentUnavailableDialogMessage,
       title: S.of(context).contentUnavailableDialogTitle,
+    );
+  }
+
+  static Future<void> showError(BuildContext context, DialogError error) {
+    return _show(
+      context,
+      message: error.error.getMessage(context),
     );
   }
 

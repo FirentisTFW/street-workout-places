@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:app/domain/core/errors/app_error.dart';
 
-abstract class UserInputError {
+abstract class UserInputError extends AppError {
   const UserInputError();
-
-  String getMessage(BuildContext context);
 }

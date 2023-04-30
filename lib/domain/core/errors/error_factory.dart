@@ -6,7 +6,11 @@ class ErrorFactory {
   const ErrorFactory(this.exception);
 
   AppError prepare() {
+    final dynamic exception = this.exception;
     // TODO Prepare proper app error based on exception
+    if (exception is AppError) {
+      return exception;
+    }
     return const UnknownError();
   }
 }

@@ -51,5 +51,7 @@
   "newSpotInitialHeader": "Dodaj nową lokację",
   "newSpotInitialDescription": "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!",
   "newSpotInitialNextButtonTitle": "Chcę dodać lokację",
-  "NotSelectedAnyEquipmentItemErrorMessage": "Nie wybrano żadnego sprzętu."
+  "notSelectedAnyEquipmentItemErrorMessage": "Nie wybrano żadnego sprzętu.",
+  "noNetworkConnectionErrorMessage": "Brak połączenia z internetem.",
+  "unknownErrorMessage": "Wystąpił błąd, spróbuj ponownie."
 }

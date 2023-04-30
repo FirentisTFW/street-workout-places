@@ -24,9 +24,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "NotSelectedAnyEquipmentItemErrorMessage":
-            MessageLookupByLibrary.simpleMessage(
-                "Nie wybrano żadnego sprzętu."),
         "appName": MessageLookupByLibrary.simpleMessage("Street Workout Spots"),
         "blankTextFieldErrorMessage":
             MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),
@@ -83,6 +80,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "newSpotInitialNextButtonTitle":
             MessageLookupByLibrary.simpleMessage("Chcę dodać lokację"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
+        "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Brak połączenia z internetem."),
+        "notSelectedAnyEquipmentItemErrorMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Nie wybrano żadnego sprzętu."),
         "notSelectedMapPositionValueNotifierErrorMessage":
             MessageLookupByLibrary.simpleMessage(
                 "Należy wybrać lokalizację punktu na mapie"),
@@ -107,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Piasek"),
         "surfaceDescriptionTartan":
             MessageLookupByLibrary.simpleMessage("Tartan"),
+        "unknownErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Wystąpił błąd, spróbuj ponownie."),
         "workoutSpotSizeDescriptionBig":
             MessageLookupByLibrary.simpleMessage("Duży"),
         "workoutSpotSizeDescriptionMedium":

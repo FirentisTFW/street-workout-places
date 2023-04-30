@@ -571,10 +571,30 @@ class S {
   }
 
   /// `Nie wybrano żadnego sprzętu.`
-  String get NotSelectedAnyEquipmentItemErrorMessage {
+  String get notSelectedAnyEquipmentItemErrorMessage {
     return Intl.message(
       'Nie wybrano żadnego sprzętu.',
-      name: 'NotSelectedAnyEquipmentItemErrorMessage',
+      name: 'notSelectedAnyEquipmentItemErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brak połączenia z internetem.`
+  String get noNetworkConnectionErrorMessage {
+    return Intl.message(
+      'Brak połączenia z internetem.',
+      name: 'noNetworkConnectionErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wystąpił błąd, spróbuj ponownie.`
+  String get unknownErrorMessage {
+    return Intl.message(
+      'Wystąpił błąd, spróbuj ponownie.',
+      name: 'unknownErrorMessage',
       desc: '',
       args: [],
     );

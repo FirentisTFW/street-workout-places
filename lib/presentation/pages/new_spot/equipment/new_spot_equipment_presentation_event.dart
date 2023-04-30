@@ -1,27 +1,18 @@
+import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/models/new_spot_form_data.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
-import 'package:equatable/equatable.dart';
 
-abstract class NewSpotEquipmentPresentationEvent extends Equatable implements BlocPresentationEvent {
+abstract class NewSpotEquipmentPresentationEvent implements BlocPresentationEvent {
   const NewSpotEquipmentPresentationEvent();
-
-  @override
-  List<Object?> get props => [];
 }
 
 class ValidationFailed extends NewSpotEquipmentPresentationEvent {
-  final String? message;
+  final DialogError error;
 
   const ValidationFailed({
-    required this.message,
+    required this.error,
   });
-
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        message,
-      ];
 }
 
 class ValidationSuccessful extends NewSpotEquipmentPresentationEvent {
@@ -32,11 +23,4 @@ class ValidationSuccessful extends NewSpotEquipmentPresentationEvent {
     required this.formData,
     required this.selectedEquipment,
   });
-
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        formData,
-        selectedEquipment,
-      ];
 }

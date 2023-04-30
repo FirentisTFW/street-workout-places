@@ -19,3 +19,10 @@ class NotSelectedMapPositionValueNotifierError extends ValueNotifierError {
   @override
   String getMessage(BuildContext context) => S.of(context).notSelectedMapPositionValueNotifierErrorMessage;
 }
+
+class NotSelectedAnyEquipmentItemError extends ValueNotifierError {
+  const NotSelectedAnyEquipmentItemError();
+
+  @override
+  String getMessage(BuildContext context) => S.of(context).notSelectedAnyEquipmentItemErrorMessage;
+}

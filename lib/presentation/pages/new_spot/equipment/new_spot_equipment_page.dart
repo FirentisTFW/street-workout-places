@@ -1,14 +1,17 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
+import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
+import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_presentation_event.dart';
 import 'package:app/presentation/pages/new_spot/equipment/widgets/equipment_cell.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/primary_button.dart';
 import 'package:app/presentation/widgets/space.dart';
+import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,23 +27,34 @@ class NewSpotEquipmentPage extends StatefulWidget {
 class _NewSpotEquipmentPageState extends BlocPageState<NewSpotEquipmentPage, NewSpotEquipmentCubit> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: AppPadding.defaultAll,
-          child: Column(
-            children: [
-              _buildHeadline(),
-              const Space.vertical(20.0),
-              _buildSelectableEquipment(),
-              const Space.vertical(20.0),
-              _buildNextButton(),
-            ],
+    return BlocPresentationListener<NewSpotEquipmentCubit>(
+      listener: _onPresentationEvent,
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: AppPadding.defaultAll,
+            child: Column(
+              children: [
+                _buildHeadline(),
+                const Space.vertical(20.0),
+                _buildSelectableEquipment(),
+                const Space.vertical(20.0),
+                _buildNextButton(),
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  void _onPresentationEvent(BuildContext context, BlocPresentationEvent event) {
+    if (event is ValidationFailed) {
+      AlertDialogUtils.showError(context, event.error);
+    } else if (event is ValidationSuccessful) {
+      // FIXME Go to images selection page
+    }
   }
 
   PreferredSizeWidget _buildAppBar() {
