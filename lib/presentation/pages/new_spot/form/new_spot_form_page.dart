@@ -7,6 +7,7 @@ import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arg
 import 'package:app/presentation/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/presentation/pages/new_spot/form/widgets/new_spot_coordinates_section.dart';
 import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
@@ -125,7 +126,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
           key: ValueKey(bloc.sizeNotifier),
           child: app.DropdownMenu<WorkoutSpotSize>(
             dropdownItemStyle: DropdownItemStyle(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
             ),
             value: size,
             items: WorkoutSpotSize.values
@@ -154,7 +155,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
           key: ValueKey(bloc.surfaceNotifier),
           child: app.DropdownMenu<Surface>(
             dropdownItemStyle: DropdownItemStyle(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
             ),
             value: surface,
             items: Surface.values

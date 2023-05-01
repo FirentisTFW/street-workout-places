@@ -1,6 +1,7 @@
 import 'package:app/domain/core/extensions/string_extensions.dart';
 import 'package:app/presentation/styles/app_animations.dart';
 import 'package:app/presentation/styles/app_colors.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/adaptive_button.dart';
 import 'package:app/presentation/widgets/dropdown_menu/app_dropdown_menu_item.dart';
@@ -86,7 +87,7 @@ class _DropdownMenuState<T> extends State<DropdownMenu<T>> with TickerProviderSt
         child: AdaptiveButton(
           decoration: BoxDecoration(
             border: Border.all(),
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
             color: AppColors.white,
           ),
           onPressed: _toggleDropdown,

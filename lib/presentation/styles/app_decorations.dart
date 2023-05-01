@@ -1,4 +1,5 @@
 import 'package:app/presentation/styles/app_colors.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 class AppDecorations {
@@ -17,7 +18,7 @@ class AppDecorations {
   );
 
   static final BoxDecoration primaryButton = BoxDecoration(
-    borderRadius: BorderRadius.circular(20.0),
+    borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
     color: AppColors.blue,
   );
 }

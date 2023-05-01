@@ -1,11 +1,15 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
+import 'package:app/domain/core/common/root_navigator.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
+import 'package:app/presentation/common/presentation_events.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_presentation_event.dart';
 import 'package:app/presentation/pages/new_spot/equipment/widgets/equipment_cell.dart';
+import 'package:app/presentation/pages/new_spot/images/new_spot_images_arguments.dart';
+import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
@@ -52,8 +56,14 @@ class _NewSpotEquipmentPageState extends BlocPageState<NewSpotEquipmentPage, New
   void _onPresentationEvent(BuildContext context, BlocPresentationEvent event) {
     if (event is ValidationFailed) {
       AlertDialogUtils.showError(context, event.error);
-    } else if (event is ValidationSuccessful) {
-      // FIXME Go to images selection page
+    } else if (event is NewSpotEquipmentValidationSuccessful) {
+      RootNavigator.of(context).pushNamed(
+        FormRouting.images,
+        arguments: NewSpotImagesArguments(
+          formData: event.formData,
+          equipment: event.selectedEquipment,
+        ),
+      );
     }
   }
 

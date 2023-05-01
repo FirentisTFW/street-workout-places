@@ -1,7 +1,6 @@
 // ignore_for_file: cast_nullable_to_non_nullable
 
 import 'package:app/presentation/pages/pages.dart';
-import 'package:app/presentation/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/presentation/routing/routing.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,7 @@ class SpotsRouting {
   static Widget? getPage(RouteSettings settings) {
     switch (settings.name) {
       case spotDetails:
-        return Pages.spotDetails(settings.arguments as SpotDetailsArguments);
+        return Pages.spotDetails(settings.arguments);
       case spots:
         return Pages.spots();
       default:

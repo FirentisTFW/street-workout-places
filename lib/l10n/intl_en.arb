@@ -53,5 +53,8 @@
   "newSpotInitialNextButtonTitle": "Chcę dodać lokację",
   "notSelectedAnyEquipmentItemErrorMessage": "Nie wybrano żadnego sprzętu.",
   "noNetworkConnectionErrorMessage": "Brak połączenia z internetem.",
-  "unknownErrorMessage": "Wystąpił błąd, spróbuj ponownie."
+  "unknownErrorMessage": "Wystąpił błąd, spróbuj ponownie.",
+  "newSpotImagesHeadline": "Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach.",
+  "newSpotImagesAppBarTitle": "Zgłoś plac 3/3",
+  "send": "Prześlij"
 }

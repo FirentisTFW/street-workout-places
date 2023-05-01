@@ -1,6 +1,7 @@
 import 'package:app/domain/core/common/text_field_essentials.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/presentation/styles/app_colors.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -158,7 +159,7 @@ class _AppTextFieldState extends State<AppTextField> {
     Color color = AppColors.black,
   }) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20.0),
+      borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
       borderSide: BorderSide(
         color: color,
       ),

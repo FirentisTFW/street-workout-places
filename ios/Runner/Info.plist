@@ -24,6 +24,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Aplikacja potrzebuje dostępu do kamery, by umożliwić robienie zdjęć parków.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Aplikacja potrzebuje dostępu do galerii, by umożliwić wybranie zdjęć parków.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

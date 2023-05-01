@@ -2,6 +2,7 @@ import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
+import 'package:app/presentation/common/presentation_events.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_presentation_event.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
@@ -44,7 +45,7 @@ class NewSpotEquipmentCubit extends Cubit<NewSpotEquipmentState> with BlocPresen
           )
           .toList();
       emitPresentation(
-        ValidationSuccessful(
+        NewSpotEquipmentValidationSuccessful(
           formData: arguments.formData,
           selectedEquipment: selectedEquipment,
         ),

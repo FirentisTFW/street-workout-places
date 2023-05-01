@@ -1,4 +1,5 @@
 import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/services/device_image_picker_service.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
@@ -13,6 +14,9 @@ import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cub
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_page.dart';
 import 'package:app/presentation/pages/new_spot/form/new_spot_form_cubit.dart';
 import 'package:app/presentation/pages/new_spot/form/new_spot_form_page.dart';
+import 'package:app/presentation/pages/new_spot/images/new_spot_images_arguments.dart';
+import 'package:app/presentation/pages/new_spot/images/new_spot_images_cubit.dart';
+import 'package:app/presentation/pages/new_spot/images/new_spot_images_page.dart';
 import 'package:app/presentation/pages/new_spot/initial/new_spot_initial_page.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_bloc.dart';
@@ -66,14 +70,24 @@ abstract class Pages {
     );
   }
 
+  static Widget newSpotImages(dynamic arguments) {
+    return BlocProvider<NewSpotImagesCubit>(
+      create: (_) => NewSpotImagesCubit(
+        arguments: arguments as NewSpotImagesArguments,
+        deviceImagePicker: DeviceImagePickerService(),
+      ),
+      child: const NewSpotImagesPage(),
+    );
+  }
+
   static Widget newSpotInitial() {
     return const NewSpotInitialPage();
   }
 
-  static Widget spotDetails(SpotDetailsArguments arguments) {
+  static Widget spotDetails(dynamic arguments) {
     return BlocProvider<SpotDetailsBloc>(
       create: (_) => SpotDetailsBloc(
-        arguments: arguments,
+        arguments: arguments as SpotDetailsArguments,
       ),
       child: const SpotDetailsPage(),
     );

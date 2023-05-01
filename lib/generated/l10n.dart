@@ -599,6 +599,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach.`
+  String get newSpotImagesHeadline {
+    return Intl.message(
+      'Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach.',
+      name: 'newSpotImagesHeadline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zgłoś plac 3/3`
+  String get newSpotImagesAppBarTitle {
+    return Intl.message(
+      'Zgłoś plac 3/3',
+      name: 'newSpotImagesAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prześlij`
+  String get send {
+    return Intl.message(
+      'Prześlij',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

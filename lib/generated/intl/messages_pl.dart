@@ -73,6 +73,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu."),
         "newSpotFormAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Zgłoś plac 1/3"),
+        "newSpotImagesAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Zgłoś plac 3/3"),
+        "newSpotImagesHeadline": MessageLookupByLibrary.simpleMessage(
+            "Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach."),
         "newSpotInitialDescription": MessageLookupByLibrary.simpleMessage(
             "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!"),
         "newSpotInitialHeader":
@@ -93,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "selectLocationOnMapDescription": MessageLookupByLibrary.simpleMessage(
             "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność."),
+        "send": MessageLookupByLibrary.simpleMessage("Prześlij"),
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
         "sizeSelected": m0,
         "spotsListTabBarButtonTitle":
