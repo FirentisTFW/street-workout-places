@@ -1,4 +1,8 @@
-import 'package:app/domain/core/extensions/iterable_extensions.dart';
+extension ListExtensions<T> on List<T> {
+  List<T> copy() => [
+        ...this,
+      ];
+}
 
 extension NullableListExtensions<T> on List<T>? {
   bool get isNotNullOrEmpty => orEmpty().isNotEmpty;

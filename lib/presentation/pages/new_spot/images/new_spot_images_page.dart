@@ -80,10 +80,7 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
               key: ValueKey(path),
               imagePath: path,
               isDefault: path == state.defaultImagePath,
-              onRemovePressed: () {
-                // FIXME Implement
-                AlertDialogUtils.showContentUnavailable(context);
-              },
+              onRemovePressed: () => bloc.removeImage(path),
               onSetAsDefaultPressed: () => bloc.changeDefaultImage(path),
             );
           },

@@ -1,3 +1,4 @@
+import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/services/device_image_picker_service.dart';
 import 'package:app/presentation/pages/new_spot/images/new_spot_images_arguments.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
@@ -42,6 +43,15 @@ class NewSpotImagesCubit extends Cubit<NewSpotImagesState> with BlocPresentation
 
     emit(
       entryState.changeDefaultImage(imagePath),
+    );
+  }
+
+  Future<void> removeImage(String imagePath) async {
+    final NewSpotImagesState entryState = state;
+    if (entryState is! SpotImagesSelected) return;
+
+    emit(
+      entryState.removeImage(imagePath),
     );
   }
 

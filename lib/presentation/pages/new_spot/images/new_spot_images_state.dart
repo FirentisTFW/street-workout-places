@@ -37,4 +37,14 @@ class SpotImagesSelected extends NewSpotImagesState {
   SpotImagesSelected changeDefaultImage(String newDefaultImagePath) => copyWith(
         defaultImagePath: newDefaultImagePath,
       );
+
+  SpotImagesSelected removeImage(String removedImagePath) {
+    final bool isRemovedImageDefault = removedImagePath == defaultImagePath;
+    final List<String> newImagePaths = imagePaths.copy()..remove(removedImagePath);
+
+    return copyWith(
+      defaultImagePath: isRemovedImageDefault ? newImagePaths.firstOrNull : defaultImagePath,
+      imagePaths: newImagePaths,
+    );
+  }
 }
