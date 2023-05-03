@@ -73,6 +73,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu."),
         "newSpotFormAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Zgłoś plac 1/3"),
+        "newSpotImageCellDefault":
+            MessageLookupByLibrary.simpleMessage("Domyślne"),
+        "newSpotImageCellSetAsDefault":
+            MessageLookupByLibrary.simpleMessage("Ustaw jako domyślne"),
         "newSpotImagesAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Zgłoś plac 3/3"),
         "newSpotImagesHeadline": MessageLookupByLibrary.simpleMessage(

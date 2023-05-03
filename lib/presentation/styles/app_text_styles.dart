@@ -96,6 +96,17 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle contentSmall({
+    Color color = AppColors.black,
+    double height = 1.0,
+  }) {
+    return content(
+      color: color,
+      fontSize: 12.0,
+      height: height,
+    );
+  }
+
   static TextStyle error({
     Color color = AppColors.red,
   }) {

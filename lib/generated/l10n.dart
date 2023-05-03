@@ -629,6 +629,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Domyślne`
+  String get newSpotImageCellDefault {
+    return Intl.message(
+      'Domyślne',
+      name: 'newSpotImageCellDefault',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ustaw jako domyślne`
+  String get newSpotImageCellSetAsDefault {
+    return Intl.message(
+      'Ustaw jako domyślne',
+      name: 'newSpotImageCellSetAsDefault',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

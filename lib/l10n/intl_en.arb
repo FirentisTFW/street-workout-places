@@ -56,5 +56,7 @@
   "unknownErrorMessage": "Wystąpił błąd, spróbuj ponownie.",
   "newSpotImagesHeadline": "Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach.",
   "newSpotImagesAppBarTitle": "Zgłoś plac 3/3",
-  "send": "Prześlij"
+  "send": "Prześlij",
+  "newSpotImageCellDefault": "Domyślne",
+  "newSpotImageCellSetAsDefault": "Ustaw jako domyślne"
 }

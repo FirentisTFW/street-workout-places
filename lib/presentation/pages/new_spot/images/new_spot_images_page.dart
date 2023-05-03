@@ -84,10 +84,7 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
                 // FIXME Implement
                 AlertDialogUtils.showContentUnavailable(context);
               },
-              onSetAsDefaultPressed: () {
-                // FIXME Implement
-                AlertDialogUtils.showContentUnavailable(context);
-              },
+              onSetAsDefaultPressed: () => bloc.changeDefaultImage(path),
             );
           },
           itemCount: state.imagePaths.length,

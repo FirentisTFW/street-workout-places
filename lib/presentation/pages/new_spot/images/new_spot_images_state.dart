@@ -16,19 +16,25 @@ abstract class NewSpotImagesState extends Equatable {
       ];
 }
 
+@CopyWith()
 class SpotImagesSelected extends NewSpotImagesState {
   const SpotImagesSelected({
     required super.defaultImagePath,
     required super.imagePaths,
   });
 
+  bool get hasImages => imagePaths.isNotEmpty;
+
   const SpotImagesSelected.empty()
       : super(
           imagePaths: const [],
         );
 
-  SpotImagesSelected addImages(List<String> newImages) => SpotImagesSelected(
-        defaultImagePath: defaultImagePath,
-        imagePaths: newImages,
+  SpotImagesSelected addImages(List<String> newImages) => copyWith(
+        imagePaths: imagePaths + newImages,
+      );
+
+  SpotImagesSelected changeDefaultImage(String newDefaultImagePath) => copyWith(
+        defaultImagePath: newDefaultImagePath,
       );
 }

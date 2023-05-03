@@ -9,6 +9,7 @@ environment:
 dependencies:
   bloc_presentation: ^0.2.1
   cached_network_image: ^3.2.3
+  copy_with_extension: ^5.0.2
   dartz: ^0.10.1
   either_dart: ^0.3.0
   equatable: ^2.0.5
@@ -30,6 +31,7 @@ dependencies:
 dev_dependencies:
   bloc_test: ^9.0.0
   build_runner: ^2.2.0
+  copy_with_extension_gen: ^5.0.2
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter  
