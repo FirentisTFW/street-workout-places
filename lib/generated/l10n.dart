@@ -650,10 +650,10 @@ class S {
     );
   }
 
-  /// `Park zgłoszony`
+  /// `Plac zgłoszony`
   String get newSpotSubmittedDialogTitle {
     return Intl.message(
-      'Park zgłoszony',
+      'Plac zgłoszony',
       name: 'newSpotSubmittedDialogTitle',
       desc: '',
       args: [],

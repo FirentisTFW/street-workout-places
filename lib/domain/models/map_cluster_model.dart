@@ -6,6 +6,11 @@ class MapClusterModel extends Clusterable {
   /// Direct spot that this object is representing. If the object is a cluster, [directSpot] is null.
   final WorkoutSpotModel? directSpot;
 
+  MapPosition get coordinates => MapPosition(
+        latitude: latitude,
+        longitude: longitude,
+      );
+
   MapClusterModel({
     this.directSpot,
     required super.clusterId,

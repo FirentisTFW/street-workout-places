@@ -42,6 +42,7 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
       clusters: widget.clusters,
       mapEssentials: Constants.maps.essentials,
       onPositionChanged: () => _maPositionReationController.replaceAction(_updateMapClusters),
+      onClusterPressed: _zoomIntoCluster,
       onSpotPressed: _goToSpotDetails,
     );
   }
@@ -54,6 +55,13 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
       orElse: () {
         // No implementation needed
       },
+    );
+  }
+
+  void _zoomIntoCluster(MapClusterModel cluster) {
+    _mapClustersCubit.mapCoordinator.zoomToPosition(
+      position: cluster.coordinates,
+      zoomIncrementation: Constants.maps.defaultZoomIncrementation,
     );
   }
 

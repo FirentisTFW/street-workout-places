@@ -20,6 +20,7 @@ abstract class IMapCoordinator {
     List<MapClusterModel> clusters,
     required MapEssentials mapEssentials,
     VoidCallback? onPositionChanged,
+    void Function(MapClusterModel)? onClusterPressed,
     void Function(WorkoutSpotModel)? onSpotPressed,
   });
 
@@ -34,4 +35,9 @@ abstract class IMapCoordinator {
   void close();
 
   void moveToPosition(MapPosition position);
+
+  void zoomToPosition({
+    required MapPosition position,
+    required double zoomIncrementation,
+  });
 }

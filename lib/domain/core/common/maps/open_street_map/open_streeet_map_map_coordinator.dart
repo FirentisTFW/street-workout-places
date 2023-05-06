@@ -8,6 +8,7 @@ import 'package:app/domain/models/map_essentials.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/widgets/map_markers/map_markers_factory.dart';
 import 'package:app/presentation/widgets/map_markers/map_single_marker.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     List<MapClusterModel> clusters = const [],
     required MapEssentials mapEssentials,
     VoidCallback? onPositionChanged,
+    void Function(MapClusterModel)? onClusterPressed,
     void Function(WorkoutSpotModel)? onSpotPressed,
   }) {
     return FlutterMap(
@@ -56,6 +58,7 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
               .map(
                 (cluster) => _maybePrepareSpotMarker(
                   cluster: cluster,
+                  onClusterPressed: onClusterPressed,
                   onSpotPressed: onSpotPressed,
                 ),
               )
@@ -128,18 +131,38 @@ class OpenStreetMapMapCoordinator implements IMapCoordinator {
     _mapController.move(latLng, _mapController.zoom);
   }
 
+  @override
+  void zoomToPosition({
+    required MapPosition position,
+    required double zoomIncrementation,
+  }) {
+    final LatLng? latLng = position.maybeMapToLatLng();
+    if (latLng == null) return;
+    _mapController.move(latLng, _mapController.zoom + zoomIncrementation);
+  }
+
   Marker? _maybePrepareSpotMarker({
     required MapClusterModel cluster,
+    void Function(MapClusterModel)? onClusterPressed,
     void Function(WorkoutSpotModel)? onSpotPressed,
   }) {
     final LatLng? latLng = cluster.maybeMapToLatLng();
     if (latLng == null) return null;
+    final bool isCluster = cluster.isCluster ?? true;
     final WorkoutSpotModel? spot = cluster.directSpot;
+    final double size = AppDimensions.size.mapIcon;
+
     return Marker(
       point: latLng,
+      height: size,
+      width: size,
       builder: (_) => MapMarkersFactory.fromMapCluster(
         cluster,
-        onPressed: onSpotPressed == null || spot == null ? null : () => onSpotPressed(spot),
+        onPressed: isCluster
+            ? () => onClusterPressed?.call(cluster)
+            : spot != null
+                ? () => onSpotPressed?.call(spot)
+                : null,
       ),
     );
   }

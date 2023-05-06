@@ -44,6 +44,7 @@ class _AppEntryState extends State<AppEntry> {
     return BlocProvider<SpotsCubit>.value(
       value: spotsCubit,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         initialRoute: Routing.dashboard,
         localizationsDelegates: const [
           ...GlobalMaterialLocalizations.delegates,

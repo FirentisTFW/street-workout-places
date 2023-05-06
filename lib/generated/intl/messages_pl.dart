@@ -90,7 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newSpotSubmittedDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!"),
         "newSpotSubmittedDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Park zgłoszony"),
+            MessageLookupByLibrary.simpleMessage("Plac zgłoszony"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Brak połączenia z internetem."),
