@@ -1,6 +1,5 @@
 part of 'new_spot_form_cubit.dart';
 
-@freezed
 abstract class NewSpotFormState extends Equatable {
   const NewSpotFormState();
 

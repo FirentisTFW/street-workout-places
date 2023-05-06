@@ -58,5 +58,7 @@
   "newSpotImagesAppBarTitle": "Zgłoś plac 3/3",
   "send": "Prześlij",
   "newSpotImageCellDefault": "Domyślne",
-  "newSpotImageCellSetAsDefault": "Ustaw jako domyślne"
+  "newSpotImageCellSetAsDefault": "Ustaw jako domyślne",
+  "newSpotSubmittedDialogTitle": "Park zgłoszony",
+  "newSpotSubmittedDialogMessage": "Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!"
 }

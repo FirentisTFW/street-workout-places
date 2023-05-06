@@ -1,44 +1,34 @@
 part of 'new_spot_images_cubit.dart';
 
-abstract class NewSpotImagesState extends Equatable {
+@CopyWith()
+class NewSpotImagesState extends Equatable {
   final String? defaultImagePath;
   final List<String> imagePaths;
+
+  bool get hasImages => imagePaths.isNotEmpty;
 
   const NewSpotImagesState({
     this.defaultImagePath,
     required this.imagePaths,
   });
 
-  @override
-  List<Object?> get props => [
-        defaultImagePath,
-        imagePaths,
-      ];
-}
+  const NewSpotImagesState.empty()
+      : defaultImagePath = null,
+        imagePaths = const [];
 
-@CopyWith()
-class SpotImagesSelected extends NewSpotImagesState {
-  const SpotImagesSelected({
-    required super.defaultImagePath,
-    required super.imagePaths,
-  });
+  NewSpotImagesState.fromState(NewSpotImagesState state)
+      : defaultImagePath = state.defaultImagePath,
+        imagePaths = state.imagePaths;
 
-  bool get hasImages => imagePaths.isNotEmpty;
-
-  const SpotImagesSelected.empty()
-      : super(
-          imagePaths: const [],
-        );
-
-  SpotImagesSelected addImages(List<String> newImages) => copyWith(
+  NewSpotImagesState addImages(List<String> newImages) => copyWith(
         imagePaths: imagePaths + newImages,
       );
 
-  SpotImagesSelected changeDefaultImage(String newDefaultImagePath) => copyWith(
+  NewSpotImagesState changeDefaultImage(String newDefaultImagePath) => copyWith(
         defaultImagePath: newDefaultImagePath,
       );
 
-  SpotImagesSelected removeImage(String removedImagePath) {
+  NewSpotImagesState removeImage(String removedImagePath) {
     final bool isRemovedImageDefault = removedImagePath == defaultImagePath;
     final List<String> newImagePaths = imagePaths.copy()..remove(removedImagePath);
 
@@ -47,4 +37,33 @@ class SpotImagesSelected extends NewSpotImagesState {
       imagePaths: newImagePaths,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        defaultImagePath,
+        imagePaths,
+      ];
+}
+
+class NewSpotImagesSubmitInProgress extends NewSpotImagesState {
+  NewSpotImagesSubmitInProgress(super.state) : super.fromState();
+}
+
+class NewSpotImagesSubmitSuccess extends NewSpotImagesState {
+  NewSpotImagesSubmitSuccess(super.state) : super.fromState();
+}
+
+class NewSpotImagesSubmitFailure extends NewSpotImagesState {
+  final DialogError error;
+
+  NewSpotImagesSubmitFailure(
+    super.state, {
+    required this.error,
+  }) : super.fromState();
+
+  @override
+  List<Object?> get props => [
+        ...super.props,
+        error,
+      ];
 }

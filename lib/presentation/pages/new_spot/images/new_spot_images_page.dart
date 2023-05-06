@@ -1,8 +1,8 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
+import 'package:app/domain/core/common/root_navigator.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/generated/l10n.dart';
-import 'package:app/presentation/common/presentation_events.dart';
 import 'package:app/presentation/pages/new_spot/images/new_spot_images_cubit.dart';
 import 'package:app/presentation/pages/new_spot/images/widgets/new_spot_image_cell.dart';
 import 'package:app/presentation/styles/app_colors.dart';
@@ -13,7 +13,6 @@ import 'package:app/presentation/widgets/adaptive_button.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/primary_button.dart';
 import 'package:app/presentation/widgets/space.dart';
-import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,34 +26,56 @@ class NewSpotImagesPage extends StatefulWidget {
 class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotImagesCubit> {
   @override
   Widget build(BuildContext context) {
-    return BlocPresentationListener<NewSpotImagesCubit>(
-      listener: _onPresentationEvent,
-      child: Scaffold(
-        appBar: _buildAppBar(),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            padding: AppPadding.defaultAll,
-            child: Column(
-              children: [
-                _buildHeadline(),
-                _buildImagesList(),
-                _buildAddImageButton(),
-                _buildSendButton(),
-              ].separatedBy(
-                const Space.vertical(20.0),
+    return BlocConsumer<NewSpotImagesCubit, NewSpotImagesState>(
+      listener: _onStateChanged,
+      builder: (_, state) {
+        return IgnorePointer(
+          ignoring: state is NewSpotImagesSubmitInProgress,
+          child: Scaffold(
+            appBar: _buildAppBar(),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                padding: AppPadding.defaultAll,
+                child: Column(
+                  children: [
+                    _buildHeadline(),
+                    _buildImageList(state),
+                    _buildAddImageButton(),
+                    _buildSendButton(state),
+                  ].separatedBy(
+                    const Space.vertical(20.0),
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
-  void _onPresentationEvent(BuildContext context, BlocPresentationEvent event) {
-    if (event is ValidationFailed) {
-      AlertDialogUtils.showError(context, event.error);
+  void _onStateChanged(BuildContext context, NewSpotImagesState state) {
+    if (state is NewSpotImagesSubmitFailure) {
+      AlertDialogUtils.showError(context, state.error);
+    } else if (state is NewSpotImagesSubmitSuccess) {
+      _showSuccessDialog(context);
     }
-    // TODO Handle successful validation
+  }
+
+  void _showSuccessDialog(BuildContext context) {
+    AlertDialogUtils.show(
+      context,
+      message: S.of(context).newSpotSubmittedDialogMessage,
+      title: S.of(context).newSpotSubmittedDialogTitle,
+      actions: [
+        AlertDialogUtils.buildAction(
+          onPressed: () => RootNavigator.of(context).popUntil(
+            (route) => route.isFirst,
+          ),
+          text: S.of(context).ok,
+        ),
+      ],
+    );
   }
 
   PreferredSizeWidget _buildAppBar() {
@@ -70,26 +91,22 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
     );
   }
 
-  Widget _buildImagesList() {
-    return BlocBuilder<NewSpotImagesCubit, NewSpotImagesState>(
-      builder: (_, state) {
-        return ListView.separated(
-          itemBuilder: (_, index) {
-            final String path = state.imagePaths[index];
-            return NewSpotImageCell(
-              key: ValueKey(path),
-              imagePath: path,
-              isDefault: path == state.defaultImagePath,
-              onRemovePressed: () => bloc.removeImage(path),
-              onSetAsDefaultPressed: () => bloc.changeDefaultImage(path),
-            );
-          },
-          itemCount: state.imagePaths.length,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (_, __) => const Space.vertical(20.0),
-          shrinkWrap: true,
+  Widget _buildImageList(NewSpotImagesState state) {
+    return ListView.separated(
+      itemBuilder: (_, index) {
+        final String path = state.imagePaths[index];
+        return NewSpotImageCell(
+          key: ValueKey(path),
+          imagePath: path,
+          isDefault: path == state.defaultImagePath,
+          onRemovePressed: () => bloc.removeImage(path),
+          onSetAsDefaultPressed: () => bloc.changeDefaultImage(path),
         );
       },
+      itemCount: state.imagePaths.length,
+      physics: const NeverScrollableScrollPhysics(),
+      separatorBuilder: (_, __) => const Space.vertical(20.0),
+      shrinkWrap: true,
     );
   }
 
@@ -116,9 +133,10 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
     );
   }
 
-  Widget _buildSendButton() {
+  Widget _buildSendButton(NewSpotImagesState state) {
     return PrimaryButton(
       S.of(context).send,
+      isLoading: state is NewSpotImagesSubmitInProgress,
       onPressed: bloc.submitSpot,
     );
   }

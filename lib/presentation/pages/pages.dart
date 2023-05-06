@@ -3,6 +3,8 @@ import 'package:app/domain/services/device_image_picker_service.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
+import 'package:app/infrastructure/repositories/spots/i_network_spots_repository.dart';
+import 'package:app/injector.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:app/presentation/pages/home/home_bloc.dart';
@@ -75,6 +77,7 @@ abstract class Pages {
       create: (_) => NewSpotImagesCubit(
         arguments: arguments as NewSpotImagesArguments,
         deviceImagePicker: DeviceImagePickerService(),
+        spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
       ),
       child: const NewSpotImagesPage(),
     );

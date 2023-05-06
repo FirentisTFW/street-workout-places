@@ -649,6 +649,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Park zgłoszony`
+  String get newSpotSubmittedDialogTitle {
+    return Intl.message(
+      'Park zgłoszony',
+      name: 'newSpotSubmittedDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!`
+  String get newSpotSubmittedDialogMessage {
+    return Intl.message(
+      'Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!',
+      name: 'newSpotSubmittedDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

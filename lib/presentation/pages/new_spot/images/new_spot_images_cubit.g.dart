@@ -6,50 +6,50 @@ part of 'new_spot_images_cubit.dart';
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$SpotImagesSelectedCWProxy {
-  SpotImagesSelected defaultImagePath(String? defaultImagePath);
+abstract class _$NewSpotImagesStateCWProxy {
+  NewSpotImagesState defaultImagePath(String? defaultImagePath);
 
-  SpotImagesSelected imagePaths(List<String> imagePaths);
+  NewSpotImagesState imagePaths(List<String> imagePaths);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SpotImagesSelected(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NewSpotImagesState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// SpotImagesSelected(...).copyWith(id: 12, name: "My name")
+  /// NewSpotImagesState(...).copyWith(id: 12, name: "My name")
   /// ````
-  SpotImagesSelected call({
+  NewSpotImagesState call({
     String? defaultImagePath,
     List<String>? imagePaths,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfSpotImagesSelected.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfSpotImagesSelected.copyWith.fieldName(...)`
-class _$SpotImagesSelectedCWProxyImpl implements _$SpotImagesSelectedCWProxy {
-  const _$SpotImagesSelectedCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfNewSpotImagesState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfNewSpotImagesState.copyWith.fieldName(...)`
+class _$NewSpotImagesStateCWProxyImpl implements _$NewSpotImagesStateCWProxy {
+  const _$NewSpotImagesStateCWProxyImpl(this._value);
 
-  final SpotImagesSelected _value;
+  final NewSpotImagesState _value;
 
   @override
-  SpotImagesSelected defaultImagePath(String? defaultImagePath) =>
+  NewSpotImagesState defaultImagePath(String? defaultImagePath) =>
       this(defaultImagePath: defaultImagePath);
 
   @override
-  SpotImagesSelected imagePaths(List<String> imagePaths) =>
+  NewSpotImagesState imagePaths(List<String> imagePaths) =>
       this(imagePaths: imagePaths);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SpotImagesSelected(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NewSpotImagesState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// SpotImagesSelected(...).copyWith(id: 12, name: "My name")
+  /// NewSpotImagesState(...).copyWith(id: 12, name: "My name")
   /// ````
-  SpotImagesSelected call({
+  NewSpotImagesState call({
     Object? defaultImagePath = const $CopyWithPlaceholder(),
     Object? imagePaths = const $CopyWithPlaceholder(),
   }) {
-    return SpotImagesSelected(
+    return NewSpotImagesState(
       defaultImagePath: defaultImagePath == const $CopyWithPlaceholder()
           ? _value.defaultImagePath
           // ignore: cast_nullable_to_non_nullable
@@ -63,9 +63,9 @@ class _$SpotImagesSelectedCWProxyImpl implements _$SpotImagesSelectedCWProxy {
   }
 }
 
-extension $SpotImagesSelectedCopyWith on SpotImagesSelected {
-  /// Returns a callable class that can be used as follows: `instanceOfSpotImagesSelected.copyWith(...)` or like so:`instanceOfSpotImagesSelected.copyWith.fieldName(...)`.
+extension $NewSpotImagesStateCopyWith on NewSpotImagesState {
+  /// Returns a callable class that can be used as follows: `instanceOfNewSpotImagesState.copyWith(...)` or like so:`instanceOfNewSpotImagesState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$SpotImagesSelectedCWProxy get copyWith =>
-      _$SpotImagesSelectedCWProxyImpl(this);
+  _$NewSpotImagesStateCWProxy get copyWith =>
+      _$NewSpotImagesStateCWProxyImpl(this);
 }

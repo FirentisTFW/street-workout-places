@@ -87,6 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj nową lokację"),
         "newSpotInitialNextButtonTitle":
             MessageLookupByLibrary.simpleMessage("Chcę dodać lokację"),
+        "newSpotSubmittedDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!"),
+        "newSpotSubmittedDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Park zgłoszony"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Brak połączenia z internetem."),

@@ -1,5 +1,3 @@
-// ignore_for_file: use_super_parameters
-
 import 'package:app/domain/core/errors/app_error.dart';
 import 'package:app/domain/core/errors/error_factory.dart';
 import 'package:equatable/equatable.dart';
@@ -20,11 +18,11 @@ abstract class UiError extends Equatable {
 class ContainerError extends UiError {
   const ContainerError(super.error);
 
-  ContainerError.fromException(dynamic exception) : super.fromException(exception);
+  ContainerError.fromException(super.exception) : super.fromException();
 }
 
 class DialogError extends UiError {
   const DialogError(super.error);
 
-  DialogError.fromException(dynamic exception) : super.fromException(exception);
+  DialogError.fromException(super.exception) : super.fromException();
 }

@@ -15,7 +15,7 @@ abstract class AlertDialogUtils {
   const AlertDialogUtils._();
 
   static Future<void> showContentUnavailable(BuildContext context) {
-    return _show(
+    return show(
       context,
       message: S.of(context).contentUnavailableDialogMessage,
       title: S.of(context).contentUnavailableDialogTitle,
@@ -23,13 +23,13 @@ abstract class AlertDialogUtils {
   }
 
   static Future<void> showError(BuildContext context, DialogError error) {
-    return _show(
+    return show(
       context,
       message: error.error.getMessage(context),
     );
   }
 
-  static Future<void> _show(
+  static Future<void> show(
     BuildContext context, {
     List<Widget>? actions,
     bool barrierDismissible = true,
@@ -38,11 +38,10 @@ abstract class AlertDialogUtils {
   }) {
     final Widget? titleWidget = _buildTitle(title);
     final Widget? contentWidget = _buildContent(message);
-    final List<Widget> actionsWidgets = actions?.isEmpty ?? true
-        ? [
-            _buildDefaultAction(context),
-          ]
-        : actions!;
+    final List<Widget> actionsWidgets = actions ??
+        [
+          _buildDefaultAction(context),
+        ];
 
     return showDialog<void>(
       context: context,
@@ -70,38 +69,7 @@ abstract class AlertDialogUtils {
     );
   }
 
-  static Widget? _buildTitle(String? title) {
-    if (title == null) return null;
-    return Text(
-      title,
-      style: AppTextStyles.titleSmall(),
-      textAlign: TextAlign.center,
-    );
-  }
-
-  static Widget? _buildContent(String? content) {
-    if (content == null) return null;
-    return Text(
-      content,
-      style: AppTextStyles.contentMultiline(),
-      textAlign: TextAlign.center,
-    );
-  }
-
-  static Widget _buildDefaultAction(
-    BuildContext context, {
-    String? title,
-  }) {
-    return _buildAction(
-      text: title ?? S.of(context).ok,
-      onPressed: () {
-        final BuildContext? currentContext = Injector().resolve<GlobalNavigator>().currentContext;
-        RootNavigator.of(currentContext ?? context).pop();
-      },
-    );
-  }
-
-  static Widget _buildAction({
+  static Widget buildAction({
     required VoidCallback onPressed,
     required String text,
   }) {
@@ -125,5 +93,36 @@ abstract class AlertDialogUtils {
         child: child,
       );
     }
+  }
+
+  static Widget? _buildTitle(String? title) {
+    if (title == null) return null;
+    return Text(
+      title,
+      style: AppTextStyles.titleSmall(),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  static Widget? _buildContent(String? content) {
+    if (content == null) return null;
+    return Text(
+      content,
+      style: AppTextStyles.contentMultiline(),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  static Widget _buildDefaultAction(
+    BuildContext context, {
+    String? title,
+  }) {
+    return buildAction(
+      text: title ?? S.of(context).ok,
+      onPressed: () {
+        final BuildContext? currentContext = Injector().resolve<GlobalNavigator>().currentContext;
+        RootNavigator.of(currentContext ?? context).pop();
+      },
+    );
   }
 }
