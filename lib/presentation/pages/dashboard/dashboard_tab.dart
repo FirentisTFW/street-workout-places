@@ -31,16 +31,16 @@ enum DashboardTab {
   final IconData icon;
   final String initialRoute;
 
-  String getLabel(BuildContext context) {
+  String getLabel(S s) {
     switch (this) {
       case DashboardTab.form:
-        return S.of(context).dashboardTabForm;
+        return s.dashboardTabForm;
       case DashboardTab.home:
-        return S.of(context).dashboardTabHome;
+        return s.dashboardTabHome;
       case DashboardTab.more:
-        return S.of(context).dashboardTabMore;
+        return s.dashboardTabMore;
       case DashboardTab.spots:
-        return S.of(context).dashboardTabSpots;
+        return s.dashboardTabSpots;
     }
   }
 }

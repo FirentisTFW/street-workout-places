@@ -25,7 +25,7 @@ abstract class AlertDialogUtils {
   static Future<void> showError(BuildContext context, DialogError error) {
     return show(
       context,
-      message: error.error.getMessage(context),
+      message: error.error.getMessage(S.of(context)),
     );
   }
 

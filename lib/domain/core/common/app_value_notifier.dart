@@ -2,6 +2,7 @@ import 'package:app/domain/core/common/custom_types.dart';
 import 'package:app/domain/core/common/user_input_field.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/utils/value_notifier_validation_utils.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class AppValueNotifier<T> extends UserInputField {
@@ -27,11 +28,11 @@ class AppValueNotifier<T> extends UserInputField {
   void dispose() => _notifier.dispose();
 
   @override
-  String? provideErrorMessage(BuildContext context) => validator(value)?.getMessage(context);
+  String? provideErrorMessage(S s) => validator(value)?.getMessage(s);
 
-  String? provideErrorMessageIfShouldBeDisplayed(BuildContext context) {
+  String? provideErrorMessageIfShouldBeDisplayed(S s) {
     if (!shouldForceDisplayingError) return null;
-    return provideErrorMessage(context);
+    return provideErrorMessage(s);
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'package:app/generated/l10n.dart';
-import 'package:flutter/material.dart';
 
 enum Surface {
   concrete,
@@ -7,16 +6,16 @@ enum Surface {
   sand,
   tartan;
 
-  String getDescription(BuildContext context) {
+  String getDescription(S s) {
     switch (this) {
       case Surface.concrete:
-        return S.of(context).surfaceDescriptionConcrete;
+        return s.surfaceDescriptionConcrete;
       case Surface.different:
-        return S.of(context).surfaceDescriptionDifferent;
+        return s.surfaceDescriptionDifferent;
       case Surface.sand:
-        return S.of(context).surfaceDescriptionSand;
+        return s.surfaceDescriptionSand;
       case Surface.tartan:
-        return S.of(context).surfaceDescriptionTartan;
+        return s.surfaceDescriptionTartan;
     }
   }
 }

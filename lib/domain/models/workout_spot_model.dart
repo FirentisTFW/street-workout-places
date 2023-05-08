@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
@@ -43,7 +44,7 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
           .map(
             (element) => [
               if (multiline) '-',
-              element.getDescription(context),
+              element.getDescription(S.of(context)),
             ].join(' '),
           )
           .join(multiline ? '\n' : ', ');

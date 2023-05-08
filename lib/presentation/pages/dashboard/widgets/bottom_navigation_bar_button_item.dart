@@ -1,3 +1,4 @@
+import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_tab.dart';
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/widgets/circular_button.dart';
@@ -41,7 +42,7 @@ class BottomNavigationBarButtonItem extends StatelessWidget {
   Widget _buildText(BuildContext context) {
     // TODO Update text style
     return Text(
-      tab.getLabel(context),
+      tab.getLabel(S.of(context)),
       style: TextStyle(
         fontSize: 13.0,
         color: isSelected ? AppColors.blue : AppColors.black,

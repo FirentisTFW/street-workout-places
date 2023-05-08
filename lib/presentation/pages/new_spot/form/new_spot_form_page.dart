@@ -108,7 +108,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
     return ValueListenableBuilder(
       valueListenable: bloc.mapPositionNotifier.notifier,
       builder: (_, mapPosition, __) => WidgetWithPossibleErrorMessage(
-        errorMessage: bloc.mapPositionNotifier.provideErrorMessageIfShouldBeDisplayed(context),
+        errorMessage: bloc.mapPositionNotifier.provideErrorMessageIfShouldBeDisplayed(S.of(context)),
         child: NewSpotCoordinatesSection(
           bloc: bloc,
           mapPosition: mapPosition,
@@ -122,7 +122,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
       valueListenable: bloc.sizeNotifier.notifier,
       builder: (context, size, _) {
         return WidgetWithPossibleErrorMessage(
-          errorMessage: bloc.sizeNotifier.provideErrorMessageIfShouldBeDisplayed(context),
+          errorMessage: bloc.sizeNotifier.provideErrorMessageIfShouldBeDisplayed(S.of(context)),
           key: ValueKey(bloc.sizeNotifier),
           child: app.DropdownMenu<WorkoutSpotSize>(
             dropdownItemStyle: DropdownItemStyle(
@@ -132,7 +132,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
             items: WorkoutSpotSize.values
                 .map(
                   (size) => AppDropdownMenuItem<WorkoutSpotSize>(
-                    text: size.getDescription(context),
+                    text: size.getDescription(S.of(context)),
                     value: size,
                   ),
                 )
@@ -151,7 +151,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
       valueListenable: bloc.surfaceNotifier.notifier,
       builder: (context, surface, _) {
         return WidgetWithPossibleErrorMessage(
-          errorMessage: bloc.surfaceNotifier.provideErrorMessageIfShouldBeDisplayed(context),
+          errorMessage: bloc.surfaceNotifier.provideErrorMessageIfShouldBeDisplayed(S.of(context)),
           key: ValueKey(bloc.surfaceNotifier),
           child: app.DropdownMenu<Surface>(
             dropdownItemStyle: DropdownItemStyle(
@@ -161,7 +161,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
             items: Surface.values
                 .map(
                   (surface) => AppDropdownMenuItem<Surface>(
-                    text: surface.getDescription(context),
+                    text: surface.getDescription(S.of(context)),
                     value: surface,
                   ),
                 )

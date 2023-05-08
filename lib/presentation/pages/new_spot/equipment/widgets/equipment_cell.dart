@@ -1,3 +1,4 @@
+import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_circular_checkbox.dart';
@@ -42,7 +43,7 @@ class EquipmentCell extends StatelessWidget {
 
   Widget _buildDescription(BuildContext context) {
     return Text(
-      equipment.getDescription(context),
+      equipment.getDescription(S.of(context)),
       style: AppTextStyles.content(),
     );
   }

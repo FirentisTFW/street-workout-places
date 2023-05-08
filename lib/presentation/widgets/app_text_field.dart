@@ -1,5 +1,6 @@
 import 'package:app/domain/core/common/text_field_essentials.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
@@ -111,7 +112,7 @@ class _AppTextFieldState extends State<AppTextField> {
       textCapitalization: widget.textCapitalization ??
           (widget.keyboardType == TextInputType.name ? TextCapitalization.sentences : TextCapitalization.none),
       textInputAction: widget.textInputAction,
-      validator: (value) => _essentials.validator(value.orEmpty())?.getMessage(context),
+      validator: (value) => _essentials.validator(value.orEmpty())?.getMessage(S.of(context)),
     );
   }
 

@@ -141,13 +141,13 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsBl
       children: [
         if (size != null)
           InformationWithTitle(
-            value: size.getDescription(context),
+            value: size.getDescription(S.of(context)),
             title: S.of(context).size,
           ),
         const Space.vertical(8.0),
         if (surface != null)
           InformationWithTitle(
-            value: surface.getDescription(context),
+            value: surface.getDescription(S.of(context)),
             title: S.of(context).surface,
           ),
       ],

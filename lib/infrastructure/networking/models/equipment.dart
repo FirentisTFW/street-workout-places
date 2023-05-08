@@ -1,6 +1,5 @@
 // TODO Rethink name - plural or not?
 import 'package:app/generated/l10n.dart';
-import 'package:flutter/material.dart';
 
 enum Equipment {
   highBar,
@@ -13,26 +12,26 @@ enum Equipment {
   rope,
   verticalLadder;
 
-  String getDescription(BuildContext context) {
+  String getDescription(S s) {
     switch (this) {
       case Equipment.highBar:
-        return S.of(context).equipmentDescriptionHighBar;
+        return s.equipmentDescriptionHighBar;
       case Equipment.horizontalLadder:
-        return S.of(context).equipmentDescriptionHorizontalLadder;
+        return s.equipmentDescriptionHorizontalLadder;
       case Equipment.lowBar:
-        return S.of(context).equipmentDescriptionLowBar;
+        return s.equipmentDescriptionLowBar;
       case Equipment.parallelBars:
-        return S.of(context).equipmentDescriptionParallelBars;
+        return s.equipmentDescriptionParallelBars;
       case Equipment.parkourWalls:
-        return S.of(context).equipmentDescriptionParkourWalls;
+        return s.equipmentDescriptionParkourWalls;
       case Equipment.pole:
-        return S.of(context).equipmentDescriptionPole;
+        return s.equipmentDescriptionPole;
       case Equipment.rings:
-        return S.of(context).equipmentDescriptionRings;
+        return s.equipmentDescriptionRings;
       case Equipment.rope:
-        return S.of(context).equipmentDescriptionRope;
+        return s.equipmentDescriptionRope;
       case Equipment.verticalLadder:
-        return S.of(context).equipmentDescriptionVerticalLadder;
+        return s.equipmentDescriptionVerticalLadder;
     }
   }
 }
