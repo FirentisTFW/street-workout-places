@@ -1,6 +1,9 @@
+import 'package:app/domain/core/common/constants.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
+import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/services/device_image_picker_service.dart';
+import 'package:app/domain/services/images_selection_validation_service.dart';
 import 'package:app/infrastructure/networking/requests/submit_spot_request.dart';
 import 'package:app/infrastructure/repositories/spots/i_spots_repository.dart';
 import 'package:app/presentation/pages/new_spot/images/new_spot_images_arguments.dart';
@@ -15,11 +18,13 @@ part 'new_spot_images_state.dart';
 class NewSpotImagesCubit extends Cubit<NewSpotImagesState> with BlocPresentationMixin {
   final NewSpotImagesArguments arguments;
   final DeviceImagePickerService deviceImagePicker;
+  final ImagesSelectionValidationService selectedImagesValidator;
   final ISpotsRepository spotsRepository;
 
   NewSpotImagesCubit({
     required this.arguments,
     required this.deviceImagePicker,
+    required this.selectedImagesValidator,
     required this.spotsRepository,
   }) : super(const NewSpotImagesState.empty());
 
@@ -59,6 +64,11 @@ class NewSpotImagesCubit extends Cubit<NewSpotImagesState> with BlocPresentation
     );
 
     try {
+      final UserInputError? validationError = selectedImagesValidator.validate(state.imagePaths);
+      final bool isFormValid = validationError == null;
+      if (!isFormValid) throw validationError;
+
+      // TODO Before sending photos, compress them to save storage
       final SubmitSpotRequest request = _createRequest(state.imagePaths);
       await spotsRepository.submitSpot(request);
       emit(

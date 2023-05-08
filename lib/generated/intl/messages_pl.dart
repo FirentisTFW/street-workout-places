@@ -20,7 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
-  static String m0(size) => "Rozmiar: ${size}";
+  static String m0(value) =>
+      "Maksymalna liczba zdjęć, które można dodać, to ${value}.";
+
+  static String m1(size) => "Rozmiar: ${size}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -81,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zgłoś plac 3/3"),
         "newSpotImagesHeadline": MessageLookupByLibrary.simpleMessage(
             "Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach."),
+        "newSpotImagesMaxImageCountInformation": m0,
         "newSpotInitialDescription": MessageLookupByLibrary.simpleMessage(
             "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!"),
         "newSpotInitialHeader":
@@ -107,7 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Zaznacz lokalizację parku. Możesz przybliżyć mapę, by zwiększyć dokładność."),
         "send": MessageLookupByLibrary.simpleMessage("Prześlij"),
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
-        "sizeSelected": m0,
+        "sizeSelected": m1,
         "spotsListTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":
@@ -122,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Piasek"),
         "surfaceDescriptionTartan":
             MessageLookupByLibrary.simpleMessage("Tartan"),
+        "tooFewImagesSelectedErrorMessage":
+            MessageLookupByLibrary.simpleMessage("Wybrano zbyt mało zdjęć."),
         "unknownErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd, spróbuj ponownie."),
         "workoutSpotSizeDescriptionBig":

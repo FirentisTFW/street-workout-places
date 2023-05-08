@@ -161,7 +161,7 @@ class S {
   }
 
   /// `Rozmiar: {size}`
-  String sizeSelected(Object size) {
+  String sizeSelected(String size) {
     return Intl.message(
       'Rozmiar: $size',
       name: 'sizeSelected',
@@ -665,6 +665,26 @@ class S {
     return Intl.message(
       'Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!',
       name: 'newSpotSubmittedDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maksymalna liczba zdjęć, które można dodać, to {value}.`
+  String newSpotImagesMaxImageCountInformation(int value) {
+    return Intl.message(
+      'Maksymalna liczba zdjęć, które można dodać, to $value.',
+      name: 'newSpotImagesMaxImageCountInformation',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `Wybrano zbyt mało zdjęć.`
+  String get tooFewImagesSelectedErrorMessage {
+    return Intl.message(
+      'Wybrano zbyt mało zdjęć.',
+      name: 'tooFewImagesSelectedErrorMessage',
       desc: '',
       args: [],
     );

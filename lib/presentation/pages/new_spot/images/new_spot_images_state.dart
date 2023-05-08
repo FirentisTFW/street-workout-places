@@ -5,6 +5,8 @@ class NewSpotImagesState extends Equatable {
   final String? defaultImagePath;
   final List<String> imagePaths;
 
+  bool get canAddImage => imagePaths.length < Constants.spots.newSpotMaxImageCount;
+
   bool get hasImages => imagePaths.isNotEmpty;
 
   const NewSpotImagesState({

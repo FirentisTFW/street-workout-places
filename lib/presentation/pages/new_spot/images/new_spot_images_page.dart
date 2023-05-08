@@ -1,4 +1,5 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
+import 'package:app/domain/core/common/constants.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/core/utils/alert_dialog_utils.dart';
@@ -39,8 +40,8 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
                 child: Column(
                   children: [
                     _buildHeadline(),
-                    _buildImageList(state),
-                    _buildAddImageButton(),
+                    if (state.hasImages) _buildImageList(state),
+                    if (state.canAddImage) _buildAddImageButton() else _buildMaxImageCountInformation(),
                     _buildSendButton(state),
                   ].separatedBy(
                     const Space.vertical(20.0),
@@ -129,6 +130,16 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
           size: 60.0,
           color: AppColors.grey2,
         ),
+      ),
+    );
+  }
+
+  Widget _buildMaxImageCountInformation() {
+    return Padding(
+      padding: AppPadding.defaultHorizontal,
+      child: Text(
+        S.of(context).newSpotImagesMaxImageCountInformation(Constants.spots.newSpotMaxImageCount),
+        style: AppTextStyles.contentBiggerMultiline(),
       ),
     );
   }

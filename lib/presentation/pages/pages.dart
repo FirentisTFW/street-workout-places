@@ -1,6 +1,7 @@
 import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
 import 'package:app/domain/services/device_image_picker_service.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
+import 'package:app/domain/services/images_selection_validation_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/repositories/spots/i_network_spots_repository.dart';
@@ -77,6 +78,7 @@ abstract class Pages {
       create: (_) => NewSpotImagesCubit(
         arguments: arguments as NewSpotImagesArguments,
         deviceImagePicker: DeviceImagePickerService(),
+        selectedImagesValidator: ImagesSelectionValidationService(),
         spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
       ),
       child: const NewSpotImagesPage(),

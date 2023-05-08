@@ -7,6 +7,7 @@ abstract class Constants {
   static final _App app = _App();
   static final _Maps maps = _Maps();
   static final _Search search = _Search();
+  static final _Spots spots = _Spots();
 }
 
 class _App {
@@ -40,4 +41,9 @@ class _Search {
   final Duration queryTimerReaction = const Duration(
     milliseconds: 300,
   );
+}
+
+class _Spots {
+  final int newSpotMinImageCount = 2;
+  final int newSpotMaxImageCount = 8;
 }

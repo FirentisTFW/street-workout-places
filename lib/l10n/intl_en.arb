@@ -11,6 +11,13 @@
   "workoutSpotSizeDescriptionMedium": "Średni",
   "workoutSpotSizeDescriptionSmall": "Mały",
   "sizeSelected": "Rozmiar: {size}",
+  "@sizeSelected": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
   "navigationButtonTitle": "Nawiguj",
   "ok": "Ok",
   "contentUnavailableDialogMessage": "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)",
@@ -60,5 +67,14 @@
   "newSpotImageCellDefault": "Domyślne",
   "newSpotImageCellSetAsDefault": "Ustaw jako domyślne",
   "newSpotSubmittedDialogTitle": "Plac zgłoszony",
-  "newSpotSubmittedDialogMessage": "Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!"
+  "newSpotSubmittedDialogMessage": "Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!",
+  "newSpotImagesMaxImageCountInformation": "Maksymalna liczba zdjęć, które można dodać, to {value}.",
+  "@newSpotImagesMaxImageCountInformation": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "tooFewImagesSelectedErrorMessage": "Wybrano zbyt mało zdjęć."
 }
