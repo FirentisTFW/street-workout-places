@@ -8,3 +8,6 @@ Potential improvements:
     - consider setting up properties like city, street and house number based on the location selected by user
 - new_spot_form and new_spot_equipment
     - consider using bloc_presentation library for validation reactions
+
+Non-technical:
+- possibility to add images for different spots once they are created (what would be the limit there?)

@@ -10,8 +10,8 @@
 
 ## 1. HOME
 - list of spots near user (press a button to get user location and get spots near)
-- list of categories/equipment (pick a category or navigate to filters page)
-- recently added spots (?)
+- list of equipment (navigate to filters page?)
+- recently added spots/reviews (?)
 
 ## 2. MAP WITH PINS 
 - map with location pins
@@ -21,7 +21,7 @@
 - user taps on a pin -> new page is opened (spot details)
 
 ## 3. LIST OF LOCATIONS
-- name, category/equipment, distance
+- name, equipment, distance
 - show on map feature
 - search bar
 - filters
@@ -29,7 +29,6 @@
 ## 4. SPOT DETAILS
 - name, address/coordinates
 - map (here or on another screen?)
-- category
 - equipment
 - images
 - description
