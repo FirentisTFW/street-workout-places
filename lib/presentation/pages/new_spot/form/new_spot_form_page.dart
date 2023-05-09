@@ -9,6 +9,7 @@ import 'package:app/presentation/pages/new_spot/form/widgets/new_spot_coordinate
 import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
+import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
 import 'package:app/presentation/widgets/dropdown_menu/app_dropdown_menu_item.dart';
@@ -50,6 +51,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
                     _buildCoordinatesSection(),
                     ..._buildAddressSection(),
                     _buildDescriptionTextField(),
+                    _buildRequiredFieldInformation(),
                     _buildNextButton(),
                   ].separatedBy(
                     const Space.vertical(20.0),
@@ -227,6 +229,13 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
       labelText: S.of(context).description,
       minLines: 6,
       textInputAction: TextInputAction.done,
+    );
+  }
+
+  Widget _buildRequiredFieldInformation() {
+    return Text(
+      '* Pole wymagane',
+      style: AppTextStyles.content(),
     );
   }
 
