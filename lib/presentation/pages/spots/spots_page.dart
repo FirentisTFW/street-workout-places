@@ -4,6 +4,7 @@ import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
 import 'package:app/domain/core/common/query_controller.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
 import 'package:app/domain/core/common/text_field_essentials.dart';
+import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/domain/models/page_tab_bar_button_data.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
@@ -15,6 +16,7 @@ import 'package:app/presentation/pages/spots/spots_page_tab.dart';
 import 'package:app/presentation/pages/spots/widgets/spot_list.dart';
 import 'package:app/presentation/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/presentation/styles/app_animations.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
 import 'package:app/presentation/widgets/automatic_keep_alive_client_container.dart';
@@ -70,6 +72,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _buildFloatingActionButtons(),
       body: SafeArea(
         child: BlocProvider<MapClustersCubit>(
           create: (_) => MapClustersCubit(
@@ -89,6 +92,43 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildFloatingActionButtons() {
+    const iconSize = 30.0;
+
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: AppDimensions.height.bottomNavgationBar + 30.0,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              // TODO Implement
+              AlertDialogUtils.showContentUnavailable(context);
+            },
+            child: const Icon(
+              Icons.gps_fixed,
+              size: iconSize,
+            ),
+          ),
+          const Space.vertical(10.0),
+          FloatingActionButton(
+            onPressed: () {
+              // TODO Implement
+              AlertDialogUtils.showContentUnavailable(context);
+            },
+            child: const Icon(
+              Icons.filter_alt,
+              size: iconSize,
+            ),
+          ),
+        ],
       ),
     );
   }
