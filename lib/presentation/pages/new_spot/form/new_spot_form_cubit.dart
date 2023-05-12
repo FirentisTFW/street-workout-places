@@ -1,4 +1,4 @@
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/common/unique_prop_provider.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'new_spot_form_state.dart';
 
 class NewSpotFormCubit extends Cubit<NewSpotFormState> with NewSpotForm {
-  final IMapCoordinator mapCoordinator;
+  final MapCoordinator mapCoordinator;
   final UserInputValidationService userInputValidator;
 
   NewSpotFormCubit({

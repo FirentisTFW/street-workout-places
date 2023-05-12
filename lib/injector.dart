@@ -1,7 +1,7 @@
 import 'package:app/domain/core/common/global_navigator.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
 import 'package:app/infrastructure/repositories/spots/fake_network_spots_repository.dart';
-import 'package:app/infrastructure/repositories/spots/i_network_spots_repository.dart';
+import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:get_it/get_it.dart';
 
 class Injector {
@@ -29,7 +29,7 @@ class Injector {
   }
 
   void _registerFakeNetworkRepositories() {
-    _getIt.registerFactory<INetworkSpotsRepository>(() => const FakeNetworkSpotsRepository());
+    _getIt.registerFactory<NetworkSpotsRepository>(() => const FakeNetworkSpotsRepository());
   }
 
   T resolve<T extends Object>([

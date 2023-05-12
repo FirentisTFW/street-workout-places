@@ -5,7 +5,7 @@ import 'package:app/domain/core/mappers/mappers.dart';
 import 'package:app/domain/core/utils/search_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/infrastructure/networking/models/workout_spot.dart';
-import 'package:app/infrastructure/repositories/spots/i_spots_repository.dart';
+import 'package:app/infrastructure/repositories/spots/spots_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,7 +13,7 @@ part 'spots_cubit.freezed.dart';
 part 'spots_state.dart';
 
 class SpotsCubit extends Cubit<SpotsState> {
-  final ISpotsRepository spotsRepository;
+  final SpotsRepository spotsRepository;
 
   SpotsCubit({
     required this.spotsRepository,

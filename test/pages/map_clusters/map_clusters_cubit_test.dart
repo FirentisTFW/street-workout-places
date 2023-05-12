@@ -1,5 +1,5 @@
 import 'package:app/application/blocs/spots/spots_cubit.dart';
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/models/map_bounds_model.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
@@ -38,7 +38,7 @@ void main() {
         spotsRepository: MockSpotsRepository(),
       );
       final MapClustersService mapClustersService = MockMapClustersService();
-      final IMapCoordinator mapCoordinator = MockMapCoordinator();
+      final MapCoordinator mapCoordinator = MockMapCoordinator();
       test(
           'When SpotsCubit emits new state with filtered spots, MapClustersService.createClustersForSpots() method is called',
           () async {

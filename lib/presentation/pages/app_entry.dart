@@ -2,7 +2,7 @@ import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/app_locales.dart';
 import 'package:app/domain/core/common/global_navigator.dart';
 import 'package:app/generated/l10n.dart';
-import 'package:app/infrastructure/repositories/spots/i_network_spots_repository.dart';
+import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:app/injector.dart';
 import 'package:app/presentation/routing/routing.dart';
 import 'package:app/presentation/styles/app_colors.dart';
@@ -28,7 +28,7 @@ class _AppEntryState extends State<AppEntry> {
   void initState() {
     super.initState();
     spotsCubit = SpotsCubit(
-      spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
+      spotsRepository: Injector().resolve<NetworkSpotsRepository>(),
     );
     spotsCubit.fetchSpots();
   }
