@@ -108,6 +108,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               // TODO Implement
               AlertDialogUtils.showContentUnavailable(context);
@@ -119,6 +120,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
           ),
           const Space.vertical(10.0),
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               // TODO Implement
               AlertDialogUtils.showContentUnavailable(context);
