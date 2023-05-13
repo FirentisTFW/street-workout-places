@@ -33,14 +33,11 @@ class MapClustersCubit extends Cubit<MapClustersState> {
   void _setUpSpotsCubitListener() {
     spotsCubitStreamSubscription = spotsCubit.stream.listen(
       (state) {
-        state.maybeMap(
-          fetchSpotsSuccess: (state) => updateClusters(
+        if (state is SpotsFetchSuccess) {
+          updateClusters(
             spots: state.filteredSpots,
-          ),
-          orElse: () {
-            /* No implementation needed */
-          },
-        );
+          );
+        }
       },
     );
   }

@@ -40,7 +40,7 @@ void main() {
     patrolTest(
       'When fecthing spots is in progress, shows progress indicator',
       ($) async {
-        when(() => spotsCubit.state).thenReturn(const SpotsState.fetchSpotsInProgress());
+        when(() => spotsCubit.state).thenReturn(const SpotsFetchInProgress());
 
         await $.pumpWidget(provideTestablePage());
         await $.pump();
@@ -52,7 +52,7 @@ void main() {
       'When spots are fetched, shows a loaded page',
       ($) async {
         when(() => spotsCubit.state).thenReturn(
-          const SpotsState.fetchSpotsSuccess(
+          const SpotsFetchSuccess(
             spots: [],
             filteredSpots: [],
           ),
@@ -69,7 +69,7 @@ void main() {
       'When fetching spots fails, shows error page',
       ($) async {
         when(() => spotsCubit.state).thenReturn(
-          const SpotsState.fetchSpotsFailure(
+          const SpotsFetchFailure(
             error: ContainerError(UnknownError()),
           ),
         );

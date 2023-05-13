@@ -6,10 +6,9 @@ import 'package:app/domain/core/utils/search_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/infrastructure/networking/models/workout_spot.dart';
 import 'package:app/infrastructure/repositories/spots/spots_repository.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'spots_cubit.freezed.dart';
 part 'spots_state.dart';
 
 class SpotsCubit extends Cubit<SpotsState> {
@@ -17,25 +16,25 @@ class SpotsCubit extends Cubit<SpotsState> {
 
   SpotsCubit({
     required this.spotsRepository,
-  }) : super(const _Initial());
+  }) : super(const SpotsInitial());
 
   Future<void> fetchSpots() async {
     try {
       emit(
-        const _FetchSpotsInProgress(),
+        const SpotsFetchInProgress(),
       );
       // TODO Consider wrapping in ApiResponse or something similar
       final List<WorkoutSpot> spots = await spotsRepository.workoutSpots();
       final List<WorkoutSpotModel> spotsModels = spots.mapToWorkoutSpotModels();
       emit(
-        _FetchSpotsSuccess(
+        SpotsFetchSuccess(
           filteredSpots: spotsModels,
           spots: spotsModels,
         ),
       );
     } catch (exception) {
       emit(
-        _FetchSpotsFailure(
+        SpotsFetchFailure(
           error: ContainerError.fromException(exception),
         ),
       );
@@ -44,7 +43,7 @@ class SpotsCubit extends Cubit<SpotsState> {
 
   FutureOr<void> filterSpotsByQuery(String query) async {
     final SpotsState entryState = state;
-    if (entryState is! _FetchSpotsSuccess) return;
+    if (entryState is! SpotsFetchSuccess) return;
     final List<WorkoutSpotModel> filteredSpots = entryState.spots
         .where(
           (spot) => SearchUtils.checkIfSpotMatchesQuery(
@@ -54,7 +53,7 @@ class SpotsCubit extends Cubit<SpotsState> {
         )
         .toList();
     emit(
-      _FetchSpotsSuccess(
+      SpotsFetchSuccess(
         filteredSpots: filteredSpots,
         spots: entryState.spots,
       ),

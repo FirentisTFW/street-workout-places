@@ -58,7 +58,7 @@ void main() {
           mapCoordinator: mapCoordinator,
         );
         spotsCubit.emit(
-          SpotsState.fetchSpotsSuccess(
+          SpotsFetchSuccess(
             filteredSpots: spots,
             spots: spots,
           ),

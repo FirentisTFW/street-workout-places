@@ -1,17 +1,47 @@
 part of 'spots_cubit.dart';
 
-@freezed
-class SpotsState with _$SpotsState {
-  const factory SpotsState.initial() = _Initial;
+sealed class SpotsState extends Equatable {
+  const SpotsState();
 
-  const factory SpotsState.fetchSpotsInProgress() = _FetchSpotsInProgress;
+  @override
+  List<Object?> get props => [];
+}
 
-  const factory SpotsState.fetchSpotsSuccess({
-    required List<WorkoutSpotModel> filteredSpots,
-    required List<WorkoutSpotModel> spots,
-  }) = _FetchSpotsSuccess;
+class SpotsInitial extends SpotsState {
+  const SpotsInitial();
+}
 
-  const factory SpotsState.fetchSpotsFailure({
-    required ContainerError error,
-  }) = _FetchSpotsFailure;
+class SpotsFetchInProgress extends SpotsState {
+  const SpotsFetchInProgress();
+}
+
+class SpotsFetchSuccess extends SpotsState {
+  final List<WorkoutSpotModel> filteredSpots;
+  final List<WorkoutSpotModel> spots;
+
+  const SpotsFetchSuccess({
+    required this.filteredSpots,
+    required this.spots,
+  });
+
+  @override
+  List<Object?> get props => [
+        ...super.props,
+        filteredSpots,
+        spots,
+      ];
+}
+
+class SpotsFetchFailure extends SpotsState {
+  final ContainerError error;
+
+  const SpotsFetchFailure({
+    required this.error,
+  });
+
+  @override
+  List<Object?> get props => [
+        ...super.props,
+        error,
+      ];
 }

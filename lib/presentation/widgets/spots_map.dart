@@ -1,3 +1,4 @@
+import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/constants.dart';
 import 'package:app/domain/core/common/controllers/delayed_replacable_action_controller.dart';
 import 'package:app/domain/core/common/global_blocs_mixin.dart';
@@ -48,14 +49,12 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
   }
 
   void _updateMapClusters() {
-    spotsCubit.state.maybeMap(
-      fetchSpotsSuccess: (state) => _mapClustersCubit.updateClusters(
-        spots: state.spots,
-      ),
-      orElse: () {
-        // No implementation needed
-      },
-    );
+    final SpotsState spotsState = spotsCubit.state;
+    if (spotsState is SpotsFetchSuccess) {
+      _mapClustersCubit.updateClusters(
+        spots: spotsState.spots,
+      );
+    }
   }
 
   void _zoomIntoCluster(MapClusterModel cluster) {

@@ -29,8 +29,8 @@ void main() {
         ),
         act: (cubit) => cubit.fetchSpots(),
         expect: () => [
-          const SpotsState.fetchSpotsInProgress(),
-          SpotsState.fetchSpotsSuccess(
+          const SpotsFetchInProgress(),
+          SpotsFetchSuccess(
             filteredSpots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
             spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
           ),
@@ -48,8 +48,8 @@ void main() {
       ),
       act: (cubit) => cubit.fetchSpots(),
       expect: () => [
-        const SpotsState.fetchSpotsInProgress(),
-        const SpotsState.fetchSpotsFailure(
+        const SpotsFetchInProgress(),
+        const SpotsFetchFailure(
           error: ContainerError(UnknownError()),
         ),
       ],
@@ -85,7 +85,7 @@ void main() {
       expect: () => [],
     );
     group('When entry state is _FetchSpotsSuccess -', () {
-      const SpotsState initialState = SpotsState.fetchSpotsSuccess(
+      const SpotsState initialState = SpotsFetchSuccess(
         filteredSpots: spots,
         spots: spots,
       );
@@ -106,7 +106,7 @@ void main() {
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Krakow'),
         expect: () => [
-          const SpotsState.fetchSpotsSuccess(
+          const SpotsFetchSuccess(
             filteredSpots: [
               krakowSpot,
             ],
@@ -121,7 +121,7 @@ void main() {
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Gdansk'),
         expect: () => [
-          const SpotsState.fetchSpotsSuccess(
+          const SpotsFetchSuccess(
             filteredSpots: [],
             spots: spots,
           ),
