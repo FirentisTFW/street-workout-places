@@ -28,7 +28,7 @@ class EquipmentCell extends StatelessWidget {
           children: [
             _buildCheckbox(),
             const Space.horizontal(10.0),
-            _buildDescription(context),
+            _buildDescription(S.of(context)),
           ],
         ),
       ),
@@ -36,14 +36,17 @@ class EquipmentCell extends StatelessWidget {
   }
 
   Widget _buildCheckbox() {
-    return AppCircularCheckbox(
-      isSelectedNotifier: isSelectedNotifier,
+    return ValueListenableBuilder(
+      valueListenable: isSelectedNotifier,
+      builder: (_, isSelected, __) => AppCircularCheckbox(
+        value: isSelected,
+      ),
     );
   }
 
-  Widget _buildDescription(BuildContext context) {
+  Widget _buildDescription(S s) {
     return Text(
-      equipment.getDescription(S.of(context)),
+      equipment.getDescription(s),
       style: AppTextStyles.content(),
     );
   }
