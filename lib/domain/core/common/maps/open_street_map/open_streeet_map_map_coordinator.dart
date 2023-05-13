@@ -1,5 +1,5 @@
 import 'package:app/domain/core/common/constants.dart';
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/common/maps/open_street_map/open_street_map_mappers.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/models/map_bounds_model.dart';
@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart' hide MapPosition;
 import 'package:latlong2/latlong.dart';
 
-class OpenStreetMapMapCoordinator implements IMapCoordinator {
+class OpenStreetMapMapCoordinator implements MapCoordinator {
   final MapController _mapController = MapController();
 
   @override

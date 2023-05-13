@@ -5,7 +5,7 @@ import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/services/device_image_picker_service.dart';
 import 'package:app/domain/services/images_selection_validation_service.dart';
 import 'package:app/infrastructure/networking/requests/submit_spot_request.dart';
-import 'package:app/infrastructure/repositories/spots/i_spots_repository.dart';
+import 'package:app/infrastructure/repositories/spots/spots_repository.dart';
 import 'package:app/presentation/pages/new_spot/images/new_spot_images_arguments.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
@@ -19,7 +19,7 @@ class NewSpotImagesCubit extends Cubit<NewSpotImagesState> with BlocPresentation
   final NewSpotImagesArguments arguments;
   final DeviceImagePickerService deviceImagePicker;
   final ImagesSelectionValidationService selectedImagesValidator;
-  final ISpotsRepository spotsRepository;
+  final SpotsRepository spotsRepository;
 
   NewSpotImagesCubit({
     required this.arguments,

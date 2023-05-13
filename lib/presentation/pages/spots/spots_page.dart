@@ -1,6 +1,6 @@
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/bloc_page_state.dart';
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/common/query_controller.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
 import 'package:app/domain/core/common/text_field_essentials.dart';
@@ -77,7 +77,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         child: BlocProvider<MapClustersCubit>(
           create: (_) => MapClustersCubit(
             mapClustersService: Injector().resolve<MapClustersService>(),
-            mapCoordinator: IMapCoordinator.create(),
+            mapCoordinator: MapCoordinator.create(),
             spotsCubit: spotsCubit,
           ),
           child: BlocBuilder<SpotsCubit, SpotsState>(
@@ -108,6 +108,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               // TODO Implement
               AlertDialogUtils.showContentUnavailable(context);
@@ -119,6 +120,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
           ),
           const Space.vertical(10.0),
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               // TODO Implement
               AlertDialogUtils.showContentUnavailable(context);

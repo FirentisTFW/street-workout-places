@@ -1,10 +1,10 @@
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/services/device_image_picker_service.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/domain/services/images_selection_validation_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
-import 'package:app/infrastructure/repositories/spots/i_network_spots_repository.dart';
+import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:app/injector.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_bloc.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_page.dart';
@@ -66,7 +66,7 @@ abstract class Pages {
   static Widget newSpotForm() {
     return BlocProvider<NewSpotFormCubit>(
       create: (_) => NewSpotFormCubit(
-        mapCoordinator: IMapCoordinator.create(),
+        mapCoordinator: MapCoordinator.create(),
         userInputValidator: UserInputValidationService(),
       ),
       child: const NewSpotFormPage(),
@@ -79,7 +79,7 @@ abstract class Pages {
         arguments: arguments as NewSpotImagesArguments,
         deviceImagePicker: DeviceImagePickerService(),
         selectedImagesValidator: ImagesSelectionValidationService(),
-        spotsRepository: Injector().resolve<INetworkSpotsRepository>(),
+        spotsRepository: Injector().resolve<NetworkSpotsRepository>(),
       ),
       child: const NewSpotImagesPage(),
     );

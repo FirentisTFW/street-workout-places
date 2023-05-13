@@ -6,10 +6,10 @@ import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:flutter/material.dart';
 
-abstract class IMapCoordinator {
-  const IMapCoordinator();
+abstract interface class MapCoordinator {
+  const MapCoordinator();
 
-  static IMapCoordinator create() => OpenStreetMapMapCoordinator();
+  static MapCoordinator create() => OpenStreetMapMapCoordinator();
 
   MapBoundsModel? get bounds;
 

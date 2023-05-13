@@ -1,9 +1,9 @@
 import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
 import 'package:app/infrastructure/networking/models/workout_spot.dart';
 import 'package:app/infrastructure/networking/requests/submit_spot_request.dart';
-import 'package:app/infrastructure/repositories/spots/i_network_spots_repository.dart';
+import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 
-class FakeNetworkSpotsRepository implements INetworkSpotsRepository {
+class FakeNetworkSpotsRepository implements NetworkSpotsRepository {
   const FakeNetworkSpotsRepository();
 
   @override

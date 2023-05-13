@@ -1,5 +1,5 @@
 import 'package:app/domain/core/common/constants.dart';
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/extensions/list_extensions.dart';
 import 'package:app/domain/models/map_essentials.dart';
 import 'package:app/generated/l10n.dart';
@@ -26,7 +26,7 @@ class NewSpotCoordinatesSection extends StatefulWidget {
 class _NewSpotCoordinatesSectionState extends State<NewSpotCoordinatesSection> {
   bool get _shouldDisplayMap => _mapPosition != null;
 
-  IMapCoordinator get _mapCoordinator => widget.bloc.mapCoordinator;
+  MapCoordinator get _mapCoordinator => widget.bloc.mapCoordinator;
 
   MapPosition? get _mapPosition => widget.mapPosition;
 

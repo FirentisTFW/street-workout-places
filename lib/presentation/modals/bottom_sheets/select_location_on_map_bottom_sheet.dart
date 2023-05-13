@@ -1,5 +1,5 @@
 import 'package:app/domain/core/common/constants.dart';
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 class SelectLocationOnMapBottomSheet {
   final BuildContext context;
   final MapPosition? initialPosition;
-  final IMapCoordinator mapCoordinator;
+  final MapCoordinator mapCoordinator;
   final void Function(MapPosition postition) onPositionSelected;
 
   const SelectLocationOnMapBottomSheet(
@@ -36,7 +36,7 @@ class SelectLocationOnMapBottomSheet {
 }
 
 class _SelectLocationOnMapBottomSheetBody extends StatefulWidget {
-  final IMapCoordinator mapCoordinator;
+  final MapCoordinator mapCoordinator;
   final MapPosition? initialPosition;
   final void Function(MapPosition postition) onPositionSelected;
 

@@ -1,4 +1,4 @@
-import 'package:app/domain/core/common/maps/i_map_coordinator.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/errors/user_input/text_field_error.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
@@ -40,7 +40,7 @@ void main() {
           when(() => validationService.validate(any())).thenReturn(error);
         },
         build: () => NewSpotFormCubit(
-          mapCoordinator: IMapCoordinator.create(),
+          mapCoordinator: MapCoordinator.create(),
           userInputValidator: validationService,
         ),
         act: (cubit) => cubit.proceedToNextStep(),
