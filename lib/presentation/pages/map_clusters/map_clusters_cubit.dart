@@ -6,10 +6,9 @@ import 'package:app/domain/models/map_bounds_model.dart';
 import 'package:app/domain/models/map_cluster_model.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'map_clusters_cubit.freezed.dart';
 part 'map_clusters_state.dart';
 
 class MapClustersCubit extends Cubit<MapClustersState> {
@@ -23,9 +22,7 @@ class MapClustersCubit extends Cubit<MapClustersState> {
     required this.mapCoordinator,
     required this.spotsCubit,
   }) : super(
-          const MapClustersState.initial(
-            clusters: [],
-          ),
+          const MapClustersState.empty(),
         ) {
     _setUpSpotsCubitListener();
   }
@@ -59,7 +56,7 @@ class MapClustersCubit extends Cubit<MapClustersState> {
       zoom: mapCoordinator.zoom,
     );
     emit(
-      _Initial(
+      MapClustersState(
         clusters: clusters,
       ),
     );

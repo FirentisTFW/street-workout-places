@@ -1,6 +1,12 @@
-part of 'more_bloc.dart';
+part of 'more_cubit.dart';
 
-@freezed
-class MoreState with _$MoreState {
-  const factory MoreState.initial() = _Initial;
+sealed class MoreState extends Equatable {
+  const MoreState();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class MoreInitial extends MoreState {
+  const MoreInitial();
 }

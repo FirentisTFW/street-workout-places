@@ -6,7 +6,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/infrastructure/networking/models/surface.dart';
 import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
-import 'package:app/presentation/pages/spot_details/spot_details_bloc.dart';
+import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
 import 'package:app/presentation/pages/spot_details/widgets/spot_details_image_slider.dart';
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_padding.dart';
@@ -26,18 +26,15 @@ class SpotDetailsPage extends StatefulWidget {
   State<SpotDetailsPage> createState() => _SpotDetailsPageState();
 }
 
-class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsBloc> {
+class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCubit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<SpotDetailsBloc, SpotDetailsState>(
+      body: BlocBuilder<SpotDetailsCubit, SpotDetailsState>(
         builder: (_, state) {
           return Stack(
             children: [
-              state.maybeWhen(
-                initial: _buildLoadedBody,
-                orElse: buildLoadingBody,
-              ),
+              _buildLoadedBody(state.spot),
               Positioned(
                 top: 2.0,
                 left: 2.0,

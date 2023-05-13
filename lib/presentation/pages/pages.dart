@@ -6,11 +6,11 @@ import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:app/injector.dart';
-import 'package:app/presentation/pages/dashboard/dashboard_bloc.dart';
+import 'package:app/presentation/pages/dashboard/dashboard_cubit.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_page.dart';
-import 'package:app/presentation/pages/home/home_bloc.dart';
+import 'package:app/presentation/pages/home/home_cubit.dart';
 import 'package:app/presentation/pages/home/home_page.dart';
-import 'package:app/presentation/pages/more/more_bloc.dart';
+import 'package:app/presentation/pages/more/more_cubit.dart';
 import 'package:app/presentation/pages/more/more_page.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
@@ -22,7 +22,7 @@ import 'package:app/presentation/pages/new_spot/images/new_spot_images_cubit.dar
 import 'package:app/presentation/pages/new_spot/images/new_spot_images_page.dart';
 import 'package:app/presentation/pages/new_spot/initial/new_spot_initial_page.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_arguments.dart';
-import 'package:app/presentation/pages/spot_details/spot_details_bloc.dart';
+import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_page.dart';
 import 'package:app/presentation/pages/spots/spots_page.dart';
 import 'package:flutter/material.dart';
@@ -32,22 +32,22 @@ abstract class Pages {
   const Pages._();
 
   static Widget dashboard() {
-    return BlocProvider<DashboardBloc>(
-      create: (_) => DashboardBloc(),
+    return BlocProvider<DashboardCubit>(
+      create: (_) => DashboardCubit(),
       child: const DashboardPage(),
     );
   }
 
   static Widget home() {
-    return BlocProvider<HomeBloc>(
-      create: (_) => HomeBloc(),
+    return BlocProvider<HomeCubit>(
+      create: (_) => HomeCubit(),
       child: const HomePage(),
     );
   }
 
   static Widget more() {
-    return BlocProvider<MoreBloc>(
-      create: (_) => MoreBloc(),
+    return BlocProvider<MoreCubit>(
+      create: (_) => MoreCubit(),
       child: const MorePage(),
     );
   }
@@ -90,8 +90,8 @@ abstract class Pages {
   }
 
   static Widget spotDetails(dynamic arguments) {
-    return BlocProvider<SpotDetailsBloc>(
-      create: (_) => SpotDetailsBloc(
+    return BlocProvider<SpotDetailsCubit>(
+      create: (_) => SpotDetailsCubit(
         arguments: arguments as SpotDetailsArguments,
       ),
       child: const SpotDetailsPage(),

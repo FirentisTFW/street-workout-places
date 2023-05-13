@@ -207,11 +207,9 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   Widget _buildMap(List<WorkoutSpotModel> spots) {
     return AutomaticKeepAliveClientContainer(
       child: BlocBuilder<MapClustersCubit, MapClustersState>(
-        builder: (_, state) => state.map(
-          initial: (state) => SpotsMap(
-            clusters: state.clusters,
-            onSpotIconPressed: _goToSpotDetails,
-          ),
+        builder: (_, state) => SpotsMap(
+          clusters: state.clusters,
+          onSpotIconPressed: _goToSpotDetails,
         ),
       ),
     );

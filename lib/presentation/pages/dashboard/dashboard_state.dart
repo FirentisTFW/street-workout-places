@@ -1,16 +1,26 @@
-part of 'dashboard_bloc.dart';
+part of 'dashboard_cubit.dart';
 
-@freezed
-class DashboardState with _$DashboardState {
-  const factory DashboardState.initial({
-    @Default(DashboardTab.home) DashboardTab tab,
-  }) = _Initial;
+sealed class DashboardState extends Equatable {
+  final DashboardTab tab;
 
-  const factory DashboardState.popTabToRoot({
-    required DashboardTab tab,
-  }) = _PopTabToRoot;
+  const DashboardState({
+    required this.tab,
+  });
 
-  const factory DashboardState.tabChanged({
-    required DashboardTab tab,
-  }) = _TabChanged;
+  @override
+  List<Object?> get props => [
+        tab,
+      ];
+}
+
+class DashboardInitial extends DashboardState {
+  const DashboardInitial({
+    required super.tab,
+  });
+}
+
+class DashboardPopTabToRoot extends DashboardState {
+  const DashboardPopTabToRoot({
+    required super.tab,
+  });
 }

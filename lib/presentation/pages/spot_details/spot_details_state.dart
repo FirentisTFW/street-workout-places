@@ -1,8 +1,15 @@
-part of 'spot_details_bloc.dart';
+part of 'spot_details_cubit.dart';
 
 @freezed
-class SpotDetailsState with _$SpotDetailsState {
-  const factory SpotDetailsState.initial({
-    required WorkoutSpotModel spot,
-  }) = _Initial;
+class SpotDetailsState extends Equatable {
+  final WorkoutSpotModel spot;
+
+  const SpotDetailsState({
+    required this.spot,
+  });
+
+  @override
+  List<Object?> get props => [
+        spot,
+      ];
 }

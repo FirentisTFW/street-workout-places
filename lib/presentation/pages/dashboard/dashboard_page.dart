@@ -1,5 +1,5 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
-import 'package:app/presentation/pages/dashboard/dashboard_bloc.dart';
+import 'package:app/presentation/pages/dashboard/dashboard_cubit.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_tab.dart';
 import 'package:app/presentation/pages/dashboard/widgets/bottom_navigation_bar_button_item.dart';
 import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
@@ -22,7 +22,7 @@ class DashboardPage extends StatefulWidget {
   State<DashboardPage> createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
+class _DashboardPageState extends BlocPageState<DashboardPage, DashboardCubit> {
   static const List<DashboardTab> _tabs = [
     DashboardTab.home,
     DashboardTab.spots,
@@ -36,7 +36,7 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DashboardBloc, DashboardState>(
+    return BlocConsumer<DashboardCubit, DashboardState>(
       listener: _onStateChanged,
       builder: (_, state) => Scaffold(
         body: _buildBody(state),
@@ -45,9 +45,9 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
   }
 
   Future<void> _onStateChanged(BuildContext context, DashboardState state) async {
-    state.whenOrNull(
-      popTabToRoot: _popToRoot,
-    );
+    if (state is DashboardPopTabToRoot) {
+      _popToRoot(state.tab);
+    }
   }
 
   void _popToRoot(DashboardTab tab) {
@@ -142,11 +142,7 @@ class _DashboardPageState extends BlocPageState<DashboardPage, DashboardBloc> {
                 child: BottomNavigationBarButtonItem(
                   tab: tab,
                   isSelected: tab == activeTab,
-                  onPressed: () => bloc.add(
-                    DashboardEvent.changeTabRequested(
-                      tab: tab,
-                    ),
-                  ),
+                  onPressed: () => bloc.changeTab(tab),
                 ),
               ),
             )
