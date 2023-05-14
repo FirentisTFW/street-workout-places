@@ -11,3 +11,10 @@ class BlankTextFieldError extends TextFieldError {
   @override
   String getMessage(S s) => s.blankTextFieldErrorMessage;
 }
+
+class NotNumberTextFieldError extends TextFieldError {
+  const NotNumberTextFieldError();
+
+  @override
+  String getMessage(S s) => s.notNumberTextFieldErrorMessage;
+}

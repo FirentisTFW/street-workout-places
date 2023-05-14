@@ -689,6 +689,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Należy wprowadzić liczbę`
+  String get notNumberTextFieldErrorMessage {
+    return Intl.message(
+      'Należy wprowadzić liczbę',
+      name: 'notNumberTextFieldErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -76,5 +76,6 @@
       }
     }
   },
-  "tooFewImagesSelectedErrorMessage": "Wybrano zbyt mało zdjęć."
+  "tooFewImagesSelectedErrorMessage": "Wybrano zbyt mało zdjęć.",
+  "notNumberTextFieldErrorMessage": "Należy wprowadzić liczbę"
 }

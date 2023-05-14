@@ -98,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Brak połączenia z internetem."),
+        "notNumberTextFieldErrorMessage":
+            MessageLookupByLibrary.simpleMessage("Należy wprowadzić liczbę"),
         "notSelectedAnyEquipmentItemErrorMessage":
             MessageLookupByLibrary.simpleMessage(
                 "Nie wybrano żadnego sprzętu."),

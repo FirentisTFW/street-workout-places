@@ -22,5 +22,32 @@ void main() {
         expect(result, const BlankTextFieldError());
       });
     });
+    group('number -', () {
+      test('When passed integer number, returns null', () {
+        final TextFieldError? result = TextFieldValidationUtils.number('23');
+        expect(result, null);
+      });
+      test('When passed double number, returns null', () {
+        final TextFieldError? result = TextFieldValidationUtils.number('23.3242');
+        expect(result, null);
+      });
+      test('When passed non-blank text, returns NotNumberTextFieldError', () {
+        final TextFieldError? result = TextFieldValidationUtils.number('example text');
+        expect(result, const NotNumberTextFieldError());
+      });
+      group('When passed blank text -', () {
+        test('And canBeBlank = true, returns null', () {
+          final TextFieldError? result = TextFieldValidationUtils.number('');
+          expect(result, null);
+        });
+        test('And canBeBlank = false, returns BlankTextFieldError', () {
+          final TextFieldError? result = TextFieldValidationUtils.number(
+            '',
+            canBeBlank: false,
+          );
+          expect(result, const BlankTextFieldError());
+        });
+      });
+    });
   });
 }
