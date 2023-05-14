@@ -699,6 +699,16 @@ class S {
       args: [],
     );
   }
+
+  /// `* Pole wymagane`
+  String get newSpotFormRequiredFieldInformation {
+    return Intl.message(
+      '* Pole wymagane',
+      name: 'newSpotFormRequiredFieldInformation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

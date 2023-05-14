@@ -77,5 +77,6 @@
     }
   },
   "tooFewImagesSelectedErrorMessage": "Wybrano zbyt mało zdjęć.",
-  "notNumberTextFieldErrorMessage": "Należy wprowadzić liczbę"
+  "notNumberTextFieldErrorMessage": "Należy wprowadzić liczbę",
+  "newSpotFormRequiredFieldInformation": "* Pole wymagane"
 }
