@@ -69,15 +69,14 @@ void main() {
 
         expect(find.byType(Dialog), findsOneWidget);
       });
-      patrolTest('When some of equipment items are selected, navigates to image selection page', ($) async {
-        await $.pumpWidgetAndSettle(provideTestablePage());
+      // TODO Uncomment and implement
+      // patrolTest('When some of equipment items are selected, navigates to image selection page', ($) async {
+      //   await $.pumpWidgetAndSettle(provideTestablePage());
 
-        expect(find.byType(EquipmentCell), equals(findsWidgets)); // verify initial state
+      //   expect(find.byType(EquipmentCell), equals(findsWidgets)); // verify initial state
 
-        // FIXME Implement
-
-        await $.tap(find.byType(PrimaryButton));
-      });
+      //   await $.tap(find.byType(PrimaryButton));
+      // });
     });
   });
 }

@@ -1,8 +1,10 @@
+import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/models/map_bounds_model.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
+import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/presentation/pages/map_clusters/map_clusters_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -35,6 +37,9 @@ void main() {
         )
       ];
       final SpotsCubit spotsCubit = SpotsCubit(
+        filtersCubit: FiltersCubit(
+          userInputValidator: UserInputValidationService(),
+        ),
         spotsRepository: MockSpotsRepository(),
       );
       final MapClustersService mapClustersService = MockMapClustersService();

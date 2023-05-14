@@ -1,5 +1,6 @@
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
+import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/core/utils/value_notifier_utils.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
@@ -44,14 +45,7 @@ class NewSpotEquipmentCubit extends Cubit<NewSpotEquipmentState> with BlocPresen
         ),
       );
     } else {
-      final List<Equipment> selectedEquipment = equipmentNotifiers.entries
-          .where(
-            (mapEntry) => mapEntry.value.value,
-          )
-          .map(
-            (mapEntry) => mapEntry.key,
-          )
-          .toList();
+      final List<Equipment> selectedEquipment = equipmentNotifiers.takeSelectedValues();
       emitPresentation(
         NewSpotEquipmentValidationSuccessful(
           formData: arguments.formData,

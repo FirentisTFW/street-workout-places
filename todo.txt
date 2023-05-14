@@ -2,3 +2,4 @@
 - home page
 - filtering spots
 - check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
+- migrate from freezed to equatable

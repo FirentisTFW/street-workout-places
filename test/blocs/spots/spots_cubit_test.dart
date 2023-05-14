@@ -1,9 +1,11 @@
+import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
 import 'package:app/domain/core/errors/app_error.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/workout_spot_mappers.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,9 +14,13 @@ import 'package:mocktail/mocktail.dart';
 import '../../helpers/mocks.dart';
 
 void main() {
+  late FiltersCubit filtersCubit;
   late MockSpotsRepository spotsRepository;
   setUp(() {
     spotsRepository = MockSpotsRepository();
+    filtersCubit = FiltersCubit(
+      userInputValidator: UserInputValidationService(),
+    );
   });
 
   group('SpotsCubitTest -', () {
@@ -25,6 +31,7 @@ void main() {
           when(() => spotsRepository.workoutSpots()).thenAnswer((_) async => WorkoutSpotMocks.spots);
         },
         build: () => SpotsCubit(
+          filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
         ),
         act: (cubit) => cubit.fetchSpots(),
@@ -44,6 +51,9 @@ void main() {
         when(() => spotsRepository.workoutSpots()).thenThrow((_) async => Exception());
       },
       build: () => SpotsCubit(
+        filtersCubit: FiltersCubit(
+          userInputValidator: UserInputValidationService(),
+        ),
         spotsRepository: spotsRepository,
       ),
       act: (cubit) => cubit.fetchSpots(),
@@ -79,6 +89,9 @@ void main() {
     blocTest<SpotsCubit, SpotsState>(
       'When entry state is not _FetchSpotsSuccess, emits nothing',
       build: () => SpotsCubit(
+        filtersCubit: FiltersCubit(
+          userInputValidator: UserInputValidationService(),
+        ),
         spotsRepository: spotsRepository,
       ),
       act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
@@ -92,6 +105,7 @@ void main() {
       blocTest<SpotsCubit, SpotsState>(
         'Every spot matching query',
         build: () => SpotsCubit(
+          filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
@@ -102,6 +116,7 @@ void main() {
       blocTest<SpotsCubit, SpotsState>(
         'Some spots matching query',
         build: () => SpotsCubit(
+          filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Krakow'),
@@ -117,6 +132,7 @@ void main() {
       blocTest<SpotsCubit, SpotsState>(
         'None spots matching query',
         build: () => SpotsCubit(
+          filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Gdansk'),

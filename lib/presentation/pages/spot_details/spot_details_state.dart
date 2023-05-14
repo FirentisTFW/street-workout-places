@@ -1,6 +1,5 @@
 part of 'spot_details_cubit.dart';
 
-@freezed
 class SpotDetailsState extends Equatable {
   final WorkoutSpotModel spot;
 

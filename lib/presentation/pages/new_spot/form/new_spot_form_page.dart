@@ -234,7 +234,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
 
   Widget _buildRequiredFieldInformation() {
     return Text(
-      '* Pole wymagane',
+      S.of(context).newSpotFormRequiredFieldInformation,
       style: AppTextStyles.content(),
     );
   }

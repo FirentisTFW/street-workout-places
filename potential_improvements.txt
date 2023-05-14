@@ -2,12 +2,33 @@ Potential improvements:
 
 - spots_page.dart:
     - consider encapsulating controller and notifier in separate class in order to move tab changing logic away from the page
-- spot_details_page.dart
+- spot_details_page.dart:
     - consider texts "Opis:" and "Sprzęt:" above apropriate widgets
-- new_spot_page.dart
+- new_spot_page.dart:
     - consider setting up properties like city, street and house number based on the location selected by user
-- new_spot_form and new_spot_equipment
+- new_spot_form and new_spot_equipment:
     - consider using bloc_presentation library for validation reactions
+- filters_state.dart:
+    - consider providing abstraction layer, something like [1.]
 
 Non-technical:
 - possibility to add images for different spots once they are created (what would be the limit there?)
+
+
+1. Filters state - abstraction layer:
+    abstract FilterSection
+    - name: String
+
+    abstract SelectableFilterSection: FilterSection
+    - name: String
+    - values: Enum or custom class FilterValue (enum doesn't have description getter)
+
+    SizeFilterSection: SelectableFilterSection
+    - name = Rozmiar
+    - values = WorkoutSpotSize.values
+
+    FiltersService - handles updating spots based on filters, needs to somehow communicate with SpotsCubit
+    - when called, needs to be passed spots and filters
+    - goes through spots and checks whether they match filters (how to map filters to workout spot properties?)
+    - returns filtered spots
+    - should handle filtering by query as well?

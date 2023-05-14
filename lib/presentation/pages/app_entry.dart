@@ -1,6 +1,8 @@
+import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/app_locales.dart';
 import 'package:app/domain/core/common/global_navigator.dart';
+import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:app/injector.dart';
@@ -22,12 +24,17 @@ class AppEntry extends StatefulWidget {
 }
 
 class _AppEntryState extends State<AppEntry> {
+  late final FiltersCubit filtersCubit;
   late final SpotsCubit spotsCubit;
 
   @override
   void initState() {
     super.initState();
+    filtersCubit = FiltersCubit(
+      userInputValidator: UserInputValidationService(),
+    );
     spotsCubit = SpotsCubit(
+      filtersCubit: filtersCubit,
       spotsRepository: Injector().resolve<NetworkSpotsRepository>(),
     );
     spotsCubit.fetchSpots();
@@ -35,14 +42,22 @@ class _AppEntryState extends State<AppEntry> {
 
   @override
   void dispose() {
+    filtersCubit.close();
     spotsCubit.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SpotsCubit>.value(
-      value: spotsCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(
+          value: spotsCubit,
+        ),
+        BlocProvider.value(
+          value: filtersCubit,
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: Routing.dashboard,
