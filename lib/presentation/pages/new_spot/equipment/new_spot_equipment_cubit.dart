@@ -1,5 +1,6 @@
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
+import 'package:app/domain/core/utils/value_notifier_utils.dart';
 import 'package:app/domain/services/equipment_selection_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/presentation/common/presentation_events.dart';
@@ -17,14 +18,21 @@ class NewSpotEquipmentCubit extends Cubit<NewSpotEquipmentState> with BlocPresen
   final Map<Equipment, ValueNotifier<bool>> equipmentNotifiers;
   final EquipmentSelectionValidationService selectedEquipmentValidator;
 
+  // TODO Rethink injecting equipment and then exposing it via state (when we have notifiers directly in cubit)
   NewSpotEquipmentCubit({
     required this.arguments,
     required List<Equipment> equipment,
     required this.selectedEquipmentValidator,
-  })  : equipmentNotifiers = _prepareEquipmentNotifiers(equipment),
+  })  : equipmentNotifiers = ValueNotifierUtils.prepareBoolNotifiersForEnum(equipment),
         super(
           NewSpotEquipmentState(equipment),
         );
+
+  @override
+  Future<void> close() {
+    equipmentNotifiers.forEach((_, value) => value.dispose());
+    return super.close();
+  }
 
   void proceedToNextStep() {
     final UserInputError? validationError = selectedEquipmentValidator.validate(equipmentNotifiers);
@@ -51,17 +59,5 @@ class NewSpotEquipmentCubit extends Cubit<NewSpotEquipmentState> with BlocPresen
         ),
       );
     }
-  }
-
-  static Map<Equipment, ValueNotifier<bool>> _prepareEquipmentNotifiers(List<Equipment> equipment) {
-    return equipment.fold(
-      {},
-      (map, element) => map
-        ..addEntries(
-          [
-            MapEntry(element, ValueNotifier(false)),
-          ],
-        ),
-    );
   }
 }
