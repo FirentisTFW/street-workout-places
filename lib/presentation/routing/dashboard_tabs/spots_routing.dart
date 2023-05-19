@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class SpotsRouting {
   static const String _prefix = 'spots';
+  static const String filters = '$_prefix/filters';
   static const String spotDetails = '$_prefix/spot_details';
   static const String spots = '$_prefix/main';
 
@@ -22,6 +23,8 @@ class SpotsRouting {
 
   static Widget? getPage(RouteSettings settings) {
     switch (settings.name) {
+      case filters:
+        return Pages.filters();
       case spotDetails:
         return Pages.spotDetails(settings.arguments);
       case spots:

@@ -8,6 +8,14 @@ class Filters {
   final List<WorkoutSpotSize> sizes;
   final List<Surface> surfaces;
 
+  int get count =>
+      [
+        equipment,
+        sizes,
+        surfaces,
+      ].where((list) => list.isNotEmpty).length +
+      (maxDistanceInKm != null ? 1 : 0);
+
   const Filters({
     required this.equipment,
     required this.maxDistanceInKm,

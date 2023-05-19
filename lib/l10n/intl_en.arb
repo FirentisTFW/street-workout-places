@@ -78,5 +78,10 @@
   },
   "tooFewImagesSelectedErrorMessage": "Wybrano zbyt mało zdjęć.",
   "notNumberTextFieldErrorMessage": "Należy wprowadzić liczbę",
-  "newSpotFormRequiredFieldInformation": "* Pole wymagane"
+  "newSpotFormRequiredFieldInformation": "* Pole wymagane",
+  "filtersAppBarTitle": "Filtruj",
+  "filtersMaxDistanceInKm": "Maksymalna odległość (w km)",
+  "kilometersAbbreviation": "km",
+  "equipment": "Sprzęt",
+  "filtersFilterButtonTitle": "Filtruj"
 }

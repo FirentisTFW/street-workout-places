@@ -709,6 +709,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Filtruj`
+  String get filtersAppBarTitle {
+    return Intl.message(
+      'Filtruj',
+      name: 'filtersAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maksymalna odległość (w km)`
+  String get filtersMaxDistanceInKm {
+    return Intl.message(
+      'Maksymalna odległość (w km)',
+      name: 'filtersMaxDistanceInKm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `km`
+  String get kilometersAbbreviation {
+    return Intl.message(
+      'km',
+      name: 'kilometersAbbreviation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sprzęt`
+  String get equipment {
+    return Intl.message(
+      'Sprzęt',
+      name: 'equipment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filtruj`
+  String get filtersFilterButtonTitle {
+    return Intl.message(
+      'Filtruj',
+      name: 'filtersFilterButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

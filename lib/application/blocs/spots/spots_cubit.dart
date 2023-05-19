@@ -35,6 +35,9 @@ class SpotsCubit extends Cubit<SpotsState> {
     //  filter spots by filters (use a service for that),
     //  emit state with updated filters,
     //  add unit tests!
+
+    // FIXME What is some filters are empty? For example user didn't select size and surface.
+    //  Should we then cosider all sizes and surfaces?
   }
 
   Future<void> fetchSpots() async {

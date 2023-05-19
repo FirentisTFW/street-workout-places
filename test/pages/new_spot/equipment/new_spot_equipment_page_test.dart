@@ -9,8 +9,8 @@ import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_page.dart';
-import 'package:app/presentation/pages/new_spot/equipment/widgets/equipment_cell.dart';
 import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/selectable_option_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -62,7 +62,7 @@ void main() {
       patrolTest('When no equipment item is selected, shows error dialog', ($) async {
         await $.pumpWidgetAndSettle(provideTestablePage());
 
-        expect(find.byType(EquipmentCell), equals(findsWidgets)); // verify initial state
+        expect(find.byType(SelectableOptionCell), equals(findsWidgets)); // verify initial state
 
         await $.tap(find.byType(PrimaryButton));
         await $.pumpAndSettle();

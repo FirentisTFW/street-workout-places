@@ -1,18 +1,16 @@
-import 'package:app/generated/l10n.dart';
-import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_circular_checkbox.dart';
 import 'package:app/presentation/widgets/ripple_remover.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/material.dart';
 
-class EquipmentCell extends StatelessWidget {
-  final Equipment equipment;
+class SelectableOptionCell extends StatelessWidget {
+  final String description;
   final ValueNotifier<bool> isSelectedNotifier;
   final VoidCallback onToggled;
 
-  const EquipmentCell(
-    this.equipment, {
+  const SelectableOptionCell({
+    required this.description,
     super.key,
     required this.isSelectedNotifier,
     required this.onToggled,
@@ -28,7 +26,7 @@ class EquipmentCell extends StatelessWidget {
           children: [
             _buildCheckbox(),
             const Space.horizontal(10.0),
-            _buildDescription(S.of(context)),
+            _buildDescription(),
           ],
         ),
       ),
@@ -44,9 +42,9 @@ class EquipmentCell extends StatelessWidget {
     );
   }
 
-  Widget _buildDescription(S s) {
+  Widget _buildDescription() {
     return Text(
-      equipment.getDescription(s),
+      description,
       style: AppTextStyles.content(),
     );
   }

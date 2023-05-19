@@ -7,13 +7,13 @@ import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/presentation/common/presentation_events.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_presentation_event.dart';
-import 'package:app/presentation/pages/new_spot/equipment/widgets/equipment_cell.dart';
 import 'package:app/presentation/pages/new_spot/images/new_spot_images_arguments.dart';
 import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/selectable_option_cell.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
@@ -90,10 +90,10 @@ class _NewSpotEquipmentPageState extends BlocPageState<NewSpotEquipmentPage, New
             final Equipment equipment = state.equipment[index];
             final ValueNotifier<bool>? notifier = bloc.equipmentNotifiers[equipment];
             if (notifier == null) return const SizedBox.shrink();
-            return EquipmentCell(
-              equipment,
-              onToggled: () => bloc.equipmentNotifiers[equipment]?.toggle(),
+            return SelectableOptionCell(
+              description: equipment.getDescription(S.of(context)),
               isSelectedNotifier: notifier,
+              onToggled: () => bloc.equipmentNotifiers[equipment]?.toggle(),
             );
           },
           itemCount: state.equipment.length,

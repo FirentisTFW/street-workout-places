@@ -8,6 +8,7 @@ import 'package:app/infrastructure/repositories/spots/network_spots_repository.d
 import 'package:app/injector.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_cubit.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_page.dart';
+import 'package:app/presentation/pages/filters/filters_page.dart';
 import 'package:app/presentation/pages/home/home_cubit.dart';
 import 'package:app/presentation/pages/home/home_page.dart';
 import 'package:app/presentation/pages/more/more_cubit.dart';
@@ -36,6 +37,10 @@ abstract class Pages {
       create: (_) => DashboardCubit(),
       child: const DashboardPage(),
     );
+  }
+
+  static Widget filters() {
+    return const FiltersPage();
   }
 
   static Widget home() {

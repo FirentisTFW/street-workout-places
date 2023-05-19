@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "emptyValueNotifierErrorMessage":
             MessageLookupByLibrary.simpleMessage("Należy wybrać wartość"),
+        "equipment": MessageLookupByLibrary.simpleMessage("Sprzęt"),
         "equipmentDescriptionHighBar":
             MessageLookupByLibrary.simpleMessage("Drążek wysoki"),
         "equipmentDescriptionHorizontalLadder":
@@ -60,7 +61,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lina"),
         "equipmentDescriptionVerticalLadder":
             MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
+        "filtersAppBarTitle": MessageLookupByLibrary.simpleMessage("Filtruj"),
+        "filtersFilterButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Filtruj"),
+        "filtersMaxDistanceInKm":
+            MessageLookupByLibrary.simpleMessage("Maksymalna odległość (w km)"),
         "hosueNumber": MessageLookupByLibrary.simpleMessage("Nr domu"),
+        "kilometersAbbreviation": MessageLookupByLibrary.simpleMessage("km"),
         "latitudeShort": MessageLookupByLibrary.simpleMessage("Szer. geogr."),
         "longitudeShort": MessageLookupByLibrary.simpleMessage("Dł. geogr."),
         "mapDataSourceOpenStreetMap":
