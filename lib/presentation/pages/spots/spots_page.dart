@@ -1,3 +1,4 @@
+import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/common/maps/map_coordinator.dart';
@@ -16,8 +17,10 @@ import 'package:app/presentation/pages/spots/spots_page_tab.dart';
 import 'package:app/presentation/pages/spots/widgets/spot_list.dart';
 import 'package:app/presentation/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/presentation/styles/app_animations.dart';
+import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
+import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
 import 'package:app/presentation/widgets/automatic_keep_alive_client_container.dart';
 import 'package:app/presentation/widgets/error_view_big.dart';
@@ -97,8 +100,6 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   }
 
   Widget _buildFloatingActionButtons() {
-    const iconSize = 30.0;
-
     return Padding(
       padding: EdgeInsets.only(
         bottom: AppDimensions.height.bottomNavgationBar + 30.0,
@@ -113,23 +114,50 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
               // TODO Implement
               AlertDialogUtils.showContentUnavailable(context);
             },
-            child: const Icon(
+            child: Icon(
               Icons.gps_fixed,
-              size: iconSize,
+              size: AppDimensions.size.floatingActionButtonIcon,
             ),
           ),
           const Space.vertical(10.0),
+          _buildFiltersButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFiltersButton() {
+    return BlocBuilder<FiltersCubit, FiltersState>(
+      builder: (context, state) => Stack(
+        clipBehavior: Clip.none,
+        children: [
           FloatingActionButton(
             heroTag: null,
-            onPressed: () {
-              // TODO Implement
-              AlertDialogUtils.showContentUnavailable(context);
-            },
-            child: const Icon(
+            onPressed: () => RootNavigator.of(context).pushNamed(SpotsRouting.filters),
+            child: Icon(
               Icons.filter_alt,
-              size: iconSize,
+              size: AppDimensions.size.floatingActionButtonIcon,
             ),
           ),
+          if (state.hasFiltersSelected)
+            Positioned(
+              right: -7.0,
+              top: -7.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.blue),
+                  color: AppColors.white,
+                  shape: BoxShape.circle,
+                ),
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  state.selectedFiltersCount.toString(),
+                  style: AppTextStyles.contentSmall(
+                    color: AppColors.blue,
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

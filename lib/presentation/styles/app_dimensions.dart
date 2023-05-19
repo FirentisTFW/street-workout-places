@@ -21,5 +21,6 @@ class _Height {
 }
 
 class _Size {
+  final double floatingActionButtonIcon = 30.0;
   final double mapIcon = 40.0;
 }
