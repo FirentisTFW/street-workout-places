@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
@@ -27,14 +25,7 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
 
   const WorkoutSpotModel._();
 
-  String? get primaryImage {
-    // TODO Uncomment and remove mocks
-    if (Random().nextBool()) {
-      return 'https://lh3.googleusercontent.com/p/AF1QipMRTY1h-st6dH6nABWrEvCrxfiGRjYXRGIF5LLL=w600-k';
-    }
-    return 'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no';
-    // return images.firstOrNull;
-  }
+  String? get primaryImage => images.firstOrNull;
 
   String getEquipmentDescription(
     BuildContext context, {

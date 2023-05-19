@@ -60,8 +60,8 @@ abstract class WorkoutSpotMocks {
         Equipment.verticalLadder,
       ],
       images: [
-        'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no',
         'https://lh3.googleusercontent.com/p/AF1QipPDu5aHVBqcgtpoNfbuYLQXwcq_bDN8qtacbc0-=w600-k',
+        'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no',
       ],
       name: 'Park Jana Pawła II',
       size: WorkoutSpotSize.medium,
@@ -88,8 +88,9 @@ abstract class WorkoutSpotMocks {
         Equipment.verticalLadder,
       ],
       images: [
-        'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no',
+        'https://lh3.googleusercontent.com/p/AF1QipMRTY1h-st6dH6nABWrEvCrxfiGRjYXRGIF5LLL=w600-k',
         'https://lh3.googleusercontent.com/p/AF1QipPDu5aHVBqcgtpoNfbuYLQXwcq_bDN8qtacbc0-=w600-k',
+        'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no',
       ],
       name: 'Osiedle Zwycięstwa',
       size: WorkoutSpotSize.big,

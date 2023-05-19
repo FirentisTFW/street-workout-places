@@ -83,7 +83,7 @@ class SpotListCell extends StatelessWidget {
       spot.getEquipmentDescription(context),
       maxLines: 3,
       overflow: TextOverflow.ellipsis,
-      style: AppTextStyles.content(),
+      style: AppTextStyles.content(height: 1.2),
     );
   }
 
