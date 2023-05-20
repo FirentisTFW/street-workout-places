@@ -52,7 +52,7 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
     final SpotsState spotsState = spotsCubit.state;
     if (spotsState is SpotsFetchSuccess) {
       _mapClustersCubit.updateClusters(
-        spots: spotsState.spots,
+        spots: spotsState.filteredSpots,
       );
     }
   }
