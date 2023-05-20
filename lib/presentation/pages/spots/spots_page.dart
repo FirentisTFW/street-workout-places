@@ -85,10 +85,10 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
           ),
           child: BlocBuilder<SpotsCubit, SpotsState>(
             builder: (_, state) => switch (state) {
-              final SpotsFetchInProgress _ => buildLoadingBody(),
-              final SpotsFetchSuccess state => _buildLoadedBody(state.spots),
-              final SpotsFetchFailure state => ErrorViewBig(
-                  error: state.error,
+              SpotsFetchInProgress() => buildLoadingBody(),
+              SpotsFetchSuccess(:final filteredSpots) => _buildLoadedBody(filteredSpots),
+              SpotsFetchFailure(:final error) => ErrorViewBig(
+                  error: error,
                   onRetryPressed: _fetchSpots,
                 ),
               _ => buildEmptyBody()
