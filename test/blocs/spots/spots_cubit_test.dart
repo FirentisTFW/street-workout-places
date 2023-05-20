@@ -5,6 +5,7 @@ import 'package:app/domain/core/errors/app_error.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/workout_spot_mappers.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/domain/services/spots_filtering_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:bloc_test/bloc_test.dart';
@@ -16,11 +17,12 @@ import '../../helpers/mocks.dart';
 void main() {
   late FiltersCubit filtersCubit;
   late MockSpotsRepository spotsRepository;
+
   setUp(() {
-    spotsRepository = MockSpotsRepository();
     filtersCubit = FiltersCubit(
       userInputValidator: UserInputValidationService(),
     );
+    spotsRepository = MockSpotsRepository();
   });
 
   group('SpotsCubitTest -', () {
@@ -33,6 +35,7 @@ void main() {
         build: () => SpotsCubit(
           filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
+          spotsFilteringService: SpotsFilteringService(),
         ),
         act: (cubit) => cubit.fetchSpots(),
         expect: () => [
@@ -55,6 +58,7 @@ void main() {
           userInputValidator: UserInputValidationService(),
         ),
         spotsRepository: spotsRepository,
+        spotsFilteringService: SpotsFilteringService(),
       ),
       act: (cubit) => cubit.fetchSpots(),
       expect: () => [
@@ -93,6 +97,7 @@ void main() {
           userInputValidator: UserInputValidationService(),
         ),
         spotsRepository: spotsRepository,
+        spotsFilteringService: SpotsFilteringService(),
       ),
       act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
       expect: () => [],
@@ -107,6 +112,7 @@ void main() {
         build: () => SpotsCubit(
           filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
+          spotsFilteringService: SpotsFilteringService(),
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
         expect: () => [
@@ -118,6 +124,7 @@ void main() {
         build: () => SpotsCubit(
           filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
+          spotsFilteringService: SpotsFilteringService(),
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Krakow'),
         expect: () => [
@@ -134,6 +141,7 @@ void main() {
         build: () => SpotsCubit(
           filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
+          spotsFilteringService: SpotsFilteringService(),
         )..emit(initialState),
         act: (cubit) => cubit.filterSpotsByQuery('Gdansk'),
         expect: () => [

@@ -2,6 +2,7 @@ import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/app_locales.dart';
 import 'package:app/domain/core/common/global_navigator.dart';
+import 'package:app/domain/services/spots_filtering_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
@@ -36,6 +37,7 @@ class _AppEntryState extends State<AppEntry> {
     spotsCubit = SpotsCubit(
       filtersCubit: filtersCubit,
       spotsRepository: Injector().resolve<NetworkSpotsRepository>(),
+      spotsFilteringService: SpotsFilteringService(),
     );
     spotsCubit.fetchSpots();
   }

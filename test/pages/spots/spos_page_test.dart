@@ -1,7 +1,9 @@
+import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/app_locales.dart';
 import 'package:app/domain/core/errors/app_error.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
+import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/pages/spots/spots_page.dart';
 import 'package:app/presentation/widgets/app_progress_indicator.dart';
@@ -17,10 +19,14 @@ import 'package:patrol/patrol.dart';
 import '../../helpers/mocks.dart';
 
 void main() {
+  late FiltersCubit filtersCubit;
   late SpotsCubit spotsCubit;
 
   setUp(() {
-    return spotsCubit = MockSpotsCubit();
+    filtersCubit = FiltersCubit(
+      userInputValidator: UserInputValidationService(),
+    );
+    spotsCubit = MockSpotsCubit();
   });
 
   Widget provideTestablePage() {
@@ -29,8 +35,15 @@ void main() {
         S.delegate,
       ],
       supportedLocales: AppLocales.supportedLocales,
-      home: BlocProvider.value(
-        value: spotsCubit,
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider.value(
+            value: spotsCubit,
+          ),
+          BlocProvider.value(
+            value: filtersCubit,
+          ),
+        ],
         child: const SpotsPage(),
       ),
     );

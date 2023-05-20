@@ -5,21 +5,27 @@ import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/mappers.dart';
 import 'package:app/domain/core/utils/search_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/domain/services/spots_filtering_service.dart';
 import 'package:app/infrastructure/networking/models/workout_spot.dart';
 import 'package:app/infrastructure/repositories/spots/spots_repository.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+part 'spots_cubit.g.dart';
 part 'spots_state.dart';
 
 class SpotsCubit extends Cubit<SpotsState> {
   final FiltersCubit filtersCubit;
   final SpotsRepository spotsRepository;
+  final SpotsFilteringService spotsFilteringService;
+
   late final StreamSubscription filtersStream;
 
   SpotsCubit({
     required this.filtersCubit,
     required this.spotsRepository,
+    required this.spotsFilteringService,
   }) : super(const SpotsInitial()) {
     filtersStream = filtersCubit.stream.listen(_onFiltersUpdated);
   }
@@ -31,13 +37,17 @@ class SpotsCubit extends Cubit<SpotsState> {
   }
 
   void _onFiltersUpdated(FiltersState filtersState) {
-    // FIXME
-    //  filter spots by filters (use a service for that),
-    //  emit state with updated filters,
-    //  add unit tests!
+    final SpotsState entryState = state;
+    if (entryState is! SpotsFetchSuccess) return;
 
-    // FIXME What is some filters are empty? For example user didn't select size and surface.
-    //  Should we then cosider all sizes and surfaces?
+    final List<WorkoutSpotModel> filteredSpots = spotsFilteringService.filterSpots(
+      filters: filtersState.filters,
+      spots: entryState.spots,
+    );
+
+    emit(
+      entryState.updateFilteredSpots(filteredSpots),
+    );
   }
 
   Future<void> fetchSpots() async {
@@ -75,10 +85,7 @@ class SpotsCubit extends Cubit<SpotsState> {
         )
         .toList();
     emit(
-      SpotsFetchSuccess(
-        filteredSpots: filteredSpots,
-        spots: entryState.spots,
-      ),
+      entryState.updateFilteredSpots(filteredSpots),
     );
   }
 }

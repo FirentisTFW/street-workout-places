@@ -1,7 +1,11 @@
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/networking/models/surface.dart';
 import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 
+part 'filters.g.dart';
+
+@CopyWith()
 class Filters {
   final List<Equipment> equipment;
   final double? maxDistanceInKm;

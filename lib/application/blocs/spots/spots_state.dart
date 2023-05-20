@@ -15,6 +15,7 @@ class SpotsFetchInProgress extends SpotsState {
   const SpotsFetchInProgress();
 }
 
+@CopyWith()
 class SpotsFetchSuccess extends SpotsState {
   final List<WorkoutSpotModel> filteredSpots;
   final List<WorkoutSpotModel> spots;
@@ -23,6 +24,10 @@ class SpotsFetchSuccess extends SpotsState {
     required this.filteredSpots,
     required this.spots,
   });
+
+  SpotsFetchSuccess updateFilteredSpots(List<WorkoutSpotModel> newFilteredSpots) => copyWith(
+        filteredSpots: newFilteredSpots,
+      );
 
   @override
   List<Object?> get props => [
