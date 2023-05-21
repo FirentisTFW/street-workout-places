@@ -28,6 +28,8 @@ class TextFieldEssentials extends UserInputField {
     focusNode.dispose();
   }
 
+  void clearText() => controller.clear();
+
   @override
   UserInputError? validate() => validator(text);
 

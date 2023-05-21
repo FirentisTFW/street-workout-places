@@ -5,6 +5,7 @@ import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/models/filters.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/src/foundation/change_notifier.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'filters_state.dart';
@@ -40,8 +41,17 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
   }
 
   void clearFilters() {
-    // FIXME Unselect all filters in notifiers
-    //  and reconsider usage of notifiers at all
+    maxDistanceInKmTFE.clearText();
+
+    for (final Iterable<ValueNotifier<bool>> notifierList in [
+      equipmentNotifiers.values,
+      sizeNotifiers.values,
+      surfaceNotifiers.values,
+    ]) {
+      for (final ValueNotifier<bool> notifier in notifierList) {
+        notifier.value = false;
+      }
+    }
 
     emit(
       const FiltersState.empty(),
