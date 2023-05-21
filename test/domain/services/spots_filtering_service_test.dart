@@ -17,7 +17,7 @@ List<WorkoutSpotModel> _spots = [
       Equipment.highBar,
     ],
     size: WorkoutSpotSize.small,
-    surface: Surface.tartan,
+    surface: Surface.concrete,
   ),
   const WorkoutSpotModel(
     coordinates: MapPosition(
@@ -43,7 +43,7 @@ List<WorkoutSpotModel> _spots = [
       Equipment.rope,
     ],
     size: WorkoutSpotSize.big,
-    surface: Surface.tartan,
+    surface: Surface.sand,
   ),
 ];
 
@@ -135,8 +135,46 @@ void main() {
           });
         });
       });
-
-      // FIXME Add unit tests for surface
+      group('surface -', () {
+        test('When no surface filters are provided, returns all spots', () {
+          final List<WorkoutSpotModel> result = SpotsFilteringService().filterSpots(
+            filters: const Filters.empty(),
+            spots: _spots,
+          );
+          expect(result, _spots);
+        });
+      });
+      group('When surface filters are provided -', () {
+        test('And some spot matches filters, returns spots having any of selecd surfaces', () {
+          final List<WorkoutSpotModel> result = SpotsFilteringService().filterSpots(
+            filters: const Filters.empty().copyWith(
+              surfaces: [
+                Surface.tartan,
+                Surface.sand,
+              ],
+            ),
+            spots: _spots,
+          );
+          expect(
+            result,
+            [
+              _spots[1],
+              _spots.last,
+            ],
+          );
+        });
+        test('And none of the spots matches filters, returns empty list', () {
+          final List<WorkoutSpotModel> result = SpotsFilteringService().filterSpots(
+            filters: const Filters.empty().copyWith(
+              surfaces: [
+                Surface.different,
+              ],
+            ),
+            spots: _spots,
+          );
+          expect(result, []);
+        });
+      });
     });
   });
 }
