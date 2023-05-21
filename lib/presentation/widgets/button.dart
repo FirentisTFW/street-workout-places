@@ -5,14 +5,31 @@ import 'package:app/presentation/widgets/adaptive_button.dart';
 import 'package:app/presentation/widgets/app_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
-class PrimaryButton extends StatelessWidget {
+enum ButtonType {
+  primary,
+  secondary;
+
+  BoxDecoration get _decoration => switch (this) {
+        ButtonType.primary => AppDecorations.primaryButton,
+        ButtonType.secondary => AppDecorations.secondaryButton,
+      };
+
+  TextStyle get _textStyle => switch (this) {
+        ButtonType.primary => AppTextStyles.primaryButton(),
+        ButtonType.secondary => AppTextStyles.secondaryButton(),
+      };
+}
+
+class Button extends StatelessWidget {
   final String text;
   final bool isLoading;
+  final ButtonType type;
   final VoidCallback onPressed;
 
-  const PrimaryButton(
+  const Button(
     this.text, {
     this.isLoading = false,
+    this.type = ButtonType.primary,
     required this.onPressed,
   });
 
@@ -21,7 +38,7 @@ class PrimaryButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: AdaptiveButton(
-        decoration: AppDecorations.primaryButton,
+        decoration: type._decoration,
         onPressed: onPressed,
         child: isLoading
             ? const SizedBox.square(
@@ -33,7 +50,7 @@ class PrimaryButton extends StatelessWidget {
               )
             : Text(
                 text.toUpperCase(),
-                style: AppTextStyles.primaryButton(),
+                style: type._textStyle,
               ),
       ),
     );

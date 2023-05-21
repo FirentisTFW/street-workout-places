@@ -16,5 +16,6 @@ class FiltersState extends Equatable {
   @override
   List<Object?> get props => [
         filters,
+        UniquePropProvider.get(),
       ];
 }

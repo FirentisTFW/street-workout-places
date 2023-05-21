@@ -6,7 +6,7 @@ import 'package:app/presentation/pages/filters/widgets/filters_section.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
-import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +36,7 @@ class _FiltersPageState extends BlocPageState<FiltersPage, FiltersCubit> {
               _buildEquipmentSection(),
               _buildSizeSection(),
               _buildSurfaceSection(),
-              _buildFilterButton(),
+              _buildFooter(),
             ].separatedBy(const Space.vertical(20.0)),
           ),
         ),
@@ -88,10 +88,25 @@ class _FiltersPageState extends BlocPageState<FiltersPage, FiltersCubit> {
     );
   }
 
-  Widget _buildFilterButton() {
-    return PrimaryButton(
-      S.of(context).filtersFilterButtonTitle,
-      onPressed: bloc.saveFilters,
+  Widget _buildFooter() {
+    return Row(
+      children: [
+        Flexible(
+          child: Button(
+            S.of(context).filtersClearButtonTitle,
+            type: ButtonType.secondary,
+            onPressed: bloc.clearFilters,
+          ),
+        ),
+        const Space.horizontal(10.0),
+        Flexible(
+          flex: 2,
+          child: Button(
+            S.of(context).filtersFilterButtonTitle,
+            onPressed: bloc.saveFilters,
+          ),
+        ),
+      ],
     );
   }
 }

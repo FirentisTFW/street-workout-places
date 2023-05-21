@@ -759,6 +759,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Wyczyść`
+  String get filtersClearButtonTitle {
+    return Intl.message(
+      'Wyczyść',
+      name: 'filtersClearButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

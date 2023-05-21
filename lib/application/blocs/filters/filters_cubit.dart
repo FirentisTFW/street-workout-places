@@ -1,4 +1,5 @@
 import 'package:app/application/blocs/filters/filters_form.dart';
+import 'package:app/domain/core/common/unique_prop_provider.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/models/filters.dart';
@@ -38,7 +39,12 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
     );
   }
 
-  void resetFilters() {
-    // TODO Implement
+  void clearFilters() {
+    // FIXME Unselect all filters in notifiers
+    //  and reconsider usage of notifiers at all
+
+    emit(
+      const FiltersState.empty(),
+    );
   }
 }

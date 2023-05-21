@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "equipmentDescriptionVerticalLadder":
             MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
         "filtersAppBarTitle": MessageLookupByLibrary.simpleMessage("Filtruj"),
+        "filtersClearButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Wyczyść"),
         "filtersFilterButtonTitle":
             MessageLookupByLibrary.simpleMessage("Filtruj"),
         "filtersMaxDistanceInKm":

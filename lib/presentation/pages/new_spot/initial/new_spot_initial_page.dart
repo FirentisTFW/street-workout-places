@@ -4,7 +4,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
-import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +52,7 @@ class NewSpotInitialPage extends StatelessWidget {
   }
 
   Widget _buildNextButton(BuildContext context) {
-    return PrimaryButton(
+    return Button(
       S.of(context).newSpotInitialNextButtonTitle,
       onPressed: () => RootNavigator.of(context).pushNamed(FormRouting.form),
     );

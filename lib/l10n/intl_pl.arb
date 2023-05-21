@@ -83,5 +83,6 @@
   "filtersMaxDistanceInKm": "Maksymalna odległość (w km)",
   "kilometersAbbreviation": "km",
   "equipment": "Sprzęt",
-  "filtersFilterButtonTitle": "Filtruj"
+  "filtersFilterButtonTitle": "Filtruj",
+  "filtersClearButtonTitle": "Wyczyść"
 }

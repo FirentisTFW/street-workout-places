@@ -12,7 +12,7 @@ import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/adaptive_button.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
-import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -145,7 +145,7 @@ class _NewSpotImagesPageState extends BlocPageState<NewSpotImagesPage, NewSpotIm
   }
 
   Widget _buildSendButton(NewSpotImagesState state) {
-    return PrimaryButton(
+    return Button(
       S.of(context).send,
       isLoading: state is NewSpotImagesSubmitInProgress,
       onPressed: bloc.submitSpot,

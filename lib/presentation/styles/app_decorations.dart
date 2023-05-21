@@ -21,4 +21,12 @@ class AppDecorations {
     borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
     color: AppColors.blue,
   );
+
+  static final BoxDecoration secondaryButton = BoxDecoration(
+    border: Border.all(
+      color: AppColors.blue,
+    ),
+    borderRadius: BorderRadius.circular(AppDimensions.borderRadius.basic),
+    color: AppColors.white,
+  );
 }

@@ -5,7 +5,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/presentation/modals/bottom_sheets/basic_bottom_sheet.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
-import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:app/presentation/widgets/space_text_span.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +119,7 @@ class _SelectLocationOnMapBottomSheetBodyState extends State<_SelectLocationOnMa
           ),
         ),
         Flexible(
-          child: PrimaryButton(
+          child: Button(
             S.of(context).save,
             onPressed: () {
               final MapPosition? selectedPosition = _selectedPosition;

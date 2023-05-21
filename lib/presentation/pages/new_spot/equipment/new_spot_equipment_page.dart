@@ -12,7 +12,7 @@ import 'package:app/presentation/routing/dashboard_tabs/form_routing.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
-import 'package:app/presentation/widgets/primary_button.dart';
+import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/selectable_option_cell.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
@@ -104,7 +104,7 @@ class _NewSpotEquipmentPageState extends BlocPageState<NewSpotEquipmentPage, New
   }
 
   Widget _buildNextButton() {
-    return PrimaryButton(
+    return Button(
       S.of(context).next,
       onPressed: bloc.proceedToNextStep,
     );

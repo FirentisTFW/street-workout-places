@@ -12,11 +12,11 @@ import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
+import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/dropdown_menu/app_dropdown_menu_item.dart';
 import 'package:app/presentation/widgets/dropdown_menu/dropdown_item_style.dart';
 import 'package:app/presentation/widgets/dropdown_menu/dropdown_menu.dart' as app;
 import 'package:app/presentation/widgets/form_gesture_detector.dart';
-import 'package:app/presentation/widgets/primary_button.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:app/presentation/widgets/widget_with_possible_error_message.dart';
 import 'package:flutter/material.dart';
@@ -240,7 +240,7 @@ class _NewSpotFormPageState extends BlocPageState<NewSpotFormPage, NewSpotFormCu
   }
 
   Widget _buildNextButton() {
-    return PrimaryButton(
+    return Button(
       S.of(context).next,
       onPressed: bloc.proceedToNextStep,
     );
