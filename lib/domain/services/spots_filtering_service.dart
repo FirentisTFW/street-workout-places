@@ -1,3 +1,5 @@
+import 'package:app/domain/core/extensions/extensions.dart';
+import 'package:app/domain/core/utils/search_utils.dart';
 import 'package:app/domain/models/filters.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 
@@ -23,6 +25,13 @@ class SpotsFilteringService {
         if (filters.surfaces.isNotEmpty) {
           final bool hasSurfaceMatch = filters.surfaces.contains(spot.surface);
           if (!hasSurfaceMatch) return false;
+        }
+        if (filters.query.isNotNullOrBlank) {
+          final bool hasQueryMatch = SearchUtils.checkIfSpotMatchesQuery(
+            spot: spot,
+            query: filters.query.orEmpty(),
+          );
+          if (!hasQueryMatch) return false;
         }
         return true;
       },

@@ -4,10 +4,12 @@ import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/models/filters.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+part 'filters_cubit.g.dart';
 part 'filters_state.dart';
 
 class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
@@ -35,6 +37,7 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
           equipment: equipmentNotifiers.takeSelectedValues(),
           sizes: sizeNotifiers.takeSelectedValues(),
           surfaces: surfaceNotifiers.takeSelectedValues(),
+          query: query,
         ),
       ),
     );
@@ -42,6 +45,7 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
 
   void clearFilters() {
     maxDistanceInKmTFE.clearText();
+    queryTFE.clearText();
 
     for (final Iterable<ValueNotifier<bool>> notifierList in [
       equipmentNotifiers.values,
@@ -55,6 +59,15 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
 
     emit(
       const FiltersState.empty(),
+    );
+  }
+
+  void updateQuery(String query) {
+    queryController.updateQuery(
+      query,
+      action: () => emit(
+        state.updateQuery(query.isBlank ? null : query),
+      ),
     );
   }
 }

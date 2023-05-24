@@ -1,5 +1,6 @@
 part of 'filters_cubit.dart';
 
+@CopyWith()
 class FiltersState extends Equatable {
   final Filters filters;
 
@@ -12,6 +13,10 @@ class FiltersState extends Equatable {
   });
 
   const FiltersState.empty() : filters = const Filters.empty();
+
+  FiltersState updateQuery(String? query) => copyWith.filters(
+        filters.copyWith.query(query),
+      );
 
   @override
   List<Object?> get props => [

@@ -15,6 +15,8 @@ abstract class _$FiltersCWProxy {
 
   Filters surfaces(List<Surface> surfaces);
 
+  Filters query(String? query);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Filters(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -26,6 +28,7 @@ abstract class _$FiltersCWProxy {
     double? maxDistanceInKm,
     List<WorkoutSpotSize>? sizes,
     List<Surface>? surfaces,
+    String? query,
   });
 }
 
@@ -49,6 +52,9 @@ class _$FiltersCWProxyImpl implements _$FiltersCWProxy {
   Filters surfaces(List<Surface> surfaces) => this(surfaces: surfaces);
 
   @override
+  Filters query(String? query) => this(query: query);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Filters(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -61,6 +67,7 @@ class _$FiltersCWProxyImpl implements _$FiltersCWProxy {
     Object? maxDistanceInKm = const $CopyWithPlaceholder(),
     Object? sizes = const $CopyWithPlaceholder(),
     Object? surfaces = const $CopyWithPlaceholder(),
+    Object? query = const $CopyWithPlaceholder(),
   }) {
     return Filters(
       equipment: equipment == const $CopyWithPlaceholder() || equipment == null
@@ -79,6 +86,10 @@ class _$FiltersCWProxyImpl implements _$FiltersCWProxy {
           ? _value.surfaces
           // ignore: cast_nullable_to_non_nullable
           : surfaces as List<Surface>,
+      query: query == const $CopyWithPlaceholder()
+          ? _value.query
+          // ignore: cast_nullable_to_non_nullable
+          : query as String?,
     );
   }
 }

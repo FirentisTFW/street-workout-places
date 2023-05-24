@@ -2,9 +2,7 @@ import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/common/maps/map_coordinator.dart';
-import 'package:app/domain/core/common/query_controller.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
-import 'package:app/domain/core/common/text_field_essentials.dart';
 import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/domain/models/page_tab_bar_button_data.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
@@ -24,6 +22,7 @@ import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
 import 'package:app/presentation/widgets/automatic_keep_alive_client_container.dart';
 import 'package:app/presentation/widgets/error_view_big.dart';
+import 'package:app/presentation/widgets/form_gesture_detector.dart';
 import 'package:app/presentation/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:app/presentation/widgets/spots_map.dart';
@@ -41,8 +40,6 @@ class SpotsPage extends StatefulWidget {
 
 class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   final PageController _pageController = PageController();
-  final QueryController _queryController = QueryController.withDefaultDuration();
-  final TextFieldEssentials _searchTFE = TextFieldEssentials.noValidation();
   final ValueNotifier<SpotsPageTab> _tabNotifier = ValueNotifier(SpotsPageTab.map);
 
   @override
@@ -63,8 +60,6 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   void dispose() {
     _pageController.dispose();
     _tabNotifier.dispose();
-    _searchTFE.dispose();
-    _queryController.dispose();
     super.dispose();
   }
 
@@ -76,23 +71,26 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: _buildFloatingActionButtons(),
-      body: SafeArea(
-        child: BlocProvider<MapClustersCubit>(
-          create: (_) => MapClustersCubit(
-            mapClustersService: Injector().resolve<MapClustersService>(),
-            mapCoordinator: MapCoordinator.create(),
-            spotsCubit: spotsCubit,
-          ),
-          child: BlocBuilder<SpotsCubit, SpotsState>(
-            builder: (_, state) => switch (state) {
-              SpotsFetchInProgress() => buildLoadingBody(),
-              SpotsFetchSuccess(:final filteredSpots) => _buildLoadedBody(filteredSpots),
-              SpotsFetchFailure(:final error) => ErrorViewBig(
-                  error: error,
-                  onRetryPressed: _fetchSpots,
-                ),
-              _ => buildEmptyBody()
-            },
+      body: FormGestureDetector(
+        child: SafeArea(
+          bottom: false,
+          child: BlocProvider<MapClustersCubit>(
+            create: (_) => MapClustersCubit(
+              mapClustersService: Injector().resolve<MapClustersService>(),
+              mapCoordinator: MapCoordinator.create(),
+              spotsCubit: spotsCubit,
+            ),
+            child: BlocBuilder<SpotsCubit, SpotsState>(
+              builder: (_, state) => switch (state) {
+                SpotsFetchInProgress() => buildLoadingBody(),
+                SpotsFetchSuccess(:final filteredSpots) => _buildLoadedBody(filteredSpots),
+                SpotsFetchFailure(:final error) => ErrorViewBig(
+                    error: error,
+                    onRetryPressed: _fetchSpots,
+                  ),
+                _ => buildEmptyBody()
+              },
+            ),
           ),
         ),
       ),
@@ -186,13 +184,10 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
     return Padding(
       padding: AppPadding.defaultHorizontal,
       child: AppTextField(
-        _searchTFE,
+        filtersCubit.queryTFE,
         labelText: S.of(context).search,
         textInputAction: TextInputAction.done,
-        onTextChanged: (text) => _queryController.updateQuery(
-          text,
-          action: filterSpots,
-        ),
+        onTextChanged: filtersCubit.updateQuery,
       ),
     );
   }
@@ -248,10 +243,6 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       spots: spots,
       onSpotPressed: _goToSpotDetails,
     );
-  }
-
-  void filterSpots() {
-    bloc.filterSpotsByQuery(_searchTFE.text);
   }
 
   void _goToSpotDetails(WorkoutSpotModel spot) => RootNavigator.of(context).pushNamed(

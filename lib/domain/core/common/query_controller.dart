@@ -8,6 +8,8 @@ class QueryController {
   String _lastQuery = '';
   Timer? _timer;
 
+  bool get hasQuery => _lastQuery.isNotEmpty;
+
   QueryController({
     required this.duration,
   });

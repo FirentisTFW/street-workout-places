@@ -1,4 +1,5 @@
 import 'package:app/application/blocs/filters/filters_cubit.dart';
+import 'package:app/domain/core/common/query_controller.dart';
 import 'package:app/domain/core/common/text_field_essentials.dart';
 import 'package:app/domain/core/common/user_input_field.dart';
 import 'package:app/domain/core/utils/text_field_validation_utils.dart';
@@ -19,8 +20,12 @@ mixin FiltersForm on Cubit<FiltersState> {
       ValueNotifierUtils.prepareBoolNotifiersForEnum(WorkoutSpotSize.values);
   final Map<Surface, ValueNotifier<bool>> surfaceNotifiers =
       ValueNotifierUtils.prepareBoolNotifiersForEnum(Surface.values);
+  final QueryController queryController = QueryController.withDefaultDuration();
+  final TextFieldEssentials queryTFE = TextFieldEssentials.noValidation();
 
   double? get maxDistanceInKm => double.tryParse(maxDistanceInKmTFE.text);
+
+  String? get query => queryTFE.text.isEmpty ? null : queryTFE.text;
 
   List<UserInputField> get userInputsToValidate => [
         maxDistanceInKmTFE,
@@ -28,6 +33,8 @@ mixin FiltersForm on Cubit<FiltersState> {
 
   void disposeForm() {
     maxDistanceInKmTFE.dispose();
+    queryController.dispose();
+    queryTFE.dispose();
     for (final Map<Enum, ValueNotifier<bool>> map in [
       equipmentNotifiers,
       sizeNotifiers,

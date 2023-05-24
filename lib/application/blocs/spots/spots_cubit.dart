@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/mappers.dart';
-import 'package:app/domain/core/utils/search_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
 import 'package:app/infrastructure/networking/models/workout_spot.dart';
@@ -20,19 +19,19 @@ class SpotsCubit extends Cubit<SpotsState> {
   final SpotsRepository spotsRepository;
   final SpotsFilteringService spotsFilteringService;
 
-  late final StreamSubscription filtersStream;
+  late final StreamSubscription _filtersStream;
 
   SpotsCubit({
     required this.filtersCubit,
     required this.spotsRepository,
     required this.spotsFilteringService,
   }) : super(const SpotsInitial()) {
-    filtersStream = filtersCubit.stream.listen(_onFiltersUpdated);
+    _filtersStream = filtersCubit.stream.listen(_onFiltersUpdated);
   }
 
   @override
   Future<void> close() {
-    filtersStream.cancel();
+    _filtersStream.cancel();
     return super.close();
   }
 
@@ -71,21 +70,5 @@ class SpotsCubit extends Cubit<SpotsState> {
         ),
       );
     }
-  }
-
-  FutureOr<void> filterSpotsByQuery(String query) async {
-    final SpotsState entryState = state;
-    if (entryState is! SpotsFetchSuccess) return;
-    final List<WorkoutSpotModel> filteredSpots = entryState.spots
-        .where(
-          (spot) => SearchUtils.checkIfSpotMatchesQuery(
-            spot: spot,
-            query: query,
-          ),
-        )
-        .toList();
-    emit(
-      entryState.updateFilteredSpots(filteredSpots),
-    );
   }
 }

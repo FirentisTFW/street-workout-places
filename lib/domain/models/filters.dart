@@ -11,6 +11,7 @@ class Filters {
   final double? maxDistanceInKm;
   final List<WorkoutSpotSize> sizes;
   final List<Surface> surfaces;
+  final String? query;
 
   int get count =>
       [
@@ -18,18 +19,23 @@ class Filters {
         sizes,
         surfaces,
       ].where((list) => list.isNotEmpty).length +
-      (maxDistanceInKm != null ? 1 : 0);
+      [
+        maxDistanceInKm,
+        query,
+      ].where((filter) => filter != null).length;
 
   const Filters({
     required this.equipment,
     required this.maxDistanceInKm,
     required this.sizes,
     required this.surfaces,
+    required this.query,
   });
 
   const Filters.empty()
       : equipment = const [],
         maxDistanceInKm = null,
         sizes = const [],
-        surfaces = const [];
+        surfaces = const [],
+        query = null;
 }
