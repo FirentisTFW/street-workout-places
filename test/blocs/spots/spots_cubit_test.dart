@@ -4,8 +4,9 @@ import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
 import 'package:app/domain/core/errors/app_error.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/workout_spot_mappers.dart';
+import 'package:app/domain/services/filters_validation_service.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
-import 'package:app/domain/services/user_input_validation_service.dart';
+import 'package:app/domain/services/user_location_service.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -18,7 +19,8 @@ void main() {
 
   setUp(() {
     filtersCubit = FiltersCubit(
-      userInputValidator: UserInputValidationService(),
+      filtersValidator: FiltersValidationService(),
+      userLocationService: UserLocationService(),
     );
     spotsRepository = MockSpotsRepository();
   });
@@ -53,7 +55,8 @@ void main() {
       },
       build: () => SpotsCubit(
         filtersCubit: FiltersCubit(
-          userInputValidator: UserInputValidationService(),
+          filtersValidator: FiltersValidationService(),
+          userLocationService: UserLocationService(),
         ),
         spotsRepository: spotsRepository,
         spotsFilteringService: SpotsFilteringService(),
@@ -68,7 +71,7 @@ void main() {
       verify: (_) => verify(() => spotsRepository.workoutSpots()).called(1),
     );
   });
-  // FIXME Move these tests to filters cubit test
+  // TODO Move these tests to filters cubit test
   // group('filterSpotsByQuery -', () {
   //   const WorkoutSpotModel poznanSpot = WorkoutSpotModel(
   //     name: 'Poznan fajny park',

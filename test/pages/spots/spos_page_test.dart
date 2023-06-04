@@ -3,7 +3,8 @@ import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/app_locales.dart';
 import 'package:app/domain/core/errors/app_error.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
-import 'package:app/domain/services/user_input_validation_service.dart';
+import 'package:app/domain/services/filters_validation_service.dart';
+import 'package:app/domain/services/user_location_service.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/pages/spots/spots_page.dart';
 import 'package:app/presentation/widgets/app_progress_indicator.dart';
@@ -24,7 +25,8 @@ void main() {
 
   setUp(() {
     filtersCubit = FiltersCubit(
-      userInputValidator: UserInputValidationService(),
+      filtersValidator: FiltersValidationService(),
+      userLocationService: UserLocationService(),
     );
     spotsCubit = MockSpotsCubit();
   });

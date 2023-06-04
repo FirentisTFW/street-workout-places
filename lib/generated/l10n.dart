@@ -769,6 +769,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika.`
+  String get noUserPositionProvidedForFiltersErrorMessage {
+    return Intl.message(
+      'Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika.',
+      name: 'noUserPositionProvidedForFiltersErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

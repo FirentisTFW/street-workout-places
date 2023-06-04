@@ -42,6 +42,7 @@ class SpotsCubit extends Cubit<SpotsState> {
     final List<WorkoutSpotModel> filteredSpots = spotsFilteringService.filterSpots(
       filters: filtersState.filters,
       spots: entryState.spots,
+      userPosition: filtersState.userPosition,
     );
 
     emit(

@@ -84,5 +84,6 @@
   "kilometersAbbreviation": "km",
   "equipment": "Sprzęt",
   "filtersFilterButtonTitle": "Filtruj",
-  "filtersClearButtonTitle": "Wyczyść"
+  "filtersClearButtonTitle": "Wyczyść",
+  "noUserPositionProvidedForFiltersErrorMessage": "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika."
 }

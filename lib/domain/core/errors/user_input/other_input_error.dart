@@ -11,3 +11,10 @@ class TooFewImagesSelectedError extends UserInputError {
   @override
   String getMessage(S s) => s.tooFewImagesSelectedErrorMessage;
 }
+
+class NoUserPositionProvidedForFiltersError extends UserInputError {
+  const NoUserPositionProvidedForFiltersError();
+
+  @override
+  String getMessage(S s) => s.noUserPositionProvidedForFiltersErrorMessage;
+}

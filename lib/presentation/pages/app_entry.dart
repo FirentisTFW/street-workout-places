@@ -2,8 +2,9 @@ import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/app_locales.dart';
 import 'package:app/domain/core/common/global_navigator.dart';
+import 'package:app/domain/services/filters_validation_service.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
-import 'package:app/domain/services/user_input_validation_service.dart';
+import 'package:app/domain/services/user_location_service.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:app/injector.dart';
@@ -32,7 +33,8 @@ class _AppEntryState extends State<AppEntry> {
   void initState() {
     super.initState();
     filtersCubit = FiltersCubit(
-      userInputValidator: UserInputValidationService(),
+      filtersValidator: FiltersValidationService(),
+      userLocationService: UserLocationService(),
     );
     spotsCubit = SpotsCubit(
       filtersCubit: filtersCubit,

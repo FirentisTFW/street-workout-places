@@ -109,6 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Brak połączenia z internetem."),
+        "noUserPositionProvidedForFiltersErrorMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika."),
         "notNumberTextFieldErrorMessage":
             MessageLookupByLibrary.simpleMessage("Należy wprowadzić liczbę"),
         "notSelectedAnyEquipmentItemErrorMessage":

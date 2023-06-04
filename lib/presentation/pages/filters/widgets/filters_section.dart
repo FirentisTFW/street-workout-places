@@ -18,7 +18,7 @@ class FiltersSection<T extends Enum> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FIXME Maximum of 5 elements, then expand button
+    // TODO Maximum of 5 elements, then expand button
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
