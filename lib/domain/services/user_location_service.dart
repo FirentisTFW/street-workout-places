@@ -1,12 +1,35 @@
 import 'package:app/infrastructure/networking/models/map_position.dart';
+import 'package:geolocator/geolocator.dart';
 
 class UserLocationService {
-  Future<bool> get hasLocationPermission => throw UnimplementedError();
+  Future<MapPosition?> get location async {
+    try {
+      final Position position = await Geolocator.getCurrentPosition();
+      return position.mapToMapPosition();
+    } catch (_) {
+      return null;
+    }
+  }
 
-  Future<MapPosition?> getUserLocation() {
-    // can this method throw exception (no permission for location)?
-    // we would need to then handle this and show dialog for permission
-    // FIXME Implement
-    throw UnimplementedError();
+  Future<bool> checkAndRequestLocationPermissions() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.deniedForever) {
+      return false;
+    } else if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
+
+extension _PositionMappers on Position {
+  MapPosition mapToMapPosition() {
+    return MapPosition(
+      latitude: latitude,
+      longitude: longitude,
+    );
   }
 }

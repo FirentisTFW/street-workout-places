@@ -33,19 +33,17 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
     if (maxDistanceInKm != null) {
       // TODO Show something to the user before asking for location
 
-      final bool hasLocationPermission = await userLocationService.hasLocationPermission;
-      if (hasLocationPermission) {
+      final bool hasLocationPermission = await userLocationService.checkAndRequestLocationPermissions();
+      if (!hasLocationPermission) {
         // FIXME Show dialog to the user with a button that redirects to settings,
         //  and option to filter spots without distance (clear distance filter and then filter again)
       }
 
-      final MapPosition? userLocation = await userLocationService.getUserLocation();
-
+      final MapPosition? userLocation = await userLocationService.location;
       final UserInputError? validationError = filtersValidator.validate(
         maxDistanceInKm: maxDistanceInKm,
         userPosition: userLocation,
       );
-
       final bool isFormValid = validationError == null;
 
       if (!isFormValid) {
