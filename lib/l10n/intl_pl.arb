@@ -85,5 +85,9 @@
   "equipment": "Sprzęt",
   "filtersFilterButtonTitle": "Filtruj",
   "filtersClearButtonTitle": "Wyczyść",
-  "noUserPositionProvidedForFiltersErrorMessage": "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika."
+  "noUserPositionProvidedForFiltersErrorMessage": "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika.",
+  "filtersMissingLocationPermissionDialogMessage": "Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.",
+  "filtersMissingLocationPermissionDialogTitle": "Brak dostępu do lokalizacji",
+  "filtersMissingLocationPermissionDialogSettingsButton": "Ustawienia lokalizacji",
+  "filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton": "Filtruj bez odległości"
 }

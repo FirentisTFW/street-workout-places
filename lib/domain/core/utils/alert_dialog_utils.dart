@@ -61,6 +61,7 @@ abstract class AlertDialogUtils {
         }
         return AlertDialog(
           actions: actionsWidgets,
+          actionsOverflowAlignment: OverflowBarAlignment.center,
           content: contentWidget,
           title: titleWidget,
           contentPadding: AppPadding.defaultAll,

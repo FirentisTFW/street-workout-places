@@ -1,11 +1,15 @@
 import 'package:app/application/blocs/filters/filters_form.dart';
+import 'package:app/application/blocs/filters/filters_presentation_event.dart';
 import 'package:app/domain/core/common/unique_prop_provider.dart';
+import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/errors/user_input/user_input_error.dart';
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/models/filters.dart';
 import 'package:app/domain/services/filters_validation_service.dart';
 import 'package:app/domain/services/user_location_service.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
+import 'package:app/presentation/common/presentation_events.dart';
+import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
@@ -14,7 +18,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'filters_cubit.g.dart';
 part 'filters_state.dart';
 
-class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
+class FiltersCubit extends Cubit<FiltersState> with FiltersForm, BlocPresentationMixin {
   final FiltersValidationService filtersValidator;
   final UserLocationService userLocationService;
 
@@ -35,19 +39,24 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm {
 
       final bool hasLocationPermission = await userLocationService.checkAndRequestLocationPermissions();
       if (!hasLocationPermission) {
-        // FIXME Show dialog to the user with a button that redirects to settings,
-        //  and option to filter spots without distance (clear distance filter and then filter again)
+        emitPresentation(const FiltersMissingLocationPermission());
+        return;
       }
 
       final MapPosition? userLocation = await userLocationService.location;
-      final UserInputError? validationError = filtersValidator.validate(
+      final UserInputError? validationException = filtersValidator.validate(
         maxDistanceInKm: maxDistanceInKm,
         userPosition: userLocation,
       );
-      final bool isFormValid = validationError == null;
+      final bool isFormValid = validationException == null;
 
       if (!isFormValid) {
-        // FIXME Show validation error
+        emitPresentation(
+          ValidationFailed(
+            error: DialogError.fromException(validationException),
+          ),
+        );
+        return;
       }
     }
 

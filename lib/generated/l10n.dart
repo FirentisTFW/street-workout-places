@@ -779,6 +779,48 @@ class S {
       args: [],
     );
   }
+
+  /// `Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.`
+  String get filtersMissingLocationPermissionDialogMessage {
+    return Intl.message(
+      'Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.',
+      name: 'filtersMissingLocationPermissionDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brak dostępu do lokalizacji`
+  String get filtersMissingLocationPermissionDialogTitle {
+    return Intl.message(
+      'Brak dostępu do lokalizacji',
+      name: 'filtersMissingLocationPermissionDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ustawienia lokalizacji`
+  String get filtersMissingLocationPermissionDialogSettingsButton {
+    return Intl.message(
+      'Ustawienia lokalizacji',
+      name: 'filtersMissingLocationPermissionDialogSettingsButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filtruj bez odległości`
+  String
+      get filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton {
+    return Intl.message(
+      'Filtruj bez odległości',
+      name:
+          'filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

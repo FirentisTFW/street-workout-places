@@ -68,6 +68,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Filtruj"),
         "filtersMaxDistanceInKm":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość (w km)"),
+        "filtersMissingLocationPermissionDialogMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji."),
+        "filtersMissingLocationPermissionDialogSettingsButton":
+            MessageLookupByLibrary.simpleMessage("Ustawienia lokalizacji"),
+        "filtersMissingLocationPermissionDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Brak dostępu do lokalizacji"),
+        "filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton":
+            MessageLookupByLibrary.simpleMessage("Filtruj bez odległości"),
         "hosueNumber": MessageLookupByLibrary.simpleMessage("Nr domu"),
         "kilometersAbbreviation": MessageLookupByLibrary.simpleMessage("km"),
         "latitudeShort": MessageLookupByLibrary.simpleMessage("Szer. geogr."),
