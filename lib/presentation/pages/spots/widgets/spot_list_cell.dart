@@ -33,7 +33,7 @@ class SpotListCell extends StatelessWidget {
               child: _buildLeftSection(context),
             ),
             const Space.horizontal(4.0),
-            _buildRightSection(),
+            _buildRightSection(context),
           ],
         ),
       ),
@@ -87,22 +87,18 @@ class SpotListCell extends StatelessWidget {
     );
   }
 
-  Widget _buildRightSection() {
+  Widget _buildRightSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        _buildDistanceFromUser(),
+        if (spot.distanceFromUserInKm case final double distanceFromUserInKm?)
+          Text(
+            S.of(context).spotListCellDistanceFromUserInKm(distanceFromUserInKm),
+            style: AppTextStyles.titleSmall(),
+          ),
         const Space.vertical(12.0),
         _buildPhoto(),
       ],
-    );
-  }
-
-  Widget _buildDistanceFromUser() {
-    // TODO Remove mocks
-    return Text(
-      '1,2 km',
-      style: AppTextStyles.titleSmall(),
     );
   }
 

@@ -45,6 +45,7 @@ void main() {
         ),
         spotsRepository: MockSpotsRepository(),
         spotsFilteringService: SpotsFilteringService(),
+        userLocationService: UserLocationService(),
       );
       final MapClustersService mapClustersService = MockMapClustersService();
       final MapCoordinator mapCoordinator = MockMapCoordinator();

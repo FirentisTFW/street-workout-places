@@ -1,12 +1,17 @@
 import 'dart:async';
 
 import 'package:app/application/blocs/filters/filters_cubit.dart';
+import 'package:app/application/blocs/spots/spots_presentation_event.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/mappers.dart';
+import 'package:app/domain/core/utils/location_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
+import 'package:app/domain/services/user_location_service.dart';
+import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/infrastructure/networking/models/workout_spot.dart';
 import 'package:app/infrastructure/repositories/spots/spots_repository.dart';
+import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +19,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'spots_cubit.g.dart';
 part 'spots_state.dart';
 
-class SpotsCubit extends Cubit<SpotsState> {
+class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
   final FiltersCubit filtersCubit;
   final SpotsRepository spotsRepository;
   final SpotsFilteringService spotsFilteringService;
+  final UserLocationService userLocationService;
 
   late final StreamSubscription _filtersStream;
 
@@ -25,6 +31,7 @@ class SpotsCubit extends Cubit<SpotsState> {
     required this.filtersCubit,
     required this.spotsRepository,
     required this.spotsFilteringService,
+    required this.userLocationService,
   }) : super(const SpotsInitial()) {
     _filtersStream = filtersCubit.stream.listen(_onFiltersUpdated);
   }
@@ -71,5 +78,34 @@ class SpotsCubit extends Cubit<SpotsState> {
         ),
       );
     }
+  }
+
+  Future<void> sortByDistanceFromUser() async {
+    final SpotsState entryState = state;
+    if (entryState is! SpotsFetchSuccess) return;
+
+    final bool hasLocationPermission = await userLocationService.checkAndRequestLocationPermissions();
+    if (!hasLocationPermission) {
+      emitPresentation(const SortingSpotsMissingLocationPermission());
+      // FIXME Handle event in UI - show proper dialog
+      return;
+    }
+
+    final MapPosition? userLocation = await userLocationService.location;
+
+    final List<WorkoutSpotModel> spotsWithDistanceFromUser = entryState.spots.map(
+      (spot) {
+        if ((spot.coordinates, userLocation) case (final spotPosition?, final userLocation?)) {
+          final double distanceFromUserInKm =
+              LocationUtils.calculateDistanceBetweenPositionsInKm(spotPosition, userLocation);
+          return spot.copyWith(
+            distanceFromUserInKm: distanceFromUserInKm,
+          );
+        }
+        return spot;
+      },
+    ).toList();
+
+    // FIXME Sort spots
   }
 }

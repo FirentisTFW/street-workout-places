@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(size) => "Rozmiar: ${size}";
 
+  static String m2(distance) => "${distance} km";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Street Workout Spots"),
@@ -137,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Prześlij"),
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
         "sizeSelected": m1,
+        "spotListCellDistanceFromUserInKm": m2,
         "spotsListTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Lista"),
         "spotsMapTabBarButtonTitle":

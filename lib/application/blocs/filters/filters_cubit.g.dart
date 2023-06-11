@@ -9,6 +9,8 @@ part of 'filters_cubit.dart';
 abstract class _$FiltersStateCWProxy {
   FiltersState filters(Filters filters);
 
+  FiltersState userPosition(MapPosition? userPosition);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FiltersState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -17,6 +19,7 @@ abstract class _$FiltersStateCWProxy {
   /// ````
   FiltersState call({
     Filters? filters,
+    MapPosition? userPosition,
   });
 }
 
@@ -30,6 +33,10 @@ class _$FiltersStateCWProxyImpl implements _$FiltersStateCWProxy {
   FiltersState filters(Filters filters) => this(filters: filters);
 
   @override
+  FiltersState userPosition(MapPosition? userPosition) =>
+      this(userPosition: userPosition);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `FiltersState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -39,12 +46,17 @@ class _$FiltersStateCWProxyImpl implements _$FiltersStateCWProxy {
   /// ````
   FiltersState call({
     Object? filters = const $CopyWithPlaceholder(),
+    Object? userPosition = const $CopyWithPlaceholder(),
   }) {
     return FiltersState(
       filters: filters == const $CopyWithPlaceholder() || filters == null
           ? _value.filters
           // ignore: cast_nullable_to_non_nullable
           : filters as Filters,
+      userPosition: userPosition == const $CopyWithPlaceholder()
+          ? _value.userPosition
+          // ignore: cast_nullable_to_non_nullable
+          : userPosition as MapPosition?,
     );
   }
 }

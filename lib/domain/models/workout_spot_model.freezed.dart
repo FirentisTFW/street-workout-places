@@ -19,6 +19,7 @@ mixin _$WorkoutSpotModel {
   Address? get address => throw _privateConstructorUsedError;
   MapPosition? get coordinates => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  double? get distanceFromUserInKm => throw _privateConstructorUsedError;
   List<Equipment> get equipment => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $WorkoutSpotModelCopyWith<$Res> {
       {Address? address,
       MapPosition? coordinates,
       String? description,
+      double? distanceFromUserInKm,
       List<Equipment> equipment,
       int? id,
       List<String> images,
@@ -68,6 +70,7 @@ class _$WorkoutSpotModelCopyWithImpl<$Res, $Val extends WorkoutSpotModel>
     Object? address = freezed,
     Object? coordinates = freezed,
     Object? description = freezed,
+    Object? distanceFromUserInKm = freezed,
     Object? equipment = null,
     Object? id = freezed,
     Object? images = null,
@@ -88,6 +91,10 @@ class _$WorkoutSpotModelCopyWithImpl<$Res, $Val extends WorkoutSpotModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      distanceFromUserInKm: freezed == distanceFromUserInKm
+          ? _value.distanceFromUserInKm
+          : distanceFromUserInKm // ignore: cast_nullable_to_non_nullable
+              as double?,
       equipment: null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
@@ -152,6 +159,7 @@ abstract class _$$_WorkoutSpotModelCopyWith<$Res>
       {Address? address,
       MapPosition? coordinates,
       String? description,
+      double? distanceFromUserInKm,
       List<Equipment> equipment,
       int? id,
       List<String> images,
@@ -179,6 +187,7 @@ class __$$_WorkoutSpotModelCopyWithImpl<$Res>
     Object? address = freezed,
     Object? coordinates = freezed,
     Object? description = freezed,
+    Object? distanceFromUserInKm = freezed,
     Object? equipment = null,
     Object? id = freezed,
     Object? images = null,
@@ -199,6 +208,10 @@ class __$$_WorkoutSpotModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      distanceFromUserInKm: freezed == distanceFromUserInKm
+          ? _value.distanceFromUserInKm
+          : distanceFromUserInKm // ignore: cast_nullable_to_non_nullable
+              as double?,
       equipment: null == equipment
           ? _value._equipment
           : equipment // ignore: cast_nullable_to_non_nullable
@@ -234,6 +247,7 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
       {this.address,
       this.coordinates,
       this.description,
+      this.distanceFromUserInKm,
       final List<Equipment> equipment = const [],
       this.id,
       final List<String> images = const [],
@@ -250,6 +264,8 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
   final MapPosition? coordinates;
   @override
   final String? description;
+  @override
+  final double? distanceFromUserInKm;
   final List<Equipment> _equipment;
   @override
   @JsonKey()
@@ -279,7 +295,7 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
 
   @override
   String toString() {
-    return 'WorkoutSpotModel(address: $address, coordinates: $coordinates, description: $description, equipment: $equipment, id: $id, images: $images, name: $name, size: $size, surface: $surface)';
+    return 'WorkoutSpotModel(address: $address, coordinates: $coordinates, description: $description, distanceFromUserInKm: $distanceFromUserInKm, equipment: $equipment, id: $id, images: $images, name: $name, size: $size, surface: $surface)';
   }
 
   @override
@@ -292,6 +308,8 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
                 other.coordinates == coordinates) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.distanceFromUserInKm, distanceFromUserInKm) ||
+                other.distanceFromUserInKm == distanceFromUserInKm) &&
             const DeepCollectionEquality()
                 .equals(other._equipment, _equipment) &&
             (identical(other.id, id) || other.id == id) &&
@@ -307,6 +325,7 @@ class _$_WorkoutSpotModel extends _WorkoutSpotModel {
       address,
       coordinates,
       description,
+      distanceFromUserInKm,
       const DeepCollectionEquality().hash(_equipment),
       id,
       const DeepCollectionEquality().hash(_images),
@@ -326,6 +345,7 @@ abstract class _WorkoutSpotModel extends WorkoutSpotModel {
       {final Address? address,
       final MapPosition? coordinates,
       final String? description,
+      final double? distanceFromUserInKm,
       final List<Equipment> equipment,
       final int? id,
       final List<String> images,
@@ -340,6 +360,8 @@ abstract class _WorkoutSpotModel extends WorkoutSpotModel {
   MapPosition? get coordinates;
   @override
   String? get description;
+  @override
+  double? get distanceFromUserInKm;
   @override
   List<Equipment> get equipment;
   @override

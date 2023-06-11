@@ -821,6 +821,16 @@ class S {
       args: [],
     );
   }
+
+  /// `{distance} km`
+  String spotListCellDistanceFromUserInKm(Object distance) {
+    return Intl.message(
+      '$distance km',
+      name: 'spotListCellDistanceFromUserInKm',
+      desc: '',
+      args: [distance],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

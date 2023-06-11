@@ -40,6 +40,7 @@ class _AppEntryState extends State<AppEntry> {
       filtersCubit: filtersCubit,
       spotsRepository: Injector().resolve<NetworkSpotsRepository>(),
       spotsFilteringService: SpotsFilteringService(),
+      userLocationService: UserLocationService(),
     );
     spotsCubit.fetchSpots();
   }

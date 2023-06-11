@@ -15,6 +15,7 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
     Address? address,
     MapPosition? coordinates,
     String? description,
+    double? distanceFromUserInKm,
     @Default([]) List<Equipment> equipment,
     int? id,
     @Default([]) List<String> images,
@@ -24,6 +25,8 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
   }) = _WorkoutSpotModel;
 
   const WorkoutSpotModel._();
+
+  bool get hasCalculatedDistanceFromUser => distanceFromUserInKm != null;
 
   String? get primaryImage => images.firstOrNull;
 

@@ -36,6 +36,7 @@ void main() {
           filtersCubit: filtersCubit,
           spotsRepository: spotsRepository,
           spotsFilteringService: SpotsFilteringService(),
+          userLocationService: UserLocationService(),
         ),
         act: (cubit) => cubit.fetchSpots(),
         expect: () => [
@@ -60,6 +61,7 @@ void main() {
         ),
         spotsRepository: spotsRepository,
         spotsFilteringService: SpotsFilteringService(),
+        userLocationService: UserLocationService(),
       ),
       act: (cubit) => cubit.fetchSpots(),
       expect: () => [
@@ -100,6 +102,7 @@ void main() {
   //       ),
   //       spotsRepository: spotsRepository,
   //       spotsFilteringService: SpotsFilteringService(),
+  // userLocationService: UserLocationService(),
   //     ),
   //     act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
   //     expect: () => [],
@@ -115,6 +118,7 @@ void main() {
   //         filtersCubit: filtersCubit,
   //         spotsRepository: spotsRepository,
   //         spotsFilteringService: SpotsFilteringService(),
+  // userLocationService: UserLocationService(),
   //       )..emit(initialState),
   //       act: (cubit) => cubit.filterSpotsByQuery('Poznan'),
   //       expect: () => [
@@ -127,6 +131,7 @@ void main() {
   //         filtersCubit: filtersCubit,
   //         spotsRepository: spotsRepository,
   //         spotsFilteringService: SpotsFilteringService(),
+  // userLocationService: UserLocationService(),
   //       )..emit(initialState),
   //       act: (cubit) => cubit.filterSpotsByQuery('Krakow'),
   //       expect: () => [
@@ -144,6 +149,7 @@ void main() {
   //         filtersCubit: filtersCubit,
   //         spotsRepository: spotsRepository,
   //         spotsFilteringService: SpotsFilteringService(),
+  // userLocationService: UserLocationService(),
   //       )..emit(initialState),
   //       act: (cubit) => cubit.filterSpotsByQuery('Gdansk'),
   //       expect: () => [

@@ -89,5 +89,6 @@
   "filtersMissingLocationPermissionDialogMessage": "Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.",
   "filtersMissingLocationPermissionDialogTitle": "Brak dostępu do lokalizacji",
   "filtersMissingLocationPermissionDialogSettingsButton": "Ustawienia lokalizacji",
-  "filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton": "Filtruj bez odległości"
+  "filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton": "Filtruj bez odległości",
+  "spotListCellDistanceFromUserInKm": "{distance} km"
 }

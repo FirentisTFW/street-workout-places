@@ -16,7 +16,10 @@ class SpotsFilteringService {
       (spot) {
         final (MapPosition? coordinates, double? maxDistanceInKm) = (spot.coordinates, filters.maxDistanceInKm);
         if (coordinates != null && maxDistanceInKm != null) {
-          if (userPosition == null) throw const NoUserPositionProvidedForFiltersError();
+          if (userPosition == null) {
+            // Not reachable
+            throw const NoUserPositionProvidedForFiltersError();
+          }
           final double distanceInKm = LocationUtils.calculateDistanceBetweenPositionsInKm(coordinates, userPosition);
           if (distanceInKm > maxDistanceInKm) return false;
         }
