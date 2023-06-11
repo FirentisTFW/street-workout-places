@@ -32,3 +32,6 @@ Non-technical:
     - goes through spots and checks whether they match filters (how to map filters to workout spot properties?)
     - returns filtered spots
     - should handle filtering by query as well?
+
+2. WorkoutSpotModel
+    - rethink whether it even makes sense to have coordinates nullable. Can we just discard such spots (and maybe report them somewhere)? 
