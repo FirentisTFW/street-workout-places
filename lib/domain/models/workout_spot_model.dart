@@ -1,3 +1,4 @@
+import 'package:app/domain/core/utils/location_utils.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
@@ -42,4 +43,26 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
             ].join(' '),
           )
           .join(multiline ? '\n' : ', ');
+}
+
+extension WorkoutSpotModelListExtension on List<WorkoutSpotModel> {
+  List<WorkoutSpotModel> withCalculatedDistanceFromUser(MapPosition userLocation) {
+    return map(
+      (spot) {
+        if ((spot.coordinates, userLocation) case (final spotPosition?, final userLocation?)) {
+          final double distanceFromUserInKm =
+              LocationUtils.calculateDistanceBetweenPositionsInKm(spotPosition, userLocation);
+          return spot.copyWith(
+            distanceFromUserInKm: distanceFromUserInKm,
+          );
+        }
+        return spot;
+      },
+    ).toList();
+  }
+
+  // TODO Unit tests
+  void sortByDistanceFromUser() {
+    sort((a, b) => (a.distanceFromUserInKm ?? double.infinity).compareTo(b.distanceFromUserInKm ?? double.infinity));
+  }
 }

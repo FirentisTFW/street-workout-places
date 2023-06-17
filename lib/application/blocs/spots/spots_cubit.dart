@@ -4,7 +4,6 @@ import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_presentation_event.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/core/mappers/mappers.dart';
-import 'package:app/domain/core/utils/location_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
 import 'package:app/domain/services/user_location_service.dart';
@@ -92,20 +91,18 @@ class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
     }
 
     final MapPosition? userLocation = await userLocationService.location;
+    if (userLocation == null) return;
 
-    final List<WorkoutSpotModel> spotsWithDistanceFromUser = entryState.spots.map(
-      (spot) {
-        if ((spot.coordinates, userLocation) case (final spotPosition?, final userLocation?)) {
-          final double distanceFromUserInKm =
-              LocationUtils.calculateDistanceBetweenPositionsInKm(spotPosition, userLocation);
-          return spot.copyWith(
-            distanceFromUserInKm: distanceFromUserInKm,
-          );
-        }
-        return spot;
-      },
-    ).toList();
+    final List<WorkoutSpotModel> spotsWithDistanceFromUser =
+        entryState.spots.withCalculatedDistanceFromUser(userLocation)..sortByDistanceFromUser();
+    final List<WorkoutSpotModel> filteredSpotsWithDistanceFromUser =
+        entryState.filteredSpots.withCalculatedDistanceFromUser(userLocation)..sortByDistanceFromUser();
 
-    // FIXME Sort spots
+    emit(
+      SpotsFetchSuccess(
+        filteredSpots: filteredSpotsWithDistanceFromUser,
+        spots: spotsWithDistanceFromUser,
+      ),
+    );
   }
 }
