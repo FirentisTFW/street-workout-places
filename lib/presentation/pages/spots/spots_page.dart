@@ -3,7 +3,6 @@ import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
-import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/domain/models/page_tab_bar_button_data.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
@@ -108,10 +107,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         children: [
           FloatingActionButton(
             heroTag: null,
-            onPressed: () {
-              // TODO Implement
-              AlertDialogUtils.showContentUnavailable(context);
-            },
+            onPressed: spotsCubit.sortByDistanceFromUser,
             child: Icon(
               Icons.gps_fixed,
               size: AppDimensions.size.floatingActionButtonIcon,
