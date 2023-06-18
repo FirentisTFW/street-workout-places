@@ -11,6 +11,7 @@ import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:app/presentation/widgets/app_text_field.dart';
 import 'package:app/presentation/widgets/button.dart';
 import 'package:app/presentation/widgets/space.dart';
+import 'package:app_settings/app_settings.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,8 +71,9 @@ class _FiltersPageState extends BlocPageState<FiltersPage, FiltersCubit> {
       title: S.of(context).filtersMissingLocationPermissionDialogTitle,
       actions: [
         AlertDialogUtils.buildAction(
-          onPressed: () {
-            // FIXME Open location settings
+          onPressed: () async {
+            await AppSettings.openLocationSettings();
+            bloc.saveFilters();
           },
           text: S.of(context).filtersMissingLocationPermissionDialogSettingsButton,
         ),

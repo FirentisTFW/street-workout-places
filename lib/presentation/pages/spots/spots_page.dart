@@ -27,6 +27,7 @@ import 'package:app/presentation/widgets/form_gesture_detector.dart';
 import 'package:app/presentation/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:app/presentation/widgets/spots_map.dart';
+import 'package:app_settings/app_settings.dart';
 import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -115,8 +116,9 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
       title: S.of(context).filtersMissingLocationPermissionDialogTitle,
       actions: [
         AlertDialogUtils.buildAction(
-          onPressed: () {
-            // FIXME Open location settings. Should we also repeat request after that?
+          onPressed: () async {
+            await AppSettings.openLocationSettings();
+            bloc.sortByDistanceFromUser();
           },
           text: S.of(context).filtersMissingLocationPermissionDialogSettingsButton,
         ),

@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
+  app_settings: ^4.2.0
   bloc_presentation: ^0.2.1
   cached_network_image: ^3.2.3
   copy_with_extension: ^5.0.2
