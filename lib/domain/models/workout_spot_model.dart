@@ -27,7 +27,13 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
 
   const WorkoutSpotModel._();
 
-  bool get hasCalculatedDistanceFromUser => distanceFromUserInKm != null;
+  String? get distanceFromUserDisplay {
+    if (distanceFromUserInKm case final distanceFromUserInKm?) {
+      if (distanceFromUserInKm > 5) return distanceFromUserInKm.toStringAsFixed(0);
+      return distanceFromUserInKm.toStringAsFixed(1);
+    }
+    return null;
+  }
 
   String? get primaryImage => images.firstOrNull;
 

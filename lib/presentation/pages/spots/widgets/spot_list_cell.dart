@@ -91,9 +91,9 @@ class SpotListCell extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        if (spot.distanceFromUserInKm case final double distanceFromUserInKm?)
+        if (spot.distanceFromUserDisplay case final String distanceFromUserDisplay?)
           Text(
-            S.of(context).spotListCellDistanceFromUserInKm(distanceFromUserInKm),
+            S.of(context).spotListCellDistanceFromUserInKm(distanceFromUserDisplay),
             style: AppTextStyles.titleSmall(),
           ),
         const Space.vertical(12.0),
