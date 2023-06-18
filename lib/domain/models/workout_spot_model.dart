@@ -49,7 +49,7 @@ extension WorkoutSpotModelListExtension on List<WorkoutSpotModel> {
   List<WorkoutSpotModel> withCalculatedDistanceFromUser(MapPosition userLocation) {
     return map(
       (spot) {
-        if ((spot.coordinates, userLocation) case (final spotPosition?, final userLocation?)) {
+        if (spot.coordinates case final spotPosition?) {
           final double distanceFromUserInKm =
               LocationUtils.calculateDistanceBetweenPositionsInKm(spotPosition, userLocation);
           return spot.copyWith(
