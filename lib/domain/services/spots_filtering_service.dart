@@ -21,7 +21,7 @@ class SpotsFilteringService {
             throw const NoUserPositionProvidedForFiltersError();
           }
           final double distanceInKm = LocationUtils.calculateDistanceBetweenPositionsInKm(coordinates, userPosition);
-          if (distanceInKm > maxDistanceInKm) return false;
+          if (distanceInKm.round() > maxDistanceInKm) return false;
         }
 
         if (filters.equipment.isNotEmpty) {

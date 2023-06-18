@@ -34,6 +34,7 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm, BlocPresentatio
   }
 
   Future<void> saveFilters() async {
+    final MapPosition? userLocation;
     if (maxDistanceInKm != null) {
       // TODO Show something to the user before asking for location
 
@@ -43,7 +44,7 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm, BlocPresentatio
         return;
       }
 
-      final MapPosition? userLocation = await userLocationService.location;
+      userLocation = await userLocationService.location;
       final UserInputError? validationException = filtersValidator.validate(
         maxDistanceInKm: maxDistanceInKm,
         userPosition: userLocation,
@@ -58,6 +59,8 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm, BlocPresentatio
         );
         return;
       }
+    } else {
+      userLocation = null;
     }
 
     emit(
@@ -69,6 +72,7 @@ class FiltersCubit extends Cubit<FiltersState> with FiltersForm, BlocPresentatio
           surfaces: surfaceNotifiers.takeSelectedValues(),
           query: query,
         ),
+        userPosition: userLocation,
       ),
     );
   }

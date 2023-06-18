@@ -5,7 +5,7 @@ import 'package:app/infrastructure/networking/models/map_position.dart';
 abstract class LocationUtils {
   const LocationUtils._();
 
-  // FIXME Write unit tests
+  // TODO Write unit tests
   // The formula taken from: https://stackoverflow.com/a/21623206/14451574
   static double calculateDistanceBetweenPositionsInKm(
     MapPosition position1,
