@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Parki Street Workout"),
         "blankTextFieldErrorMessage":
             MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
         "contentUnavailableDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),

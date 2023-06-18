@@ -86,7 +86,6 @@ class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
     final bool hasLocationPermission = await userLocationService.checkAndRequestLocationPermissions();
     if (!hasLocationPermission) {
       emitPresentation(const SortingSpotsMissingLocationPermission());
-      // FIXME Handle event in UI - show proper dialog
       return;
     }
 

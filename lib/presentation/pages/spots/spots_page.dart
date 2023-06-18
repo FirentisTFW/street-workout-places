@@ -1,8 +1,10 @@
 import 'package:app/application/blocs/filters/filters_cubit.dart';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
+import 'package:app/application/blocs/spots/spots_presentation_event.dart';
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
+import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/domain/models/page_tab_bar_button_data.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
@@ -25,6 +27,7 @@ import 'package:app/presentation/widgets/form_gesture_detector.dart';
 import 'package:app/presentation/widgets/page_tab_bar/page_tab_bar.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:app/presentation/widgets/spots_map.dart';
+import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,31 +71,60 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: _buildFloatingActionButtons(),
-      body: FormGestureDetector(
-        child: SafeArea(
-          bottom: false,
-          child: BlocProvider<MapClustersCubit>(
-            create: (_) => MapClustersCubit(
-              mapClustersService: Injector().resolve<MapClustersService>(),
-              mapCoordinator: MapCoordinator.create(),
-              spotsCubit: spotsCubit,
-            ),
-            child: BlocBuilder<SpotsCubit, SpotsState>(
-              builder: (_, state) => switch (state) {
-                SpotsFetchInProgress() => buildLoadingBody(),
-                SpotsFetchSuccess(:final filteredSpots) => _buildLoadedBody(filteredSpots),
-                SpotsFetchFailure(:final error) => ErrorViewBig(
-                    error: error,
-                    onRetryPressed: _fetchSpots,
-                  ),
-                _ => buildEmptyBody()
-              },
+    return BlocPresentationListener<SpotsCubit>(
+      listener: _onPresentationEvent,
+      child: Scaffold(
+        floatingActionButton: _buildFloatingActionButtons(),
+        body: FormGestureDetector(
+          child: SafeArea(
+            bottom: false,
+            child: BlocProvider<MapClustersCubit>(
+              create: (_) => MapClustersCubit(
+                mapClustersService: Injector().resolve<MapClustersService>(),
+                mapCoordinator: MapCoordinator.create(),
+                spotsCubit: spotsCubit,
+              ),
+              child: BlocBuilder<SpotsCubit, SpotsState>(
+                builder: (_, state) => switch (state) {
+                  SpotsFetchInProgress() => buildLoadingBody(),
+                  SpotsFetchSuccess(:final filteredSpots) => _buildLoadedBody(filteredSpots),
+                  SpotsFetchFailure(:final error) => ErrorViewBig(
+                      error: error,
+                      onRetryPressed: _fetchSpots,
+                    ),
+                  _ => buildEmptyBody()
+                },
+              ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  void _onPresentationEvent(BuildContext context, BlocPresentationEvent state) {
+    if (state is SortingSpotsMissingLocationPermission) {
+      _showMissingLocationPerimissionDialog();
+    }
+  }
+
+  void _showMissingLocationPerimissionDialog() {
+    AlertDialogUtils.show(
+      context,
+      message: S.of(context).filtersMissingLocationPermissionDialogMessage,
+      title: S.of(context).filtersMissingLocationPermissionDialogTitle,
+      actions: [
+        AlertDialogUtils.buildAction(
+          onPressed: () {
+            // FIXME Open location settings. Should we also repeat request after that?
+          },
+          text: S.of(context).filtersMissingLocationPermissionDialogSettingsButton,
+        ),
+        AlertDialogUtils.buildAction(
+          onPressed: () => Navigator.pop(context),
+          text: S.of(context).cancel,
+        ),
+      ],
     );
   }
 

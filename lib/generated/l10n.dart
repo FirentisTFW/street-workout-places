@@ -831,6 +831,16 @@ class S {
       args: [distance],
     );
   }
+
+  /// `Anuluj`
+  String get cancel {
+    return Intl.message(
+      'Anuluj',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

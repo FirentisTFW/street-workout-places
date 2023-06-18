@@ -90,5 +90,6 @@
   "filtersMissingLocationPermissionDialogTitle": "Brak dostępu do lokalizacji",
   "filtersMissingLocationPermissionDialogSettingsButton": "Ustawienia lokalizacji",
   "filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton": "Filtruj bez odległości",
-  "spotListCellDistanceFromUserInKm": "{distance} km"
+  "spotListCellDistanceFromUserInKm": "{distance} km",
+  "cancel": "Anuluj"
 }
