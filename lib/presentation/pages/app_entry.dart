@@ -42,6 +42,7 @@ class _AppEntryState extends State<AppEntry> {
       spotsFilteringService: SpotsFilteringService(),
       userLocationService: UserLocationService(),
     );
+
     spotsCubit.fetchSpots();
   }
 
