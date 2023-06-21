@@ -30,6 +30,7 @@ dependencies:
   map_launcher: ^2.4.0
 
 dev_dependencies:
+  bloc_presentation_test: ^0.1.1
   bloc_test: ^9.0.0
   build_runner: ^2.2.0
   copy_with_extension_gen: ^5.0.2
