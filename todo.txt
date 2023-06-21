@@ -2,4 +2,4 @@
 - home page
 - check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
 - migrate from freezed to equatable
-- geolocalization (filters, adding new spot etc.)
+- geolocalization when adding a new spot ("use my location" feature)
