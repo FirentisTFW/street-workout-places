@@ -53,7 +53,7 @@ void main() {
 
   group('SposPageTest -', () {
     patrolTest(
-      'When fecthing spots is in progress, shows progress indicator',
+      'When fetching spots is in progress, shows progress indicator',
       ($) async {
         when(() => spotsCubit.state).thenReturn(const SpotsFetchInProgress());
 
