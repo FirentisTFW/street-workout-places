@@ -1,20 +1,32 @@
 import 'package:app/infrastructure/networking/models/map_position.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 
-part 'map_essentials.freezed.dart';
+part 'map_essentials.g.dart';
 
-@freezed
-class MapEssentials with _$MapEssentials {
-  const factory MapEssentials({
-    required MapPosition initialCoordinates,
-    required double maxZoom,
-    required double minZoom,
-    required double zoom,
-  }) = _MapEssentials;
+@CopyWith()
+class MapEssentials extends Equatable {
+  final MapPosition initialCoordinates;
+  final double maxZoom;
+  final double minZoom;
+  final double zoom;
 
-  const MapEssentials._();
+  const MapEssentials({
+    required this.initialCoordinates,
+    required this.maxZoom,
+    required this.minZoom,
+    required this.zoom,
+  });
 
   MapEssentials updateZoom(double newZoom) => copyWith(
         zoom: newZoom,
       );
+
+  @override
+  List<Object?> get props => [
+        initialCoordinates,
+        maxZoom,
+        minZoom,
+        zoom,
+      ];
 }

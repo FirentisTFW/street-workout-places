@@ -5,27 +5,37 @@ import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/infrastructure/networking/models/surface.dart';
 import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'workout_spot_model.freezed.dart';
+part 'workout_spot_model.g.dart';
 
-@freezed
-class WorkoutSpotModel with _$WorkoutSpotModel {
-  const factory WorkoutSpotModel({
-    Address? address,
-    MapPosition? coordinates,
-    String? description,
-    double? distanceFromUserInKm,
-    @Default([]) List<Equipment> equipment,
-    int? id,
-    @Default([]) List<String> images,
-    String? name,
-    WorkoutSpotSize? size,
-    Surface? surface,
-  }) = _WorkoutSpotModel;
+@CopyWith()
+class WorkoutSpotModel extends Equatable {
+  final Address? address;
+  final MapPosition? coordinates;
+  final String? description;
+  final double? distanceFromUserInKm;
+  final List<Equipment> equipment;
+  final int? id;
+  final List<String> images;
+  final String? name;
+  final WorkoutSpotSize? size;
+  final Surface? surface;
 
-  const WorkoutSpotModel._();
+  const WorkoutSpotModel({
+    this.address,
+    this.coordinates,
+    this.description,
+    this.distanceFromUserInKm,
+    this.equipment = const [],
+    this.id,
+    this.images = const [],
+    this.name,
+    this.size,
+    this.surface,
+  });
 
   String? get distanceFromUserDisplay {
     if (distanceFromUserInKm case final distanceFromUserInKm?) {
@@ -49,6 +59,20 @@ class WorkoutSpotModel with _$WorkoutSpotModel {
             ].join(' '),
           )
           .join(multiline ? '\n' : ', ');
+
+  @override
+  List<Object?> get props => [
+        address,
+        coordinates,
+        description,
+        distanceFromUserInKm,
+        equipment,
+        id,
+        images,
+        name,
+        size,
+        surface,
+      ];
 }
 
 extension WorkoutSpotModelListExtension on List<WorkoutSpotModel> {

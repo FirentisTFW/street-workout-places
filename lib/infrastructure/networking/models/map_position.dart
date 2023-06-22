@@ -1,13 +1,17 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'map_position.freezed.dart';
+class MapPosition extends Equatable {
+  final double? latitude;
+  final double? longitude;
 
-@freezed
-class MapPosition with _$MapPosition {
-  const factory MapPosition({
-    double? latitude,
-    double? longitude,
-  }) = _MapPosition;
+  const MapPosition({
+    this.latitude,
+    this.longitude,
+  });
 
-  const MapPosition._();
+  @override
+  List<Object?> get props => [
+        latitude,
+        longitude,
+      ];
 }

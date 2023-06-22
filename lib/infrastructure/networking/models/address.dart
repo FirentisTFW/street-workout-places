@@ -1,17 +1,16 @@
 import 'package:app/domain/core/extensions/extensions.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'address.freezed.dart';
+class Address extends Equatable {
+  final String? city;
+  final String? houseNumber;
+  final String? street;
 
-@freezed
-class Address with _$Address {
-  const factory Address({
-    String? city,
-    String? houseNumber,
-    String? street,
-  }) = _Address;
-
-  const Address._();
+  const Address({
+    this.city,
+    this.houseNumber,
+    this.street,
+  });
 
   String? get _streetWithHouseNumber => street.isNotNullOrBlank ? '$street ${houseNumber.orEmpty()}'.trim() : null;
 
@@ -19,4 +18,11 @@ class Address with _$Address {
         city,
         _streetWithHouseNumber,
       ].filterNotNull().join(', ');
+
+  @override
+  List<Object?> get props => [
+        city,
+        houseNumber,
+        street,
+      ];
 }

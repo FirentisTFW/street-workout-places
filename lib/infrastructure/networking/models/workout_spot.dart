@@ -3,22 +3,38 @@ import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/infrastructure/networking/models/surface.dart';
 import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'workout_spot.freezed.dart';
+class WorkoutSpot extends Equatable {
+  final Address? address;
+  final MapPosition? coordinates;
+  final String? description;
+  final List<Equipment?>? equipment;
+  final List<String?>? images;
+  final String? name;
+  final WorkoutSpotSize? size;
+  final Surface? surface;
 
-@freezed
-class WorkoutSpot with _$WorkoutSpot {
-  const factory WorkoutSpot({
-    Address? address,
-    MapPosition? coordinates,
-    String? description,
-    List<Equipment?>? equipment,
-    List<String?>? images,
-    String? name,
-    WorkoutSpotSize? size,
-    Surface? surface,
-  }) = _WorkoutSpot;
+  const WorkoutSpot({
+    this.address,
+    this.coordinates,
+    this.description,
+    this.equipment,
+    this.images,
+    this.name,
+    this.size,
+    this.surface,
+  });
 
-  const WorkoutSpot._();
+  @override
+  List<Object?> get props => [
+        address,
+        coordinates,
+        description,
+        equipment,
+        images,
+        name,
+        size,
+        surface,
+      ];
 }
