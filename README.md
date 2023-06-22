@@ -5,7 +5,7 @@ The project is still at an early stage of development.
 
 ## Architecture:
 Mobile: </br>
-The app is written in `Flutter` with `BLoC` as a state management solution. Models and blocs are generated using `Freezed` package.
+The app is written in `Flutter` with `BLoC` as a state management solution. The equality is checked with the help of `Equatable` package.
 
 Backend: </br>
 In the beginning all data will be stored using `Firebase`. The ultimate goal is to create a dedicated backend server for that.

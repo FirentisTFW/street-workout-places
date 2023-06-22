@@ -1,5 +1,4 @@
 - bloc and widget tests for the process of adding a new spot
 - home page
 - check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
-- migrate from freezed to equatable
 - geolocalization when adding a new spot ("use my location" feature)
