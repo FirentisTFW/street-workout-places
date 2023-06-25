@@ -8,6 +8,7 @@ import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/domain/models/page_tab_bar_button_data.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/map_clusters_service.dart';
+import 'package:app/domain/services/user_location_service.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/injector.dart';
 import 'package:app/presentation/pages/map_clusters/map_clusters_cubit.dart';
@@ -84,6 +85,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
                 mapClustersService: Injector().resolve<MapClustersService>(),
                 mapCoordinator: MapCoordinator.create(),
                 spotsCubit: spotsCubit,
+                userLocationService: UserLocationService(),
               ),
               child: BlocBuilder<SpotsCubit, SpotsState>(
                 builder: (_, state) => switch (state) {

@@ -20,6 +20,7 @@ class _Maps {
   final double defaultSearchDistance = 799.0;
   final double defaultZoom = 5.5;
   final double defaultZoomIncrementation = 2.0;
+  final double defaultPositionDirectZoom = 13.0;
   final double maxLocationZoom = 18.0;
   final double minLocationZoom = 5.0;
   final String openStreetMapTileUrlTemplate = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';

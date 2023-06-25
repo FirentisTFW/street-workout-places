@@ -1,13 +1,16 @@
 import 'package:app/application/blocs/spots/spots_cubit.dart';
+import 'package:app/application/blocs/spots/spots_presentation_event.dart';
 import 'package:app/domain/core/common/constants.dart';
 import 'package:app/domain/core/common/controllers/delayed_replacable_action_controller.dart';
 import 'package:app/domain/core/common/global_blocs_mixin.dart';
 import 'package:app/domain/core/common/root_navigator.dart';
 import 'package:app/domain/models/map_cluster_model.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/domain/models/zoom.dart';
 import 'package:app/presentation/pages/map_clusters/map_clusters_cubit.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_arguments.dart';
 import 'package:app/presentation/routing/dashboard_tabs/spots_routing.dart';
+import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,14 +41,23 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
 
   @override
   Widget build(BuildContext context) {
-    return _mapClustersCubit.mapCoordinator.buildMapWithSpots(
-      context,
-      clusters: widget.clusters,
-      mapEssentials: Constants.maps.essentials,
-      onPositionChanged: () => _maPositionReationController.replaceAction(_updateMapClusters),
-      onClusterPressed: _zoomIntoCluster,
-      onSpotPressed: _goToSpotDetails,
+    return BlocPresentationListener<SpotsCubit>(
+      listener: _onPresentationEvent,
+      child: _mapClustersCubit.mapCoordinator.buildMapWithSpots(
+        context,
+        clusters: widget.clusters,
+        mapEssentials: Constants.maps.essentials,
+        onPositionChanged: () => _maPositionReationController.replaceAction(_updateMapClusters),
+        onClusterPressed: _zoomIntoCluster,
+        onSpotPressed: _goToSpotDetails,
+      ),
     );
+  }
+
+  void _onPresentationEvent(BuildContext context, BlocPresentationEvent event) {
+    if (event is SortingSpotsInProgress) {
+      _mapClustersCubit.moveAndZoomMapToUserPosition();
+    }
   }
 
   void _updateMapClusters() {
@@ -60,7 +72,7 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin {
   void _zoomIntoCluster(MapClusterModel cluster) {
     _mapClustersCubit.mapCoordinator.zoomToPosition(
       position: cluster.coordinates,
-      zoomIncrementation: Constants.maps.defaultZoomIncrementation,
+      zoom: ZoomIncremental(Constants.maps.defaultZoomIncrementation),
     );
   }
 

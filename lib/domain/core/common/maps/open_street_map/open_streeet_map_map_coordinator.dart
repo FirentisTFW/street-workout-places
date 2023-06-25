@@ -6,6 +6,7 @@ import 'package:app/domain/models/map_bounds_model.dart';
 import 'package:app/domain/models/map_cluster_model.dart';
 import 'package:app/domain/models/map_essentials.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/domain/models/zoom.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/presentation/styles/app_dimensions.dart';
@@ -134,11 +135,16 @@ class OpenStreetMapMapCoordinator implements MapCoordinator {
   @override
   void zoomToPosition({
     required MapPosition position,
-    required double zoomIncrementation,
+    required Zoom zoom,
   }) {
     final LatLng? latLng = position.maybeMapToLatLng();
     if (latLng == null) return;
-    _mapController.move(latLng, _mapController.zoom + zoomIncrementation);
+    switch (zoom) {
+      case final ZoomDirect zoom:
+        _mapController.move(latLng, zoom.value);
+      case final ZoomIncremental zoom:
+        _mapController.move(latLng, _mapController.zoom + zoom.value);
+    }
   }
 
   Marker? _maybePrepareSpotMarker({

@@ -49,6 +49,7 @@ void main() {
       );
       final MapClustersService mapClustersService = MockMapClustersService();
       final MapCoordinator mapCoordinator = MockMapCoordinator();
+
       test(
           'When SpotsCubit emits new state with filtered spots, MapClustersService.createClustersForSpots() method is called',
           () async {
@@ -66,6 +67,7 @@ void main() {
           mapClustersService: mapClustersService,
           spotsCubit: spotsCubit,
           mapCoordinator: mapCoordinator,
+          userLocationService: UserLocationService(),
         );
         spotsCubit.emit(
           SpotsFetchSuccess(

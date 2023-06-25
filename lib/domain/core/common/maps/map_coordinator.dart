@@ -3,6 +3,7 @@ import 'package:app/domain/models/map_bounds_model.dart';
 import 'package:app/domain/models/map_cluster_model.dart';
 import 'package:app/domain/models/map_essentials.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/domain/models/zoom.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,6 @@ abstract interface class MapCoordinator {
 
   void zoomToPosition({
     required MapPosition position,
-    required double zoomIncrementation,
+    required Zoom zoom,
   });
 }

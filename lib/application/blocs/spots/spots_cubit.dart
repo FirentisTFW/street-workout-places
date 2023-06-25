@@ -92,6 +92,8 @@ class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
     final MapPosition? userLocation = await userLocationService.location;
     if (userLocation == null) return;
 
+    emitPresentation(const SortingSpotsInProgress());
+
     final List<WorkoutSpotModel> spotsWithDistanceFromUser =
         entryState.spots.withCalculatedDistanceFromUser(userLocation)..sortByDistanceFromUser();
     final List<WorkoutSpotModel> filteredSpotsWithDistanceFromUser =

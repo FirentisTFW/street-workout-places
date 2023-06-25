@@ -7,3 +7,7 @@ sealed class SpotsPresentationEvent implements BlocPresentationEvent {
 final class SortingSpotsMissingLocationPermission extends SpotsPresentationEvent {
   const SortingSpotsMissingLocationPermission();
 }
+
+final class SortingSpotsInProgress extends SpotsPresentationEvent {
+  const SortingSpotsInProgress();
+}
