@@ -83,6 +83,8 @@ class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
     final SpotsState entryState = state;
     if (entryState is! SpotsFetchSuccess) return;
 
+    // FIXME Show dialog to the user before asking for location ("Do you want to display spots closest to you?")
+
     final bool hasLocationPermission = await userLocationService.checkAndRequestLocationPermissions();
     if (!hasLocationPermission) {
       emitPresentation(const SortingSpotsMissingLocationPermission());
