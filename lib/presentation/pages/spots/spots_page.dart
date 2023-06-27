@@ -142,17 +142,13 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Builder(
-            builder: (context) {
-              return FloatingActionButton(
-                heroTag: null,
-                onPressed: () => _showSortSpotsByLocationDialog(context),
-                child: Icon(
-                  Icons.gps_fixed,
-                  size: AppDimensions.size.floatingActionButtonIcon,
-                ),
-              );
-            },
+          FloatingActionButton(
+            heroTag: null,
+            onPressed: _showSortSpotsByLocationDialog,
+            child: Icon(
+              Icons.gps_fixed,
+              size: AppDimensions.size.floatingActionButtonIcon,
+            ),
           ),
           const Space.vertical(10.0),
           _buildFiltersButton(),
@@ -282,7 +278,7 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
     );
   }
 
-  void _showSortSpotsByLocationDialog(BuildContext context) {
+  void _showSortSpotsByLocationDialog() {
     AlertDialogUtils.show(
       context,
       message: S.of(context).sortSpotsByLocationDialogMessage,
