@@ -11,7 +11,7 @@ enum DashboardTab {
     initialRoute: FormRouting.start,
   ),
   home(
-    icon: Icons.home,
+    icon: Icons.home_outlined,
     initialRoute: HomeRouting.home,
   ),
   more(
