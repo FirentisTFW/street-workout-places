@@ -120,12 +120,13 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         AlertDialogUtils.buildAction(
           onPressed: () async {
             await AppSettings.openLocationSettings();
+            if (mounted) RootNavigator.of(context).pop();
             bloc.sortByDistanceFromUser();
           },
           text: S.of(context).filtersMissingLocationPermissionDialogSettingsButton,
         ),
         AlertDialogUtils.buildAction(
-          onPressed: () => Navigator.pop(context),
+          onPressed: RootNavigator.of(context).pop,
           text: S.of(context).cancel,
         ),
       ],
@@ -141,13 +142,17 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          FloatingActionButton(
-            heroTag: null,
-            onPressed: spotsCubit.sortByDistanceFromUser,
-            child: Icon(
-              Icons.gps_fixed,
-              size: AppDimensions.size.floatingActionButtonIcon,
-            ),
+          Builder(
+            builder: (context) {
+              return FloatingActionButton(
+                heroTag: null,
+                onPressed: () => _showSortSpotsByLocationDialog(context),
+                child: Icon(
+                  Icons.gps_fixed,
+                  size: AppDimensions.size.floatingActionButtonIcon,
+                ),
+              );
+            },
           ),
           const Space.vertical(10.0),
           _buildFiltersButton(),
@@ -274,6 +279,27 @@ class _SpotsPageState extends BlocPageState<SpotsPage, SpotsCubit> {
     return SpotList(
       spots: spots,
       onSpotPressed: _goToSpotDetails,
+    );
+  }
+
+  void _showSortSpotsByLocationDialog(BuildContext context) {
+    AlertDialogUtils.show(
+      context,
+      message: S.of(context).sortSpotsByLocationDialogMessage,
+      title: S.of(context).sortSpotsByLocationDialogTitle,
+      actions: [
+        AlertDialogUtils.buildAction(
+          onPressed: RootNavigator.of(context).pop,
+          text: S.of(context).cancel,
+        ),
+        AlertDialogUtils.buildAction(
+          onPressed: () {
+            RootNavigator.of(context).pop();
+            bloc.sortByDistanceFromUser();
+          },
+          text: S.of(context).yes,
+        ),
+      ],
     );
   }
 

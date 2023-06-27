@@ -780,10 +780,10 @@ class S {
     );
   }
 
-  /// `Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.`
+  /// `Aby filtrować punkty na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.`
   String get filtersMissingLocationPermissionDialogMessage {
     return Intl.message(
-      'Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.',
+      'Aby filtrować punkty na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.',
       name: 'filtersMissingLocationPermissionDialogMessage',
       desc: '',
       args: [],
@@ -837,6 +837,36 @@ class S {
     return Intl.message(
       'Anuluj',
       name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tak`
+  String get yes {
+    return Intl.message(
+      'Tak',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Czy chcesz pokazać najbliższe punkty?`
+  String get sortSpotsByLocationDialogMessage {
+    return Intl.message(
+      'Czy chcesz pokazać najbliższe punkty?',
+      name: 'sortSpotsByLocationDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Najbliższe punkty`
+  String get sortSpotsByLocationDialogTitle {
+    return Intl.message(
+      'Najbliższe punkty',
+      name: 'sortSpotsByLocationDialogTitle',
       desc: '',
       args: [],
     );

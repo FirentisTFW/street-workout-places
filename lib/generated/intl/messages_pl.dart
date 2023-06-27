@@ -73,7 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość (w km)"),
         "filtersMissingLocationPermissionDialogMessage":
             MessageLookupByLibrary.simpleMessage(
-                "Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji."),
+                "Aby filtrować punkty na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji."),
         "filtersMissingLocationPermissionDialogSettingsButton":
             MessageLookupByLibrary.simpleMessage("Ustawienia lokalizacji"),
         "filtersMissingLocationPermissionDialogTitle":
@@ -140,6 +140,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Prześlij"),
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
         "sizeSelected": m1,
+        "sortSpotsByLocationDialogMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Czy chcesz pokazać najbliższe punkty?"),
+        "sortSpotsByLocationDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Najbliższe punkty"),
         "spotListCellDistanceFromUserInKm": m2,
         "spotsListTabBarButtonTitle":
             MessageLookupByLibrary.simpleMessage("Lista"),
@@ -164,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "workoutSpotSizeDescriptionMedium":
             MessageLookupByLibrary.simpleMessage("Średni"),
         "workoutSpotSizeDescriptionSmall":
-            MessageLookupByLibrary.simpleMessage("Mały")
+            MessageLookupByLibrary.simpleMessage("Mały"),
+        "yes": MessageLookupByLibrary.simpleMessage("Tak")
       };
 }

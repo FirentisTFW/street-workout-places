@@ -86,10 +86,13 @@
   "filtersFilterButtonTitle": "Filtruj",
   "filtersClearButtonTitle": "Wyczyść",
   "noUserPositionProvidedForFiltersErrorMessage": "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika.",
-  "filtersMissingLocationPermissionDialogMessage": "Aby filtrować place na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.",
+  "filtersMissingLocationPermissionDialogMessage": "Aby filtrować punkty na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji.",
   "filtersMissingLocationPermissionDialogTitle": "Brak dostępu do lokalizacji",
   "filtersMissingLocationPermissionDialogSettingsButton": "Ustawienia lokalizacji",
   "filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton": "Filtruj bez odległości",
   "spotListCellDistanceFromUserInKm": "{distance} km",
-  "cancel": "Anuluj"
+  "cancel": "Anuluj",
+  "yes": "Tak",
+  "sortSpotsByLocationDialogMessage": "Czy chcesz pokazać najbliższe punkty?",
+  "sortSpotsByLocationDialogTitle": "Najbliższe punkty"
 }
