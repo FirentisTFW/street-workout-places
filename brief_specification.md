@@ -9,9 +9,10 @@
 8. Image gallery
 
 ## 1. HOME
-- list of spots near user (press a button to get user location and get spots near)
-- list of equipment (navigate to filters page?)
-- recently added spots/reviews (?)
+- map with user location and spots near and list of those spots (press a button to get user location and get spots near),
+    we can put some placeholders here to show what it'll look like when user allows access for the location
+- recently added spots and reviews
+- spots counter (?)
 
 ## 2. MAP WITH PINS 
 - map with location pins
