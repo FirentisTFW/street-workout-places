@@ -4,8 +4,6 @@ import 'package:app/domain/core/utils/map_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
-import 'package:app/infrastructure/networking/models/surface.dart';
-import 'package:app/infrastructure/networking/models/workout_spot_size.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
 import 'package:app/presentation/pages/spot_details/widgets/spot_details_image_slider.dart';
 import 'package:app/presentation/styles/app_colors.dart';
@@ -130,41 +128,60 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
   }
 
   Widget _buildSizeAndSurface(WorkoutSpotModel spot) {
-    final WorkoutSpotSize? size = spot.size;
-    final Surface? surface = spot.surface;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (size != null)
+        if (spot.size case final size?)
           InformationWithTitle(
             value: size.getDescription(S.of(context)),
             title: S.of(context).size,
           ),
-        const Space.vertical(8.0),
-        if (surface != null)
+        if (spot.surface case final surface?)
           InformationWithTitle(
             value: surface.getDescription(S.of(context)),
             title: S.of(context).surface,
           ),
-      ],
+      ].separatedBy(
+        const Space.vertical(8.0),
+      ),
     );
   }
 
   Widget _buildDescription(WorkoutSpotModel spot) {
-    return Text(
-      spot.description.orEmpty(),
-      style: AppTextStyles.contentMultiline(),
+    return _buildContentSection(
+      title: S.of(context).description,
+      description: spot.description.orEmpty(),
     );
   }
 
   Widget _buildEquipment(WorkoutSpotModel spot) {
-    return Text(
-      spot.getEquipmentDescription(
+    return _buildContentSection(
+      title: S.of(context).equipment,
+      description: spot.getEquipmentDescription(
         context,
         multiline: true,
       ),
-      style: AppTextStyles.contentMultiline(),
+    );
+  }
+
+  Widget _buildContentSection({
+    required String title,
+    required String description,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: AppTextStyles.titleSmall(),
+        ),
+        const Space.vertical(6.0),
+        Text(
+          description,
+          style: AppTextStyles.contentMultiline(),
+        ),
+      ],
     );
   }
 
