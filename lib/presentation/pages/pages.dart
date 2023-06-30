@@ -11,6 +11,8 @@ import 'package:app/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:app/presentation/pages/filters/filters_page.dart';
 import 'package:app/presentation/pages/home/home_cubit.dart';
 import 'package:app/presentation/pages/home/home_page.dart';
+import 'package:app/presentation/pages/image_gallery/image_gallery_page.dart';
+import 'package:app/presentation/pages/image_gallery/image_gallery_page_arguments.dart';
 import 'package:app/presentation/pages/more/more_cubit.dart';
 import 'package:app/presentation/pages/more/more_page.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
@@ -47,6 +49,12 @@ abstract class Pages {
     return BlocProvider<HomeCubit>(
       create: (_) => HomeCubit(),
       child: const HomePage(),
+    );
+  }
+
+  static Widget imageGallery(dynamic arguments) {
+    return ImageGalleryPage(
+      arguments: arguments as ImageGalleryPageArguments,
     );
   }
 

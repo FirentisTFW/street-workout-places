@@ -3,17 +3,19 @@ import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final String? title;
 
   @override
   Size get preferredSize => const Size(double.infinity, kToolbarHeight);
 
   const AppAppBar({
-    required this.title,
+    this.title,
   });
 
   @override
   Widget build(BuildContext context) {
+    final title = this.title;
+
     return AppBar(
       backgroundColor: AppColors.white,
       centerTitle: true,
@@ -26,10 +28,12 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
           size: 30.0,
         ),
       ),
-      title: Text(
-        title,
-        style: AppTextStyles.appBar(),
-      ),
+      title: title != null
+          ? Text(
+              title,
+              style: AppTextStyles.appBar(),
+            )
+          : null,
     );
   }
 }

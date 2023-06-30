@@ -26,6 +26,7 @@ dependencies:
   image_picker: ^0.8.7+4
   latlong2: ^0.8.1
   map_launcher: ^2.4.0
+  photo_view: ^0.14.0
 
 dev_dependencies:
   bloc_presentation_test: ^0.1.1

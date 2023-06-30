@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class SpotsRouting {
   static const String _prefix = 'spots';
   static const String filters = '$_prefix/filters';
+  static const String imageGallery = '$_prefix/image_gallery';
   static const String spotDetails = '$_prefix/spot_details';
   static const String spots = '$_prefix/main';
 
@@ -25,6 +26,8 @@ class SpotsRouting {
     switch (settings.name) {
       case filters:
         return Pages.filters();
+      case imageGallery:
+        return Pages.imageGallery(settings.arguments);
       case spotDetails:
         return Pages.spotDetails(settings.arguments);
       case spots:
