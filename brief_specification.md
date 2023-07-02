@@ -4,7 +4,7 @@
 3. List of locations
 4. Spot details
 5. Add spot form
-6. Contact/Help
+6. More (contact, help)
 7. Search and filter spots
 8. Image gallery
 
@@ -53,7 +53,7 @@
 ### NEW SPOT FORM 3
 - images - at least one required, possibility to select main image
 
-## 6. CONTACT/HELP
+## 6. MORE
 - basic contact and legal information
 - faq
 
