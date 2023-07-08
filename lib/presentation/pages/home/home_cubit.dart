@@ -12,7 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(const HomeFetchInProgress());
 
-      // FIXME Perform API call
+      // FIXME Perform API calls
 
       emit(
         const HomeFetchSuccess(
