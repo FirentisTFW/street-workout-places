@@ -24,17 +24,7 @@ class _SpotDetailsImageSliderState extends State<SpotDetailsImageSlider> {
       alignment: Alignment.bottomCenter,
       children: [
         GestureDetector(
-          // FIXME Clean up
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              SpotsRouting.imageGallery,
-              arguments: ImageGalleryPageArguments(
-                images: widget.images,
-                intiallySelectedImage: widget.images[_currentPageIndexNotifier.value],
-              ),
-            );
-          },
+          onTap: _goToImageGallery,
           child: SizedBox(
             height: 250.0,
             width: MediaQuery.of(context).size.width,
@@ -54,6 +44,17 @@ class _SpotDetailsImageSliderState extends State<SpotDetailsImageSlider> {
           pageCount: widget.images.length,
         ),
       ],
+    );
+  }
+
+  void _goToImageGallery() {
+    Navigator.pushNamed(
+      context,
+      SpotsRouting.imageGallery,
+      arguments: ImageGalleryPageArguments(
+        images: widget.images,
+        intiallySelectedImage: widget.images[_currentPageIndexNotifier.value],
+      ),
     );
   }
 }
