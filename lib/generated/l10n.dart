@@ -871,6 +871,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Ostatnio dodane miejsca`
+  String get recentlyAddedSpotsHomeSectionTitle {
+    return Intl.message(
+      'Ostatnio dodane miejsca',
+      name: 'recentlyAddedSpotsHomeSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

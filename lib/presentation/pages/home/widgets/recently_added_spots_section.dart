@@ -33,8 +33,7 @@ class RecentlyAddedSpotsHomeSectionWidget extends StatelessWidget {
         horizontal: 16.0,
       ),
       child: Text(
-        // FIXME Localize
-        'Ostatnio dodane miejsca',
+        s.recentlyAddedSpotsHomeSectionTitle,
         style: AppTextStyles.titleBig(),
       ),
     );

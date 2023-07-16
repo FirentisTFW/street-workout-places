@@ -133,6 +133,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Należy wybrać lokalizację punktu na mapie"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "recentlyAddedSpotsHomeSectionTitle":
+            MessageLookupByLibrary.simpleMessage("Ostatnio dodane miejsca"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "selectLocationOnMapDescription": MessageLookupByLibrary.simpleMessage(

@@ -94,5 +94,6 @@
   "cancel": "Anuluj",
   "yes": "Tak",
   "sortSpotsByLocationDialogMessage": "Czy chcesz pokazać najbliższe punkty?",
-  "sortSpotsByLocationDialogTitle": "Najbliższe punkty"
+  "sortSpotsByLocationDialogTitle": "Najbliższe punkty",
+  "recentlyAddedSpotsHomeSectionTitle": "Ostatnio dodane miejsca"
 }
