@@ -1,4 +1,6 @@
+import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
+import 'package:app/domain/core/mappers/mappers.dart';
 import 'package:app/presentation/pages/home/home_section.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,13 +14,17 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(const HomeFetchInProgress());
 
-      // FIXME Perform API calls
+      // FIXME Perform API calls and remove mocks
 
       emit(
-        const HomeFetchSuccess(
+        HomeFetchSuccess(
           sections: [
-            RecentlyAddedSpotsHomeSection(spots: []),
-            SpotsClosestToUserHomeSection(spots: []),
+            RecentlyAddedSpotsHomeSection(
+              spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
+            ),
+            SpotsClosestToUserHomeSection(
+              spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
+            ),
           ],
         ),
       );
