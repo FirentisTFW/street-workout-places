@@ -95,5 +95,7 @@
   "yes": "Tak",
   "sortSpotsByLocationDialogMessage": "Czy chcesz pokazać najbliższe punkty?",
   "sortSpotsByLocationDialogTitle": "Najbliższe punkty",
-  "recentlyAddedSpotsHomeSectionTitle": "Ostatnio dodane miejsca"
+  "recentlyAddedSpotsHomeSectionTitle": "Ostatnio dodane miejsca",
+  "spotsClosestToUserHomeSectionTitle": "Najbliższe miejsca",
+  "spotsClosestToUserHomeSectionMapPlaceholderTitle": "Chcesz zobaczyć najbliższe miejsca na mapie?\\nKliknij tutaj."
 }

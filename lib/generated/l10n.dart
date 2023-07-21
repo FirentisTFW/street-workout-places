@@ -881,6 +881,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Najbliższe miejsca`
+  String get spotsClosestToUserHomeSectionTitle {
+    return Intl.message(
+      'Najbliższe miejsca',
+      name: 'spotsClosestToUserHomeSectionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj.`
+  String get spotsClosestToUserHomeSectionMapPlaceholderTitle {
+    return Intl.message(
+      'Chcesz zobaczyć najbliższe miejsca na mapie?\\nKliknij tutaj.',
+      name: 'spotsClosestToUserHomeSectionMapPlaceholderTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

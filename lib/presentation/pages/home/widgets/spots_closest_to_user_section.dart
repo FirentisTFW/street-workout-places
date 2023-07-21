@@ -22,7 +22,7 @@ class SpotsClosestToUserHomeSectionWidget extends StatelessWidget {
       children: [
         _buildTitle(S.of(context)),
         const Space.vertical(10.0),
-        // FIXME Show placeholder only when there's no location permission
+        // FIXME Show placeholder only when there's no location permission (take it from bloc)
         _buildMapPlaceholder(context),
       ],
     );
@@ -34,7 +34,7 @@ class SpotsClosestToUserHomeSectionWidget extends StatelessWidget {
         horizontal: 16.0,
       ),
       child: Text(
-        'Najbliższe miejsca',
+        s.spotsClosestToUserHomeSectionTitle,
         style: AppTextStyles.titleBig(),
       ),
     );
@@ -43,7 +43,7 @@ class SpotsClosestToUserHomeSectionWidget extends StatelessWidget {
   Widget _buildMapPlaceholder(BuildContext context) {
     return _MapPlaceholder(
       onPressed: () {
-        // FIXME Implement
+        // FIXME Implement - ask for user location and show spots near (create a bloc for it)
         AlertDialogUtils.showContentUnavailable(context);
       },
     );
@@ -69,7 +69,7 @@ class _MapPlaceholder extends StatelessWidget {
           children: [
             _buildMapImage(),
             _buildOverlay(),
-            _buildText(),
+            _buildText(S.of(context)),
           ],
         ),
       ),
@@ -107,13 +107,13 @@ class _MapPlaceholder extends StatelessWidget {
     );
   }
 
-  Widget _buildText() {
-    return const IgnorePointer(
+  Widget _buildText(S s) {
+    return IgnorePointer(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Text(
-          'Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj.',
-          style: TextStyle(
+          s.spotsClosestToUserHomeSectionMapPlaceholderTitle,
+          style: const TextStyle(
             fontSize: 18.0,
             height: 1.4,
             fontWeight: FontWeight.normal,
