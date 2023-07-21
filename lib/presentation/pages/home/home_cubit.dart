@@ -19,10 +19,10 @@ class HomeCubit extends Cubit<HomeState> {
       emit(
         HomeFetchSuccess(
           sections: [
-            RecentlyAddedSpotsHomeSection(
+            SpotsClosestToUserHomeSection(
               spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
             ),
-            SpotsClosestToUserHomeSection(
+            RecentlyAddedSpotsHomeSection(
               spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
             ),
           ],
