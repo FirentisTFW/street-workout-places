@@ -19,9 +19,8 @@ class HomeCubit extends Cubit<HomeState> {
       emit(
         HomeFetchSuccess(
           sections: [
-            SpotsClosestToUserHomeSection(
-              spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
-            ),
+            const SpotsClosestToUserHomeSection(),
+            // FIXME Create a cubit for it and fetch spots there
             RecentlyAddedSpotsHomeSection(
               spots: WorkoutSpotMocks.spots.mapToWorkoutSpotModels(),
             ),

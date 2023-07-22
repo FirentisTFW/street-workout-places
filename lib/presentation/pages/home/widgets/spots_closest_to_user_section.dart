@@ -1,7 +1,6 @@
 import 'package:app/domain/core/common/app_images.dart';
 import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/generated/l10n.dart';
-import 'package:app/presentation/pages/home/home_section.dart';
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
@@ -11,9 +10,7 @@ import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/widgets.dart';
 
 class SpotsClosestToUserHomeSectionWidget extends StatelessWidget {
-  final SpotsClosestToUserHomeSection section;
-
-  const SpotsClosestToUserHomeSectionWidget(this.section);
+  const SpotsClosestToUserHomeSectionWidget();
 
   @override
   Widget build(BuildContext context) {

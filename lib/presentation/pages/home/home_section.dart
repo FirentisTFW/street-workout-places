@@ -19,14 +19,8 @@ final class RecentlyAddedSpotsHomeSection extends HomeSection {
 }
 
 final class SpotsClosestToUserHomeSection extends HomeSection {
-  final List<WorkoutSpotModel> spots;
-
-  const SpotsClosestToUserHomeSection({
-    required this.spots,
-  });
+  const SpotsClosestToUserHomeSection();
 
   @override
-  List<Object?> get props => [
-        spots,
-      ];
+  List<Object?> get props => [];
 }
