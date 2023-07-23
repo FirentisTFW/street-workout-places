@@ -46,7 +46,7 @@ class _HomePageState extends BlocPageState<HomePage, HomeCubit> {
 
   Widget _buildLoadedBody(HomeFetchSuccess state) {
     return ListView.separated(
-      itemBuilder: (_, index) => HomeWidgetFactory.widgetFromSection(state.sections[index]),
+      itemBuilder: (_, index) => HomeWidgetFactory.widgetFromSection(context, state.sections[index]),
       itemCount: state.sections.length,
       padding: AppPadding.defaultVertical,
       separatorBuilder: (_, __) => const Space.vertical(10.0),

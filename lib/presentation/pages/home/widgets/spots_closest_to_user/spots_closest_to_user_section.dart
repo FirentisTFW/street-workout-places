@@ -1,6 +1,8 @@
 import 'package:app/domain/core/common/app_images.dart';
+import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/generated/l10n.dart';
+import 'package:app/presentation/pages/home/widgets/spots_closest_to_user/cubit/spots_closest_to_user_cubit.dart';
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
@@ -9,8 +11,20 @@ import 'package:app/presentation/widgets/adaptive_button.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/widgets.dart';
 
-class SpotsClosestToUserHomeSectionWidget extends StatelessWidget {
+class SpotsClosestToUserHomeSectionWidget extends StatefulWidget {
   const SpotsClosestToUserHomeSectionWidget();
+
+  @override
+  State<SpotsClosestToUserHomeSectionWidget> createState() => _SpotsClosestToUserHomeSectionWidgetState();
+}
+
+class _SpotsClosestToUserHomeSectionWidgetState
+    extends BlocPageState<SpotsClosestToUserHomeSectionWidget, SpotsClosestToUserCubit> {
+  @override
+  void initState() {
+    super.initState();
+    bloc.checkPermissionAndFetchSpots();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +33,7 @@ class SpotsClosestToUserHomeSectionWidget extends StatelessWidget {
       children: [
         _buildTitle(S.of(context)),
         const Space.vertical(10.0),
-        // FIXME Show placeholder only when there's no location permission (take it from bloc)
+        // FIXME Handle all cubit states, show placeholder only when there's no location permission (take it from bloc)
         _buildMapPlaceholder(context),
       ],
     );

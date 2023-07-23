@@ -2,6 +2,11 @@ import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:geolocator/geolocator.dart';
 
 class UserLocationService {
+  Future<bool> get hasPermission async {
+    final LocationPermission permission = await Geolocator.checkPermission();
+    return permission == LocationPermission.whileInUse || permission == LocationPermission.always;
+  }
+
   Future<MapPosition?> get location async {
     try {
       final Position position = await Geolocator.getCurrentPosition();

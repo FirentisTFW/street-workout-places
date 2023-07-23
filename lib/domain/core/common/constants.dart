@@ -47,4 +47,5 @@ class _Search {
 class _Spots {
   final int newSpotMinImageCount = 2;
   final int newSpotMaxImageCount = 8;
+  final double spotsClosestToUserDistanceInKm = 30.0;
 }

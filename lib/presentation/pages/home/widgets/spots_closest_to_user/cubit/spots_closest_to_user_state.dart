@@ -11,8 +11,8 @@ final class SpotsClosestToUserInProgress extends SpotsClosestToUserState {
   const SpotsClosestToUserInProgress();
 }
 
-final class SpotsClosestToUserNoPermission extends SpotsClosestToUserState {
-  const SpotsClosestToUserNoPermission();
+final class SpotsClosestToUserNoLocationPermission extends SpotsClosestToUserState {
+  const SpotsClosestToUserNoLocationPermission();
 }
 
 final class SpotsClosestToUserFetchSuccessful extends SpotsClosestToUserState {
@@ -27,4 +27,8 @@ final class SpotsClosestToUserFetchSuccessful extends SpotsClosestToUserState {
         ...super.props,
         spots,
       ];
+}
+
+final class SpotsClosestToUserFetchFailure extends SpotsClosestToUserState {
+  const SpotsClosestToUserFetchFailure();
 }
