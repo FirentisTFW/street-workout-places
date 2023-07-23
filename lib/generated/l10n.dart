@@ -895,7 +895,7 @@ class S {
   /// `Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj.`
   String get spotsClosestToUserHomeSectionMapPlaceholderTitle {
     return Intl.message(
-      'Chcesz zobaczyć najbliższe miejsca na mapie?\\nKliknij tutaj.',
+      'Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj.',
       name: 'spotsClosestToUserHomeSectionMapPlaceholderTitle',
       desc: '',
       args: [],

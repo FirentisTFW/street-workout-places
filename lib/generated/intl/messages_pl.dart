@@ -150,7 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "spotListCellDistanceFromUserInKm": m2,
         "spotsClosestToUserHomeSectionMapPlaceholderTitle":
             MessageLookupByLibrary.simpleMessage(
-                "Chcesz zobaczyć najbliższe miejsca na mapie?\\nKliknij tutaj."),
+                "Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj."),
         "spotsClosestToUserHomeSectionTitle":
             MessageLookupByLibrary.simpleMessage("Najbliższe miejsca"),
         "spotsListTabBarButtonTitle":
