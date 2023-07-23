@@ -24,7 +24,7 @@ class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
   final SpotsFilteringService spotsFilteringService;
   final UserLocationService userLocationService;
 
-  late final StreamSubscription _filtersStream;
+  late final StreamSubscription _filtersStreamSubscription;
 
   SpotsCubit({
     required this.filtersCubit,
@@ -32,12 +32,12 @@ class SpotsCubit extends Cubit<SpotsState> with BlocPresentationMixin {
     required this.spotsFilteringService,
     required this.userLocationService,
   }) : super(const SpotsInitial()) {
-    _filtersStream = filtersCubit.stream.listen(_onFiltersUpdated);
+    _filtersStreamSubscription = filtersCubit.stream.listen(_onFiltersUpdated);
   }
 
   @override
   Future<void> close() {
-    _filtersStream.cancel();
+    _filtersStreamSubscription.cancel();
     return super.close();
   }
 
