@@ -1,6 +1,5 @@
 import 'package:app/domain/core/common/app_images.dart';
 import 'package:app/domain/core/common/bloc_page_state.dart';
-import 'package:app/domain/core/utils/alert_dialog_utils.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/pages/home/widgets/spots_closest_to_user/cubit/spots_closest_to_user_cubit.dart';
 import 'package:app/presentation/styles/app_colors.dart';
@@ -8,8 +7,10 @@ import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/adaptive_button.dart';
+import 'package:app/presentation/widgets/app_progress_indicator.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SpotsClosestToUserHomeSectionWidget extends StatefulWidget {
   const SpotsClosestToUserHomeSectionWidget();
@@ -33,8 +34,26 @@ class _SpotsClosestToUserHomeSectionWidgetState
       children: [
         _buildTitle(S.of(context)),
         const Space.vertical(10.0),
-        // FIXME Handle all cubit states, show placeholder only when there's no location permission (take it from bloc)
-        _buildMapPlaceholder(context),
+        BlocBuilder<SpotsClosestToUserCubit, SpotsClosestToUserState>(
+          builder: (_, state) {
+            return switch (state) {
+              // FIXME Build spots on the map
+              SpotsClosestToUserFetchSuccessful(:final spots) => const SizedBox.shrink(),
+              final SpotsClosestToUserInProgress _ => const _MapPlaceholder(
+                  isLoading: true,
+                ),
+              // FIXME Consider different message for failure and no permission
+              final SpotsClosestToUserFetchFailure _ => _MapPlaceholder(
+                  isLoading: false,
+                  onPressed: bloc.fetchSpots,
+                ),
+              final SpotsClosestToUserNoLocationPermission _ => _MapPlaceholder(
+                  isLoading: false,
+                  onPressed: bloc.requestLocationPermissionAndFetchSpots,
+                ),
+            };
+          },
+        ),
       ],
     );
   }
@@ -50,23 +69,16 @@ class _SpotsClosestToUserHomeSectionWidgetState
       ),
     );
   }
-
-  Widget _buildMapPlaceholder(BuildContext context) {
-    return _MapPlaceholder(
-      onPressed: () {
-        // FIXME Implement - ask for user location and show spots near (create a bloc for it)
-        AlertDialogUtils.showContentUnavailable(context);
-      },
-    );
-  }
 }
 
 class _MapPlaceholder extends StatelessWidget {
   const _MapPlaceholder({
-    required this.onPressed,
+    required this.isLoading,
+    this.onPressed,
   });
 
-  final VoidCallback onPressed;
+  final bool isLoading;
+  final VoidCallback? onPressed;
 
   BorderRadius get _mapBorderRadius => BorderRadius.circular(AppDimensions.borderRadius.basic);
 
@@ -80,7 +92,7 @@ class _MapPlaceholder extends StatelessWidget {
           children: [
             _buildMapImage(),
             _buildOverlay(),
-            _buildText(S.of(context)),
+            if (isLoading) _buildLoader() else _buildText(S.of(context)),
           ],
         ),
       ),
@@ -107,15 +119,27 @@ class _MapPlaceholder extends StatelessWidget {
   }
 
   Widget _buildOverlay() {
-    return AdaptiveButton(
-      onPressed: onPressed,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: _mapBorderRadius,
-        color: AppColors.white.withAlpha(120),
-      ),
-      child: const SizedBox.expand(),
+    final decoration = BoxDecoration(
+      borderRadius: _mapBorderRadius,
+      color: AppColors.white.withAlpha(120),
     );
+
+    if (onPressed case final onPressed?) {
+      return AdaptiveButton(
+        onPressed: onPressed,
+        height: double.infinity,
+        decoration: decoration,
+        child: const SizedBox.expand(),
+      );
+    }
+
+    return Container(
+      decoration: decoration,
+    );
+  }
+
+  Widget _buildLoader() {
+    return const AppProgressIndicator();
   }
 
   Widget _buildText(S s) {

@@ -24,6 +24,8 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
   }) : super(const SpotsClosestToUserInProgress());
 
   Future<void> checkPermissionAndFetchSpots() async {
+    emit(const SpotsClosestToUserInProgress());
+
     final bool hasLocationPermission = await userLocationService.hasPermission;
 
     if (hasLocationPermission) {
@@ -33,7 +35,17 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
     }
   }
 
+  Future<void> requestLocationPermissionAndFetchSpots() async {
+    final bool hasLocationPermission = await userLocationService.checkAndRequestLocationPermissions();
+
+    if (hasLocationPermission) {
+      fetchSpots();
+    }
+  }
+
   Future<void> fetchSpots() async {
+    emit(const SpotsClosestToUserInProgress());
+
     final MapPosition? userLocation = await userLocationService.location;
 
     if (userLocation == null) {

@@ -15,7 +15,7 @@ class AppProgressIndicator extends StatelessWidget {
     return Center(
       child: CircularProgressIndicator(
         strokeWidth: strokeWidth,
-        valueColor: AlwaysStoppedAnimation<Color>(color ?? AppColors.black),
+        valueColor: AlwaysStoppedAnimation<Color>(color ?? AppColors.blue),
       ),
     );
   }
