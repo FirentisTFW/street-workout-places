@@ -18,10 +18,6 @@ class MapEssentials extends Equatable {
     required this.zoom,
   });
 
-  MapEssentials updateZoom(double newZoom) => copyWith(
-        zoom: newZoom,
-      );
-
   @override
   List<Object?> get props => [
         initialCoordinates,
