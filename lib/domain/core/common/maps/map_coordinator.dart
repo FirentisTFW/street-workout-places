@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 abstract interface class MapCoordinator {
   const MapCoordinator();
 
-  static MapCoordinator create() => OpenStreetMapMapCoordinator();
+  factory MapCoordinator.create() => OpenStreetMapMapCoordinator();
 
   MapBoundsModel? get bounds;
 
