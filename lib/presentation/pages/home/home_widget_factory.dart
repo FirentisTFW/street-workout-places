@@ -1,4 +1,5 @@
 import 'package:app/application/blocs/spots/spots_cubit.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
 import 'package:app/domain/services/user_location_service.dart';
 import 'package:app/presentation/pages/home/home_section.dart';
@@ -17,6 +18,7 @@ abstract final class HomeWidgetFactory {
       final SpotsClosestToUserHomeSection _ => BlocProvider(
           create: (_) => SpotsClosestToUserCubit(
             filteringService: SpotsFilteringService(),
+            mapCoordinator: MapCoordinator.create(),
             spotsCubit: BlocProvider.of<SpotsCubit>(context),
             userLocationService: UserLocationService(),
           ),

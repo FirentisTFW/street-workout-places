@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/constants.dart';
+import 'package:app/domain/core/common/maps/map_coordinator.dart';
+import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
 import 'package:app/domain/models/filters.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
@@ -14,11 +16,13 @@ part 'spots_closest_to_user_state.dart';
 
 class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
   final SpotsFilteringService filteringService;
+  final MapCoordinator mapCoordinator;
   final SpotsCubit spotsCubit;
   final UserLocationService userLocationService;
 
   SpotsClosestToUserCubit({
     required this.filteringService,
+    required this.mapCoordinator,
     required this.spotsCubit,
     required this.userLocationService,
   }) : super(const SpotsClosestToUserInProgress());
@@ -46,7 +50,8 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
   Future<void> fetchSpots() async {
     emit(const SpotsClosestToUserInProgress());
 
-    final MapPosition? userLocation = await userLocationService.location;
+    // final MapPosition? userLocation2 = await userLocationService.location;
+    final MapPosition? userLocation = WorkoutSpotMocks.spots.first.coordinates;
 
     if (userLocation == null) {
       emit(const SpotsClosestToUserNoLocationPermission());
@@ -56,6 +61,7 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
     final SpotsState spotsState = spotsCubit.state;
 
     if (spotsState is SpotsFetchSuccess) {
+      // FIXME Add a listener on Spots cubit, react to its changes
       final List<WorkoutSpotModel> closestSpots = filteringService.filterSpots(
         filters: const Filters.empty().copyWith(
           maxDistanceInKm: Constants.spots.spotsClosestToUserDistanceInKm,
@@ -67,6 +73,7 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
       emit(
         SpotsClosestToUserFetchSuccessful(
           spots: closestSpots,
+          userLocation: userLocation,
         ),
       );
     } else {

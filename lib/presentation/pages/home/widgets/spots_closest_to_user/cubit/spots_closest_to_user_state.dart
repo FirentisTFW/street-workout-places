@@ -17,15 +17,18 @@ final class SpotsClosestToUserNoLocationPermission extends SpotsClosestToUserSta
 
 final class SpotsClosestToUserFetchSuccessful extends SpotsClosestToUserState {
   final List<WorkoutSpotModel> spots;
+  final MapPosition userLocation;
 
   const SpotsClosestToUserFetchSuccessful({
     required this.spots,
+    required this.userLocation,
   });
 
   @override
   List<Object> get props => [
         ...super.props,
         spots,
+        userLocation,
       ];
 }
 
