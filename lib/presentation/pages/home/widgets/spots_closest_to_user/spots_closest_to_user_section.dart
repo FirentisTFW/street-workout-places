@@ -46,7 +46,7 @@ class _SpotsClosestToUserHomeSectionWidgetState
               final SpotsClosestToUserInProgress _ => const SpotsClosestToUserMapPlaceholder(
                   isLoading: true,
                 ),
-              // FIXME Consider different message for failure and no permission
+              // TODO Consider different message for failure and no permission
               final SpotsClosestToUserFetchFailure _ => SpotsClosestToUserMapPlaceholder(
                   isLoading: false,
                   onPressed: bloc.fetchSpots,

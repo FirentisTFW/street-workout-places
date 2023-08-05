@@ -61,7 +61,7 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
     final SpotsState spotsState = spotsCubit.state;
 
     if (spotsState is SpotsFetchSuccess) {
-      // FIXME Add a listener on Spots cubit, react to its changes
+      // TODO Consider adding a listener on Spots cubit and reacting to its changes
       final List<WorkoutSpotModel> closestSpots = filteringService.filterSpots(
         filters: const Filters.empty().copyWith(
           maxDistanceInKm: Constants.spots.spotsClosestToUserDistanceInKm,
