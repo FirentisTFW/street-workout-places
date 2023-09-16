@@ -1,4 +1,5 @@
-- bloc and widget tests for the process of adding a new spot
-- home page
+TODO (first - most important):
+- user reviews for spots
 - check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
 - geolocalization when adding a new spot ("use my location" feature)
+- bloc and widget tests for the process of adding a new spot
