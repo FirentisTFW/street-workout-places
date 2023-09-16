@@ -15,16 +15,22 @@ class ErrorViewBig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO Remove hardcoded texts, update and style error body
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('Wystąpił błąd. Spróbuj ponownie'),
-        const Space.vertical(20.0),
-        AdaptiveButton(
-          onPressed: onRetryPressed,
-          child: const Text('Spróbuj ponownie'),
-        ),
-      ],
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'Wystąpił błąd. Spróbuj ponownie',
+            textAlign: TextAlign.center,
+          ),
+          const Space.vertical(20.0),
+          AdaptiveButton(
+            onPressed: onRetryPressed,
+            child: const Text('Spróbuj ponownie'),
+          ),
+        ],
+      ),
     );
   }
 }
