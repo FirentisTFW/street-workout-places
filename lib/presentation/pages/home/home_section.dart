@@ -1,4 +1,3 @@
-import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:equatable/equatable.dart';
 
 sealed class HomeSection extends Equatable {
@@ -6,16 +5,10 @@ sealed class HomeSection extends Equatable {
 }
 
 final class RecentlyAddedSpotsHomeSection extends HomeSection {
-  final List<WorkoutSpotModel> spots;
-
-  const RecentlyAddedSpotsHomeSection({
-    required this.spots,
-  });
+  const RecentlyAddedSpotsHomeSection();
 
   @override
-  List<Object?> get props => [
-        spots,
-      ];
+  List<Object?> get props => [];
 }
 
 final class SpotsClosestToUserHomeSection extends HomeSection {

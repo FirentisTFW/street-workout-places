@@ -5,18 +5,21 @@ import 'package:flutter/material.dart';
 
 class ErrorViewBig extends StatelessWidget {
   final ContainerError error;
+  final EdgeInsets padding;
   final VoidCallback onRetryPressed;
 
   const ErrorViewBig({
     required this.error,
+    this.padding = EdgeInsets.zero,
     required this.onRetryPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     // TODO Remove hardcoded texts, update and style error body
-    return SizedBox(
+    return Container(
       width: double.infinity,
+      padding: padding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -57,20 +57,17 @@ class _$WorkoutSpotModelCWProxyImpl implements _$WorkoutSpotModelCWProxy {
   WorkoutSpotModel address(Address? address) => this(address: address);
 
   @override
-  WorkoutSpotModel coordinates(MapPosition? coordinates) =>
-      this(coordinates: coordinates);
+  WorkoutSpotModel coordinates(MapPosition? coordinates) => this(coordinates: coordinates);
 
   @override
-  WorkoutSpotModel description(String? description) =>
-      this(description: description);
+  WorkoutSpotModel description(String? description) => this(description: description);
 
   @override
   WorkoutSpotModel distanceFromUserInKm(double? distanceFromUserInKm) =>
       this(distanceFromUserInKm: distanceFromUserInKm);
 
   @override
-  WorkoutSpotModel equipment(List<Equipment> equipment) =>
-      this(equipment: equipment);
+  WorkoutSpotModel equipment(List<Equipment> equipment) => this(equipment: equipment);
 
   @override
   WorkoutSpotModel id(int? id) => this(id: id);

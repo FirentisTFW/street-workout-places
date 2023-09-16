@@ -30,12 +30,10 @@ class _$NewSpotImagesStateCWProxyImpl implements _$NewSpotImagesStateCWProxy {
   final NewSpotImagesState _value;
 
   @override
-  NewSpotImagesState defaultImagePath(String? defaultImagePath) =>
-      this(defaultImagePath: defaultImagePath);
+  NewSpotImagesState defaultImagePath(String? defaultImagePath) => this(defaultImagePath: defaultImagePath);
 
   @override
-  NewSpotImagesState imagePaths(List<String> imagePaths) =>
-      this(imagePaths: imagePaths);
+  NewSpotImagesState imagePaths(List<String> imagePaths) => this(imagePaths: imagePaths);
 
   @override
 
@@ -54,11 +52,10 @@ class _$NewSpotImagesStateCWProxyImpl implements _$NewSpotImagesStateCWProxy {
           ? _value.defaultImagePath
           // ignore: cast_nullable_to_non_nullable
           : defaultImagePath as String?,
-      imagePaths:
-          imagePaths == const $CopyWithPlaceholder() || imagePaths == null
-              ? _value.imagePaths
-              // ignore: cast_nullable_to_non_nullable
-              : imagePaths as List<String>,
+      imagePaths: imagePaths == const $CopyWithPlaceholder() || imagePaths == null
+          ? _value.imagePaths
+          // ignore: cast_nullable_to_non_nullable
+          : imagePaths as List<String>,
     );
   }
 }
@@ -66,6 +63,5 @@ class _$NewSpotImagesStateCWProxyImpl implements _$NewSpotImagesStateCWProxy {
 extension $NewSpotImagesStateCopyWith on NewSpotImagesState {
   /// Returns a callable class that can be used as follows: `instanceOfNewSpotImagesState.copyWith(...)` or like so:`instanceOfNewSpotImagesState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$NewSpotImagesStateCWProxy get copyWith =>
-      _$NewSpotImagesStateCWProxyImpl(this);
+  _$NewSpotImagesStateCWProxy get copyWith => _$NewSpotImagesStateCWProxyImpl(this);
 }

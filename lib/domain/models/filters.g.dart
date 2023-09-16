@@ -42,8 +42,7 @@ class _$FiltersCWProxyImpl implements _$FiltersCWProxy {
   Filters equipment(List<Equipment> equipment) => this(equipment: equipment);
 
   @override
-  Filters maxDistanceInKm(double? maxDistanceInKm) =>
-      this(maxDistanceInKm: maxDistanceInKm);
+  Filters maxDistanceInKm(double? maxDistanceInKm) => this(maxDistanceInKm: maxDistanceInKm);
 
   @override
   Filters sizes(List<WorkoutSpotSize> sizes) => this(sizes: sizes);

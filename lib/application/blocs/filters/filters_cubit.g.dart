@@ -33,8 +33,7 @@ class _$FiltersStateCWProxyImpl implements _$FiltersStateCWProxy {
   FiltersState filters(Filters filters) => this(filters: filters);
 
   @override
-  FiltersState userPosition(MapPosition? userPosition) =>
-      this(userPosition: userPosition);
+  FiltersState userPosition(MapPosition? userPosition) => this(userPosition: userPosition);
 
   @override
 

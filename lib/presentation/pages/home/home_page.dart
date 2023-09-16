@@ -49,7 +49,7 @@ class _HomePageState extends BlocPageState<HomePage, HomeCubit> {
       itemBuilder: (_, index) => HomeWidgetFactory.widgetFromSection(context, state.sections[index]),
       itemCount: state.sections.length,
       padding: AppPadding.defaultVertical,
-      separatorBuilder: (_, __) => const Space.vertical(10.0),
+      separatorBuilder: (_, __) => const Space.vertical(20.0),
     );
   }
 }

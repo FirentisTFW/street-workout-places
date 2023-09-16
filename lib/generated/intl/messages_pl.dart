@@ -20,8 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
-  static String m0(value) =>
-      "Maksymalna liczba zdjęć, które można dodać, to ${value}.";
+  static String m0(value) => "Maksymalna liczba zdjęć, które można dodać, to ${value}.";
 
   static String m1(size) => "Rozmiar: ${size}";
 
@@ -30,50 +29,34 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Parki Street Workout"),
-        "blankTextFieldErrorMessage":
-            MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),
+        "blankTextFieldErrorMessage": MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
-        "contentUnavailableDialogMessage": MessageLookupByLibrary.simpleMessage(
-            "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),
-        "contentUnavailableDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Funkcja niedostępna"),
+        "contentUnavailableDialogMessage":
+            MessageLookupByLibrary.simpleMessage("Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),
+        "contentUnavailableDialogTitle": MessageLookupByLibrary.simpleMessage("Funkcja niedostępna"),
         "dashboardTabForm": MessageLookupByLibrary.simpleMessage("Zgłoś"),
         "dashboardTabHome": MessageLookupByLibrary.simpleMessage("Home"),
         "dashboardTabMore": MessageLookupByLibrary.simpleMessage("Więcej"),
         "dashboardTabSpots": MessageLookupByLibrary.simpleMessage("Punkty"),
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
-        "emptyValueNotifierErrorMessage":
-            MessageLookupByLibrary.simpleMessage("Należy wybrać wartość"),
+        "emptyValueNotifierErrorMessage": MessageLookupByLibrary.simpleMessage("Należy wybrać wartość"),
         "equipment": MessageLookupByLibrary.simpleMessage("Sprzęt"),
-        "equipmentDescriptionHighBar":
-            MessageLookupByLibrary.simpleMessage("Drążek wysoki"),
-        "equipmentDescriptionHorizontalLadder":
-            MessageLookupByLibrary.simpleMessage("Drabinka pozioma"),
-        "equipmentDescriptionLowBar":
-            MessageLookupByLibrary.simpleMessage("Drążek niski"),
-        "equipmentDescriptionParallelBars":
-            MessageLookupByLibrary.simpleMessage("Poręcze równoległe"),
-        "equipmentDescriptionParkourWalls":
-            MessageLookupByLibrary.simpleMessage("Ścianki do parkour"),
-        "equipmentDescriptionPole":
-            MessageLookupByLibrary.simpleMessage("Rurka pionowa"),
-        "equipmentDescriptionRings":
-            MessageLookupByLibrary.simpleMessage("Obręcze gimnastczne"),
-        "equipmentDescriptionRope":
-            MessageLookupByLibrary.simpleMessage("Lina"),
-        "equipmentDescriptionVerticalLadder":
-            MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
+        "equipmentDescriptionHighBar": MessageLookupByLibrary.simpleMessage("Drążek wysoki"),
+        "equipmentDescriptionHorizontalLadder": MessageLookupByLibrary.simpleMessage("Drabinka pozioma"),
+        "equipmentDescriptionLowBar": MessageLookupByLibrary.simpleMessage("Drążek niski"),
+        "equipmentDescriptionParallelBars": MessageLookupByLibrary.simpleMessage("Poręcze równoległe"),
+        "equipmentDescriptionParkourWalls": MessageLookupByLibrary.simpleMessage("Ścianki do parkour"),
+        "equipmentDescriptionPole": MessageLookupByLibrary.simpleMessage("Rurka pionowa"),
+        "equipmentDescriptionRings": MessageLookupByLibrary.simpleMessage("Obręcze gimnastczne"),
+        "equipmentDescriptionRope": MessageLookupByLibrary.simpleMessage("Lina"),
+        "equipmentDescriptionVerticalLadder": MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
         "filtersAppBarTitle": MessageLookupByLibrary.simpleMessage("Filtruj"),
-        "filtersClearButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Wyczyść"),
-        "filtersFilterButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Filtruj"),
-        "filtersMaxDistanceInKm":
-            MessageLookupByLibrary.simpleMessage("Maksymalna odległość (w km)"),
-        "filtersMissingLocationPermissionDialogMessage":
-            MessageLookupByLibrary.simpleMessage(
-                "Aby filtrować punkty na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji."),
+        "filtersClearButtonTitle": MessageLookupByLibrary.simpleMessage("Wyczyść"),
+        "filtersFilterButtonTitle": MessageLookupByLibrary.simpleMessage("Filtruj"),
+        "filtersMaxDistanceInKm": MessageLookupByLibrary.simpleMessage("Maksymalna odległość (w km)"),
+        "filtersMissingLocationPermissionDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Aby filtrować punkty na podstawie odległości, aplikacja potrzebuje dostępu do uprawnień lokalizacji."),
         "filtersMissingLocationPermissionDialogSettingsButton":
             MessageLookupByLibrary.simpleMessage("Ustawienia lokalizacji"),
         "filtersMissingLocationPermissionDialogTitle":
@@ -84,57 +67,38 @@ class MessageLookup extends MessageLookupByLibrary {
         "kilometersAbbreviation": MessageLookupByLibrary.simpleMessage("km"),
         "latitudeShort": MessageLookupByLibrary.simpleMessage("Szer. geogr."),
         "longitudeShort": MessageLookupByLibrary.simpleMessage("Dł. geogr."),
-        "mapDataSourceOpenStreetMap":
-            MessageLookupByLibrary.simpleMessage("Map data from OpenStreetMap"),
+        "mapDataSourceOpenStreetMap": MessageLookupByLibrary.simpleMessage("Map data from OpenStreetMap"),
         "name": MessageLookupByLibrary.simpleMessage("Nazwa"),
-        "navigationButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Nawiguj"),
-        "newSpotCoordinatesSectionButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
-        "newSpotEquipmentAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("Zgłoś plac 2/3"),
-        "newSpotEquipmentHeadline": MessageLookupByLibrary.simpleMessage(
-            "Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu."),
-        "newSpotFormAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("Zgłoś plac 1/3"),
-        "newSpotFormRequiredFieldInformation":
-            MessageLookupByLibrary.simpleMessage("* Pole wymagane"),
-        "newSpotImageCellDefault":
-            MessageLookupByLibrary.simpleMessage("Domyślne"),
-        "newSpotImageCellSetAsDefault":
-            MessageLookupByLibrary.simpleMessage("Ustaw jako domyślne"),
-        "newSpotImagesAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("Zgłoś plac 3/3"),
+        "navigationButtonTitle": MessageLookupByLibrary.simpleMessage("Nawiguj"),
+        "newSpotCoordinatesSectionButtonTitle": MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
+        "newSpotEquipmentAppBarTitle": MessageLookupByLibrary.simpleMessage("Zgłoś plac 2/3"),
+        "newSpotEquipmentHeadline":
+            MessageLookupByLibrary.simpleMessage("Wybierz z listy sprzęt, który znajduje się w opisywanym miejscu."),
+        "newSpotFormAppBarTitle": MessageLookupByLibrary.simpleMessage("Zgłoś plac 1/3"),
+        "newSpotFormRequiredFieldInformation": MessageLookupByLibrary.simpleMessage("* Pole wymagane"),
+        "newSpotImageCellDefault": MessageLookupByLibrary.simpleMessage("Domyślne"),
+        "newSpotImageCellSetAsDefault": MessageLookupByLibrary.simpleMessage("Ustaw jako domyślne"),
+        "newSpotImagesAppBarTitle": MessageLookupByLibrary.simpleMessage("Zgłoś plac 3/3"),
         "newSpotImagesHeadline": MessageLookupByLibrary.simpleMessage(
             "Dodaj co najmniej dwa zdjęcia opisywanego miejsca. Zdjęcie wybrane jako domyślne będzie pokazywać się w pierwszej kolejności, np. jako miniaturka parku na listach."),
         "newSpotImagesMaxImageCountInformation": m0,
-        "newSpotInitialDescription": MessageLookupByLibrary.simpleMessage(
-            "Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!"),
-        "newSpotInitialHeader":
-            MessageLookupByLibrary.simpleMessage("Dodaj nową lokację"),
-        "newSpotInitialNextButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Chcę dodać lokację"),
+        "newSpotInitialDescription":
+            MessageLookupByLibrary.simpleMessage("Znasz dobrą miejscówkę treningową? Podziel się nią z innymi!"),
+        "newSpotInitialHeader": MessageLookupByLibrary.simpleMessage("Dodaj nową lokację"),
+        "newSpotInitialNextButtonTitle": MessageLookupByLibrary.simpleMessage("Chcę dodać lokację"),
         "newSpotSubmittedDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Dane zostały przekazane do weryfikacji. Dzięki za podzielenie się tą miejscówką!"),
-        "newSpotSubmittedDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Plac zgłoszony"),
+        "newSpotSubmittedDialogTitle": MessageLookupByLibrary.simpleMessage("Plac zgłoszony"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
-        "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Brak połączenia z internetem."),
-        "noUserPositionProvidedForFiltersErrorMessage":
-            MessageLookupByLibrary.simpleMessage(
-                "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika."),
-        "notNumberTextFieldErrorMessage":
-            MessageLookupByLibrary.simpleMessage("Należy wprowadzić liczbę"),
-        "notSelectedAnyEquipmentItemErrorMessage":
-            MessageLookupByLibrary.simpleMessage(
-                "Nie wybrano żadnego sprzętu."),
+        "noNetworkConnectionErrorMessage": MessageLookupByLibrary.simpleMessage("Brak połączenia z internetem."),
+        "noUserPositionProvidedForFiltersErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Aby filtrować na podstawie dystansu, aplikacja potrzebuje dostępu do lokalizacji użytkownika."),
+        "notNumberTextFieldErrorMessage": MessageLookupByLibrary.simpleMessage("Należy wprowadzić liczbę"),
+        "notSelectedAnyEquipmentItemErrorMessage": MessageLookupByLibrary.simpleMessage("Nie wybrano żadnego sprzętu."),
         "notSelectedMapPositionValueNotifierErrorMessage":
-            MessageLookupByLibrary.simpleMessage(
-                "Należy wybrać lokalizację punktu na mapie"),
+            MessageLookupByLibrary.simpleMessage("Należy wybrać lokalizację punktu na mapie"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "recentlyAddedSpotsHomeSectionTitle":
-            MessageLookupByLibrary.simpleMessage("Ostatnio dodane miejsca"),
+        "recentlyAddedSpotsHomeSectionTitle": MessageLookupByLibrary.simpleMessage("Ostatnio dodane miejsca"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "selectLocationOnMapDescription": MessageLookupByLibrary.simpleMessage(
@@ -143,40 +107,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "size": MessageLookupByLibrary.simpleMessage("Rozmiar"),
         "sizeSelected": m1,
         "sortSpotsByLocationDialogMessage":
-            MessageLookupByLibrary.simpleMessage(
-                "Czy chcesz pokazać najbliższe punkty?"),
-        "sortSpotsByLocationDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Najbliższe punkty"),
+            MessageLookupByLibrary.simpleMessage("Czy chcesz pokazać najbliższe punkty?"),
+        "sortSpotsByLocationDialogTitle": MessageLookupByLibrary.simpleMessage("Najbliższe punkty"),
         "spotListCellDistanceFromUserInKm": m2,
         "spotsClosestToUserHomeSectionMapPlaceholderTitle":
-            MessageLookupByLibrary.simpleMessage(
-                "Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj."),
-        "spotsClosestToUserHomeSectionTitle":
-            MessageLookupByLibrary.simpleMessage("Najbliższe miejsca"),
-        "spotsListTabBarButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Lista"),
-        "spotsMapTabBarButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Mapa"),
+            MessageLookupByLibrary.simpleMessage("Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj."),
+        "spotsClosestToUserHomeSectionTitle": MessageLookupByLibrary.simpleMessage("Najbliższe miejsca"),
+        "spotsListTabBarButtonTitle": MessageLookupByLibrary.simpleMessage("Lista"),
+        "spotsMapTabBarButtonTitle": MessageLookupByLibrary.simpleMessage("Mapa"),
         "street": MessageLookupByLibrary.simpleMessage("Ulica"),
         "surface": MessageLookupByLibrary.simpleMessage("Podłoże"),
-        "surfaceDescriptionConcrete":
-            MessageLookupByLibrary.simpleMessage("Beton"),
-        "surfaceDescriptionDifferent":
-            MessageLookupByLibrary.simpleMessage("Inne"),
-        "surfaceDescriptionSand":
-            MessageLookupByLibrary.simpleMessage("Piasek"),
-        "surfaceDescriptionTartan":
-            MessageLookupByLibrary.simpleMessage("Tartan"),
-        "tooFewImagesSelectedErrorMessage":
-            MessageLookupByLibrary.simpleMessage("Wybrano zbyt mało zdjęć."),
-        "unknownErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Wystąpił błąd, spróbuj ponownie."),
-        "workoutSpotSizeDescriptionBig":
-            MessageLookupByLibrary.simpleMessage("Duży"),
-        "workoutSpotSizeDescriptionMedium":
-            MessageLookupByLibrary.simpleMessage("Średni"),
-        "workoutSpotSizeDescriptionSmall":
-            MessageLookupByLibrary.simpleMessage("Mały"),
+        "surfaceDescriptionConcrete": MessageLookupByLibrary.simpleMessage("Beton"),
+        "surfaceDescriptionDifferent": MessageLookupByLibrary.simpleMessage("Inne"),
+        "surfaceDescriptionSand": MessageLookupByLibrary.simpleMessage("Piasek"),
+        "surfaceDescriptionTartan": MessageLookupByLibrary.simpleMessage("Tartan"),
+        "tooFewImagesSelectedErrorMessage": MessageLookupByLibrary.simpleMessage("Wybrano zbyt mało zdjęć."),
+        "unknownErrorMessage": MessageLookupByLibrary.simpleMessage("Wystąpił błąd, spróbuj ponownie."),
+        "workoutSpotSizeDescriptionBig": MessageLookupByLibrary.simpleMessage("Duży"),
+        "workoutSpotSizeDescriptionMedium": MessageLookupByLibrary.simpleMessage("Średni"),
+        "workoutSpotSizeDescriptionSmall": MessageLookupByLibrary.simpleMessage("Mały"),
         "yes": MessageLookupByLibrary.simpleMessage("Tak")
       };
 }
