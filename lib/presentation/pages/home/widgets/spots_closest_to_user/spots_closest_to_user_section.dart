@@ -43,15 +43,15 @@ class _SpotsClosestToUserHomeSectionWidgetState
                   state,
                   mapCoordinator: _mapCoordinator,
                 ),
-              final SpotsClosestToUserInProgress _ => const SpotsClosestToUserMapPlaceholder(
+              SpotsClosestToUserInProgress() => const SpotsClosestToUserMapPlaceholder(
                   isLoading: true,
                 ),
               // TODO Consider different message for failure and no permission
-              final SpotsClosestToUserFetchFailure _ => SpotsClosestToUserMapPlaceholder(
+              SpotsClosestToUserFetchFailure() => SpotsClosestToUserMapPlaceholder(
                   isLoading: false,
                   onPressed: bloc.fetchSpots,
                 ),
-              final SpotsClosestToUserNoLocationPermission _ => SpotsClosestToUserMapPlaceholder(
+              SpotsClosestToUserNoLocationPermission() => SpotsClosestToUserMapPlaceholder(
                   isLoading: false,
                   onPressed: bloc.requestLocationPermissionAndFetchSpots,
                 ),
