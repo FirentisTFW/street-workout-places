@@ -1,3 +1,4 @@
+import 'package:app/domain/models/review.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
@@ -12,6 +13,7 @@ class WorkoutSpot extends Equatable {
   final List<Equipment?>? equipment;
   final List<String?>? images;
   final String? name;
+  final List<Review?>? reviews;
   final WorkoutSpotSize? size;
   final Surface? surface;
 
@@ -22,6 +24,7 @@ class WorkoutSpot extends Equatable {
     this.equipment,
     this.images,
     this.name,
+    this.reviews,
     this.size,
     this.surface,
   });
@@ -34,6 +37,7 @@ class WorkoutSpot extends Equatable {
         equipment,
         images,
         name,
+        reviews,
         size,
         surface,
       ];
