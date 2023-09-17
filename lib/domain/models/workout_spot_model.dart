@@ -1,4 +1,5 @@
 import 'package:app/domain/core/utils/location_utils.dart';
+import 'package:app/domain/models/review.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
@@ -21,6 +22,7 @@ class WorkoutSpotModel extends Equatable {
   final int? id;
   final List<String> images;
   final String? name;
+  final List<Review> reviews;
   final WorkoutSpotSize? size;
   final Surface? surface;
 
@@ -33,6 +35,7 @@ class WorkoutSpotModel extends Equatable {
     this.id,
     this.images = const [],
     this.name,
+    this.reviews = const [],
     this.size,
     this.surface,
   });
