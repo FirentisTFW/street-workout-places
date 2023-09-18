@@ -69,6 +69,7 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
           const Space.vertical(20.0),
           _buildInformationSection(spot),
           const Space.vertical(20.0),
+          // FIXME Display reviews (if available)
         ],
       ),
     );
