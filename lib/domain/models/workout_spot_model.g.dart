@@ -23,8 +23,6 @@ abstract class _$WorkoutSpotModelCWProxy {
 
   WorkoutSpotModel name(String? name);
 
-  WorkoutSpotModel reviews(List<Review> reviews);
-
   WorkoutSpotModel size(WorkoutSpotSize? size);
 
   WorkoutSpotModel surface(Surface? surface);
@@ -44,7 +42,6 @@ abstract class _$WorkoutSpotModelCWProxy {
     int? id,
     List<String>? images,
     String? name,
-    List<Review>? reviews,
     WorkoutSpotSize? size,
     Surface? surface,
   });
@@ -82,9 +79,6 @@ class _$WorkoutSpotModelCWProxyImpl implements _$WorkoutSpotModelCWProxy {
   WorkoutSpotModel name(String? name) => this(name: name);
 
   @override
-  WorkoutSpotModel reviews(List<Review> reviews) => this(reviews: reviews);
-
-  @override
   WorkoutSpotModel size(WorkoutSpotSize? size) => this(size: size);
 
   @override
@@ -107,7 +101,6 @@ class _$WorkoutSpotModelCWProxyImpl implements _$WorkoutSpotModelCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? images = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
-    Object? reviews = const $CopyWithPlaceholder(),
     Object? size = const $CopyWithPlaceholder(),
     Object? surface = const $CopyWithPlaceholder(),
   }) {
@@ -144,10 +137,6 @@ class _$WorkoutSpotModelCWProxyImpl implements _$WorkoutSpotModelCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String?,
-      reviews: reviews == const $CopyWithPlaceholder() || reviews == null
-          ? _value.reviews
-          // ignore: cast_nullable_to_non_nullable
-          : reviews as List<Review>,
       size: size == const $CopyWithPlaceholder()
           ? _value.size
           // ignore: cast_nullable_to_non_nullable
