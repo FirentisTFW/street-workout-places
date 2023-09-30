@@ -28,6 +28,13 @@ class SpotDetailsCubit extends Cubit<SpotDetailsState> {
 
       // FIXME Perform API call
 
+      // simulate a delay
+      await Future.delayed(
+        const Duration(
+          seconds: 2,
+        ),
+      );
+
       emit(
         state.fetchedReviews(ReviewMocks.reviews),
       );

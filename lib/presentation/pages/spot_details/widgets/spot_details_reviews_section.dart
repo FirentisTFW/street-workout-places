@@ -1,7 +1,9 @@
 import 'package:app/domain/models/review.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
+import 'package:app/presentation/styles/app_animations.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
+import 'package:app/presentation/widgets/app_progress_indicator.dart';
 import 'package:app/presentation/widgets/error_view_big.dart';
 import 'package:app/presentation/widgets/review_cell.dart';
 import 'package:app/presentation/widgets/separator.dart';
@@ -21,7 +23,7 @@ class SpotDetailsReviewsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget child = switch (reviewsState) {
-      SpotDetailsReviewsInProgress() => const SizedBox.shrink(),
+      SpotDetailsReviewsInProgress() => _buildLoadingBody(),
       SpotDetailsReviewsFailure(:final error) => ErrorViewBig(
           error: error,
           onRetryPressed: BlocProvider.of<SpotDetailsCubit>(context).fetchReviews,
@@ -37,8 +39,20 @@ class SpotDetailsReviewsSection extends StatelessWidget {
           style: AppTextStyles.titleSmall(),
         ),
         const Space.vertical(6.0),
-        child,
+        AnimatedSwitcher(
+          duration: AppAnimations.animatedSwitcherDuration,
+          child: child,
+        ),
       ],
+    );
+  }
+
+  Widget _buildLoadingBody() {
+    return const SizedBox(
+      height: 100.0,
+      child: AppProgressIndicator(
+        strokeWidth: 2.0,
+      ),
     );
   }
 
