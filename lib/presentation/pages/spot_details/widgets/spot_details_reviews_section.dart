@@ -1,4 +1,5 @@
 import 'package:app/domain/models/review.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/error_view_big.dart';
@@ -32,8 +33,7 @@ class SpotDetailsReviewsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          // FIXME Localize
-          'Opinie',
+          S.of(context).spotDetailsReviewsSectionTitle,
           style: AppTextStyles.titleSmall(),
         ),
         const Space.vertical(6.0),

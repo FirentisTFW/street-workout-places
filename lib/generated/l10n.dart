@@ -18,15 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-        _current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -809,10 +811,12 @@ class S {
   }
 
   /// `Filtruj bez odległości`
-  String get filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton {
+  String
+      get filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton {
     return Intl.message(
       'Filtruj bez odległości',
-      name: 'filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton',
+      name:
+          'filtersMissingLocationPermissionDialogTitleFilterWithoutDistanceButton',
       desc: '',
       args: [],
     );
@@ -893,6 +897,16 @@ class S {
     return Intl.message(
       'Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj.',
       name: 'spotsClosestToUserHomeSectionMapPlaceholderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opinie`
+  String get spotDetailsReviewsSectionTitle {
+    return Intl.message(
+      'Opinie',
+      name: 'spotDetailsReviewsSectionTitle',
       desc: '',
       args: [],
     );
