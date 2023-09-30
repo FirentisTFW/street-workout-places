@@ -1,3 +1,4 @@
+import 'package:app/domain/core/common/mocks/review_mocks.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/models/review.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
@@ -25,7 +26,11 @@ class SpotDetailsCubit extends Cubit<SpotDetailsState> {
     try {
       emit(state.fetchingReviews());
 
-      // FIXME Perform API call and update spot, emit state
+      // FIXME Perform API call
+
+      emit(
+        state.fetchedReviews(ReviewMocks.reviews),
+      );
     } catch (exception) {
       emit(
         state.fetchingReviewsFailed(ContainerError.fromException(exception)),

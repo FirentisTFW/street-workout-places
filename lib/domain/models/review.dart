@@ -7,8 +7,9 @@ class Review extends Equatable {
   final DateTime date;
   final List<String> goodAspects;
   final String id;
-  final String title;
   final Reviewer reviewer;
+  final int spotId;
+  final String title;
 
   const Review({
     required this.badAspects,
@@ -16,17 +17,20 @@ class Review extends Equatable {
     required this.date,
     required this.goodAspects,
     required this.id,
-    required this.title,
     required this.reviewer,
+    required this.spotId,
+    required this.title,
   });
 
   @override
   List<Object?> get props => [
         badAspects,
         content,
+        date,
         goodAspects,
         id,
-        title,
         reviewer,
+        spotId,
+        title,
       ];
 }

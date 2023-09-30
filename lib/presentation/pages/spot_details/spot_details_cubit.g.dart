@@ -30,7 +30,8 @@ class _$SpotDetailsStateCWProxyImpl implements _$SpotDetailsStateCWProxy {
   final SpotDetailsState _value;
 
   @override
-  SpotDetailsState reviewsState(SpotDetailsReviewsState reviewsState) => this(reviewsState: reviewsState);
+  SpotDetailsState reviewsState(SpotDetailsReviewsState reviewsState) =>
+      this(reviewsState: reviewsState);
 
   @override
   SpotDetailsState spot(WorkoutSpotModel spot) => this(spot: spot);
@@ -48,10 +49,11 @@ class _$SpotDetailsStateCWProxyImpl implements _$SpotDetailsStateCWProxy {
     Object? spot = const $CopyWithPlaceholder(),
   }) {
     return SpotDetailsState(
-      reviewsState: reviewsState == const $CopyWithPlaceholder() || reviewsState == null
-          ? _value.reviewsState
-          // ignore: cast_nullable_to_non_nullable
-          : reviewsState as SpotDetailsReviewsState,
+      reviewsState:
+          reviewsState == const $CopyWithPlaceholder() || reviewsState == null
+              ? _value.reviewsState
+              // ignore: cast_nullable_to_non_nullable
+              : reviewsState as SpotDetailsReviewsState,
       spot: spot == const $CopyWithPlaceholder() || spot == null
           ? _value.spot
           // ignore: cast_nullable_to_non_nullable

@@ -6,6 +6,7 @@ import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
 import 'package:app/presentation/pages/spot_details/widgets/spot_details_image_slider.dart';
+import 'package:app/presentation/pages/spot_details/widgets/spot_details_reviews_section.dart';
 import 'package:app/presentation/styles/app_colors.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
@@ -26,13 +27,19 @@ class SpotDetailsPage extends StatefulWidget {
 
 class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCubit> {
   @override
+  void initState() {
+    super.initState();
+    bloc.fetchReviews();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<SpotDetailsCubit, SpotDetailsState>(
         builder: (_, state) {
           return Stack(
             children: [
-              _buildLoadedBody(state.spot),
+              _buildLoadedBody(state),
               Positioned(
                 top: 2.0,
                 left: 2.0,
@@ -60,22 +67,23 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
     );
   }
 
-  Widget _buildLoadedBody(WorkoutSpotModel spot) {
+  Widget _buildLoadedBody(SpotDetailsState state) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildImageSlider(spot),
+          _buildImageSlider(state.spot),
           const Space.vertical(20.0),
-          _buildInformationSection(spot),
+          _buildInformationSection(state),
           const Space.vertical(20.0),
-          // FIXME Display reviews (if available)
         ],
       ),
     );
   }
 
-  Widget _buildInformationSection(WorkoutSpotModel spot) {
+  Widget _buildInformationSection(SpotDetailsState state) {
+    final spot = state.spot;
+
     return Padding(
       padding: AppPadding.defaultHorizontal,
       child: Column(
@@ -86,6 +94,9 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
           _buildSizeAndSurface(spot),
           _buildDescription(spot),
           _buildEquipment(spot),
+          SpotDetailsReviewsSection(
+            reviewsState: state.reviewsState,
+          ),
         ].separatedBy(
           const Space.vertical(20.0),
         ),

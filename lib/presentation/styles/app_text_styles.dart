@@ -57,11 +57,13 @@ class AppTextStyles {
   static TextStyle contentBigger({
     Color color = AppColors.black,
     double height = 1.0,
+    FontWeight fontWeight = FontWeight.normal,
   }) {
     return content(
       color: color,
       fontSize: 16.0,
       height: height,
+      fontWeight: fontWeight,
     );
   }
 
@@ -71,6 +73,15 @@ class AppTextStyles {
     return contentBigger(
       color: color,
       height: 1.4,
+    );
+  }
+
+  static TextStyle contentBiggerBold({
+    Color color = AppColors.black,
+  }) {
+    return contentBigger(
+      color: color,
+      fontWeight: FontWeight.bold,
     );
   }
 

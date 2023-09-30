@@ -30,7 +30,8 @@ class _$SpotsFetchSuccessCWProxyImpl implements _$SpotsFetchSuccessCWProxy {
   final SpotsFetchSuccess _value;
 
   @override
-  SpotsFetchSuccess filteredSpots(List<WorkoutSpotModel> filteredSpots) => this(filteredSpots: filteredSpots);
+  SpotsFetchSuccess filteredSpots(List<WorkoutSpotModel> filteredSpots) =>
+      this(filteredSpots: filteredSpots);
 
   @override
   SpotsFetchSuccess spots(List<WorkoutSpotModel> spots) => this(spots: spots);
@@ -48,10 +49,11 @@ class _$SpotsFetchSuccessCWProxyImpl implements _$SpotsFetchSuccessCWProxy {
     Object? spots = const $CopyWithPlaceholder(),
   }) {
     return SpotsFetchSuccess(
-      filteredSpots: filteredSpots == const $CopyWithPlaceholder() || filteredSpots == null
-          ? _value.filteredSpots
-          // ignore: cast_nullable_to_non_nullable
-          : filteredSpots as List<WorkoutSpotModel>,
+      filteredSpots:
+          filteredSpots == const $CopyWithPlaceholder() || filteredSpots == null
+              ? _value.filteredSpots
+              // ignore: cast_nullable_to_non_nullable
+              : filteredSpots as List<WorkoutSpotModel>,
       spots: spots == const $CopyWithPlaceholder() || spots == null
           ? _value.spots
           // ignore: cast_nullable_to_non_nullable
@@ -63,5 +65,6 @@ class _$SpotsFetchSuccessCWProxyImpl implements _$SpotsFetchSuccessCWProxy {
 extension $SpotsFetchSuccessCopyWith on SpotsFetchSuccess {
   /// Returns a callable class that can be used as follows: `instanceOfSpotsFetchSuccess.copyWith(...)` or like so:`instanceOfSpotsFetchSuccess.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$SpotsFetchSuccessCWProxy get copyWith => _$SpotsFetchSuccessCWProxyImpl(this);
+  _$SpotsFetchSuccessCWProxy get copyWith =>
+      _$SpotsFetchSuccessCWProxyImpl(this);
 }

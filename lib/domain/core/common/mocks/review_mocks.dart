@@ -17,6 +17,7 @@ abstract final class ReviewMocks {
         email: 'andrzej@niepodam.pl',
         name: 'Andrzej',
       ),
+      spotId: 1,
     ),
     Review(
       badAspects: const ['Dużo dzieci', 'Niskie drążki'],
@@ -30,6 +31,7 @@ abstract final class ReviewMocks {
         email: 'marek@niepodam.pl',
         name: 'Marek',
       ),
+      spotId: 1,
     ),
   ];
 }
