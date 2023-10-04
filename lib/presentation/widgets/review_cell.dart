@@ -33,7 +33,6 @@ class ReviewCell extends StatelessWidget {
                   style: AppTextStyles.contentBiggerBold(),
                 ),
               ),
-              // FIXME Format date
               const Space.horizontal(6.0),
               Text(
                 date.dayMonthYearFormat,
