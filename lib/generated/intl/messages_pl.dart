@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("To pole nie może być puste"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
+        "collapse": MessageLookupByLibrary.simpleMessage("Zwiń"),
         "contentUnavailableDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Ta funkcja jest jeszcze niedostępna. Pracujmy nad nią :)"),
         "contentUnavailableDialogTitle":
@@ -64,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lina"),
         "equipmentDescriptionVerticalLadder":
             MessageLookupByLibrary.simpleMessage("Drabinka pionowa"),
+        "expand": MessageLookupByLibrary.simpleMessage("Rozwiń"),
         "filtersAppBarTitle": MessageLookupByLibrary.simpleMessage("Filtruj"),
         "filtersClearButtonTitle":
             MessageLookupByLibrary.simpleMessage("Wyczyść"),
@@ -135,6 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "recentlyAddedSpotsHomeSectionTitle":
             MessageLookupByLibrary.simpleMessage("Ostatnio dodane miejsca"),
+        "reviewCellBadAspects": MessageLookupByLibrary.simpleMessage("Minusy:"),
+        "reviewCellGoodAspects": MessageLookupByLibrary.simpleMessage("Plusy:"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "selectLocationOnMapDescription": MessageLookupByLibrary.simpleMessage(

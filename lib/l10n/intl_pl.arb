@@ -98,5 +98,9 @@
   "recentlyAddedSpotsHomeSectionTitle": "Ostatnio dodane miejsca",
   "spotsClosestToUserHomeSectionTitle": "Najbliższe miejsca",
   "spotsClosestToUserHomeSectionMapPlaceholderTitle": "Chcesz zobaczyć najbliższe miejsca na mapie?\nKliknij tutaj.",
-  "spotDetailsReviewsSectionTitle": "Opinie"
+  "spotDetailsReviewsSectionTitle": "Opinie",
+  "expand": "Rozwiń",
+  "collapse": "Zwiń",
+  "reviewCellGoodAspects": "Plusy:",
+  "reviewCellBadAspects": "Minusy:"
 }

@@ -1,12 +1,12 @@
 import 'package:app/domain/core/extensions/extensions.dart';
 import 'package:app/domain/models/review.dart';
+import 'package:app/generated/l10n.dart';
 import 'package:app/presentation/styles/app_animations.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/animated_expand.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/widgets.dart';
 
-// FIXME Localize texts
 class ReviewCell extends StatefulWidget {
   final Review review;
 
@@ -62,7 +62,7 @@ class _ReviewCellState extends State<ReviewCell> {
             child: GestureDetector(
               onTap: () => setState(() => _isExpanded = !_isExpanded),
               child: Text(
-                _isExpanded ? 'Zwiń' : 'Rozwiń',
+                _isExpanded ? S.of(context).collapse : S.of(context).expand,
                 style: AppTextStyles.contentBold(),
               ),
             ),
@@ -85,7 +85,7 @@ class _ReviewCellState extends State<ReviewCell> {
           children: [
             if (_review.hasGoodAspects) ...[
               Text(
-                'Plusy:',
+                S.of(context).reviewCellGoodAspects,
                 style: AppTextStyles.contentBold(),
               ),
               const Space.vertical(4.0),
@@ -94,7 +94,7 @@ class _ReviewCellState extends State<ReviewCell> {
             ],
             if (_review.hasBadAspects) ...[
               Text(
-                'Minusy:',
+                S.of(context).reviewCellBadAspects,
                 style: AppTextStyles.contentBold(),
               ),
               const Space.vertical(4.0),

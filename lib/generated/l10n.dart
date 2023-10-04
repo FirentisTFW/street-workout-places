@@ -911,6 +911,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Rozwiń`
+  String get expand {
+    return Intl.message(
+      'Rozwiń',
+      name: 'expand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zwiń`
+  String get collapse {
+    return Intl.message(
+      'Zwiń',
+      name: 'collapse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plusy:`
+  String get reviewCellGoodAspects {
+    return Intl.message(
+      'Plusy:',
+      name: 'reviewCellGoodAspects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Minusy:`
+  String get reviewCellBadAspects {
+    return Intl.message(
+      'Minusy:',
+      name: 'reviewCellBadAspects',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
