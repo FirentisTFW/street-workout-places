@@ -11,6 +11,10 @@ class Review extends Equatable {
   final int spotId;
   final String title;
 
+  bool get hasBadAspects => badAspects.isNotEmpty;
+
+  bool get hasGoodAspects => goodAspects.isNotEmpty;
+
   const Review({
     required this.badAspects,
     required this.content,

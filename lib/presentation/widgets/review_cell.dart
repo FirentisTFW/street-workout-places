@@ -1,19 +1,28 @@
 import 'package:app/domain/core/extensions/extensions.dart';
+import 'package:app/domain/models/review.dart';
+import 'package:app/presentation/styles/app_animations.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
+import 'package:app/presentation/widgets/animated_expand.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/widgets.dart';
 
-class ReviewCell extends StatelessWidget {
-  final String content;
-  final DateTime date;
-  final String title;
+// FIXME Localize texts
+class ReviewCell extends StatefulWidget {
+  final Review review;
 
   const ReviewCell({
     super.key,
-    required this.content,
-    required this.date,
-    required this.title,
+    required this.review,
   });
+
+  @override
+  State<ReviewCell> createState() => _ReviewCellState();
+}
+
+class _ReviewCellState extends State<ReviewCell> {
+  bool _isExpanded = false;
+
+  Review get _review => widget.review;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +38,13 @@ class ReviewCell extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  title,
+                  _review.title,
                   style: AppTextStyles.contentBiggerBold(),
                 ),
               ),
               const Space.horizontal(6.0),
               Text(
-                date.dayMonthYearFormat,
+                _review.date.dayMonthYearFormat,
                 maxLines: 3,
                 style: AppTextStyles.content(),
               ),
@@ -43,11 +52,64 @@ class ReviewCell extends StatelessWidget {
           ),
           const Space.vertical(8.0),
           Text(
-            content,
+            _review.content,
             style: AppTextStyles.contentMultiline(),
+          ),
+          const Space.vertical(6.0),
+          _buildGoodAndBadAspectsSection(),
+          Align(
+            alignment: Alignment.centerRight,
+            child: GestureDetector(
+              onTap: () => setState(() => _isExpanded = !_isExpanded),
+              child: Text(
+                _isExpanded ? 'Zwiń' : 'Rozwiń',
+                style: AppTextStyles.contentBold(),
+              ),
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildGoodAndBadAspectsSection() {
+    return AnimatedExpand(
+      isExpanded: _isExpanded,
+      duration: AppAnimations.expandDuration,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 4.0,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (_review.hasGoodAspects) ...[
+              Text(
+                'Plusy:',
+                style: AppTextStyles.contentBold(),
+              ),
+              const Space.vertical(4.0),
+              ..._review.goodAspects.map(_buildAspectText).toList().separatedBy(const Space.vertical(2.0)),
+              const Space.vertical(8.0),
+            ],
+            if (_review.hasBadAspects) ...[
+              Text(
+                'Minusy:',
+                style: AppTextStyles.contentBold(),
+              ),
+              const Space.vertical(4.0),
+              ..._review.badAspects.map(_buildAspectText).toList().separatedBy(const Space.vertical(2.0)),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAspectText(String content) {
+    return Text(
+      '- $content',
+      style: AppTextStyles.contentMultiline(),
     );
   }
 }

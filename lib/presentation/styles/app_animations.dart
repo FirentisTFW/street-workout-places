@@ -5,6 +5,10 @@ class AppAnimations {
     milliseconds: 250,
   );
 
+  static const Duration expandDuration = Duration(
+    milliseconds: 150,
+  );
+
   static const Duration regularDuration = Duration(
     milliseconds: 250,
   );

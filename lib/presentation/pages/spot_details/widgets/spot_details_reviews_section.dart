@@ -59,15 +59,9 @@ class SpotDetailsReviewsSection extends StatelessWidget {
   Widget _buildLoadedBody(List<Review> reviews) {
     // TODO Use slivers instead of shrinkWrap and NeverScrollableScrollPhysics
     return ListView.separated(
-      itemBuilder: (_, index) {
-        final review = reviews[index];
-
-        return ReviewCell(
-          content: review.content,
-          date: review.date,
-          title: review.title,
-        );
-      },
+      itemBuilder: (_, index) => ReviewCell(
+        review: reviews[index],
+      ),
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: reviews.length,

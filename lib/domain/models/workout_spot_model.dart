@@ -1,5 +1,4 @@
 import 'package:app/domain/core/utils/location_utils.dart';
-import 'package:app/domain/models/review.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/address.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
