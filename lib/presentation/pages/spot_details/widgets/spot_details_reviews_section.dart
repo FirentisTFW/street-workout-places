@@ -11,7 +11,6 @@ import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// FIXME Add good and bad aspects
 class SpotDetailsReviewsSection extends StatelessWidget {
   final SpotDetailsReviewsState reviewsState;
 

@@ -36,7 +36,7 @@ void main() {
             latitude: 52.38908,
             longitude: 16.92539,
           ),
-        )
+        ),
       ];
       final SpotsCubit spotsCubit = SpotsCubit(
         filtersCubit: FiltersCubit(

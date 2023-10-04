@@ -37,7 +37,7 @@ class FiltersSection<T extends Enum> extends StatelessWidget {
                 ),
               )
               .toList()
-              .separatedBy(const Space.vertical(10.0))
+              .separatedBy(const Space.vertical(10.0)),
         ],
       ),
     );
