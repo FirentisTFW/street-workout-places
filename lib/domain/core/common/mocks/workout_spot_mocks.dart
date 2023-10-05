@@ -29,6 +29,7 @@ abstract final class WorkoutSpotMocks {
         Equipment.pole,
         Equipment.verticalLadder,
       ],
+      id: 0,
       images: const [
         'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no',
         'https://lh3.googleusercontent.com/p/AF1QipNfsvvEW_hiDcOhIFfTUpGqCqhg-XhzocKLcXIc=w600-k',
@@ -61,6 +62,7 @@ abstract final class WorkoutSpotMocks {
         Equipment.parkourWalls,
         Equipment.verticalLadder,
       ],
+      id: 1,
       images: const [
         'https://lh3.googleusercontent.com/p/AF1QipPDu5aHVBqcgtpoNfbuYLQXwcq_bDN8qtacbc0-=w600-k',
         'https://lh5.googleusercontent.com/p/AF1QipP5ghK2uD5Bxj1HeUcfIn-pSVp9eRP8NVA3LLPZ=w408-h306-k-no',
@@ -90,6 +92,7 @@ abstract final class WorkoutSpotMocks {
         Equipment.rope,
         Equipment.verticalLadder,
       ],
+      id: 2,
       images: const [
         'https://lh3.googleusercontent.com/p/AF1QipMRTY1h-st6dH6nABWrEvCrxfiGRjYXRGIF5LLL=w600-k',
         'https://lh3.googleusercontent.com/p/AF1QipPDu5aHVBqcgtpoNfbuYLQXwcq_bDN8qtacbc0-=w600-k',

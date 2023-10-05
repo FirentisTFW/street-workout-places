@@ -8,6 +8,7 @@ extension WorkoutSpotMapper on WorkoutSpot {
         coordinates: coordinates,
         description: description,
         equipment: equipment.orEmpty().filterNotNull(),
+        id: id,
         images: images.orEmpty().filterNotNull(),
         name: name,
         size: size,
