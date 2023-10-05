@@ -11,6 +11,8 @@ class Review extends Equatable {
   final int spotId;
   final String title;
 
+  bool get hasAnyAspects => hasBadAspects || hasGoodAspects;
+
   bool get hasBadAspects => badAspects.isNotEmpty;
 
   bool get hasGoodAspects => goodAspects.isNotEmpty;

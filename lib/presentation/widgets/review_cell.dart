@@ -55,18 +55,20 @@ class _ReviewCellState extends State<ReviewCell> {
             _review.content,
             style: AppTextStyles.contentMultiline(),
           ),
-          const Space.vertical(6.0),
-          _buildGoodAndBadAspectsSection(),
-          Align(
-            alignment: Alignment.centerRight,
-            child: GestureDetector(
-              onTap: () => setState(() => _isExpanded = !_isExpanded),
-              child: Text(
-                _isExpanded ? S.of(context).collapse : S.of(context).expand,
-                style: AppTextStyles.contentBold(),
+          if (_review.hasAnyAspects) ...[
+            const Space.vertical(6.0),
+            _buildGoodAndBadAspectsSection(),
+            Align(
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () => setState(() => _isExpanded = !_isExpanded),
+                child: Text(
+                  _isExpanded ? S.of(context).collapse : S.of(context).expand,
+                  style: AppTextStyles.contentBold(),
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );
