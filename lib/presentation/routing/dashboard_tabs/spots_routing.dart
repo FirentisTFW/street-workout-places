@@ -8,6 +8,7 @@ class SpotsRouting {
   static const String _prefix = 'spots';
   static const String filters = '$_prefix/filters';
   static const String imageGallery = '$_prefix/image_gallery';
+  static const String newReview = '$_prefix/new_review';
   static const String spotDetails = '$_prefix/spot_details';
   static const String spots = '$_prefix/main';
 
@@ -28,6 +29,8 @@ class SpotsRouting {
         return Pages.filters();
       case imageGallery:
         return Pages.imageGallery(settings.arguments);
+      case newReview:
+        return Pages.newReview();
       case spotDetails:
         return Pages.spotDetails(settings.arguments);
       case spots:

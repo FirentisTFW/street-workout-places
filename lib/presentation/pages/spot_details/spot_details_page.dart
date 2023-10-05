@@ -4,10 +4,13 @@ import 'package:app/domain/core/utils/map_utils.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/generated/l10n.dart';
 import 'package:app/infrastructure/networking/models/map_position.dart';
+import 'package:app/presentation/pages/new_review/new_review_arguments.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_cubit.dart';
 import 'package:app/presentation/pages/spot_details/widgets/spot_details_image_slider.dart';
 import 'package:app/presentation/pages/spot_details/widgets/spot_details_reviews_section.dart';
+import 'package:app/presentation/routing/dashboard_tabs/spots_routing.dart';
 import 'package:app/presentation/styles/app_colors.dart';
+import 'package:app/presentation/styles/app_dimensions.dart';
 import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/circular_button.dart';
@@ -34,10 +37,10 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<SpotDetailsCubit, SpotDetailsState>(
-        builder: (_, state) {
-          return Stack(
+    return BlocBuilder<SpotDetailsCubit, SpotDetailsState>(
+      builder: (_, state) {
+        return Scaffold(
+          body: Stack(
             children: [
               _buildLoadedBody(state),
               Positioned(
@@ -46,9 +49,10 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
                 child: _buildBackArrow(),
               ),
             ],
-          );
-        },
-      ),
+          ),
+          floatingActionButton: _buildNewReviewButton(state.spot),
+        );
+      },
     );
   }
 
@@ -77,6 +81,22 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
           _buildInformationSection(state),
           const Space.vertical(20.0),
         ],
+      ),
+    );
+  }
+
+  Widget _buildNewReviewButton(WorkoutSpotModel spot) {
+    return FloatingActionButton(
+      heroTag: null,
+      onPressed: () {
+        // TODO Reconsider those nullable types
+        final spotId = spot.id;
+        if (spotId == null) return;
+        _goToNewReviewPage(spotId);
+      },
+      child: Icon(
+        Icons.reviews_rounded,
+        size: AppDimensions.size.floatingActionButtonIcon,
       ),
     );
   }
@@ -194,6 +214,15 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
           style: AppTextStyles.contentMultiline(),
         ),
       ],
+    );
+  }
+
+  void _goToNewReviewPage(int spotId) {
+    Navigator.of(context).pushNamed(
+      SpotsRouting.newReview,
+      arguments: NewReviewArguments(
+        spotId: spotId,
+      ),
     );
   }
 

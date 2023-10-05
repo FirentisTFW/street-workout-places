@@ -15,6 +15,8 @@ import 'package:app/presentation/pages/image_gallery/image_gallery_page.dart';
 import 'package:app/presentation/pages/image_gallery/image_gallery_page_arguments.dart';
 import 'package:app/presentation/pages/more/more_cubit.dart';
 import 'package:app/presentation/pages/more/more_page.dart';
+import 'package:app/presentation/pages/new_review/new_review_cubit.dart';
+import 'package:app/presentation/pages/new_review/new_review_page.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_arguments.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_cubit.dart';
 import 'package:app/presentation/pages/new_spot/equipment/new_spot_equipment_page.dart';
@@ -31,8 +33,17 @@ import 'package:app/presentation/pages/spots/spots_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class Pages {
+abstract final class Pages {
   const Pages._();
+
+  static Widget newReview() {
+    return BlocProvider<NewReviewCubit>(
+      create: (_) => NewReviewCubit(
+        userInputValidator: UserInputValidationService(),
+      ),
+      child: const NewReviewPage(),
+    );
+  }
 
   static Widget dashboard() {
     return BlocProvider<DashboardCubit>(
