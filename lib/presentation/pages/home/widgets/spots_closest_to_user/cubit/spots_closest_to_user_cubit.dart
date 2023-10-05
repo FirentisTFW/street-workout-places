@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:app/application/blocs/spots/spots_cubit.dart';
 import 'package:app/domain/core/common/constants.dart';
 import 'package:app/domain/core/common/maps/map_coordinator.dart';
-import 'package:app/domain/core/common/mocks/workout_spot_mocks.dart';
 import 'package:app/domain/models/filters.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
 import 'package:app/domain/services/spots_filtering_service.dart';
@@ -50,8 +49,7 @@ class SpotsClosestToUserCubit extends Cubit<SpotsClosestToUserState> {
   Future<void> fetchSpots() async {
     emit(const SpotsClosestToUserInProgress());
 
-    // final MapPosition? userLocation2 = await userLocationService.location;
-    final MapPosition? userLocation = WorkoutSpotMocks.spots.first.coordinates;
+    final MapPosition? userLocation = await userLocationService.location;
 
     if (userLocation == null) {
       emit(const SpotsClosestToUserNoLocationPermission());
