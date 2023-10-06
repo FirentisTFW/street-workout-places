@@ -24,6 +24,9 @@ class ImageGalleryPage extends StatefulWidget {
 }
 
 class _ImageGalleryPageState extends State<ImageGalleryPage> {
+  static const Curve _curve = Curves.easeIn;
+  static const Duration _duration = AppAnimations.regularDuration;
+
   late final PageController _pageController = PageController(
     initialPage: _initialImageIndex,
   );
@@ -91,12 +94,12 @@ class _ImageGalleryPageState extends State<ImageGalleryPage> {
       currentItemPosition: _currentPageIndex + 1,
       itemsCount: _imageCount,
       onLeftArrowPressed: () => _pageController.previousPage(
-        duration: AppAnimations.regularDuration,
-        curve: Curves.easeIn,
+        duration: _duration,
+        curve: _curve,
       ),
       onRightArrowPressed: () => _pageController.nextPage(
-        duration: AppAnimations.regularDuration,
-        curve: Curves.easeIn,
+        duration: _duration,
+        curve: _curve,
       ),
     );
   }
@@ -110,8 +113,8 @@ class _ImageGalleryPageState extends State<ImageGalleryPage> {
           isSelected: index == _currentPageIndex,
           onPressed: () => _pageController.animateToPage(
             index,
-            duration: AppAnimations.regularDuration,
-            curve: Curves.easeIn,
+            duration: _duration,
+            curve: _curve,
           ),
         ),
         itemCount: _imageCount,
