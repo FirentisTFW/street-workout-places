@@ -112,12 +112,7 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
     return FloatingActionButton(
       heroTag: null,
       tooltip: S.of(context).spotDetailsPageNewReviewButtonTooltip,
-      onPressed: () {
-        // TODO Reconsider those nullable types
-        final spotId = spot.id;
-        if (spotId == null) return;
-        _goToNewReviewPage(spotId);
-      },
+      onPressed: () => _goToNewReviewPage(spot.id),
       child: Icon(
         Icons.reviews_rounded,
         size: AppDimensions.size.floatingActionButtonIcon,

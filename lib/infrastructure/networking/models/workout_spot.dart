@@ -11,7 +11,7 @@ class WorkoutSpot extends Equatable {
   final MapPosition? coordinates;
   final String? description;
   final List<Equipment?>? equipment;
-  final int? id;
+  final int id;
   final List<String?>? images;
   final String? name;
   final List<Review?>? reviews;
@@ -23,7 +23,7 @@ class WorkoutSpot extends Equatable {
     this.coordinates,
     this.description,
     this.equipment,
-    this.id,
+    required this.id,
     this.images,
     this.name,
     this.reviews,

@@ -9,6 +9,7 @@ void main() {
       group('single word query -', () {
         group('spot name -', () {
           const WorkoutSpotModel spot = WorkoutSpotModel(
+            id: 1,
             name: 'Poznań super park',
           );
           test('with diacritics', () {
@@ -35,11 +36,13 @@ void main() {
           const String query = 'Poznań';
           test('city', () {
             const WorkoutSpotModel spotMatchingQuery = WorkoutSpotModel(
+              id: 1,
               address: Address(
                 city: 'Poznań',
               ),
             );
             const WorkoutSpotModel spotNotMatchingQuery = WorkoutSpotModel(
+              id: 2,
               address: Address(
                 city: 'Warszawa',
               ),
@@ -58,12 +61,14 @@ void main() {
 
           test('street', () {
             const WorkoutSpotModel spotMatchingQuery = WorkoutSpotModel(
+              id: 1,
               address: Address(
                 city: 'Warszawa',
                 street: 'Poznańska',
               ),
             );
             const WorkoutSpotModel spotNotMatchingQuery = WorkoutSpotModel(
+              id: 2,
               address: Address(
                 city: 'Warszawa',
                 street: 'Krakowska',
@@ -85,12 +90,14 @@ void main() {
       test('multiple word query', () {
         const String query = 'krakow poznanska';
         const WorkoutSpotModel spotMatchingQuery = WorkoutSpotModel(
+          id: 1,
           address: Address(
             city: 'Kraków',
             street: 'Poznańska',
           ),
         );
         const WorkoutSpotModel spotNotMatchingQuery = WorkoutSpotModel(
+          id: 2,
           address: Address(
             city: 'Kraków',
             street: 'Warszawska',

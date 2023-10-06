@@ -17,7 +17,7 @@ abstract class _$WorkoutSpotModelCWProxy {
 
   WorkoutSpotModel equipment(List<Equipment> equipment);
 
-  WorkoutSpotModel id(int? id);
+  WorkoutSpotModel id(int id);
 
   WorkoutSpotModel images(List<String> images);
 
@@ -73,7 +73,7 @@ class _$WorkoutSpotModelCWProxyImpl implements _$WorkoutSpotModelCWProxy {
       this(equipment: equipment);
 
   @override
-  WorkoutSpotModel id(int? id) => this(id: id);
+  WorkoutSpotModel id(int id) => this(id: id);
 
   @override
   WorkoutSpotModel images(List<String> images) => this(images: images);
@@ -128,10 +128,10 @@ class _$WorkoutSpotModelCWProxyImpl implements _$WorkoutSpotModelCWProxy {
           ? _value.equipment
           // ignore: cast_nullable_to_non_nullable
           : equipment as List<Equipment>,
-      id: id == const $CopyWithPlaceholder()
+      id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
-          : id as int?,
+          : id as int,
       images: images == const $CopyWithPlaceholder() || images == null
           ? _value.images
           // ignore: cast_nullable_to_non_nullable

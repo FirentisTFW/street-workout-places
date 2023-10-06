@@ -36,7 +36,8 @@ class _$MapEssentialsCWProxyImpl implements _$MapEssentialsCWProxy {
   final MapEssentials _value;
 
   @override
-  MapEssentials initialCoordinates(MapPosition initialCoordinates) => this(initialCoordinates: initialCoordinates);
+  MapEssentials initialCoordinates(MapPosition initialCoordinates) =>
+      this(initialCoordinates: initialCoordinates);
 
   @override
   MapEssentials maxZoom(double maxZoom) => this(maxZoom: maxZoom);
@@ -62,7 +63,8 @@ class _$MapEssentialsCWProxyImpl implements _$MapEssentialsCWProxy {
     Object? zoom = const $CopyWithPlaceholder(),
   }) {
     return MapEssentials(
-      initialCoordinates: initialCoordinates == const $CopyWithPlaceholder() || initialCoordinates == null
+      initialCoordinates: initialCoordinates == const $CopyWithPlaceholder() ||
+              initialCoordinates == null
           ? _value.initialCoordinates
           // ignore: cast_nullable_to_non_nullable
           : initialCoordinates as MapPosition,

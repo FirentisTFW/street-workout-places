@@ -26,12 +26,14 @@ void main() {
       );
       final List<WorkoutSpotModel> spots = [
         const WorkoutSpotModel(
+          id: 1,
           coordinates: MapPosition(
             latitude: 52.39963,
             longitude: 16.92525,
           ),
         ),
         const WorkoutSpotModel(
+          id: 2,
           coordinates: MapPosition(
             latitude: 52.38908,
             longitude: 16.92539,

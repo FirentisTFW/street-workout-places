@@ -16,6 +16,7 @@ List<WorkoutSpotModel> _spots = [
     equipment: [
       Equipment.highBar,
     ],
+    id: 1,
     size: WorkoutSpotSize.small,
     surface: Surface.concrete,
   ),
@@ -29,6 +30,7 @@ List<WorkoutSpotModel> _spots = [
       Equipment.rope,
       Equipment.parkourWalls,
     ],
+    id: 2,
     size: WorkoutSpotSize.medium,
     surface: Surface.tartan,
   ),
@@ -42,6 +44,7 @@ List<WorkoutSpotModel> _spots = [
       Equipment.horizontalLadder,
       Equipment.rope,
     ],
+    id: 3,
     size: WorkoutSpotSize.big,
     surface: Surface.sand,
   ),

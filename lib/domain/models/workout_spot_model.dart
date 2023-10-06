@@ -18,7 +18,7 @@ class WorkoutSpotModel extends Equatable {
   final String? description;
   final double? distanceFromUserInKm;
   final List<Equipment> equipment;
-  final int? id;
+  final int id;
   final List<String> images;
   final String? name;
   final WorkoutSpotSize? size;
@@ -30,7 +30,7 @@ class WorkoutSpotModel extends Equatable {
     this.description,
     this.distanceFromUserInKm,
     this.equipment = const [],
-    this.id,
+    required this.id,
     this.images = const [],
     this.name,
     this.size,
