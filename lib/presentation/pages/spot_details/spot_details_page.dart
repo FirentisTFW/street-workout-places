@@ -15,7 +15,6 @@ import 'package:app/presentation/styles/app_padding.dart';
 import 'package:app/presentation/styles/app_text_styles.dart';
 import 'package:app/presentation/widgets/circular_button.dart';
 import 'package:app/presentation/widgets/information_with_title.dart';
-import 'package:app/presentation/widgets/navigation_button.dart';
 import 'package:app/presentation/widgets/separator.dart';
 import 'package:app/presentation/widgets/space.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +49,7 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
               ),
             ],
           ),
-          floatingActionButton: _buildNewReviewButton(state.spot),
+          floatingActionButton: _buildFloatingActionButtons(state),
         );
       },
     );
@@ -85,9 +84,34 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
     );
   }
 
+  Widget _buildFloatingActionButtons(SpotDetailsState state) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildNavigateButton(state.spot),
+        const Space.vertical(10.0),
+        _buildNewReviewButton(state.spot),
+      ],
+    );
+  }
+
+  Widget _buildNavigateButton(WorkoutSpotModel spot) {
+    return FloatingActionButton(
+      heroTag: null,
+      tooltip: S.of(context).spotDetailsPageNavigateButtonTooltip,
+      onPressed: () => _launchMapAndNavigation(spot),
+      child: Icon(
+        Icons.gps_fixed_rounded,
+        size: AppDimensions.size.floatingActionButtonIcon,
+      ),
+    );
+  }
+
   Widget _buildNewReviewButton(WorkoutSpotModel spot) {
     return FloatingActionButton(
       heroTag: null,
+      tooltip: S.of(context).spotDetailsPageNewReviewButtonTooltip,
       onPressed: () {
         // TODO Reconsider those nullable types
         final spotId = spot.id;
@@ -131,29 +155,18 @@ class _SpotDetailsPageState extends BlocPageState<SpotDetailsPage, SpotDetailsCu
   }
 
   Widget _buildNameAndAddressSection(WorkoutSpotModel spot) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                spot.name.orEmpty(),
-                style: AppTextStyles.titleBig(),
-              ),
-              const Space.vertical(8.0),
-              Text(
-                (spot.address?.fullAddress).orEmpty(),
-                style: AppTextStyles.addressBig(),
-              ),
-            ],
-          ),
+        Text(
+          spot.name.orEmpty(),
+          style: AppTextStyles.titleBig(),
         ),
-        const Space.horizontal(4.0),
-        NavigationButton(
-          onPressed: () => _launchMapAndNavigation(spot),
+        const Space.vertical(8.0),
+        Text(
+          (spot.address?.fullAddress).orEmpty(),
+          style: AppTextStyles.addressBig(),
         ),
       ],
     );

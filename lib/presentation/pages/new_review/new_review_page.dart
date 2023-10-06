@@ -1,5 +1,6 @@
 import 'package:app/domain/core/common/bloc_page_state.dart';
 import 'package:app/presentation/pages/new_review/new_review_cubit.dart';
+import 'package:app/presentation/widgets/app_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class NewReviewPage extends StatefulWidget {
@@ -15,6 +16,7 @@ class _NewReviewPageState extends BlocPageState<NewReviewPage, NewReviewCubit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppAppBar(),
       body: Container(),
     );
   }

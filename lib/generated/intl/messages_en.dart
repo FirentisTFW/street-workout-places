@@ -89,8 +89,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "mapDataSourceOpenStreetMap":
             MessageLookupByLibrary.simpleMessage("Map data from OpenStreetMap"),
         "name": MessageLookupByLibrary.simpleMessage("Nazwa"),
-        "navigationButtonTitle":
-            MessageLookupByLibrary.simpleMessage("Nawiguj"),
         "newSpotCoordinatesSectionButtonTitle":
             MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
         "newSpotEquipmentAppBarTitle":
@@ -151,6 +149,10 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Czy chcesz pokazać najbliższe punkty?"),
         "sortSpotsByLocationDialogTitle":
             MessageLookupByLibrary.simpleMessage("Najbliższe punkty"),
+        "spotDetailsPageNavigateButtonTooltip":
+            MessageLookupByLibrary.simpleMessage("Nawiguj"),
+        "spotDetailsPageNewReviewButtonTooltip":
+            MessageLookupByLibrary.simpleMessage("Dodaj opinię"),
         "spotDetailsReviewsSectionTitle":
             MessageLookupByLibrary.simpleMessage("Opinie"),
         "spotListCellDistanceFromUserInKm": m2,

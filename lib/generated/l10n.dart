@@ -170,16 +170,6 @@ class S {
     );
   }
 
-  /// `Nawiguj`
-  String get navigationButtonTitle {
-    return Intl.message(
-      'Nawiguj',
-      name: 'navigationButtonTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Ok`
   String get ok {
     return Intl.message(
@@ -947,6 +937,26 @@ class S {
     return Intl.message(
       'Minusy:',
       name: 'reviewCellBadAspects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nawiguj`
+  String get spotDetailsPageNavigateButtonTooltip {
+    return Intl.message(
+      'Nawiguj',
+      name: 'spotDetailsPageNavigateButtonTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dodaj opinię`
+  String get spotDetailsPageNewReviewButtonTooltip {
+    return Intl.message(
+      'Dodaj opinię',
+      name: 'spotDetailsPageNewReviewButtonTooltip',
       desc: '',
       args: [],
     );
