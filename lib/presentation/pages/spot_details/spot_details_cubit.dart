@@ -1,7 +1,7 @@
-import 'package:app/domain/core/common/mocks/review_mocks.dart';
 import 'package:app/domain/core/errors/ui_error.dart';
 import 'package:app/domain/models/review.dart';
 import 'package:app/domain/models/workout_spot_model.dart';
+import 'package:app/infrastructure/repositories/reviews/reviews_repository.dart';
 import 'package:app/presentation/pages/spot_details/spot_details_arguments.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
@@ -12,9 +12,11 @@ part 'spot_details_state.dart';
 
 class SpotDetailsCubit extends Cubit<SpotDetailsState> {
   final SpotDetailsArguments arguments;
+  final ReviewsRepository reviewsRepository;
 
   SpotDetailsCubit({
     required this.arguments,
+    required this.reviewsRepository,
   }) : super(
           SpotDetailsState(
             reviewsState: const SpotDetailsReviewsFetched.empty(),
@@ -26,17 +28,10 @@ class SpotDetailsCubit extends Cubit<SpotDetailsState> {
     try {
       emit(state.fetchingReviews());
 
-      // FIXME Perform API call
-
-      // simulate a delay
-      await Future.delayed(
-        const Duration(
-          seconds: 2,
-        ),
-      );
+      final reviews = await reviewsRepository.reviews(arguments.spot.id);
 
       emit(
-        state.fetchedReviews(ReviewMocks.reviews),
+        state.fetchedReviews(reviews),
       );
     } catch (exception) {
       emit(

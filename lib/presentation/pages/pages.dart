@@ -4,6 +4,7 @@ import 'package:app/domain/services/equipment_selection_validation_service.dart'
 import 'package:app/domain/services/images_selection_validation_service.dart';
 import 'package:app/domain/services/user_input_validation_service.dart';
 import 'package:app/infrastructure/networking/models/equipment.dart';
+import 'package:app/infrastructure/repositories/reviews/reviews_repository.dart';
 import 'package:app/infrastructure/repositories/spots/network_spots_repository.dart';
 import 'package:app/injector.dart';
 import 'package:app/presentation/pages/dashboard/dashboard_cubit.dart';
@@ -39,6 +40,7 @@ abstract final class Pages {
   static Widget newReview() {
     return BlocProvider<NewReviewCubit>(
       create: (_) => NewReviewCubit(
+        reviewsRepository: Injector().resolve<ReviewsRepository>(),
         userInputValidator: UserInputValidationService(),
       ),
       child: const NewReviewPage(),
@@ -117,6 +119,7 @@ abstract final class Pages {
     return BlocProvider<SpotDetailsCubit>(
       create: (_) => SpotDetailsCubit(
         arguments: arguments as SpotDetailsArguments,
+        reviewsRepository: Injector().resolve<ReviewsRepository>(),
       ),
       child: const SpotDetailsPage(),
     );

@@ -7,9 +7,7 @@ class FakeNetworkSpotsRepository implements NetworkSpotsRepository {
   const FakeNetworkSpotsRepository();
 
   @override
-  Future<void> submitSpot(SubmitSpotRequest request) async {
-    await _simulateDelay();
-  }
+  Future<void> submitSpot(SubmitSpotRequest request) => _simulateDelay();
 
   @override
   Future<List<WorkoutSpot>> workoutSpots() async {
