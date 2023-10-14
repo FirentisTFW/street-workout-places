@@ -21,7 +21,12 @@ class NewReviewCubit extends Cubit<NewReviewState> with NewReviewForm {
   Future<void> submitReview() async {
     final UserInputError? validationError = userInputValidator.validate(userInputsToValidate);
     final bool isFormValid = validationError == null;
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      emit(
+        NewReviewFailure(DialogError.fromException(validationError)),
+      );
+      return;
+    }
 
     emit(const NewReviewInProgress());
 
