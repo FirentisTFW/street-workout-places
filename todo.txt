@@ -1,8 +1,10 @@
 TODO (first - most important):
 - user reviews for spots (adding reviews)
+- fix measuring distance from user to spots (it's too low)
 - user reviews for spots (home page)
 - check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
 - animate map when zooming
 - geolocalization when adding a new spot ("use my location" feature)
 - BIG code refactoring (cubit state classes, formatting, naming conventions etc.)
+- fix emitting validation errors - error notifiers in text fields or something
 - bloc and widget tests for the process of adding a new spot
