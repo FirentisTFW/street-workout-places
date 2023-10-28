@@ -1,6 +1,4 @@
 TODO (first - most important):
-- user reviews for spots (adding reviews)
-- fix measuring distance from user to spots (it's too low)
 - user reviews for spots (home page)
 - check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
 - animate map when zooming

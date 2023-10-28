@@ -23,6 +23,6 @@ abstract class LocationUtils {
 
     const int earthRadiusInKm = 6371;
 
-    return earthRadiusInKm * asin(sqrt(a));
+    return 2 * earthRadiusInKm * asin(sqrt(a));
   }
 }
