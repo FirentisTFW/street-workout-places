@@ -21,7 +21,6 @@ class NewReviewPage extends StatefulWidget {
   State<NewReviewPage> createState() => _NewReviewPageState();
 }
 
-// FIXME Remove hardcoded texts
 class _NewReviewPageState extends BlocPageState<NewReviewPage, NewReviewCubit> {
   @override
   Widget build(BuildContext context) {
@@ -52,11 +51,12 @@ class _NewReviewPageState extends BlocPageState<NewReviewPage, NewReviewCubit> {
     if (state is NewReviewSuccess) {
       AlertDialogUtils.show(
         context,
-        title: 'Opinia',
-        message: 'Twoja opinia została przesłana.',
+        title: S.of(context).newReviewPageSuccessDialogTitle,
+        message: S.of(context).newReviewPageSuccessDialogMessage,
+        barrierDismissible: false,
         actions: [
           AlertDialogUtils.buildAction(
-            text: 'Ok',
+            text: S.of(context).ok,
             onPressed: () {
               Navigator.pop(context);
               Navigator.pop(context);
@@ -68,8 +68,8 @@ class _NewReviewPageState extends BlocPageState<NewReviewPage, NewReviewCubit> {
   }
 
   PreferredSizeWidget _buildAppBar() {
-    return const AppAppBar(
-      title: 'Dodaj opinię',
+    return AppAppBar(
+      title: S.of(context).newReviewPageAppBarTitle,
     );
   }
 
@@ -77,7 +77,7 @@ class _NewReviewPageState extends BlocPageState<NewReviewPage, NewReviewCubit> {
     return AppTextField(
       bloc.titleTFE,
       keyboardType: TextInputType.name,
-      labelText: 'Tytuł',
+      labelText: S.of(context).newReviewPageTitleTextFieldLabel,
       textInputAction: TextInputAction.next,
     );
   }
@@ -86,7 +86,7 @@ class _NewReviewPageState extends BlocPageState<NewReviewPage, NewReviewCubit> {
     return AppTextField(
       bloc.contentTFE,
       keyboardType: TextInputType.multiline,
-      labelText: 'Opis',
+      labelText: S.of(context).newReviewPageContentTextFieldLabel,
       minLines: 7,
       textInputAction: TextInputAction.done,
     );

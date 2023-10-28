@@ -89,6 +89,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "mapDataSourceOpenStreetMap":
             MessageLookupByLibrary.simpleMessage("Map data from OpenStreetMap"),
         "name": MessageLookupByLibrary.simpleMessage("Nazwa"),
+        "newReviewPageAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Dodaj opinię"),
+        "newReviewPageContentTextFieldLabel":
+            MessageLookupByLibrary.simpleMessage("Opis"),
+        "newReviewPageSuccessDialogMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Twoja opinia została przesłana."),
+        "newReviewPageSuccessDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Opinia"),
+        "newReviewPageTitleTextFieldLabel":
+            MessageLookupByLibrary.simpleMessage("Tytuł"),
         "newSpotCoordinatesSectionButtonTitle":
             MessageLookupByLibrary.simpleMessage("Zaznacz miejsce na mapie"),
         "newSpotEquipmentAppBarTitle":

@@ -103,5 +103,10 @@
   "reviewCellGoodAspects": "Plusy:",
   "reviewCellBadAspects": "Minusy:",
   "spotDetailsPageNavigateButtonTooltip": "Nawiguj",
-  "spotDetailsPageNewReviewButtonTooltip": "Dodaj opinię"
+  "spotDetailsPageNewReviewButtonTooltip": "Dodaj opinię",
+  "newReviewPageSuccessDialogTitle": "Opinia",
+  "newReviewPageSuccessDialogMessage": "Twoja opinia została przesłana.",
+  "newReviewPageAppBarTitle": "Dodaj opinię",
+  "newReviewPageTitleTextFieldLabel": "Tytuł",
+  "newReviewPageContentTextFieldLabel": "Opis"
 }

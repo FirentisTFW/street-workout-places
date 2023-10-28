@@ -961,6 +961,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Opinia`
+  String get newReviewPageSuccessDialogTitle {
+    return Intl.message(
+      'Opinia',
+      name: 'newReviewPageSuccessDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Twoja opinia została przesłana.`
+  String get newReviewPageSuccessDialogMessage {
+    return Intl.message(
+      'Twoja opinia została przesłana.',
+      name: 'newReviewPageSuccessDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dodaj opinię`
+  String get newReviewPageAppBarTitle {
+    return Intl.message(
+      'Dodaj opinię',
+      name: 'newReviewPageAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tytuł`
+  String get newReviewPageTitleTextFieldLabel {
+    return Intl.message(
+      'Tytuł',
+      name: 'newReviewPageTitleTextFieldLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opis`
+  String get newReviewPageContentTextFieldLabel {
+    return Intl.message(
+      'Opis',
+      name: 'newReviewPageContentTextFieldLabel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
