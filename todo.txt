@@ -1,8 +1,11 @@
 TODO (first - most important):
-- user reviews for spots (home page)
-- check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
-- animate map when zooming
-- geolocalization when adding a new spot ("use my location" feature)
-- BIG code refactoring (cubit state classes, formatting, naming conventions etc.)
-- fix emitting validation errors - error notifiers in text fields or something
-- bloc and widget tests for the process of adding a new spot
+- U user reviews for spots (home page)
+- U check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
+- U geolocalization when adding a new spot ("use my location" feature)
+- C BIG code refactoring (cubit state classes, formatting, naming conventions etc.)
+- C fix emitting validation errors - error notifiers in text fields or something
+- C bloc and widget tests for the process of adding a new spot
+
+
+U: user-facing
+C: code-related
