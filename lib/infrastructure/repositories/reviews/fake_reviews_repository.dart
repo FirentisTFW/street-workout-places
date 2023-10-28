@@ -7,6 +7,13 @@ final class FakeReviewsRepository implements ReviewsRepository {
   const FakeReviewsRepository();
 
   @override
+  Future<List<Review>> recentlyAddedReviews() async {
+    await _simulateDelay();
+
+    return ReviewMocks.reviews;
+  }
+
+  @override
   Future<List<Review>> reviews(int workoutSpotId) async {
     await _simulateDelay();
 

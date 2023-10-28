@@ -17,3 +17,10 @@ final class SpotsClosestToUserHomeSection extends HomeSection {
   @override
   List<Object?> get props => [];
 }
+
+final class RecentlyAddedReviewsHomeSection extends HomeSection {
+  const RecentlyAddedReviewsHomeSection();
+
+  @override
+  List<Object?> get props => [];
+}

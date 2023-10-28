@@ -4,6 +4,8 @@ import 'package:app/infrastructure/networking/requests/submit_review_request.dar
 abstract interface class ReviewsRepository {
   const ReviewsRepository();
 
+  Future<List<Review>> recentlyAddedReviews();
+
   Future<List<Review>> reviews(int workoutSpotId);
 
   Future<void> submitReview(SubmitReviewRequest request);
