@@ -4,6 +4,8 @@ import 'package:app/infrastructure/networking/requests/submit_spot_request.dart'
 abstract interface class SpotsRepository {
   const SpotsRepository();
 
+  Future<List<WorkoutSpot>> recentlyAddedWorkoutSpots();
+
   Future<void> submitSpot(SubmitSpotRequest request);
 
   Future<List<WorkoutSpot>> workoutSpots();

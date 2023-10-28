@@ -2,6 +2,7 @@ TODO (first - most important):
 - U user reviews for spots (home page)
 - U check bottom navigation bar on phone with bottom notch (like newer iPhones), consider using SafeArea
 - U geolocalization when adding a new spot ("use my location" feature)
+- C classes with `Model` suffix - are they needed?
 - C BIG code refactoring (cubit state classes, formatting, naming conventions etc.)
 - C fix emitting validation errors - error notifiers in text fields or something
 - C bloc and widget tests for the process of adding a new spot
