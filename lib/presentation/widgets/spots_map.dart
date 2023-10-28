@@ -63,6 +63,7 @@ class _SpotsMapState extends State<SpotsMap> with GlobalBlocsMixin, SingleTicker
         context,
         clusters: widget.clusters,
         mapEssentials: Constants.maps.essentials,
+        onMapReady: _updateMapClusters,
         onPositionChanged: () => _maPositionReationController.replaceAction(_updateMapClusters),
         onClusterPressed: _zoomIntoCluster,
         onSpotPressed: _goToSpotDetails,

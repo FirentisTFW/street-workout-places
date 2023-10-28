@@ -20,6 +20,7 @@ abstract interface class MapCoordinator {
     BuildContext context, {
     List<MapClusterModel> clusters,
     required MapEssentials mapEssentials,
+    VoidCallback? onMapReady,
     VoidCallback? onPositionChanged,
     void Function(MapClusterModel)? onClusterPressed,
     void Function(WorkoutSpotModel)? onSpotPressed,
@@ -29,6 +30,7 @@ abstract interface class MapCoordinator {
     BuildContext context, {
     required MapEssentials mapEssentials,
     List<MapPosition> positions,
+    VoidCallback? onMapReady,
     VoidCallback? onPositionChanged,
     void Function(MapPosition)? onPositionSelected,
   });

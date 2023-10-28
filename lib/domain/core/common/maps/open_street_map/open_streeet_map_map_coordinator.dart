@@ -30,6 +30,7 @@ class OpenStreetMapMapCoordinator implements MapCoordinator {
     BuildContext context, {
     List<MapClusterModel> clusters = const [],
     required MapEssentials mapEssentials,
+    VoidCallback? onMapReady,
     VoidCallback? onPositionChanged,
     void Function(MapClusterModel)? onClusterPressed,
     void Function(WorkoutSpotModel)? onSpotPressed,
@@ -42,6 +43,7 @@ class OpenStreetMapMapCoordinator implements MapCoordinator {
         maxZoom: mapEssentials.maxZoom,
         minZoom: mapEssentials.minZoom,
         zoom: mapEssentials.zoom,
+        onMapReady: onMapReady,
         onPositionChanged: (_, __) => onPositionChanged?.call(),
       ),
       nonRotatedChildren: [
@@ -76,6 +78,7 @@ class OpenStreetMapMapCoordinator implements MapCoordinator {
     BuildContext context, {
     required MapEssentials mapEssentials,
     List<MapPosition> positions = const [],
+    VoidCallback? onMapReady,
     VoidCallback? onPositionChanged,
     void Function(MapPosition)? onPositionSelected,
   }) {
@@ -87,6 +90,7 @@ class OpenStreetMapMapCoordinator implements MapCoordinator {
         maxZoom: mapEssentials.maxZoom,
         minZoom: mapEssentials.minZoom,
         zoom: mapEssentials.zoom,
+        onMapReady: onMapReady,
         onPositionChanged: (_, __) => onPositionChanged?.call(),
         onTap: (_, point) => onPositionSelected?.call(point.mapToMapPosition()),
       ),

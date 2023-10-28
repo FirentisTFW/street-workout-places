@@ -18,8 +18,6 @@ class RecentlyAddedSpotsCubit extends Cubit<RecentlyAddedSpotsState> {
     emit(const RecentlyAddedSpotsInProgress());
 
     try {
-      // TODO Perform API call and remove mocks
-
       final List<WorkoutSpot> spots = await spotsRepository.recentlyAddedWorkoutSpots();
 
       emit(
